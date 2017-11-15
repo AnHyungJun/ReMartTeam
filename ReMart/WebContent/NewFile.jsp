@@ -7,8 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<<<<<<< HEAD
+
 안형준
+
 배고파배고파
+=======
+서연짱,,
+
 </body>
 </html>
