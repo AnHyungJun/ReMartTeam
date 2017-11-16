@@ -1,22 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
-<title>ทฮฑืภฮ</title>
+<title>๋ก๊ทธ์ธ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
+	<div style="margin-top: 150px"></div>
 	<center>
 		<div class="w3-container w3-margin-top" style="width: 25%;">
 
 			<form class="w3-container w3-card-4">
 				<br>
 				<div class="w3-container" align="left">
-					<img src="/ReMart/images/logo/logo.png" style="width: 15%">
+					<img src="/ReMart/images/icon/logo.png" style="width: 15%">
 					<p>
 						<br> <a style="font-size: 13px;">ID</a> <input
 							class="w3-input" type="text">
