@@ -88,7 +88,7 @@
 					<img 
 					src="<%=request.getContextPath()%>/images/temp/temp_profile2.jpg"
 					class="w3-circle w3-left" alt="Norway" style="float: left; width: 50px; height: 50px;">
-					<h4 style="float: left; padding-left: 10px">jeju</h4>
+					<h4 style="float: left; padding-left: 10px">jejuu</h4>
 				</div>
 				<div class="w3-container" style="margin-bottom: 10px; margin-left: 20px">
 					<img src="<%=request.getContextPath()%>/images/temp/temp2.JPG"
