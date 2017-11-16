@@ -73,7 +73,8 @@ body, h1, h2, h3, h4, h5, h6 {
 			</tr>
 			<tr>
 				<td>
-					<a href="#">에디터 추천</a>/ <a href="<%=request.getContextPath() %>/view/tvRecipe/tv.jsp">TV레시피</a>/ <a href="#">글쓰기</a>
+					<a href="#">에디터 추천</a>/ <a href="<%=request.getContextPath() %>/view/tvRecipe/tv.jsp">TV레시피</a>/ 
+					<a href="<%=request.getContextPath() %>/view/writePage/writeForm.jsp">글쓰기</a>
 				</td>
 			</tr>
 		</table>
