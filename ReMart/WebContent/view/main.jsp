@@ -32,13 +32,15 @@
 	align-items: center;
 }
 </style>
-<head>
+<head >
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
-<body>
+<body >
+	<div style="margin-top: 100px"></div>
+	
 	<div>
 		<section class="main-artist-rolling">
 		<div class="swiper-container">

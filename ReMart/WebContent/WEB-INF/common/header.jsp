@@ -55,8 +55,8 @@ body, h1, h2, h3, h4, h5, h6 {
 
 
 
-<div class="w3-top w3-white">
-	<div class="w3-bar w3-card-2 w3-center-align w3-large">
+<div class="w3-top w3-white" >
+	<div class="w3-bar w3-card-2 w3-center-align w3-large" >
 		<table style="width: 100%">
 			<tr>
 				<td rowspan="3">

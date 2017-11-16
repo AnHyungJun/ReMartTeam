@@ -8,8 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
-<body>
-<br><br><br><br>
+<body > 
+<div style="margin-top: 200px"></div>
 <div align="center">
 <button>냉장고를 부탁해</button>
 <button>집밥 백선생</button>

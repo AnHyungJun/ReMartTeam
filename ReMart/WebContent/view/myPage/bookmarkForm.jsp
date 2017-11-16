@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <title>follow form</title>
 </head>
-<body>
-	<br><br><br><br><br>
+<body >
+	<div style="margin-top: 100px"></div>
 	<div class="w3-container w3-border-bottom">
 		<div class="w3-left-align"
 			style="float: left; margin-bottom: 20px; margin-top: 20px;">
