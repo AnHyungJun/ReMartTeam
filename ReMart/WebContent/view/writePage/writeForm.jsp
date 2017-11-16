@@ -39,7 +39,7 @@
 			<div class="mySlides">
 				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
 				<input type="file" class="uploadimg" style="left:200px; top:200px;"
-					onchange="statefile(this);" name="uploadfile"> <br>
+					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()"> <br>
 					
 					
 					 내용<br>
