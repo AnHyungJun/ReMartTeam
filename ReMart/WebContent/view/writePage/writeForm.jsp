@@ -5,6 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+.uploadimg {
+	font-size:7px;
+    position:absolute;
+    height: 400px;
+    width: 650px;
+    opacity:0;
+    filter: alpha(opacity=0);
+    -ms-filter: alpha(opacity=0);
+    cursor:pointer;
+}
+
+</style>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
@@ -25,7 +38,7 @@
 
 			<div class="mySlides">
 				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
-				file:<input type="file" size="40" maxlength="30"
+				<input type="file" class="uploadimg" style="left:200px; top:200px;"
 					onchange="statefile(this);" name="uploadfile"> <br>
 					
 					
@@ -118,8 +131,6 @@
 		</form>
 	</div>
 
-	<a class="w3-btn-floating" onclick="plusDivs(-1)">&#10094;</a>
-	<a class="w3-btn-floating" onclick="plusDivs(+1)">&#10095;</a>
 	<script>
 		var slideIndex = 1;
 		var checkimage = new Array(11);
