@@ -1,21 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
-<title>�α���</title>
+<title>로그인</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
+	<div style="margin-top: 150px"></div>
 	<center>
 		<h4>
 			<b> Forgot your ID/PASSWORD? </b>
 		</h4>
-		<p class="w3-text-grey" style="font-size: 11px;">�����Ͻ� �޴���
-			��ȣ�� ���̵�� ��й�ȣ ã�Ⱑ �����մϴ�.</p>
+		<p class="w3-text-grey" style="font-size: 11px;">가입하신 휴대폰
+			번호로 아이디와 비밀번호 찾기가 가능합니다.</p>
 		<br>
 		<div class="w3-container w3-margin-top" style="width: 25%;">
 			<form class="w3-container">
@@ -33,7 +30,7 @@
 					<br>
 					<div class="w3-right">
 						<input type="submit" class="w3-button w3-light-grey w3-border"
-							style="font-size: 11px;" value=" Ȯ �� ">
+							style="font-size: 11px;" value=" 확 인 ">
 					</div>
 				</div>
 			</form>
