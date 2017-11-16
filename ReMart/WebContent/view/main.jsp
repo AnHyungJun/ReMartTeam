@@ -93,7 +93,7 @@
 					</div>
 					<div>
 						<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -111,7 +111,7 @@
 					</div>
 					<div>
 						<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -129,7 +129,7 @@
 					</div>
 					<div>
 						<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -147,7 +147,7 @@
 					</div>
 					<div>
 					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -165,7 +165,7 @@
 					</div>
 					<div>
 					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -183,7 +183,7 @@
 					</div>
 					<div>
 					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -201,7 +201,7 @@
 					</div>
 					<div>
 					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -219,7 +219,7 @@
 					</div>
 					<div>
 					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -237,7 +237,7 @@
 					</div>
 					<div>
 					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -255,7 +255,7 @@
 					</div>
 					<div>
 					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -273,7 +273,7 @@
 					</div>
 					<div>
 					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -291,7 +291,7 @@
 					</div>
 					<div>
 					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -309,7 +309,7 @@
 					</div>
 					<div>
 					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -327,7 +327,7 @@
 					</div>
 					<div>
 					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -345,7 +345,7 @@
 					</div>
 					<div>
 					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -363,7 +363,7 @@
 					</div>
 					<div>
 					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -381,7 +381,7 @@
 					</div>
 					<div>
 					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
@@ -399,7 +399,7 @@
 					</div>
 					<div>
 					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
-						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/comment.png" style="width: 30px"> 
 						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">

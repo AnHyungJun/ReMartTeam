@@ -60,10 +60,10 @@ body, h1, h2, h3, h4, h5, h6 {
 		<table style="width: 100%">
 			<tr>
 				<td rowspan="3">
-					<a href="<%=request.getContextPath() %>/view/main.jsp"><img alt="로고" src="<%=request.getContextPath() %>/images/icon/remartlogo.JPG" width="100px"></a>
+					<a href="<%=request.getContextPath() %>/view/main.jsp"><img alt="로고" src="<%=request.getContextPath() %>/images/icon/remartlogo.JPG" width="150px"></a>
 				</td>
 				<td align="right">
-					<a href="#">로그인</a>|<a href="#">회원가입</a>|<a href="#">마이페이지</a>|<a href="#">장바구니</a>
+					<a href="#">로그인</a>|<a href="#">회원가입</a>|<a href="<%=request.getContextPath() %>/view/myPage/myPageForm.jsp">마이페이지</a>|<a href="#">장바구니</a>
 				</td>
 			</tr>
 			<tr>
