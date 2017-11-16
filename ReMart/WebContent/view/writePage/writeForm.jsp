@@ -9,7 +9,7 @@
 </head>
 <body>
 	
-	<div style="margin-top: 50px"></div>
+	<div style="margin-top: 150px"></div>
 	<div align="center"
 		style="width: 100%; height: 600px; border: solid 4px;">
 		<!-- 전체 테두리 -->
