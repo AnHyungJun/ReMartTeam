@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -7,21 +8,20 @@
 <title>Insert title here</title>
 <style>
 .uploadimg {
-	font-size:7px;
-    position:absolute;
-    height: 400px;
-    width: 650px;
-    opacity:0;
-    filter: alpha(opacity=0);
-    -ms-filter: alpha(opacity=0);
-    cursor:pointer;
+	font-size: 7px;
+	position: absolute;
+	height: 400px;
+	width: 650px;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	-ms-filter: alpha(opacity = 0);
+	cursor: pointer;
 }
-
 </style>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-	
+
 	<div style="margin-top: 150px"></div>
 	<div align="center"
 		style="width: 100%; height: 600px; border: solid 4px;">
@@ -37,97 +37,87 @@
 		<form action="">
 
 			<div class="mySlides">
-				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
-				<input type="file" class="uploadimg" style="left:200px; top:200px;"
-					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()"> <br>
-					
-					
-					 내용<br>
+				메인 메뉴 등록<br>	
+				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG"
+					alt="your image" width="650" height="400" /><br> <input
+					type="file" class="uploadimg" style="left: 200px; top: 200px;"
+					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+				<br> 음식 이름<br> 
+				<input type="text" size="50" height="14">
+				<br> 주메뉴<br> 
+				<input type="text" size="50" height="14">
+				<br> 부메뉴<br> 
 				<input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
-				file:<input type="file" size="40" maxlength="30"
-					onchange="statefile(this);" name="uploadfile"> <br>
-					
-					
-					 내용<br>
-				<input type="text" size="50" height="14">
+				<img align="center" id="blah2" src="/ReMart/images/icon/noimage.PNG"
+					alt="your image" width="650" height="400" /><br> <input
+					type="file" class="uploadimg" style="left: 200px; top: 200px;"
+					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+				<br> 내용<br> <input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
-				file:<input type="file" size="40" maxlength="30"
-					onchange="statefile(this);" name="uploadfile"> <br>
-					
-					
-					 내용<br>
-				<input type="text" size="50" height="14">
+				<img align="center" id="blah3" src="/ReMart/images/icon/noimage.PNG"
+					alt="your image" width="650" height="400" /><br> <input
+					type="file" class="uploadimg" style="left: 200px; top: 200px;"
+					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+				<br> 내용<br> <input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
-				file:<input type="file" size="40" maxlength="30"
-					onchange="statefile(this);" name="uploadfile"> <br>
-					
-					
-					 내용<br>
-				<input type="text" size="50" height="14">
+				<img align="center" id="blah4" src="/ReMart/images/icon/noimage.PNG"
+					alt="your image" width="650" height="400" /><br> <input
+					type="file" class="uploadimg" style="left: 200px; top: 200px;"
+					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+				<br> 내용<br> <input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
-				file:<input type="file" size="40" maxlength="30"
-					onchange="statefile(this);" name="uploadfile"> <br>
-					
-					
-					 내용<br>
-				<input type="text" size="50" height="14">
+				<img align="center" id="blah5" src="/ReMart/images/icon/noimage.PNG"
+					alt="your image" width="650" height="400" /><br> <input
+					type="file" class="uploadimg" style="left: 200px; top: 200px;"
+					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+				<br> 내용<br> <input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
-				file:<input type="file" size="40" maxlength="30"
-					onchange="statefile(this);" name="uploadfile"> <br>
-					
-					
-					 내용<br>
-				<input type="text" size="50" height="14">
+				<img align="center" id="blah6" src="/ReMart/images/icon/noimage.PNG"
+					alt="your image" width="650" height="400" /><br> <input
+					type="file" class="uploadimg" style="left: 200px; top: 200px;"
+					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+				<br> 내용<br> <input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
-				file:<input type="file" size="40" maxlength="30"
-					onchange="statefile(this);" name="uploadfile"> <br>
-					
-					
-					 내용<br>
-				<input type="text" size="50" height="14">
+				<img align="center" id="blah7" src="/ReMart/images/icon/noimage.PNG"
+					alt="your image" width="650" height="400" /><br> <input
+					type="file" class="uploadimg" style="left: 200px; top: 200px;"
+					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+				<br> 내용<br> <input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
-				file:<input type="file" size="40" maxlength="30"
-					onchange="statefile(this);" name="uploadfile"> <br>
-					
-					
-					 내용<br>
-				<input type="text" size="50" height="14">
+				<img align="center" id="blah8" src="/ReMart/images/icon/noimage.PNG"
+					alt="your image" width="650" height="400" /><br> <input
+					type="file" class="uploadimg" style="left: 200px; top: 200px;"
+					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+				<br> 내용<br> <input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
-				file:<input type="file" size="40" maxlength="30"
-					onchange="statefile(this);" name="uploadfile"> <br>
-					
-					
-					 내용<br>
-				<input type="text" size="50" height="14">
+				<img align="center" id="blah9" src="/ReMart/images/icon/noimage.PNG"
+					alt="your image" width="650" height="400" /><br> <input
+					type="file" class="uploadimg" style="left: 200px; top: 200px;"
+					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+				<br> 내용<br> <input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
-				file:<input type="file" size="40" maxlength="30"
-					onchange="statefile(this);" name="uploadfile"> <br>
-					
-					
-					 내용<br>
+				<img align="center" id="blah10"
+					src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650"
+					height="400" /><br> <input type="file" class="uploadimg"
+					style="left: 200px; top: 200px;" onchange="statefile(this);"
+					name="uploadfile" onfocus="this.blur()"> <br> 내용<br>
 				<input type="text" size="50" height="14">
 			</div>
-			
-			
+			<div style="width: 500px; height: 50px;">
+				<!--밑에 등록 버튼-->
+				<input type="submit" name="작성" >
+			</div>
+
 		</form>
 	</div>
 
@@ -150,9 +140,10 @@
 		}
 		function statefile(input) {
 			checkimage[slideIndex] = true;
-			if (input.files && input.files[0]) { 
-				var reader = new FileReader(); reader.onload = function (e) {
-					$('#blah'+slideIndex).attr('src', e.target.result); 
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$('#blah' + slideIndex).attr('src', e.target.result);
 				}
 				reader.readAsDataURL(input.files[0]);
 			}
