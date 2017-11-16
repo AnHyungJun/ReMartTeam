@@ -58,7 +58,7 @@
 						" style="width: 34%; font-size: 12px;">
 						<a style="font-size: 12px; text-decoration: none;"
 							class="con_link" onmouseover="this.style.textDecoration='none';"
-							onmouseout="this.style.textDecoration='none';" href="#">forgot
+							onmouseout="this.style.textDecoration='none';" href="forgotForm.jsp">forgot
 							ID/PASSWORD?</a>
 					</div>
 				</div>
