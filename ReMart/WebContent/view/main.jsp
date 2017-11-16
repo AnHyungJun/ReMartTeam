@@ -39,26 +39,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<div>
 		<section class="main-artist-rolling">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
 
 				<div class="swiper-slide">
-					<img src="감자볶음4.JPG" class="w3-circle" style="cursor: pointer; width: 600px; height: 450px;" />
+					<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" class="w3-circle" style="cursor: pointer; width: 600px; height: 450px;" />
 				</div>
 
 				<div class="swiper-slide">
-					<img src="계란국수8.JPG" class="w3-circle" style="cursor: pointer; width: 600px; height: 450px;" />
+					<img src="<%=request.getContextPath() %>/images/temp/계란국수8.JPG" class="w3-circle" style="cursor: pointer; width: 600px; height: 450px;" />
 				</div>
 
 				<div class="swiper-slide">
-					<img src="만두전6.JPG" class="w3-circle" style="cursor: pointer; width: 600px; height: 450px;" />
+					<img src="<%=request.getContextPath() %>/images/temp/만두전6.JPG" class="w3-circle" style="cursor: pointer; width: 600px; height: 450px;" />
 				</div>
 
 				<div class="swiper-slide">
-					<img src="바나나샐러드4.JPG" class="w3-circle" style="cursor: pointer; width: 600px; height: 450px;" />
+					<img src="<%=request.getContextPath() %>/images/temp/바나나샐러드4.JPG" class="w3-circle" style="cursor: pointer; width: 600px; height: 450px;" />
 				</div>
 
 			</div>
@@ -84,16 +83,18 @@
 			autoplayDisableOnInteraction : false
 		});
 	</script>
-	<div id="enters">
+	<div id="enters" >
 
 		<div class="w3-twothird" id="feed">
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+						<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -106,10 +107,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+						<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -122,10 +125,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+						<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -138,10 +143,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -154,10 +161,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -170,10 +179,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -186,10 +197,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -202,10 +215,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -218,10 +233,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -234,10 +251,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -250,10 +269,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -266,10 +287,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -282,10 +305,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -298,10 +323,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -314,10 +341,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -330,10 +359,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -346,10 +377,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>
@@ -362,10 +395,12 @@
 			<div style="float: left; width: 30%">
 				<div class="w3-card-4">
 					<div class="w3-display-container">
-						<img src="감자볶음4.JPG" style="width: 300px">
+						<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" style="width: 300px">
 					</div>
 					<div>
-						<img src="좋아요.jpg" style="width: 30px"> <img src="댓글보기.jpg" style="width: 30px"> <img src="스크랩.jpg" style="width: 30px">
+					<img src="<%=request.getContextPath() %>/images/icon/like_before.png" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/temp/댓글보기.jpg" style="width: 30px"> 
+						<img src="<%=request.getContextPath() %>/images/icon/bookmark.png" style="width: 30px">
 					</div>
 					<div class="w3-container w3-light-grey">
 						<p>#자취생#감자</p>

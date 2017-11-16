@@ -55,12 +55,12 @@ body, h1, h2, h3, h4, h5, h6 {
 
 
 
-<div class="w3-top">
+<div class="w3-top w3-white">
 	<div class="w3-bar w3-card-2 w3-center-align w3-large">
 		<table style="width: 100%">
 			<tr>
 				<td rowspan="3">
-					<a href="#"><img alt="로고" src="remartlogo.JPG" width="100px"></a>
+					<a href="#"><img alt="로고" src="<%=request.getContextPath() %>/images/icon/remartlogo.JPG" width="100px"></a>
 				</td>
 				<td align="right">
 					<a href="#">로그인</a>|<a href="#">회원가입</a>|<a href="#">마이페이지</a>|<a href="#">장바구니</a>
