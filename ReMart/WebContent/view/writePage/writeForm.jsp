@@ -24,7 +24,7 @@
 		<form action="">
 
 			<div class="mySlides">
-				<img align="center" id="blah1" src="/123/캡처.PNG" alt="your image" width="650" height="400"/><br>
+				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
 				file:<input type="file" size="40" maxlength="30"
 					onchange="statefile(this);" name="uploadfile"> <br>
 					
@@ -33,7 +33,7 @@
 				<input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah2" src="/123/캡처.PNG" alt="your image" width="650" height="400"/><br>
+				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
 				file:<input type="file" size="40" maxlength="30"
 					onchange="statefile(this);" name="uploadfile"> <br>
 					
@@ -42,7 +42,7 @@
 				<input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah3" src="/123/캡처.PNG" alt="your image" width="650" height="400"/><br>
+				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
 				file:<input type="file" size="40" maxlength="30"
 					onchange="statefile(this);" name="uploadfile"> <br>
 					
@@ -51,7 +51,7 @@
 				<input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah4" src="/123/캡처.PNG" alt="your image" width="650" height="400"/><br>
+				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
 				file:<input type="file" size="40" maxlength="30"
 					onchange="statefile(this);" name="uploadfile"> <br>
 					
@@ -60,7 +60,7 @@
 				<input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah5" src="/123/캡처.PNG" alt="your image" width="650" height="400"/><br>
+				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
 				file:<input type="file" size="40" maxlength="30"
 					onchange="statefile(this);" name="uploadfile"> <br>
 					
@@ -69,7 +69,7 @@
 				<input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah6" src="/123/캡처.PNG" alt="your image" width="650" height="400"/><br>
+				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
 				file:<input type="file" size="40" maxlength="30"
 					onchange="statefile(this);" name="uploadfile"> <br>
 					
@@ -78,7 +78,7 @@
 				<input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah7" src="/123/캡처.PNG" alt="your image" width="650" height="400"/><br>
+				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
 				file:<input type="file" size="40" maxlength="30"
 					onchange="statefile(this);" name="uploadfile"> <br>
 					
@@ -87,7 +87,7 @@
 				<input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah8" src="/123/캡처.PNG" alt="your image" width="650" height="400"/><br>
+				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
 				file:<input type="file" size="40" maxlength="30"
 					onchange="statefile(this);" name="uploadfile"> <br>
 					
@@ -96,7 +96,7 @@
 				<input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah9" src="/123/캡처.PNG" alt="your image" width="650" height="400"/><br>
+				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
 				file:<input type="file" size="40" maxlength="30"
 					onchange="statefile(this);" name="uploadfile"> <br>
 					
@@ -105,7 +105,7 @@
 				<input type="text" size="50" height="14">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah10" src="/123/캡처.PNG" alt="your image" width="650" height="400"/><br>
+				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650" height="400"/><br>
 				file:<input type="file" size="40" maxlength="30"
 					onchange="statefile(this);" name="uploadfile"> <br>
 					
