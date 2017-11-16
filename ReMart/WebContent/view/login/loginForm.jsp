@@ -16,7 +16,7 @@
 			<form class="w3-container w3-card-4">
 				<br>
 				<div class="w3-container" align="left">
-					<img src="/ReMart/image/logo.png" style="width: 15%">
+					<img src="/ReMart/images/logo.png" style="width: 15%">
 					<p>
 						<br> <a style="font-size: 13px;">ID</a> <input
 							class="w3-input" type="text">
@@ -51,11 +51,11 @@
 							onmouseout="this.style.textDecoration='none';"
 							href="joinForm.jsp">JOIN</a>
 					</div>
-					<div class="w3-col" style="width: 59%; font-size: 12px;">
+					<div class="w3-col" style="width: 58%; font-size: 12px;">
 						<p>&nbsp;</p>
 					</div>
 					<div class="w3-col w3-text-grey"
-						" style="width: 33%; font-size: 12px;">
+						" style="width: 34%; font-size: 12px;">
 						<a style="font-size: 12px; text-decoration: none;"
 							class="con_link" onmouseover="this.style.textDecoration='none';"
 							onmouseout="this.style.textDecoration='none';" href="#">forgot

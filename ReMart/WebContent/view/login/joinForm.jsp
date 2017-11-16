@@ -86,7 +86,7 @@
 					class="w3-button w3-light-grey w3-border" style="font-size: 11px;"
 					value="회원가입"> <input type="button"
 					class="w3-button w3-white w3-border" style="font-size: 11px;"
-					value="취소" onclick="javascript:window.location='main.jsp'"></td>
+					value="취소"></td>
 			</tr>
 			</td>
 			</tr>
