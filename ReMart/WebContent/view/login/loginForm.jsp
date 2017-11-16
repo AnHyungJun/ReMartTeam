@@ -16,7 +16,7 @@
 			<form class="w3-container w3-card-4">
 				<br>
 				<div class="w3-container" align="left">
-					<img src="/ReMart/images/logo.png" style="width: 15%">
+					<img src="/ReMart/images/logo/logo.png" style="width: 15%">
 					<p>
 						<br> <a style="font-size: 13px;">ID</a> <input
 							class="w3-input" type="text">
