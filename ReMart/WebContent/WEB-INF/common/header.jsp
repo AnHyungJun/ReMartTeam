@@ -1,5 +1,6 @@
+<%@page import="model.R_memberDataBean"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/notosanskr.css">
 <link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,36 +24,12 @@ body, h1, h2, h3, h4, h5, h6 {
 	font-size: 200px
 }
 </style>
-<%-- <%
-	request.setCharacterEncoding("euc-kr");
-	String board = "";
-	if (request.getParameter("boardtype") != null)
-		session.setAttribute("boardtype",
-				request.getParameter("boardtype"));
-	String boardtype = (String) session.getAttribute("boardtype");
-	if (boardtype == null)
-		boardtype = "1";
-	if (boardtype.equals("1"))
-		board = "자유게시판";
-	else {
-		board = "QnA";
+<script>	
+	function logout(){
+		<%session.invalidate();%>
+		 window.location="<%=request.getContextPath()%>/main/main";
 	}
-%> --%>
-
-<!-- <script>
-	window.onload = function() {
-		var atag = document.getElementsByTagName("a");
-		var url = document.location.href.split("/");
-		if (url[url.length - 1] == "plantInfo") {
-			atag[2].className += " w3-Gray";
-		} else if (url[url.length - 1] == "freeboard") {
-			atag[3].className += " w3-Gray";
-		} else if (url[url.length - 1] == "introduce") {
-			atag[4].className += " w3-Gray";
-		}
-	}
-</script> -->
-
+</script>
 
 
 <div class="w3-top w3-white" >
@@ -63,7 +40,12 @@ body, h1, h2, h3, h4, h5, h6 {
 					<a href="<%=request.getContextPath() %>/main/main"><img alt="로고" src="<%=request.getContextPath() %>/images/icon/logo.png" width="100px"></a>
 				</td>
 				<td align="right">
-
+					<c:if test="${empty memberInfo }">
+						<p>오잉</p>
+					</c:if>
+					<c:if test="${!empty memberInfo }">
+						<p>${memberInfo.name }님, 환영합니다.</p>
+					</c:if>
 					<a href="<%=request.getContextPath() %>/login/loginForm">로그인</a>|<a href="<%=request.getContextPath() %>/login/joinForm">회원가입</a>|<a href="<%=request.getContextPath() %>/mypage/myPageForm">마이페이지</a>|<a href="<%=request.getContextPath() %>/shopping/shoppingMain">쇼핑몰</a>|<a href="#">장바구니</a>
 
 				</td>
@@ -89,14 +71,6 @@ body, h1, h2, h3, h4, h5, h6 {
 		</c:if> --%>
 	</div>
 
-	<!-- Navbar on small screens -->
-<!-- 	<div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-
-		<a href="/soloP/plantInfo/plantInfo" class="w3-bar-item w3-button w3-padding-large">작물정보</a> 
-		<a href="/soloP/freeboard/freeboard" class="w3-bar-item w3-button w3-padding-large">게시판</a> 
-		<a href="/soloP/homepage/introduce/introduce.jsp" class="w3-bar-item w3-button w3-padding-large">소개</a>
-
-	</div> -->
 </div>
 <script>
 	// Used to toggle the menu on small screens when clicking on the menu button
@@ -109,42 +83,3 @@ body, h1, h2, h3, h4, h5, h6 {
 		}
 	}
 </script>
-
-<!-- <div id="id01" class="w3-modal">
-	<div class="w3-modal-content w3-card-4 w3-animate-zoom"
-		style="max-width: 600px">
-
-		<div class="w3-center">
-			<br> <span
-				onclick="document.getElementById('id01').style.display='none'"
-				class="w3-button w3-xlarge w3-transparent w3-display-topright"
-				title="Close Modal">×</span>
-		</div>
-
-		<form name="login" class="w3-container" action="" method="post">
-			<div class="w3-section">
-				<label><b>아이디</b></label> <input
-					class="w3-input w3-border w3-margin-bottom" type="text"
-					placeholder="이곳에 아이디를 입력하세요." name="id" required> <label><b>비밀번호</b></label>
-				<input class="w3-input w3-border" type="password"
-					placeholder="이곳에 비밀번호를 입력하세요." name="pw" required>
-				<div id="login" style="text-align: center;">
-					<input type="hidden" name="logtry" value="1">
-				</div>
-				<button class="w3-button w3-block w3-green w3-section w3-padding"
-					type="button" onclick="loginProcess()">로그인</button>
-			</div>
-		</form>
-
-		<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-			<button
-				onclick="javascript:window.location='../member/membershipForm'"
-				type="button" class="w3-button w3-dark-grey">회원가입</button>
-			<button
-				onclick="document.getElementById('id01').style.display='none'"
-				type="button" class="w3-button w3-red">취소</button>
-		</div>
-
-	</div>
-</div>
- -->

@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import model.R_memberDataBean;
 
@@ -74,11 +75,11 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="loginPro")
-	public ModelAndView loginPro(String id, String passwd, HttpServletRequest request){	
+	public ModelAndView loginPro(String id, String passwd, HttpSession session){	
 		int check = dbPro.loginCheck(id,passwd);
 		if(check == 1){
 			R_memberDataBean memberInfo = dbPro.getMemberInfo(id);
-			request.getSession().setAttribute("memberInfo", memberInfo);
+			session.setAttribute("memberInfo", memberInfo);
 		}
 		mv.clear();
 		mv.addObject("check",check);
