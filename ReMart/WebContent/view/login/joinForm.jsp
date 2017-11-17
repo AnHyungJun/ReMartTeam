@@ -16,14 +16,14 @@
 					<br> <br> <br></td>
 			</tr>
 			<table class="w3-table w3-bordered w3-center"
-				style="width: 40%; font-size: 18px;">
+				style="width: 40%; font-size: 16px;">
 
 				<tr>
 					<td width="200">아이디</td>
 					<td width="400"><input type="text" name="id" size="10"
 						class="w3-border" maxlength="12"> <input type="hidden"
 						name="idchk"> <input type="button"
-						class="w3-white w3-border" style="font-size: 18px;"
+						class="w3-white w3-border" style="font-size: 16px;"
 						name="confirm_id" value="중복확인" OnClick="openConfirmid(this.form)"></td>
 				</tr>
 				<tr>
@@ -52,7 +52,7 @@
 						readonly="readonly" style="width: 60px" class="w3-border" /> - <input
 						type="text" id='zip2' name='zip2' readonly="readonly"
 						style="width: 60px" class="w3-border"></input> <input
-						type="button" class="w3-white w3-border" style="font-size: 18px;"
+						type="button" class="w3-white w3-border" style="font-size: 16px;"
 						onclick="openDaumPostcode();" value="우편번호"></td>
 				</tr>
 				<tr>
@@ -82,9 +82,9 @@
 				<br>
 			<tr height="30">
 				<td align=center><br> <input type="submit"
-					class="w3-button w3-light-grey w3-border" style="font-size: 18px;"
+					class="w3-button w3-light-grey w3-border" style="font-size: 16px;"
 					value="회원가입"> <input type="button"
-					class="w3-button w3-white w3-border" style="font-size: 18px;"
+					class="w3-button w3-white w3-border" style="font-size: 16px;"
 					value="취소"></td>
 			</tr>
 			</td>

@@ -16,12 +16,12 @@
 				<div class="w3-container" align="left">
 					
 					<p>
-						<br> <a style="font-size: 20px;">ID</a> <input
+						<br> <a style="font-size: 18px;">ID</a> <input
 							class="w3-input" type="text">
 
 					</p>
 					<p>
-						<a style="font-size: 20px;">PASSWORD</a> <input class="w3-input"
+						<a style="font-size: 18px;">PASSWORD</a> <input class="w3-input"
 							type="password">
 
 					</p>
@@ -33,7 +33,7 @@
 						onmouseout="this.style.textDecoration='none';"> <a
 						href="<%=request.getContextPath()%>/view/main"
 						"
-						style="font-size: 15px; text-decoration: none;"
+						style="font-size: 13px; text-decoration: none;"
 						class="con_link" onmouseover="this.style.textDecoration='none';"
 						onmouseout="this.style.textDecoration='none';">
 							<p>LOGIN</p>
@@ -43,18 +43,18 @@
 				<br>
 				<div class="w3-row">
 					<div class="w3-col w3-text-grey"
-						style="width: 8%; font-size: 15px;">
-						<a style="font-size: 15px; text-decoration: none;"
+						style="width: 8%; font-size: 13px;">
+						<a style="font-size: 13px; text-decoration: none;"
 							class="con_link" onmouseover="this.style.textDecoration='none';"
 							onmouseout="this.style.textDecoration='none';"
 							href="joinForm">JOIN</a>
 					</div>
-					<div class="w3-col" style="width: 58%; font-size: 15px;">
+					<div class="w3-col" style="width: 58%; font-size: 13px;">
 						<p>&nbsp;</p>
 					</div>
 					<div class="w3-col w3-text-grey"
-						" style="width: 34%; font-size: 15px;">
-						<a style="font-size: 15px; text-decoration: none;"
+						" style="width: 34%; font-size: 13px;">
+						<a style="font-size: 13px; text-decoration: none;"
 							class="con_link" onmouseover="this.style.textDecoration='none';"
 							onmouseout="this.style.textDecoration='none';" href="forgotForm">forgot
 							ID/PASSWORD?</a>

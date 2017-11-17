@@ -11,21 +11,21 @@
 		<a href="<%=request.getContextPath() %>/main/main"><img src="/ReMart/images/icon/logo.png" style="width: 5%"></a>
 		<br><br><br>
 		<h4>
-			<b style="font-size: 20px;"> Forgot your ID/PASSWORD? </b>
+			<b style="font-size:18px;"> Forgot your ID/PASSWORD? </b>
 		</h4>
-		<p class="w3-text-grey" style="font-size: 18px;">가입하신 휴대폰
+		<p class="w3-text-grey" style="font-size: 16px;">가입하신 휴대폰
 			번호로 아이디와 비밀번호 찾기가 가능합니다.</p>
 		<br>
 		<div class="w3-container w3-margin-top" style="width: 25%;">
 			<form class="w3-container">
 				<div class="w3-container" align="left">
 					<p>
-						<br> <a style="font-size: 20px;">NAME</a> <input
+						<br> <a style="font-size:18px;">NAME</a> <input
 							class="w3-input" type="text">
 
 					</p>
 					<p>
-						<a style="font-size: 20px;">EMAIL</a> <input class="w3-input"
+						<a style="font-size:18px;">EMAIL</a> <input class="w3-input"
 							type="text">
 					</p>
 
