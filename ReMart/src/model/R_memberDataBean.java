@@ -16,9 +16,12 @@ public class R_memberDataBean {
 	private String email;
 	private String jumin1;
 	private String info;
+	private String profileImg;
+	
 	public String getId() {
 		return id;
 	}
+	
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -106,14 +109,23 @@ public class R_memberDataBean {
 	public void setInfo(String info) {
 		this.info = info;
 	}
+	public String getProfileImg() {
+		return profileImg;
+	}
+	public void setProfileImg(String profileImg) {
+		this.profileImg = profileImg;
+	}
+
 	@Override
 	public String toString() {
-		return "R_mamberDataBean [id=" + id + ", passwd=" + passwd + ", name="
+		return "R_memberDataBean [id=" + id + ", passwd=" + passwd + ", name="
 				+ name + ", phone=" + phone + ", address1=" + address1
 				+ ", address2=" + address2 + ", zip1=" + zip1 + ", zip2="
 				+ zip2 + ", grade=" + grade + ", point=" + point
 				+ ", use_like=" + use_like + ", sex=" + sex + ", email="
-				+ email + ", jumin1=" + jumin1 + ", info=" + info + "]";
+				+ email + ", jumin1=" + jumin1 + ", info=" + info
+				+ ", profileImg=" + profileImg + "]";
 	}
+	
 	
 }

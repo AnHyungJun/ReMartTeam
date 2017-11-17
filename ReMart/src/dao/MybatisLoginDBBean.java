@@ -2,6 +2,8 @@ package dao;
 
 import java.util.HashMap;
 
+import model.R_memberDataBean;
+
 import org.apache.ibatis.session.SqlSession;
 
 public class MybatisLoginDBBean extends MybatisConnector{
@@ -32,6 +34,18 @@ public class MybatisLoginDBBean extends MybatisConnector{
 		}
 	}
 
+	public void insertMember(R_memberDataBean member) {
+		System.out.println("insertMember:");
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("member", member);
+		try{
+			int result = sqlSession.insert(namespace + ".insertMember",map);
+			System.out.println("insert Ok:"+result);
+		}finally{
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	}
 
-	
 }

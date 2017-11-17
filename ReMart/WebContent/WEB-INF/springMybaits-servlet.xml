@@ -14,6 +14,8 @@
 	
 	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
 	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	
 	<context:component-scan  base-package="controller" />
 	
 	<bean id="mybatisLoginDBBean" class="dao.MybatisLoginDBBean" />

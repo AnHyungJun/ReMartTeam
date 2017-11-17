@@ -178,6 +178,7 @@ CREATE TABLE r_member
 	email varchar2(50),
 	jumin1 varchar2(10),
 	info varchar2(100),
+	profileImg varchar2(100),
 	PRIMARY KEY (id)
 );
 

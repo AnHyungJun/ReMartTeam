@@ -32,6 +32,7 @@
 	<table width = "270" border = "0" cellspacing = "0" cellpadding = "5">
 		<tr>
 			<td align = "center">
+				
 				<p>입력하신${id }는 사용하실 수 있는 ID입니다.</p>
 				<input type = "button" value = "닫기" onclick = "setid()">
 			</td>
