@@ -16,6 +16,8 @@
 	
 	<context:component-scan  base-package="controller" />
 	
+	<bean id="mybatisLoginDBBean" class="dao.MybatisLoginDBBean" />
+	
 	<bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass">
 			<value>org.springframework.web.servlet.view.JstlView</value>

@@ -60,7 +60,7 @@ body, h1, h2, h3, h4, h5, h6 {
 		<table style="width: 100%">
 			<tr>
 				<td rowspan="3">
-					<a href="<%=request.getContextPath() %>/main/main"><img alt="로고" src="<%=request.getContextPath() %>/images/icon/remartlogo.JPG" width="150px"></a>
+					<a href="<%=request.getContextPath() %>/main/main"><img alt="로고" src="<%=request.getContextPath() %>/images/icon/logo.png" width="100px"></a>
 				</td>
 				<td align="right">
 

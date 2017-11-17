@@ -145,6 +145,7 @@ CREATE TABLE product
 	food_id varchar2(50),
 	price number,
 	qty number,
+	offline_mart_id varchar2(50),
 	PRIMARY KEY (product_id)
 );
 
@@ -166,7 +167,8 @@ CREATE TABLE r_member
 	passwd varchar2(50),
 	name varchar2(50),
 	phone varchar2(50),
-	address varchar2(100),
+	address1 varchar2(100),
+	address2 varchar2(100),
 	zip1 varchar2(10),
 	zip2 varchar2(10),
 	grade varchar2(10),
@@ -201,6 +203,12 @@ CREATE TABLE staff
 	PRIMARY KEY (staff_id)
 );
 
+
+
+/* Comments */
+
+COMMENT ON COLUMN mart_order.re_date IS '
+';
 
 
 
