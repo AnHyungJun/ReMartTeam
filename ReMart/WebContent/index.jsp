@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% response.sendRedirect("/ReMart/view/main.jsp"); %>
+ <% String path=request.getContextPath(); %>
+ <% response.sendRedirect(path+"/main/main"); %> 
 </body>
 </html>
