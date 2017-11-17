@@ -9,18 +9,18 @@
 	<div style="margin-top: 150px"></div>
 	<center>
 		<div class="w3-container w3-margin-top" style="width: 25%;">
-
+			<a href="<%=request.getContextPath() %>/main/main"><h1>로고</h1></a>
 			<form class="w3-container w3-card-4">
 				<br>
 				<div class="w3-container" align="left">
 					<img src="/ReMart/images/icon/logo.png" style="width: 15%">
 					<p>
-						<br> <a style="font-size: 13px;">ID</a> <input
+						<br> <a style="font-size: 20px;">ID</a> <input
 							class="w3-input" type="text">
 
 					</p>
 					<p>
-						<a style="font-size: 13px;">PASSWORD</a> <input class="w3-input"
+						<a style="font-size: 20px;">PASSWORD</a> <input class="w3-input"
 							type="password">
 
 					</p>
@@ -32,7 +32,7 @@
 						onmouseout="this.style.textDecoration='none';"> <a
 						href="<%=request.getContextPath()%>/view/main"
 						"
-						style="font-size: 12px; text-decoration: none;"
+						style="font-size: 15px; text-decoration: none;"
 						class="con_link" onmouseover="this.style.textDecoration='none';"
 						onmouseout="this.style.textDecoration='none';">
 							<p>LOGIN</p>
@@ -42,18 +42,18 @@
 				<br>
 				<div class="w3-row">
 					<div class="w3-col w3-text-grey"
-						style="width: 8%; font-size: 12px;">
-						<a style="font-size: 12px; text-decoration: none;"
+						style="width: 8%; font-size: 15px;">
+						<a style="font-size: 15px; text-decoration: none;"
 							class="con_link" onmouseover="this.style.textDecoration='none';"
 							onmouseout="this.style.textDecoration='none';"
 							href="joinForm">JOIN</a>
 					</div>
-					<div class="w3-col" style="width: 58%; font-size: 12px;">
+					<div class="w3-col" style="width: 58%; font-size: 15px;">
 						<p>&nbsp;</p>
 					</div>
 					<div class="w3-col w3-text-grey"
-						" style="width: 34%; font-size: 12px;">
-						<a style="font-size: 12px; text-decoration: none;"
+						" style="width: 34%; font-size: 15px;">
+						<a style="font-size: 15px; text-decoration: none;"
 							class="con_link" onmouseover="this.style.textDecoration='none';"
 							onmouseout="this.style.textDecoration='none';" href="forgotForm">forgot
 							ID/PASSWORD?</a>
