@@ -10,7 +10,7 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-  <jsp-config>
+ 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>/view/*</url-pattern>
 			<include-prelude>/WEB-INF/common/header.jsp</include-prelude>
