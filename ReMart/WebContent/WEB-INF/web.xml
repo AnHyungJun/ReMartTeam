@@ -10,9 +10,14 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
- 	<jsp-config>
+
+	<jsp-config>
 		<jsp-property-group>
-			<url-pattern>/view/*</url-pattern>
+			<url-pattern>/view/main.jsp</url-pattern>
+			<url-pattern>/view/mypage/*</url-pattern>
+			<url-pattern>/view/shopping/*</url-pattern>
+			<url-pattern>/view/tvrecipe/*</url-pattern>
+			<url-pattern>/view/writepage/*</url-pattern>
 			<include-prelude>/WEB-INF/common/header.jsp</include-prelude>
 		</jsp-property-group>
 	</jsp-config>

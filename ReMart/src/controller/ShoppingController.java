@@ -5,14 +5,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class MyPageController {
+public class ShoppingController {
 ModelAndView mv = new ModelAndView();
 	
-	@RequestMapping(value="myPageForm")
-	public ModelAndView myPageForm(){	
-		System.out.println("Dd");
+	@RequestMapping(value="shoppingMain")
+	public ModelAndView shoppingMain(){	
 		mv.clear();
-		mv.setViewName("myPage/myPageForm");
+		mv.setViewName("shopping/shoppingMain");
 		return mv;
 	}
 }

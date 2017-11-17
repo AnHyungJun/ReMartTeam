@@ -5,13 +5,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class WritePageController {
+public class WritepageController {
 ModelAndView mv = new ModelAndView();
 	
 	@RequestMapping(value="writeForm")
 	public ModelAndView writeForm(){	
 		mv.clear();
-		mv.setViewName("writePage/writeForm");
+		mv.setViewName("writepage/writeForm");
 		return mv;
 	}
 }

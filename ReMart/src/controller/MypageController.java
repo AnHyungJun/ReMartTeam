@@ -5,13 +5,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class TvRecipeController {
+public class MypageController {
 ModelAndView mv = new ModelAndView();
 	
-	@RequestMapping(value="tv")
-	public ModelAndView loginForm(){	
+	@RequestMapping(value="myPageForm")
+	public ModelAndView myPageForm(){
 		mv.clear();
-		mv.setViewName("tvRecipe/tv");
+		mv.setViewName("mypage/myPageForm");
 		return mv;
 	}
 }
