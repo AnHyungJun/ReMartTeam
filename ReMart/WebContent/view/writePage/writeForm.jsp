@@ -37,81 +37,78 @@
 		<form action="">
 
 			<div class="mySlides">
-				메인 메뉴 등록<br>	
+				<br>메인 메뉴 등록<br>	
 				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
-				<br> 음식 이름<br> 
-				<input type="text" size="50" height="14">
-				<br> 주메뉴<br> 
-				<input type="text" size="50" height="14">
-				<br> 부메뉴<br> 
-				<input type="text" size="50" height="14">
+				<br> <input type="text" size="50" height="14" placeholder="음식 이름">
+				<br> <input type="text" size="50" height="14" placeholder="주 메뉴">
+				<br> <input type="text" size="50" height="14" placeholder="부 메뉴">
 			</div>
 			<div class="mySlides">
 				<img align="center" id="blah2" src="/ReMart/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
-				<br> 내용<br> <input type="text" size="50" height="14">
+				<br><input type="text" size="50" height="14" placeholder="내용">
 			</div>
 			<div class="mySlides">
 				<img align="center" id="blah3" src="/ReMart/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
-				<br> 내용<br> <input type="text" size="50" height="14">
+				<br><input type="text" size="50" height="14" placeholder="내용">
 			</div>
 			<div class="mySlides">
 				<img align="center" id="blah4" src="/ReMart/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
-				<br> 내용<br> <input type="text" size="50" height="14">
+				<br><input type="text" size="50" height="14" placeholder="내용">
 			</div>
 			<div class="mySlides">
 				<img align="center" id="blah5" src="/ReMart/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
-				<br> 내용<br> <input type="text" size="50" height="14">
+				<br><input type="text" size="50" height="14" placeholder="내용">
 			</div>
 			<div class="mySlides">
 				<img align="center" id="blah6" src="/ReMart/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
-				<br> 내용<br> <input type="text" size="50" height="14">
+				<br><input type="text" size="50" height="14" placeholder="내용">
 			</div>
 			<div class="mySlides">
 				<img align="center" id="blah7" src="/ReMart/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
-				<br> 내용<br> <input type="text" size="50" height="14">
+				<br><input type="text" size="50" height="14" placeholder="내용">
 			</div>
 			<div class="mySlides">
 				<img align="center" id="blah8" src="/ReMart/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
-				<br> 내용<br> <input type="text" size="50" height="14">
+				<br><input type="text" size="50" height="14" placeholder="내용">
 			</div>
 			<div class="mySlides">
 				<img align="center" id="blah9" src="/ReMart/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
-				<br> 내용<br> <input type="text" size="50" height="14">
+				<br><input type="text" size="50" height="14" placeholder="내용">
 			</div>
 			<div class="mySlides">
 				<img align="center" id="blah10"
 					src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650"
 					height="400" /><br> <input type="file" class="uploadimg"
 					style="left: 200px; top: 200px;" onchange="statefile(this);"
-					name="uploadfile" onfocus="this.blur()"> <br> 내용<br>
-				<input type="text" size="50" height="14">
+					name="uploadfile" onfocus="this.blur()">
+					<br><input type="text" size="50" height="14" placeholder="내용">
 			</div>
 			<div style="width: 500px; height: 50px;">
 				<!--밑에 등록 버튼-->
