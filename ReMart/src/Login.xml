@@ -20,4 +20,14 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		#{member.email},#{member.jumin1},#{member.info}, #{member.profileImg})
 	</insert>
 	
+	<select id="loginCheck" parameterType="hashmap" resultType="String">
+		select passwd from r_member
+		WHERE id = #{id}
+	</select>
+	
+	<select id="getMemberInfo" parameterType="hashmap" resultType="R_member">
+		select * from r_member
+		WHERE id = #{id}
+	</select>
+	
 </mapper>

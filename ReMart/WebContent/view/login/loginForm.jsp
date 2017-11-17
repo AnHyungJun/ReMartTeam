@@ -11,34 +11,26 @@
 		<div class="w3-container w3-margin-top" style="width: 25%;">
 			<a href="<%=request.getContextPath() %>/main/main"><img src="/ReMart/images/icon/logo.png" style="width: 30%"></a>
 			<br><br><br>
-			<form class="w3-container w3-card-4">
+			<form class="w3-container w3-card-4" method="post" action="loginPro">
 				<br>
 				<div class="w3-container" align="left">
 					
 					<p>
-						<br> <a style="font-size: 18px;">ID</a> <input
+						<br> <a style="font-size: 18px;">ID</a> <input name="id"
 							class="w3-input" type="text">
 
 					</p>
 					<p>
-						<a style="font-size: 18px;">PASSWORD</a> <input class="w3-input"
+						<a style="font-size: 18px;">PASSWORD</a> <input class="w3-input" name="passwd"
 							type="password">
 
 					</p>
 				</div>
 				<br>
 				<div class="w3-panel w3-light-grey w3-center">
-					<a style="text-decoration: none;" class="con_link"
-						onmouseover="this.style.textDecoration='none';"
-						onmouseout="this.style.textDecoration='none';"> <a
-						href="<%=request.getContextPath()%>/view/main"
-						"
-						style="font-size: 13px; text-decoration: none;"
-						class="con_link" onmouseover="this.style.textDecoration='none';"
-						onmouseout="this.style.textDecoration='none';">
-							<p>LOGIN</p>
-					</a>
-					</a>
+
+					<input style="border:1px; solid: maroon;background:transparent;" class="w3-light-grey w3-center"
+						 type="submit" value="LOGIN">
 				</div>
 				<br>
 				<div class="w3-row">

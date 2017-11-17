@@ -1,6 +1,8 @@
 package model;
 
-public class R_memberDataBean {
+import java.io.Serializable;
+
+public class R_memberDataBean implements Serializable{
 	private String id;
 	private String passwd;
 	private String name;

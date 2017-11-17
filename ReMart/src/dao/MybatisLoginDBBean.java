@@ -48,4 +48,38 @@ public class MybatisLoginDBBean extends MybatisConnector{
 		}
 	}
 
+	public int loginCheck(String id, String passwd) {
+		System.out.println("loginCheck:");
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("id", id);
+		int x = -1;
+		try{
+			String cuPasswd = sqlSession.selectOne(namespace + ".loginCheck",map);
+			if(cuPasswd == null)
+				x = -1; //해당아이디 없음
+			else if(cuPasswd.equals(passwd))
+				x = 1; //일치
+			else
+				x = 0; //비밀번호틀림
+		}finally{
+			sqlSession.close();
+			return x;
+		}
+		
+		
+	}
+
+	public R_memberDataBean getMemberInfo(String id){
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("id", id);
+		R_memberDataBean member = new R_memberDataBean();
+		try{
+			member = (R_memberDataBean)sqlSession.selectOne(namespace+".getMemberInfo",map);
+		}finally{
+			sqlSession.close();
+			return member;
+		}
+	}
 }

@@ -5,6 +5,19 @@
 <title>회원가입</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.uploadimg {
+	font-size: 7px;
+	position: absolute;
+	height: 300px;
+	width: 300px;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	-ms-filter: alpha(opacity = 0);
+	cursor: pointer;
+}
+</style>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script>
 	function checkIt() {
 		var userinput = eval("document.userinput");
@@ -90,8 +103,17 @@
 					style="width: 40%; font-size: 16px;">
 					<tr>
 						<td align="center">프로필 사진</td>
-						<td width="330"><input type="file" size="40" maxlength="30"
-							name="uploadfile"></td>
+						<td width="330">
+						<div class="mySlides">
+	
+				<img align="center" id="blah1" src="/ReMart/images/icon/noProfile.png"
+					alt="your image" width="300" height="300" class="w3-circle"/><br> <input
+					
+					type="file" class="uploadimg" style="left: 550px; top: 400px;"
+					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+			</div>
+					
+					</td>
 					</tr>
 					<tr>
 						<td width="200">아이디</td>
@@ -181,6 +203,24 @@
 			<br> <br>
 		</div>
 	</center>
+	<script>
+		var slideIndex = 1;
+
+
+		function statefile(input) {
+
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$('#blah' + slideIndex).attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+
+		}
+
+	</script>
+	
 </body>
 </html>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js">

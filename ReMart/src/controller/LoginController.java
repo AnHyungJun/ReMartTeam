@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import model.R_memberDataBean;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,5 +71,18 @@ public class LoginController {
 		dbPro.insertMember(member);
 		
 		return loginForm();
+	}
+	
+	@RequestMapping(value="loginPro")
+	public ModelAndView loginPro(String id, String passwd, HttpServletRequest request){	
+		int check = dbPro.loginCheck(id,passwd);
+		if(check == 1){
+			R_memberDataBean memberInfo = dbPro.getMemberInfo(id);
+			request.getSession().setAttribute("memberInfo", memberInfo);
+		}
+		mv.clear();
+		mv.addObject("check",check);
+		mv.setViewName("login/loginPro");
+		return mv;
 	}
 }
