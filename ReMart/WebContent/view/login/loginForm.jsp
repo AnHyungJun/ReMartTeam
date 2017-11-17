@@ -30,7 +30,7 @@
 					<a style="text-decoration: none;" class="con_link"
 						onmouseover="this.style.textDecoration='none';"
 						onmouseout="this.style.textDecoration='none';"> <a
-						href="<%=request.getContextPath()%>/view/main.jsp"
+						href="<%=request.getContextPath()%>/view/main"
 						"
 						style="font-size: 12px; text-decoration: none;"
 						class="con_link" onmouseover="this.style.textDecoration='none';"
@@ -46,7 +46,7 @@
 						<a style="font-size: 12px; text-decoration: none;"
 							class="con_link" onmouseover="this.style.textDecoration='none';"
 							onmouseout="this.style.textDecoration='none';"
-							href="joinForm.jsp">JOIN</a>
+							href="joinForm">JOIN</a>
 					</div>
 					<div class="w3-col" style="width: 58%; font-size: 12px;">
 						<p>&nbsp;</p>
@@ -55,7 +55,7 @@
 						" style="width: 34%; font-size: 12px;">
 						<a style="font-size: 12px; text-decoration: none;"
 							class="con_link" onmouseover="this.style.textDecoration='none';"
-							onmouseout="this.style.textDecoration='none';" href="forgotForm.jsp">forgot
+							onmouseout="this.style.textDecoration='none';" href="forgotForm">forgot
 							ID/PASSWORD?</a>
 					</div>
 				</div>

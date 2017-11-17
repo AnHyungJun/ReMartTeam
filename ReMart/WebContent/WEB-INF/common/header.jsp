@@ -60,10 +60,12 @@ body, h1, h2, h3, h4, h5, h6 {
 		<table style="width: 100%">
 			<tr>
 				<td rowspan="3">
-					<a href="<%=request.getContextPath() %>/view/main.jsp"><img alt="로고" src="<%=request.getContextPath() %>/images/icon/remartlogo.JPG" width="150px"></a>
+					<a href="<%=request.getContextPath() %>/main/main"><img alt="로고" src="<%=request.getContextPath() %>/images/icon/remartlogo.JPG" width="150px"></a>
 				</td>
 				<td align="right">
-					<a href="<%=request.getContextPath() %>/login/loginForm">로그인</a>|<a href="<%=request.getContextPath() %>/view/login/joinForm.jsp"">회원가입</a>|<a href="<%=request.getContextPath() %>/view/myPage/myPageForm.jsp">마이페이지</a>|<a href="#">장바구니</a>
+
+					<a href="<%=request.getContextPath() %>/login/loginForm">로그인</a>|<a href="<%=request.getContextPath() %>/login/joinForm">회원가입</a>|<a href="<%=request.getContextPath() %>/myPage/myPageForm">마이페이지</a>|<a href="#">장바구니</a>
+
 				</td>
 			</tr>
 			<tr>
@@ -73,8 +75,8 @@ body, h1, h2, h3, h4, h5, h6 {
 			</tr>
 			<tr>
 				<td>
-					<a href="#">에디터 추천</a>/ <a href="<%=request.getContextPath() %>/view/tvRecipe/tv.jsp">TV레시피</a>/ 
-					<a href="<%=request.getContextPath() %>/view/writePage/writeForm.jsp">글쓰기</a>
+					<a href="#">에디터 추천</a>/ <a href="<%=request.getContextPath() %>/tvRecipe/tv">TV레시피</a>/ 
+					<a href="<%=request.getContextPath() %>/writePage/writeForm">글쓰기</a>
 				</td>
 			</tr>
 		</table>

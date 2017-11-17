@@ -9,10 +9,23 @@ public class LoginController {
 	ModelAndView mv = new ModelAndView();
 	
 	@RequestMapping(value="loginForm")
-	public ModelAndView main(){	
-		System.out.println("??");
+	public ModelAndView loginForm(){	
 		mv.clear();
 		mv.setViewName("login/loginForm");
+		return mv;
+	}
+	
+	@RequestMapping(value="joinForm")
+	public ModelAndView joinForm(){	
+		mv.clear();
+		mv.setViewName("login/joinForm");
+		return mv;
+	}
+	
+	@RequestMapping(value="forgotForm")
+	public ModelAndView forgotForm(){	
+		mv.clear();
+		mv.setViewName("login/forgotForm");
 		return mv;
 	}
 	
