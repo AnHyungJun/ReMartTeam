@@ -8,7 +8,8 @@
 <body>
 	<div style="margin-top: 150px"></div>
 	<center>
-		<a href="<%=request.getContextPath() %>/main/main"><h1>로고</h1></a>
+		<a href="<%=request.getContextPath() %>/main/main"><img src="/ReMart/images/icon/logo.png" style="width: 5%"></a>
+		<br><br><br>
 		<h4>
 			<b style="font-size: 20px;"> Forgot your ID/PASSWORD? </b>
 		</h4>

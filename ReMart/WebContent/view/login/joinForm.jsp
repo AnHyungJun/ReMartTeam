@@ -9,7 +9,8 @@
 	<div style="margin-top: 150px"></div>
 	<center>
 		<div class="w3-container">
-			<a href="<%=request.getContextPath() %>/main/main"><h1>로고</h1></a>
+			<a href="<%=request.getContextPath() %>/main/main"><img src="/ReMart/images/icon/logo.png" style="width: 5%"></a>
+			<br><br><br>
 			<tr>
 				<td colspan="2" height="39" class="w3-large w3-center"><b style="font-size: 20px;">JOIN</b></font>
 					<br> <br> <br></td>
