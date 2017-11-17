@@ -14,4 +14,18 @@ ModelAndView mv = new ModelAndView();
 		mv.setViewName("mypage/myPageForm");
 		return mv;
 	}
+	
+	@RequestMapping(value="bookmarkForm")
+	public ModelAndView bookmarkForm(){
+		mv.clear();
+		mv.setViewName("mypage/bookmarkForm");
+		return mv;
+	}
+	
+	@RequestMapping(value="likeForm")
+	public ModelAndView likeForm(){
+		mv.clear();
+		mv.setViewName("mypage/likeForm");
+		return mv;
+	}
 }

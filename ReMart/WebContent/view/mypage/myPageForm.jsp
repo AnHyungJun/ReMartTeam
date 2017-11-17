@@ -18,12 +18,12 @@
 		<div class="w3-right-align"
 			style="float: right; margin-bottom: 20px; margin-top: 20px;">
 
-			<a href="<%=request.getContextPath() %>/view/myPage/likeForm.jsp"><img
+			<a href="<%=request.getContextPath() %>/mypage/likeForm"><img
 				class="w3-right-align"
 				src="<%=request.getContextPath()%>/images/icon/like_before.png"
 				style="width: 50px; height: 50px; margin: 3px"></a> 
 			<a
-				href="<%=request.getContextPath() %>/view/myPage/bookmarkForm.jsp"><img
+				href="<%=request.getContextPath() %>/mypage/bookmarkForm"><img
 				class="w3-right-align"
 				src="<%=request.getContextPath()%>/images/icon/bookmark.png"
 				style="width: 50px; height: 50px; margin: 3px"></a>
