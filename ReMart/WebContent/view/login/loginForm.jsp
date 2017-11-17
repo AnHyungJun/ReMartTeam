@@ -49,11 +49,11 @@
 							onmouseout="this.style.textDecoration='none';"
 							href="joinForm">JOIN</a>
 					</div>
-					<div class="w3-col" style="width: 58%; font-size: 13px;">
+					<div class="w3-col" style="width: 54%; font-size: 13px;">
 						<p>&nbsp;</p>
 					</div>
 					<div class="w3-col w3-text-grey"
-						" style="width: 34%; font-size: 13px;">
+						" style="width: 38%; font-size: 13px;">
 						<a style="font-size: 13px; text-decoration: none;"
 							class="con_link" onmouseover="this.style.textDecoration='none';"
 							onmouseout="this.style.textDecoration='none';" href="forgotForm">forgot

@@ -2,7 +2,7 @@
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
-<title>로그인</title>
+<title>아이디/비밀번호 찾기</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
@@ -11,10 +11,9 @@
 		<a href="<%=request.getContextPath() %>/main/main"><img src="/ReMart/images/icon/logo.png" style="width: 5%"></a>
 		<br><br><br>
 		<h4>
-			<b style="font-size:18px;"> Forgot your ID/PASSWORD? </b>
+			<b style="font-size:20px;"> Forgot your ID/PASSWORD? </b>
 		</h4>
-		<p class="w3-text-grey" style="font-size: 16px;">가입하신 휴대폰
-			번호로 아이디와 비밀번호 찾기가 가능합니다.</p>
+		<p class="w3-text-grey" style="font-size: 14px;">가입하신 이메일로 아이디와 비밀번호 찾기가 가능합니다.</p>
 		<br>
 		<div class="w3-container w3-margin-top" style="width: 25%;">
 			<form class="w3-container">
@@ -32,7 +31,7 @@
 					<br>
 					<div class="w3-right">
 						<input type="submit" class="w3-button w3-light-grey w3-border"
-							style="font-size: 18px;" value=" 확 인 ">
+							style="font-size: 15px;" value="확인">
 					</div>
 				</div>
 			</form>
