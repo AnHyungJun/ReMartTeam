@@ -13,7 +13,7 @@
 	<div class="w3-container w3-border-bottom">
 		<div class="w3-left-align"
 			style="float: left; margin-bottom: 20px; margin-top: 20px;">
-			<h3>syeonni´Ô</h3>
+			<h3>${memberInfo.id }´Ô</h3>
 		</div>
 		<div class="w3-right-align"
 			style="float: right; margin-bottom: 20px; margin-top: 20px;">
@@ -33,13 +33,13 @@
 		<div class="w3-display-topleft"></div>
 		<div class="w3-display-topright"></div>
 		<div class="w3-display-bottomleft w3-center" style="margin-left: 5%;">
-			<h4>¼­¿¬¼­¿¬ÇØ</h4>
+			<h4>${memberInfo.info }</h4>
 		</div>
 		<div class="w3-display-bottomright"></div>
 		<div class="w3-display-left">
 			<div style="float: left; margin: 30px; margin-left: 30%;">
 				<img
-					src="<%=request.getContextPath()%>/images/temp/temp_profile.jpg"
+					src="<%=request.getContextPath()%>/fileSave/${memberInfo.profileImg}"
 					class="w3-circle" alt="Norway" style="width: 200px; height: 200px">
 			</div>
 		</div>

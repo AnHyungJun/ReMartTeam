@@ -1,5 +1,7 @@
 package controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -9,9 +11,12 @@ public class MypageController {
 ModelAndView mv = new ModelAndView();
 	
 	@RequestMapping(value="myPageForm")
-	public ModelAndView myPageForm(){
+	public ModelAndView myPageForm(HttpSession session){
 		mv.clear();
-		mv.setViewName("mypage/myPageForm");
+		if(session.getAttribute("memberInfo")==null)
+			mv.setViewName("login/loginForm");
+		else
+			mv.setViewName("mypage/myPageForm");
 		return mv;
 	}
 	
