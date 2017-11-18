@@ -24,14 +24,6 @@ body, h1, h2, h3, h4, h5, h6 {
 	font-size: 200px
 }
 </style>
-<script>	
-	function logout(){
-		<%session.invalidate();%>
-		 window.location="<%=request.getContextPath()%>/main/main";
-	}
-</script>
-
-
 <div class="w3-top w3-white" >
 	<div class="w3-bar w3-card-2 w3-center-align w3-large" >
 		<table style="width: 100%">
@@ -41,12 +33,13 @@ body, h1, h2, h3, h4, h5, h6 {
 				</td>
 				<td align="right">
 					<c:if test="${empty memberInfo }">
-						<p>오잉</p>
+						<a href="<%=request.getContextPath() %>/login/loginForm">로그인</a>
 					</c:if>
 					<c:if test="${!empty memberInfo }">
-						<p>${memberInfo.name }님, 환영합니다.</p>
+						<p>${memberInfo.name }님, 안녕★</p>
+						<a href="<%=request.getContextPath() %>/login/loginOut">로그아웃</a>
 					</c:if>
-					<a href="<%=request.getContextPath() %>/login/loginForm">로그인</a>|<a href="<%=request.getContextPath() %>/login/joinForm">회원가입</a>|<a href="<%=request.getContextPath() %>/mypage/myPageForm">마이페이지</a>|<a href="<%=request.getContextPath() %>/shopping/shoppingMain">쇼핑몰</a>|<a href="#">장바구니</a>
+					|<a href="<%=request.getContextPath() %>/login/joinForm">회원가입</a>|<a href="<%=request.getContextPath() %>/mypage/myPageForm">마이페이지</a>|<a href="<%=request.getContextPath() %>/shopping/shoppingMain">쇼핑몰</a>|<a href="#">장바구니</a>
 
 				</td>
 			</tr>

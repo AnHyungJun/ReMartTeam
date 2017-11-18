@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
@@ -45,7 +46,7 @@
 		<section class="main-artist-rolling">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
-
+				
 				<div class="swiper-slide">
 					<img src="<%=request.getContextPath() %>/images/temp/감자볶음4.JPG" class="w3-circle" style="cursor: pointer; width: 600px; height: 450px;" />
 				</div>

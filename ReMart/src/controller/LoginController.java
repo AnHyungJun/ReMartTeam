@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -84,6 +85,14 @@ public class LoginController {
 		mv.clear();
 		mv.addObject("check",check);
 		mv.setViewName("login/loginPro");
+		return mv;
+	}
+	
+	@RequestMapping(value="loginOut")
+	public ModelAndView loginOut(HttpSession session){	
+		session.invalidate();
+		
+		mv.setViewName("/main");
 		return mv;
 	}
 }
