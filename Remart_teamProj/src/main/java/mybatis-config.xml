@@ -6,6 +6,21 @@
 	<typeAliases>
 		<typeAlias type="model.R_memberDataBean" alias="R_member" />
 		<typeAlias type="model.FoodDataBean" alias="food" />
+		<typeAlias type="model.BasketDataBean" alias="basket" />
+		<typeAlias type="model.CategoryDataBean" alias="category" />
+		<typeAlias type="model.Feed_foodDataBean" alias="feed_food" />
+		<typeAlias type="model.FeedDataBean" alias="feed" />
+		<typeAlias type="model.FollowDataBean" alias="follow" />
+		<typeAlias type="model.Food_orderDataBean" alias="food_order" />
+		<typeAlias type="model.HashtagDataBean" alias="hashtag" />
+		<typeAlias type="model.ImgDataBean" alias="img" />
+		<typeAlias type="model.Likely_bookmarkDataBean" alias="likely_bookmark" />
+		<typeAlias type="model.Mart_orderDataBean" alias="mart_order" />
+		<typeAlias type="model.Offline_martDataBean" alias="offline_mart" />
+		<typeAlias type="model.ProductDataBean" alias="product" />
+		<typeAlias type="model.RepleDataBean" alias="reple" />
+		<typeAlias type="model.SaleDataBean" alias="sale" />
+		<typeAlias type="model.StaffDataBean" alias="staff" />
 	</typeAliases>
 
 
