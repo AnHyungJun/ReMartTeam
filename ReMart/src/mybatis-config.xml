@@ -6,6 +6,8 @@
 	<typeAliases>
 		<typeAlias type="model.R_memberDataBean" 
 		alias="R_member" /></typeAliases>
+		
+		
 	<environments default="development">
 		<environment id="development">
 	<transactionManager type="JDBC" />

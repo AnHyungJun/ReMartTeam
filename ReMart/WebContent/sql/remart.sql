@@ -2,6 +2,7 @@
 /* Drop Tables */
 
 DROP TABLE basket CASCADE CONSTRAINTS;
+DROP TABLE category CASCADE CONSTRAINTS;
 DROP TABLE feed CASCADE CONSTRAINTS;
 DROP TABLE feed_food CASCADE CONSTRAINTS;
 DROP TABLE follow CASCADE CONSTRAINTS;
@@ -29,6 +30,15 @@ CREATE TABLE basket
 	food_id varchar2(50),
 	food_num number,
 	PRIMARY KEY (basket_id)
+);
+
+
+CREATE TABLE category
+(
+	category_id varchar2(50) NOT NULL,
+	category_name varchar2(50),
+	category_group varchar2(50),
+	PRIMARY KEY (category_id)
 );
 
 
@@ -65,7 +75,7 @@ CREATE TABLE follow
 CREATE TABLE food
 (
 	food_id varchar2(50) NOT NULL,
-	category varchar2(50),
+	category_id varchar2(50),
 	name varchar2(150),
 	price number,
 	qty number(10,0),
