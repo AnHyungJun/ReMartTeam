@@ -106,14 +106,12 @@
 						<td width="330">
 						<div class="mySlides">
 	
-				<img align="center" id="blah1" src="<%=request.getContextPath()%>/images/icon/noProfile.png"
-					alt="your image" width="300" height="300" class="w3-circle"/><br> <input
+							<img align="center" id="blah1" src="<%=request.getContextPath()%>/images/icon/noProfile.png"
+								alt="your image" width="300" height="300" class="w3-circle"/><br> 
+							<input type="file" class="uploadimg" style="left: 850px; top: 350px;" onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+						</div>
 					
-					type="file" class="uploadimg" style="left: 550px; top: 350px;"
-					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
-			</div>
-					
-					</td>
+						</td>
 					</tr>
 					<tr>
 						<td width="200">아이디</td>
