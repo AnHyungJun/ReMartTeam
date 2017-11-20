@@ -87,27 +87,27 @@
 </script>
 
 <body>
-	<div style="margin-top: 150px"></div>
+	<div style="margin-top: 80px"></div>
 	<center>
 		<div class="w3-container">
 			<a href="<%=request.getContextPath()%>/main/main"><img
 				src="/ReMart/images/icon/logo.png" style="width: 5%"></a> <br>
-			<br> <br>
+			<br> <br> <br>
 			<tr>
 				<td colspan="2" height="39" class="w3-large w3-center"><b
-					style="font-size: 20px;">JOIN</b></font> <br> <br> <br></td>
+					style="font-size: 20px;">JOIN</b></font> <br> <br> <br> <br> </td>
 			</tr>
 			<form method="post" action="joinPro" name="userinput"
 				enctype="multipart/form-data" onSubmit="return checkIt()">
 				<table class="w3-table w3-bordered w3-center"
-					style="width: 40%; font-size: 16px;">
+					style="width: 40%; font-size: 12px;">
 					<tr>
-						<td align="center">프로필 사진</td>
+						<td align="center"><br><br>프로필 사진</td>
 						<td width="330">
 						<div class="mySlides">
 	
 				<img align="center" id="blah1" src="/ReMart/images/icon/noProfile.png"
-					alt="your image" width="300" height="300" class="w3-circle"/><br> <input
+					alt="your image" width="60" height="60" class="w3-margin"/> <input
 					
 					type="file" class="uploadimg" style="left: 550px; top: 400px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
@@ -120,7 +120,7 @@
 						<td width="400"><input type="text" name="id" size="10"
 							class="w3-border" maxlength="12"> <input type="hidden"
 							name="idchk"> <input type="button"
-							class="w3-white w3-border" style="font-size: 16px;"
+							class="w3-white w3-border" style="font-size: 12px;"
 							name="confirm_id" value="중복확인" OnClick="openConfirmid(this.form)"></td>
 					</tr>
 					<tr>
@@ -147,7 +147,7 @@
 					<tr>
 						<td width="200">생년월일</td>
 						<td width="400"><input type="text" name="jumin1" size="15"
-							class="w3-border" maxlength="10" placeholder="ex)1995-06-08"></td>
+							maxlength="10" placeholder="ex) 1995-06-08"></td>
 					</tr>
 
 					<tr>
@@ -156,7 +156,7 @@
 							readonly="readonly" style="width: 60px" class="w3-border" /> - <input
 							type="text" id='zip2' name='zip2' readonly="readonly"
 							style="width: 60px" class="w3-border"></input> <input
-							type="button" class="w3-white w3-border" style="font-size: 16px;"
+							type="button" class="w3-white w3-border" style="font-size: 12px;"
 							onclick="openDaumPostcode();" value="우편번호"></td>
 					</tr>
 					<tr>
@@ -192,17 +192,17 @@
 					<br>
 				<tr height="30">
 					<td align=center><br> <input type="submit"
-						class="w3-button w3-light-grey w3-border" style="font-size: 16px;"
+						class="w3-button w3-white w3-border w3-hover-black" style="font-size: 12px;"
 						value="회원가입"> <input type="reset"
-						class="w3-button w3-white w3-border" style="font-size: 16px;"
+						class="w3-button w3-white w3-border w3-hover-white" style="font-size: 12px;"
 						value="취소"></td>
 				</tr>
 				</td>
 				</tr>
 			</form>
-			<br> <br>
 		</div>
 	</center>
+	<div style="margin-bottom: 80px"></div>
 	<script>
 		var slideIndex = 1;
 

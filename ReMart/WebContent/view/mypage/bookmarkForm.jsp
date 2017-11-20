@@ -21,12 +21,12 @@
 			<a href="<%=request.getContextPath() %>/mypage/likeForm"><img
 				class="w3-right-align"
 				src="<%=request.getContextPath()%>/images/icon/like_before.png"
-				style="width: 50px; height: 50px; margin: 3px"></a> 
+				style="height: 50px; margin: 3px"></a> 
 			<a
 				href="<%=request.getContextPath() %>/mypage/bookmarkForm"><img
 				class="w3-right-align"
 				src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-				style="width: 50px; height: 50px; margin: 3px"></a>
+				style="height: 50px; margin: 3px"></a>
 		</div>
 	</div>
 	<div class="w3-display-container w3-border" style="height: 350px;">
@@ -95,16 +95,16 @@
 						style="width: 350px; height: 350px">
 				</div>
 				
-				<div class="w3-container" style="margin: 20px;">
+				<div class="w3-container" style="margin: 10px;">
 					<img 
 					src="<%=request.getContextPath()%>/images/icon/like_before.png"
-					class="w3-left" style="float: left; width: 30px; height: 30px; margin: 5px">
+					class="w3-left" style="float: left; height: 30px; margin: 5px">
 					<img 
 					src="<%=request.getContextPath()%>/images/icon/comment.png"
-					class="w3-left" style="float: left; width: 30px; height: 30px; margin: 5px">
+					class="w3-left" style="float: left; height: 30px; margin: 5px">
 					<img 
 					src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-					class="w3-left" style="float: left; width: 30px; height: 30px; margin: 5px">
+					class="w3-left" style="float: left; height: 30px; margin: 5px">
 					
 				</div>
 				
