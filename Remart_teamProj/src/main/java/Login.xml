@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="login.mybatis">
+	<cache />
+	<select id="comfirmId" parameterType="hashmap" resultType="int">
+		select count(*) from r_member
+		WHERE id = #{id}
+	</select>
+	
+	<insert id="insertMember"  parameterType="hashmap">
+		insert into r_member
+		(id, passwd, name, phone, address1, address2, zip1, zip2, grade, point, use_like, sex, email, jumin1, info, profileImg)
+		values
+		(#{member.id},#{member.passwd},#{member.name},#{member.phone},
+		#{member.address1},#{member.address2},#{member.zip1},
+		#{member.zip2},'일반',0,0,#{member.sex},
+		#{member.email},#{member.jumin1},#{member.info}, #{member.profileImg})
+	</insert>
+	
+	<select id="loginCheck" parameterType="hashmap" resultType="String">
+		select passwd from r_member
+		WHERE id = #{id}
+	</select>
+	
+	<select id="getMemberInfo" parameterType="hashmap" resultType="R_member">
+		select * from r_member
+		WHERE id = #{id}
+	</select>
+	
+</mapper>
