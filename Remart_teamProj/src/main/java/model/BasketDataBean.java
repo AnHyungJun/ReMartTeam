@@ -3,14 +3,14 @@ package model;
 import java.io.Serializable;
 
 public class BasketDataBean implements Serializable{
-	String basket_id;
+	int basket_id;
 	String id;
 	String food_id;
 	int food_num;
-	public String getBasket_id() {
+	public int getBasket_id() {
 		return basket_id;
 	}
-	public void setBasket_id(String basket_id) {
+	public void setBasket_id(int basket_id) {
 		this.basket_id = basket_id;
 	}
 	public String getId() {

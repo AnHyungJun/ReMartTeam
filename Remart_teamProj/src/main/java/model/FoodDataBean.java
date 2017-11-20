@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class FoodDataBean implements Serializable{
 
-   private String food_id;
+   private int food_id;
    private String category_id;
    private String name;
    private String price;
@@ -12,11 +12,11 @@ public class FoodDataBean implements Serializable{
    private String category_name;
    private String category_group;
    
-   public String getFood_id() {
+   public int getFood_id() {
       return food_id;
    }
    
-   public void setFood_id(String food_id) {
+   public void setFood_id(int food_id) {
       this.food_id = food_id;
    }
    

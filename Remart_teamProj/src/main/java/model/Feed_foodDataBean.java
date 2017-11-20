@@ -3,13 +3,13 @@ package model;
 import java.io.Serializable;
 
 public class Feed_foodDataBean implements Serializable{
-	String feed_food_id;
+	int feed_food_id;
 	String feed_id;
 	String food_id;
-	public String getFeed_food_id() {
+	public int getFeed_food_id() {
 		return feed_food_id;
 	}
-	public void setFeed_food_id(String feed_food_id) {
+	public void setFeed_food_id(int feed_food_id) {
 		this.feed_food_id = feed_food_id;
 	}
 	public String getFeed_id() {

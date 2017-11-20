@@ -3,14 +3,14 @@ package model;
 import java.io.Serializable;
 
 public class Likely_bookmarkDataBean implements Serializable{
-	String likely_bookmark_id;
+	int likely_bookmark_id;
 	String id;
 	String feed_id;
 	String type;
-	public String getLikely_bookmark_id() {
+	public int getLikely_bookmark_id() {
 		return likely_bookmark_id;
 	}
-	public void setLikely_bookmark_id(String likely_bookmark_id) {
+	public void setLikely_bookmark_id(int likely_bookmark_id) {
 		this.likely_bookmark_id = likely_bookmark_id;
 	}
 	public String getId() {

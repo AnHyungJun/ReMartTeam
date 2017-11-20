@@ -4,17 +4,17 @@ import java.io.Serializable;
 import java.security.Timestamp;
 
 public class Mart_orderDataBean implements Serializable{
-	String mart_order_id;
+	int mart_order_id;
 	String food_id;
 	int qty;
 	Timestamp re_date;
 	Timestamp or_date;
 	String offline_mart_id;
 	String status;
-	public String getMart_order_id() {
+	public int getMart_order_id() {
 		return mart_order_id;
 	}
-	public void setMart_order_id(String mart_order_id) {
+	public void setMart_order_id(int mart_order_id) {
 		this.mart_order_id = mart_order_id;
 	}
 	public String getFood_id() {

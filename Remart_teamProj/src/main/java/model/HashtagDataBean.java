@@ -3,13 +3,13 @@ package model;
 import java.io.Serializable;
 
 public class HashtagDataBean implements Serializable{
-	String hashtag_id;
+	int hashtag_id;
 	String hashtag_content;
 	String feed_id;
-	public String getHashtag_id() {
+	public int getHashtag_id() {
 		return hashtag_id;
 	}
-	public void setHashtag_id(String hashtag_id) {
+	public void setHashtag_id(int hashtag_id) {
 		this.hashtag_id = hashtag_id;
 	}
 	public String getHashtag_content() {
