@@ -6,7 +6,7 @@ public class StaffDataBean implements Serializable{
 	String staff_id;
 	String password;
 	String name;
-	String mart_id;
+	String offline_mart_id;
 	String position;
 	public String getStaff_id() {
 		return staff_id;
@@ -26,23 +26,24 @@ public class StaffDataBean implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getMart_id() {
-		return mart_id;
-	}
-	public void setMart_id(String mart_id) {
-		this.mart_id = mart_id;
-	}
+
 	public String getPosition() {
 		return position;
 	}
 	public void setPosition(String position) {
 		this.position = position;
 	}
+	public String getOffline_mart_id() {
+		return offline_mart_id;
+	}
+	public void setOffline_mart_id(String offline_mart_id) {
+		this.offline_mart_id = offline_mart_id;
+	}
 	@Override
 	public String toString() {
 		return "StaffDataBean [staff_id=" + staff_id + ", password=" + password
-				+ ", name=" + name + ", mart_id=" + mart_id + ", position="
-				+ position + "]";
+				+ ", name=" + name + ", offline_mart_id=" + offline_mart_id
+				+ ", position=" + position + "]";
 	}
 	
 	

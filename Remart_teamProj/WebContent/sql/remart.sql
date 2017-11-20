@@ -8,6 +8,7 @@ DROP TABLE feed_food CASCADE CONSTRAINTS;
 DROP TABLE follow CASCADE CONSTRAINTS;
 DROP TABLE food CASCADE CONSTRAINTS;
 DROP TABLE food_order CASCADE CONSTRAINTS;
+DROP TABLE hashtag CASCADE CONSTRAINTS;
 DROP TABLE img CASCADE CONSTRAINTS;
 DROP TABLE likely_bookmark CASCADE CONSTRAINTS;
 DROP TABLE mart_order CASCADE CONSTRAINTS;
@@ -48,7 +49,6 @@ CREATE TABLE feed
 	id varchar2(50),
 	like_num number,
 	reg_date date,
-	hashtag varchar2(200),
 	recipe_name varchar2(100),
 	PRIMARY KEY (feed_id)
 );
@@ -101,6 +101,15 @@ CREATE TABLE food_order
 	p_company varchar2(100),
 	order_number varchar2(100),
 	PRIMARY KEY (food_order_id)
+);
+
+
+CREATE TABLE hashtag
+(
+	hashtag_id varchar2(50) NOT NULL,
+	hashtag_content varchar2(50),
+	feed_id varchar2(50),
+	PRIMARY KEY (hashtag_id)
 );
 
 
@@ -200,6 +209,7 @@ CREATE TABLE sale
 	staff_id varchar2(50),
 	s_date date,
 	qty number,
+	offline_mart_id varchar2(50),
 	PRIMARY KEY (sale_id)
 );
 
@@ -209,7 +219,7 @@ CREATE TABLE staff
 	staff_id varchar2(50) NOT NULL,
 	password varchar2(50),
 	name varchar2(50),
-	mart_id varchar2(50),
+	offline_mart_id varchar2(50),
 	position varchar2(50),
 	PRIMARY KEY (staff_id)
 );

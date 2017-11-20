@@ -8,7 +8,6 @@ public class FeedDataBean implements Serializable{
 	String id;
 	int like_num;
 	Timestamp reg_date;
-	String hashtag;
 	String recipe_name;
 	public String getFeed_id() {
 		return feed_id;
@@ -34,12 +33,6 @@ public class FeedDataBean implements Serializable{
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
 	}
-	public String getHashtag() {
-		return hashtag;
-	}
-	public void setHashtag(String hashtag) {
-		this.hashtag = hashtag;
-	}
 	public String getRecipe_name() {
 		return recipe_name;
 	}
@@ -50,8 +43,10 @@ public class FeedDataBean implements Serializable{
 	public String toString() {
 		return "FeedDataBean [feed_id=" + feed_id + ", id=" + id
 				+ ", like_num=" + like_num + ", reg_date=" + reg_date
-				+ ", hashtag=" + hashtag + ", recipe_name=" + recipe_name + "]";
+				+ ", recipe_name=" + recipe_name
+				+ "]";
 	}
+	
 	
 	
 }

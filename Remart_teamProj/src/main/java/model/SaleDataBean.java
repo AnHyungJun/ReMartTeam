@@ -9,6 +9,8 @@ public class SaleDataBean implements Serializable{
 	String staff_id;
 	Timestamp s_date;
 	int qty;
+	String offline_mart_id;
+	
 	public String getSale_id() {
 		return sale_id;
 	}
@@ -39,12 +41,19 @@ public class SaleDataBean implements Serializable{
 	public void setQty(int qty) {
 		this.qty = qty;
 	}
+	public String getOffline_mart_id() {
+		return offline_mart_id;
+	}
+	public void setOffline_mart_id(String offline_mart_id) {
+		this.offline_mart_id = offline_mart_id;
+	}
 	@Override
 	public String toString() {
 		return "SaleDataBean [sale_id=" + sale_id + ", product_id="
 				+ product_id + ", staff_id=" + staff_id + ", s_date=" + s_date
-				+ ", qty=" + qty + "]";
+				+ ", qty=" + qty + ", offline_mart_id=" + offline_mart_id + "]";
 	}
+	
 	
 	
 }
