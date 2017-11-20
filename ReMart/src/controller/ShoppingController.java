@@ -14,4 +14,18 @@ ModelAndView mv = new ModelAndView();
 		mv.setViewName("shopping/shoppingMain");
 		return mv;
 	}
+	
+	@RequestMapping(value="basket")
+	public ModelAndView basket(){	
+		mv.clear();
+		mv.setViewName("shopping/basket");
+		return mv;
+	}
+	
+	@RequestMapping(value="paymentInfo")
+	public ModelAndView paymentInfo(){	
+		mv.clear();
+		mv.setViewName("shopping/paymentInfo");
+		return mv;
+	}
 }

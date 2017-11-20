@@ -184,8 +184,10 @@
 <div style="margin-top: 150px"></div>
 
 <!-- basket_wrap -->
+<form method="post" action="<%=request.getContextPath() %>/shopping/paymentInfo">
 <div class="basket_wrap">
 	<!-- shopping_process -->
+	
 	<div class="shopping_process">
 		<ol class="order">
 			<li class="active"><em>01</em>  장바구니</li>
@@ -295,5 +297,6 @@
 		<center><input type="submit" value="결제하기" class="pay"></center>
 	</div>
 </div><!-- basket_wrap end -->
+</form>
 </body>
 </html>

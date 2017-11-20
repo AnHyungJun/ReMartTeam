@@ -39,7 +39,7 @@ body, h1, h2, h3, h4, h5, h6 {
 						<p>${memberInfo.name }님, 안녕★</p>
 						<a href="<%=request.getContextPath() %>/login/loginOut">로그아웃</a>
 					</c:if>
-					|<a href="<%=request.getContextPath() %>/login/joinForm">회원가입</a>|<a href="<%=request.getContextPath() %>/mypage/myPageForm">마이페이지</a>|<a href="<%=request.getContextPath() %>/shopping/shoppingMain">쇼핑몰</a>|<a href="#">장바구니</a>
+					|<a href="<%=request.getContextPath() %>/login/joinForm">회원가입</a>|<a href="<%=request.getContextPath() %>/mypage/myPageForm">마이페이지</a>|<a href="<%=request.getContextPath() %>/shopping/shoppingMain">쇼핑몰</a>|<a href="<%=request.getContextPath() %>/shopping/basket">장바구니</a>
 
 				</td>
 			</tr>
