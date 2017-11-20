@@ -91,7 +91,7 @@
 	<center>
 		<div class="w3-container">
 			<a href="<%=request.getContextPath()%>/main/main"><img
-				src="/ReMart/images/icon/logo.png" style="width: 5%"></a> <br>
+				src="<%=request.getContextPath()%>/images/icon/logo.png" style="width: 5%"></a> <br>
 			<br> <br>
 			<tr>
 				<td colspan="2" height="39" class="w3-large w3-center"><b
@@ -106,7 +106,7 @@
 						<td width="330">
 						<div class="mySlides">
 	
-				<img align="center" id="blah1" src="/ReMart/images/icon/noProfile.png"
+				<img align="center" id="blah1" src="<%=request.getContextPath()%>/images/icon/noProfile.png"
 					alt="your image" width="300" height="300" class="w3-circle"/><br> <input
 					
 					type="file" class="uploadimg" style="left: 550px; top: 400px;"
