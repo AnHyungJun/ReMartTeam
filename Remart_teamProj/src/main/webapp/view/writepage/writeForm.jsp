@@ -38,7 +38,7 @@
 
 			<div class="mySlides">
 				<br>메인 메뉴 등록<br>	
-				<img align="center" id="blah1" src="/ReMart/images/icon/noimage.PNG"
+				<img align="center" id="blah1" src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
@@ -47,56 +47,56 @@
 				<br> <input type="text" size="50" height="14" placeholder="부 메뉴">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah2" src="/ReMart/images/icon/noimage.PNG"
+				<img align="center" id="blah2" src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
 				<br><input type="text" size="50" height="14" placeholder="내용">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah3" src="/ReMart/images/icon/noimage.PNG"
+				<img align="center" id="blah3" src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
 				<br><input type="text" size="50" height="14" placeholder="내용">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah4" src="/ReMart/images/icon/noimage.PNG"
+				<img align="center" id="blah4" src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
 				<br><input type="text" size="50" height="14" placeholder="내용">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah5" src="/ReMart/images/icon/noimage.PNG"
+				<img align="center" id="blah5" src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
 				<br><input type="text" size="50" height="14" placeholder="내용">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah6" src="/ReMart/images/icon/noimage.PNG"
+				<img align="center" id="blah6" src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
 				<br><input type="text" size="50" height="14" placeholder="내용">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah7" src="/ReMart/images/icon/noimage.PNG"
+				<img align="center" id="blah7" src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
 				<br><input type="text" size="50" height="14" placeholder="내용">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah8" src="/ReMart/images/icon/noimage.PNG"
+				<img align="center" id="blah8" src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
 				<br><input type="text" size="50" height="14" placeholder="내용">
 			</div>
 			<div class="mySlides">
-				<img align="center" id="blah9" src="/ReMart/images/icon/noimage.PNG"
+				<img align="center" id="blah9" src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 200px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
@@ -104,7 +104,7 @@
 			</div>
 			<div class="mySlides">
 				<img align="center" id="blah10"
-					src="/ReMart/images/icon/noimage.PNG" alt="your image" width="650"
+					src="<%=request.getContextPath()%>/images/icon/noimage.PNG" alt="your image" width="650"
 					height="400" /><br> <input type="file" class="uploadimg"
 					style="left: 200px; top: 200px;" onchange="statefile(this);"
 					name="uploadfile" onfocus="this.blur()">
