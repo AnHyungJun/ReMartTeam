@@ -23,6 +23,7 @@
 	<bean id="mybatisMypageDBBean" class="dao.MybatisMypageDBBean" />
 	<bean id="mybatisTvrecipeDBBean" class="dao.MybatisTvrecipeDBBean" />
 	<bean id="mybatisWritepageDBBean" class="dao.MybatisWritepageDBBean" />
+	<bean id="mybatisShoppingDBBean" class="dao.MybatisShoppingDBBean"/>
 	
 	<bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass">
