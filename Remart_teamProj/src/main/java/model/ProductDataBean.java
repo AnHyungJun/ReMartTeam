@@ -3,15 +3,15 @@ package model;
 import java.io.Serializable;
 
 public class ProductDataBean implements Serializable{
-	String product_id;
+	int product_id;
 	String food_id;
 	int price;
 	int qty;
 	String offline_mart_id;
-	public String getProduct_id() {
+	public int getProduct_id() {
 		return product_id;
 	}
-	public void setProduct_id(String product_id) {
+	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
 	}
 	public String getFood_id() {

@@ -4,15 +4,15 @@ import java.io.Serializable;
 import java.security.Timestamp;
 
 public class RepleDataBean implements Serializable{
-	String reple_id;
+	int reple_id;
 	String feed_id;
 	String id;
 	String content;
 	Timestamp reg_date;
-	public String getReple_id() {
+	public int getReple_id() {
 		return reple_id;
 	}
-	public void setReple_id(String reple_id) {
+	public void setReple_id(int reple_id) {
 		this.reple_id = reple_id;
 	}
 	public String getFeed_id() {

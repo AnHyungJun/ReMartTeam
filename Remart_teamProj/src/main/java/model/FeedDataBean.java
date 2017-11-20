@@ -4,15 +4,15 @@ import java.io.Serializable;
 import java.security.Timestamp;
 
 public class FeedDataBean implements Serializable{
-	String feed_id;
+	int feed_id;
 	String id;
 	int like_num;
 	Timestamp reg_date;
 	String recipe_name;
-	public String getFeed_id() {
+	public int getFeed_id() {
 		return feed_id;
 	}
-	public void setFeed_id(String feed_id) {
+	public void setFeed_id(int feed_id) {
 		this.feed_id = feed_id;
 	}
 	public String getId() {

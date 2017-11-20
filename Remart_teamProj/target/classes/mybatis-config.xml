@@ -14,7 +14,6 @@
 		<typeAlias type="model.Food_orderDataBean" alias="food_order" />
 		<typeAlias type="model.HashtagDataBean" alias="hashtag" />
 		<typeAlias type="model.ImgDataBean" alias="img" />
-		<typeAlias type="model.Likely_bookmarkDataBean" alias="likely_bookmark" />
 		<typeAlias type="model.Mart_orderDataBean" alias="mart_order" />
 		<typeAlias type="model.Offline_martDataBean" alias="offline_mart" />
 		<typeAlias type="model.ProductDataBean" alias="product" />

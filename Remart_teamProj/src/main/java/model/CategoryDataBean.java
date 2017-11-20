@@ -3,13 +3,13 @@ package model;
 import java.io.Serializable;
 
 public class CategoryDataBean implements Serializable{
-	String category_id;
+	int category_id;
 	String category_name;
 	String category_group;
-	public String getCategory_id() {
+	public int getCategory_id() {
 		return category_id;
 	}
-	public void setCategory_id(String category_id) {
+	public void setCategory_id(int category_id) {
 		this.category_id = category_id;
 	}
 	public String getCategory_name() {

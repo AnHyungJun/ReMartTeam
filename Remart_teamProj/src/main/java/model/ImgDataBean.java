@@ -3,14 +3,14 @@ package model;
 import java.io.Serializable;
 
 public class ImgDataBean implements Serializable{
-	String img_id;
+	int img_id;
 	String feed_id;
 	String image_name;
 	String content;
-	public String getImg_id() {
+	public int getImg_id() {
 		return img_id;
 	}
-	public void setImg_id(String img_id) {
+	public void setImg_id(int img_id) {
 		this.img_id = img_id;
 	}
 	public String getFeed_id() {

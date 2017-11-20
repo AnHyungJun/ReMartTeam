@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.security.Timestamp;
 
 public class Food_orderDataBean implements Serializable{
-	String food_order_id;
+	int food_order_id;
 	String id;
 	Timestamp order_date;
 	String request;
@@ -19,10 +19,10 @@ public class Food_orderDataBean implements Serializable{
 	String food_name;
 	String p_company;
 	String order_number;
-	public String getFood_order_id() {
+	public int getFood_order_id() {
 		return food_order_id;
 	}
-	public void setFood_order_id(String food_order_id) {
+	public void setFood_order_id(int food_order_id) {
 		this.food_order_id = food_order_id;
 	}
 	public String getId() {
