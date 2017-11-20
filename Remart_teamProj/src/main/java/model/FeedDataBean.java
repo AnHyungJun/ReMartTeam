@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.security.Timestamp;
 
-public class FeedDataBean {
+public class FeedDataBean implements Serializable{
 	String feed_id;
 	String id;
 	int like_num;

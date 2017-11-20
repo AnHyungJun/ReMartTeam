@@ -19,6 +19,11 @@
 	<context:component-scan  base-package="controller" />
 	
 	<bean id="mybatisLoginDBBean" class="dao.MybatisLoginDBBean" />
+	<bean id="mybatisMainDBBean" class="dao.MybatisMainDBBean" />
+	<bean id="mybatisMypageDBBean" class="dao.MybatisMypageDBBean" />
+	<bean id="mybatisShoppingDBBean" class="dao.MybatisShoppingDBBean" />
+	<bean id="mybatisTvrecipeDBBean" class="dao.MybatisTvrecipeDBBean" />
+	<bean id="mybatisWritepageDBBean" class="dao.MybatisWritepageDBBean" />
 	
 	<bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass">

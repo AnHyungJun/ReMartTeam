@@ -1,6 +1,8 @@
 package model;
 
-public class ImgDataBean {
+import java.io.Serializable;
+
+public class ImgDataBean implements Serializable{
 	String img_id;
 	String feed_id;
 	String image_name;

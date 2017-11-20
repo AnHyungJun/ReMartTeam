@@ -1,6 +1,8 @@
 package model;
 
-public class likely_bookmarkDataBean {
+import java.io.Serializable;
+
+public class likely_bookmarkDataBean implements Serializable{
 	String likely_bookmark_id;
 	String id;
 	String feed_id;

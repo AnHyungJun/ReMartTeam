@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.security.Timestamp;
 
-public class Food_orderDataBean {
+public class Food_orderDataBean implements Serializable{
 	String food_order_id;
 	String id;
 	Timestamp order_date;

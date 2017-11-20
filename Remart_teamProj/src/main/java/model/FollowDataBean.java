@@ -1,6 +1,8 @@
 package model;
 
-public class FollowDataBean {
+import java.io.Serializable;
+
+public class FollowDataBean implements Serializable{
 	String follow_id;
 	String my_id;
 	String other_id;

@@ -1,6 +1,8 @@
 package model;
 
-public class CategoryDataBean {
+import java.io.Serializable;
+
+public class CategoryDataBean implements Serializable{
 	String category_id;
 	String category_name;
 	String category_group;

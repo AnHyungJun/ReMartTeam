@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.security.Timestamp;
 
-public class SaleDataBean {
+public class SaleDataBean implements Serializable{
 	String sale_id;
 	String product_id;
 	String staff_id;

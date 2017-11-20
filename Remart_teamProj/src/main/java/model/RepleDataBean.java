@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.security.Timestamp;
 
-public class RepleDataBean {
+public class RepleDataBean implements Serializable{
 	String reple_id;
 	String feed_id;
 	String id;

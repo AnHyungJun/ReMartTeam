@@ -1,6 +1,8 @@
 package model;
 
-public class Offrine_martDataBean {
+import java.io.Serializable;
+
+public class Offline_martDataBean implements Serializable{
 	String offline_mart_id;
 	String password;
 	String tel;

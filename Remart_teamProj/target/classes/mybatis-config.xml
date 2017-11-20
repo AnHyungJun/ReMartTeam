@@ -4,19 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="model.R_memberDataBean" 
-		alias="R_member" /></typeAliases>
-		
-		
+		<typeAlias type="model.R_memberDataBean" alias="R_member" />
+	</typeAliases>
+
+
 	<environments default="development">
 		<environment id="development">
-	<transactionManager type="JDBC" />
-	<dataSource type="POOLED">
-<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
-<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl" />
-<property name="username" value="scott" />
-<property name="password" value="1111" />
-</dataSource>
-</environment></environments>
-<mappers><mapper resource="Login.xml" /></mappers>
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl" />
+				<property name="username" value="scott" />
+				<property name="password" value="1111" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="Login.xml" />
+		<mapper resource="Mypage.xml" />
+		<mapper resource="Shopping.xml" />
+		<mapper resource="Tvrecipe.xml" />
+		<mapper resource="Writepage.xml" />
+		<mapper resource="Main.xml" />
+	</mappers>
+
 </configuration>

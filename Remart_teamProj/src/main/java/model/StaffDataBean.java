@@ -1,6 +1,8 @@
 package model;
 
-public class StaffDataBean {
+import java.io.Serializable;
+
+public class StaffDataBean implements Serializable{
 	String staff_id;
 	String password;
 	String name;
