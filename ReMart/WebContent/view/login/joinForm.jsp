@@ -11,10 +11,6 @@
 	position: absolute;
 	height: 300px;
 	width: 300px;
-	opacity: 0;
-	filter: alpha(opacity = 0);
-	-ms-filter: alpha(opacity = 0);
-	cursor: pointer;
 }
 </style>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -107,7 +103,7 @@
 						<div class="mySlides">
 	
 				<img align="center" id="blah1" src="/ReMart/images/icon/noProfile.png"
-					alt="your image" width="60" height="60" class="w3-margin"/> <input
+					alt="your image" width="60" height="60" class="w3-margin w3-circle"/> <input
 					
 					type="file" class="uploadimg" style="left: 550px; top: 400px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
