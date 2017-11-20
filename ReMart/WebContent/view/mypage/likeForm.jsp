@@ -21,12 +21,12 @@
 			<a href="<%=request.getContextPath() %>/mypage/likeForm"><img
 				class="w3-right-align"
 				src="<%=request.getContextPath()%>/images/icon/like_before.png"
-				style="width: 50px; height: 50px; margin: 3px"></a> 
+				style="height: 50px; margin: 3px"></a> 
 			<a
 				href="<%=request.getContextPath() %>/mypage/bookmarkForm"><img
 				class="w3-right-align"
 				src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-				style="width: 50px; height: 50px; margin: 3px"></a>
+				style="height: 50px; margin: 3px"></a>
 		</div>
 	</div>
 	<div class="w3-display-container w3-border" style="height: 350px;">
