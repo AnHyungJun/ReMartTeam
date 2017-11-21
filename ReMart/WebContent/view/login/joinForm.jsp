@@ -87,20 +87,17 @@
 </script>
 
 <body>
-	<div style="margin-top: 150px"></div>
+	<div style="margin-top: 45px"></div>
 	<center>
 		<div class="w3-container">
 			<a href="<%=request.getContextPath()%>/main/main"><img
-				src="<%=request.getContextPath()%>/images/icon/logo.png"
-				style="width: 5%"></a> <br> <br> <br>
-			<tr>
-				<td colspan="2" height="39" class="w3-large w3-center"><b
-					style="font-size: 20px;">JOIN</b></font> <br> <br> <br></td>
-			</tr>
+				src="<%=request.getContextPath()%>/images/icon/join.png"
+				style="width: 100px;"></a> <br> <br> <br>
+
 			<form method="post" action="joinPro" name="userinput"
 				enctype="multipart/form-data" onSubmit="return checkIt()">
 				<table class="w3-table w3-bordered w3-center"
-					style="width: 40%; font-size: 12px;">
+					style="width: 700px; font-size: 12px;">
 					<tr>
 						<td align="center"><br>프로필 사진</td>
 						<td width="330">
@@ -193,7 +190,7 @@
 					<br>
 				<tr height="30">
 					<td align=center><br> <input type="submit"
-						class="w3-button w3-light-grey w3-border" style="font-size: 12px;"
+						class="w3-button w3-white w3-border w3-hover-black" style="font-size: 12px;"
 						value="회원가입"> <input type="reset"
 						class="w3-button w3-white w3-border" style="font-size: 12px;"
 						value="취소"></td>
