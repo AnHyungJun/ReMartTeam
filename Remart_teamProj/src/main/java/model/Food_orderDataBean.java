@@ -16,7 +16,6 @@ public class Food_orderDataBean implements Serializable{
 	String phone;
 	String name;
 	int all_price;
-	String food_name;
 	String p_company;
 	String order_number;
 	public int getFood_order_id() {
@@ -91,12 +90,6 @@ public class Food_orderDataBean implements Serializable{
 	public void setAll_price(int all_price) {
 		this.all_price = all_price;
 	}
-	public String getFood_name() {
-		return food_name;
-	}
-	public void setFood_name(String food_name) {
-		this.food_name = food_name;
-	}
 	public String getP_company() {
 		return p_company;
 	}
@@ -116,8 +109,7 @@ public class Food_orderDataBean implements Serializable{
 				+ ", order_state=" + order_state + ", post_number="
 				+ post_number + ", zip1=" + zip1 + ", zip2=" + zip2
 				+ ", address=" + address + ", phone=" + phone + ", name="
-				+ name + ", all_price=" + all_price + ", food_name="
-				+ food_name + ", p_company=" + p_company + ", order_number="
+				+ name + ", all_price=" + all_price + ", p_company=" + p_company + ", order_number="
 				+ order_number + "]";
 	}
 	
