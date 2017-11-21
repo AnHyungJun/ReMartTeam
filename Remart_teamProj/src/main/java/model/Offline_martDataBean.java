@@ -3,15 +3,15 @@ package model;
 import java.io.Serializable;
 
 public class Offline_martDataBean implements Serializable{
-	int offline_mart_id;
+	String offline_mart_id;
 	String password;
 	String tel;
 	String location;
 
-	public int getOffline_mart_id() {
+	public String getOffline_mart_id() {
 		return offline_mart_id;
 	}
-	public void setOffline_mart_id(int offline_mart_id) {
+	public void setOffline_mart_id(String offline_mart_id) {
 		this.offline_mart_id = offline_mart_id;
 	}
 	public String getPassword() {

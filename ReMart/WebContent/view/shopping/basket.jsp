@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 .shopping_process {
-	border: 2px solid #24221f;
+	border: 1px solid #bbb;
 	padding: 0px;
 	margin-bottom: 50px;
 }
@@ -133,7 +133,7 @@
 
 .paysum_wrap {
 	margin-bottom: 15px;
-	border: 1px solid #25211e;
+	border: 1px solid #c2c2c2;
 }
 
 .paysum ul {
@@ -182,130 +182,146 @@
 </head>
 <body>
 
-	<div style="margin-top: 150px"></div>
+	<div style="margin-top: 200px"></div>
 
-	<!-- basket_wrap -->
-	<form method="post"
-		action="<%=request.getContextPath() %>/shopping/paymentInfo">
-		<div class="basket_wrap">
-			<!-- shopping_process -->
+	<div class="w3-row">
+		<div class="w3-col" style="width: 380px;">
+			<p>&nbsp;</p>
+		</div>
 
-			<div class="shopping_process">
-				<ol class="order">
-					<li class="active"><em>01</em> 장바구니</li>
-					<li class="second"><em>02</em> 주문결제</li>
-					<li><em>03</em> 주문완료</li>
-				</ol>
-			</div>
-			<!-- shopping_process end -->
+		<div class="w3-col" style="width: 1142px;">
+			<!-- basket_wrap -->
+			<form method="post"
+				action="<%=request.getContextPath()%>/shopping/paymentInfo">
+				<div class="basket_wrap">
+					<!-- shopping_process -->
+					<div class="shopping_process">
+						<ol class="order">
+							<li class="active"><em>01</em> <b>장바구니</b></li>
+							<li class="second"><em>02</em> <b>주문결제</b></li>
+							<li><em>03</em> <b>주문완료</b></li>
+						</ol>
+					</div>
+					<!-- shopping_process end -->
 
-			<!-- delivery_list -->
-			<div class="delivery_list">
-				<div class="list_head">
-					<div class="list_head_title">
-						<p>매장 배송 상품</p>
-						<p class="item_count">1</p>
+					<!-- delivery_list -->
+					<div class="delivery_list">
+						<div class="list_head">
+							<div class="list_head_title">
+								<p>매장 배송 상품</p>
+								<p class="item_count">1</p>
+							</div>
+						</div>
+
+						<div class="list_body">
+							<table class="list_body_table" width="100%">
+								<tr style="border-top: 1px solid #666; font-size: 13px;">
+									<th width="auto"></th>
+									<th width="32%" class="w3-center">상품정보</th>
+									<th width="11%" class="w3-center">판매가</th>
+									<th width="15%" class="w3-center">수량</th>
+									<th width="10%" class="w3-center">할인금액</th>
+									<th width="10%" class="w3-center">구매가</th>
+									<th width="8%" class="w3-center">배송비</th>
+									<th width="8%" class="w3-center">주문</th>
+								</tr>
+								<tr>
+									<td></td>
+									<td class="pro_info">
+										<div class="pro_img">
+											<img alt="사진1"
+												src="<%=request.getContextPath()%>/images/food/가브리살(300g).jpg"
+												width="100" height="100">
+										</div>
+										<div class="pro_name">
+											<a href="#" class="w3-center" style="vertical-align: middle;">가브리살(300g)</a>
+										</div>
+									</td>
+									<td class="w3-center"
+										style="font-size: 14px; vertical-align: middle;">25800원</td>
+									<td class="w3-center"
+										style="font-size: 14px; vertical-align: middle;"><input
+										type="text" name="ea" class="form" size="2" value="1"
+										maxlength="2" onblur="numcheck(this.form.ea.value,10)"
+										onkeyup="if(isNaN(this.value)) {alert('숫자만 입력해 주세요.');this.value=''};">
+
+										<input type="button" value="▲"
+										onclick="up(this.form.ea.value,10)"
+										style="background-color: white; border: 0; height: 10px; font-size: 12px"
+										name="plus"><br> <input type="button" value="▼"
+										onclick="down(this.form.ea.value)"
+										style="background-color: white; border: 0; height: 10px; font-size: 12px"
+										name="minus"></td>
+
+									<td class="w3-center"
+										style="font-size: 14px; vertical-align: middle;">-</td>
+									<td class="w3-center"
+										style="font-size: 14px; vertical-align: middle; color: red;">25800원</td>
+									<td class="w3-center"
+										style="font-size: 14px; vertical-align: middle;">2500원</td>
+									<td><input type="button"
+										class="w3-button w3-white w3-hover-white"
+										style="font-size: 12px; width: 100px;" value="삭제">
+										<p>
+											<input type="button"
+												class="w3-button w3-white w3-hover-white"
+												style="font-size: 12px; width: 100px;" value="계속담기"></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<!-- delivery_list end -->
+
+
+					<!-- paysum_wrap -->
+					<br> <br>
+					<div class="paysum_wrap">
+						<div class="paysum" style="vertical-align: middle;">
+							<ul>
+								<li>
+									<dl>
+										<dt style="font-size: 15px;">판매가</dt>
+										<br>
+										<dd style="font-size: 16px;">0원</dd>
+									</dl>
+								</li>
+								<li>
+									<dl>
+										<dt style="font-size: 15px;">할인금액</dt>
+										<br>
+										<dd style="font-size: 16px;">0원</dd>
+									</dl>
+								</li>
+								<li>
+									<dl>
+										<dt style="font-size: 15px;">배송비</dt>
+										<br>
+										<dd style="font-size: 16px;">0원</dd>
+									</dl>
+								</li>
+								<li>
+									<dl>
+										<dt style="font-size: 15px;">주문금액</dt>
+										<br>
+										<dd style="color: red; font-size: 16px;">0원</dd>
+									</dl>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<br> <br> <br>
+					<!-- paysum_wrap end -->
+					<div class="w3-center">
+						<input type="submit" value="결제하기" style="font-size: 13px;"
+							class="w3-button w3-border w3-white w3-hover-black">
 					</div>
 				</div>
-
-				<div class="list_body">
-					<table class="list_body_table" width="100%">
-						<tr>
-							<th width="auto"></th>
-							<th width="44%">상품정보</th>
-							<th width="8%">판매가</th>
-							<th width="7%">수량</th>
-							<th width="10%">할인금액</th>
-							<th width="10%">구매가</th>
-							<th width="8%">배송비</th>
-							<th width="8%">주문</th>
-						</tr>
-						<tr>
-							<td></td>
-							<td class="pro_info">
-								<div class="pro_img">
-									<img alt="사진1"
-										src="<%=request.getContextPath() %>/images/food/가브리살(300g).jpg"
-										width="100" height="100">
-								</div>
-								<div class="pro_name">
-									<a href="#">가브리살(300g)</a>
-								</div>
-							</td>
-							<td>25800원</td>
-							<td><input type="text" name="ea" class="form" size="2"
-								value="1" maxlength="2" onblur="numcheck(this.form.ea.value,10)"
-								onkeyup="if(isNaN(this.value)) {alert('숫자만 입력해 주세요.');this.value=''};">
-
-								<input type="button" value="▲"
-								onclick="up(this.form.ea.value,10)"
-								style="background-color: white; border: 0; height: 10px; font-size: 12px"
-								name="plus"><br> <input type="button" value="▼"
-								onclick="down(this.form.ea.value)"
-								style="background-color: white; border: 0; height: 10px; font-size: 12px"
-								name="minus"></td>
-
-							<td>-</td>
-							<td style="color: red;">25800원</td>
-							<td>2500원</td>
-							<td><input
-								style="border: 1px; solid: maroon; background: transparent;"
-								class="w3-border w3-border-grey w3-white w3-center w3-margin-top"
-								type="button" value="삭제">
-								<p>
-									<input
-										style="border: 1px; solid: maroon; background: transparent;"
-										class="w3-border w3-border-grey w3-white w3-center"
-										type="button" value="계속담기"></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-			<!-- delivery_list end -->
-
-
-			<!-- paysum_wrap -->
-			<div class="paysum_wrap">
-				<div class="paysum">
-					<ul>
-						<li>
-							<dl>
-								<dt>판매가</dt>
-								<dd>0원</dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt>할인금액</dt>
-								<dd>0원</dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt>배송비</dt>
-								<dd>0원</dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt>주문금액</dt>
-								<dd style="color: red;">0원</dd>
-							</dl>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<!-- paysum_wrap end -->
-
-			<div>
-				<center>
-					<input style="border: 1px; solid: maroon; background: transparent; font-size:13px;"
-						class="w3-button w3-hover-black w3-border w3-border-grey w3-white w3-center"
-						 type="submit" value="결제하기">
-				</center>
-			</div>
+				<!-- basket_wrap end -->
+			</form>
 		</div>
-		<!-- basket_wrap end -->
-	</form>
+		<div class="w3-col" style="width: 380px;">
+			<p>&nbsp;</p>
+		</div>
+	</div>
 </body>
 </html>
