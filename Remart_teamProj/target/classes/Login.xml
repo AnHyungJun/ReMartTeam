@@ -16,7 +16,7 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		values
 		(#{member.id},#{member.passwd},#{member.name},#{member.phone},
 		#{member.address1},#{member.address2},#{member.zip1},
-		#{member.zip2},'일반',0,0,#{member.sex},
+		#{member.zip2},'nomal',0,0,#{member.sex},
 		#{member.email},#{member.jumin1},#{member.info}, #{member.profileImg})
 	</insert>
 	

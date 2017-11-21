@@ -34,12 +34,13 @@ body, h1, h2, h3, h4, h5, h6 {
 				<td align="right">
 					<c:if test="${empty memberInfo }">
 						<a href="<%=request.getContextPath() %>/login/loginForm">로그인</a>
+						|<a href="<%=request.getContextPath() %>/login/joinForm">회원가입</a>
 					</c:if>
 					<c:if test="${!empty memberInfo }">
 						<p>${memberInfo.name }님, 안녕★</p>
 						<a href="<%=request.getContextPath() %>/login/loginOut">로그아웃</a>
 					</c:if>
-					|<a href="<%=request.getContextPath() %>/login/joinForm">회원가입</a>|<a href="<%=request.getContextPath() %>/mypage/myPageForm">마이페이지</a>|<a href="<%=request.getContextPath() %>/shopping/shoppingMain">쇼핑몰</a>|<a href="<%=request.getContextPath() %>/shopping/basket">장바구니</a>
+					|<a href="<%=request.getContextPath() %>/mypage/myPageForm">마이페이지</a>|<a href="<%=request.getContextPath() %>/shopping/shoppingMain">쇼핑몰</a>|<a href="<%=request.getContextPath() %>/shopping/basket">장바구니</a>
 
 				</td>
 			</tr>
@@ -51,7 +52,7 @@ body, h1, h2, h3, h4, h5, h6 {
 			<tr>
 				<td>
 					<a href="#">에디터 추천</a>/ <a href="<%=request.getContextPath() %>/tvrecipe/tv">TV레시피</a>/ 
-					<a href="<%=request.getContextPath() %>/writepage/writeForm">글쓰기</a>
+					<a href="<%=request.getContextPath() %>/writepage/writeForm?grade=${memberInfo.grade}">글쓰기</a>
 				</td>
 			</tr>
 		</table>
