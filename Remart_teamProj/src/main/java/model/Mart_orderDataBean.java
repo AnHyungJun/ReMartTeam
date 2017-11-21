@@ -5,8 +5,6 @@ import java.security.Timestamp;
 
 public class Mart_orderDataBean implements Serializable{
 	int mart_order_id;
-	String food_id;
-	int qty;
 	Timestamp re_date;
 	Timestamp or_date;
 	String offline_mart_id;
@@ -17,18 +15,7 @@ public class Mart_orderDataBean implements Serializable{
 	public void setMart_order_id(int mart_order_id) {
 		this.mart_order_id = mart_order_id;
 	}
-	public String getFood_id() {
-		return food_id;
-	}
-	public void setFood_id(String food_id) {
-		this.food_id = food_id;
-	}
-	public int getQty() {
-		return qty;
-	}
-	public void setQty(int qty) {
-		this.qty = qty;
-	}
+	
 	public Timestamp getRe_date() {
 		return re_date;
 	}
@@ -56,7 +43,7 @@ public class Mart_orderDataBean implements Serializable{
 	@Override
 	public String toString() {
 		return "Mart_orderDataBean [mart_order_id=" + mart_order_id
-				+ ", food_id=" + food_id + ", qty=" + qty + ", re_date="
+				+ ", re_date="
 				+ re_date + ", or_date=" + or_date + ", offline_mart_id="
 				+ offline_mart_id + ", status=" + status + "]";
 	}

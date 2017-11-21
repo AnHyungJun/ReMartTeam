@@ -7,6 +7,7 @@ DROP TABLE feed CASCADE CONSTRAINTS;
 DROP TABLE feed_food CASCADE CONSTRAINTS;
 DROP TABLE follow CASCADE CONSTRAINTS;
 DROP TABLE food CASCADE CONSTRAINTS;
+DROP TABLE food_num CASCADE CONSTRAINTS;
 DROP TABLE food_order CASCADE CONSTRAINTS;
 DROP TABLE hashtag CASCADE CONSTRAINTS;
 DROP TABLE img CASCADE CONSTRAINTS;
@@ -28,7 +29,7 @@ CREATE TABLE basket
 (
 	basket_id number NOT NULL,
 	id varchar2(50),
-	food_id varchar2(50),
+	food_id number,
 	food_num number,
 	PRIMARY KEY (basket_id)
 );
@@ -57,8 +58,8 @@ CREATE TABLE feed
 CREATE TABLE feed_food
 (
 	feed_food_id number NOT NULL,
-	feed_id varchar2(50),
-	food_id varchar2(50),
+	feed_id number,
+	food_id number,
 	PRIMARY KEY (feed_food_id)
 );
 
@@ -75,11 +76,22 @@ CREATE TABLE follow
 CREATE TABLE food
 (
 	food_id number NOT NULL,
-	category_id varchar2(50),
+	category_id number,
 	name varchar2(150),
 	price number,
 	qty number(10,0),
 	PRIMARY KEY (food_id)
+);
+
+
+CREATE TABLE food_num
+(
+	food_num_id number NOT NULL,
+	food_id number,
+	qty number,
+	div varchar2(10) NOT NULL,
+	order_id number,
+	PRIMARY KEY (food_num_id)
 );
 
 
@@ -97,7 +109,6 @@ CREATE TABLE food_order
 	phone varchar2(50),
 	name varchar2(50),
 	all_price number,
-	food_name varchar2(3000),
 	p_company varchar2(100),
 	order_number varchar2(100),
 	PRIMARY KEY (food_order_id)
@@ -108,7 +119,7 @@ CREATE TABLE hashtag
 (
 	hashtag_id number NOT NULL,
 	hashtag_content varchar2(50),
-	feed_id varchar2(50),
+	feed_id number,
 	PRIMARY KEY (hashtag_id)
 );
 
@@ -116,7 +127,7 @@ CREATE TABLE hashtag
 CREATE TABLE img
 (
 	img_id number NOT NULL,
-	feed_id varchar2(50),
+	feed_id number,
 	image_name varchar2(50),
 	content varchar2(3000),
 	PRIMARY KEY (img_id)
@@ -127,7 +138,7 @@ CREATE TABLE likely_bookmark
 (
 	likely_bookmark_id number NOT NULL,
 	id varchar2(50),
-	feed_id varchar2(50),
+	feed_id number,
 	type varchar2(10),
 	PRIMARY KEY (likely_bookmark_id)
 );
@@ -136,8 +147,6 @@ CREATE TABLE likely_bookmark
 CREATE TABLE mart_order
 (
 	mart_order_id number NOT NULL,
-	food_id varchar2(50),
-	qty number,
 	-- 
 	-- 
 	re_date date,
@@ -150,7 +159,7 @@ CREATE TABLE mart_order
 
 CREATE TABLE offline_mart
 (
-	offline_mart_id number NOT NULL,
+	offline_mart_id varchar2(50) NOT NULL,
 	password varchar2(50),
 	tel varchar2(50),
 	location varchar2(200),
@@ -172,7 +181,7 @@ CREATE TABLE product
 CREATE TABLE reple
 (
 	reple_id number NOT NULL,
-	feed_id varchar2(50),
+	feed_id number,
 	id varchar2(50),
 	content varchar2(200),
 	reg_date date,
@@ -216,7 +225,7 @@ CREATE TABLE sale
 
 CREATE TABLE staff
 (
-	staff_id number NOT NULL,
+	staff_id varchar2(50) NOT NULL,
 	password varchar2(50),
 	name varchar2(50),
 	offline_mart_id varchar2(50),

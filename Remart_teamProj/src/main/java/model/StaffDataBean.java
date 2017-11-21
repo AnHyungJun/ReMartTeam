@@ -3,15 +3,15 @@ package model;
 import java.io.Serializable;
 
 public class StaffDataBean implements Serializable{
-	int staff_id;
+	String staff_id;
 	String password;
 	String name;
 	String offline_mart_id;
 	String position;
-	public int getStaff_id() {
+	public String getStaff_id() {
 		return staff_id;
 	}
-	public void setStaff_id(int staff_id) {
+	public void setStaff_id(String staff_id) {
 		this.staff_id = staff_id;
 	}
 	public String getPassword() {
