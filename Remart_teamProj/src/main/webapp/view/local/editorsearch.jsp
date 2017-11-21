@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -18,17 +19,8 @@
 	<input type="button" onclick="writefood()" name="등록">
 	<input type="button" onclick="end()" name="닫기">
 	<script>
-		function writefood() {
-			
-			var img = document.createElement('img'); // 이미지 객체 생성
-			img.src ='/Remart_teamProj/images/food/'+'[남양]프렌치카페 믹스 250입'+'.jpg';
-			
-			img.style.cursor = 'pointer'; // 커서 지정
-			opener.document.getElementById("a").value = document.getElementById("qq").value
-			document.getElementById('aa').appendChild(img);
-			opener.document.getElementById('editorfood2').appendChild(img); // board DIV 에 이미지 동적 추가
-			alert("asd");
-			self.close();
+		function writefood() {       
+			opener.parent.foodimg('/Remart_teamProj/images/food/'+'[남양]프렌치카페 믹스 250입'+'.jpg');
 		}
 		function end() {
 

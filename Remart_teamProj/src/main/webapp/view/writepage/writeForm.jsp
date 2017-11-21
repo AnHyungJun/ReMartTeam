@@ -17,6 +17,12 @@
 	-ms-filter: alpha(opacity = 0);
 	cursor: pointer;
 }
+.ttt{	
+	width: 150px; 
+	height: 150px; 
+	float: left;
+	border: solid 4px;
+}
 </style>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
@@ -34,17 +40,18 @@
 			<button id="rightpage" style="float: right" type="button"
 				onclick="plusDivs(1)">이미지)</button>
 		</div>
-		<form action="">
+		<form action="writePro">
 
 			<div class="mySlides">
-				<br>메인 메뉴 등록<br> <img align="center" id="blah1"
+				<br>메인 메뉴 등록<br> 
+				<img align="center" id="blah1"
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
-				<br> <input type="text" size="50" height="14"
+				<br> <input type="text" size="50" height="14" name="feedtitle"
 					placeholder="제     목"> <br> <input type="text"
-					size="50" height="14" placeholder="재     료">
+					size="50" height="14" placeholder="재     료" name="foodmaterial">
 
 			</div>
 			<div class="mySlides">
@@ -54,7 +61,7 @@
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
-					placeholder="내     용">
+					placeholder="내     용" name="content">
 
 			</div>
 			<div class="mySlides">
@@ -64,7 +71,7 @@
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
-					placeholder="내     용">
+					placeholder="내     용" name="content">
 
 			</div>
 			<div class="mySlides">
@@ -74,7 +81,7 @@
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
-					placeholder="내     용">
+					placeholder="내     용" name="content">
 
 			</div>
 			<div class="mySlides">
@@ -84,7 +91,7 @@
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
-					placeholder="내     용">
+					placeholder="내     용" name="content">
 
 			</div>
 			<div class="mySlides">
@@ -94,7 +101,7 @@
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
-					placeholder="내     용">
+					placeholder="내     용" name="content">
 
 			</div>
 			<div class="mySlides">
@@ -104,7 +111,7 @@
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
-					placeholder="내     용">
+					placeholder="내     용" name="content">
 
 			</div>
 			<div class="mySlides">
@@ -114,7 +121,7 @@
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
-					placeholder="내     용">
+					placeholder="내     용" name="content">
 
 			</div>
 			<div class="mySlides">
@@ -124,7 +131,7 @@
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
-					placeholder="내     용">
+					placeholder="내     용" name="content">
 
 			</div>
 			<div class="mySlides">
@@ -134,7 +141,7 @@
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
 					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
-					placeholder="내     용">
+					placeholder="내     용" name="content">
 
 
 			</div>
@@ -142,19 +149,21 @@
 				<div style="width: 500px;" align="center">
 					<!--밑에 등록 버튼-->
 					<br> 에디터 상품 등록 <br>
-					<div id="editorfood2"
-						style="width: 100%; height: 170px; border: solid 4px;"></div>
-					<input type="text" id="a">
-					<br>
-					<button type="button" onclick="findfood()" />
-					<br>
+					<div id="editorfood2" align="center" >
+						
+					</div>
+					<br><br><br>
+					<button type="button" onclick="findfood()"/>
+					<br>	
+					
 				</div>
+				
 			</c:if>
 			<div style="width: 500px;" align="center">
 				<!--밑에 등록 버튼-->
 
 				<br>해시태그<br>
-				<textarea rows="5" cols="70"></textarea>
+				<input type="text" name="hashtag"/>
 				<br>
 			</div>
 
@@ -169,7 +178,15 @@
 
 	<script>
 		var openWin;
-
+		var foodnum=0;
+		function foodimg(foodname){
+	        	foodnum++;
+	        	var y="<div align=\"center\" class=\"ttt\" id="+"ttt"+foodnum+"\">"+
+	        	"<img src=\""+foodname+"\" width=110 height=110><br>"+
+	        	"<label>"+foodname+"</label>"
+	        	+"</div>";
+	        	$(editorfood2).append(y);
+		}
 		function findfood() {
 			// window.name = "부모창 이름"; 
 			window.name = "parentForm";
