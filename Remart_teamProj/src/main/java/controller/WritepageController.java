@@ -30,9 +30,6 @@ public class WritepageController {
 		} catch (UnsupportedEncodingException el) {
 			el.printStackTrace();
 		}
-		System.out.println(request.getParameter("grade"));
-		
-	
 	}
 
 	@RequestMapping(value = "writeForm")
@@ -43,4 +40,13 @@ public class WritepageController {
 		mv.setViewName("writepage/writeForm");
 		return mv;
 	}
+	@RequestMapping(value = "editorsearch")
+	public ModelAndView editorsearch() {
+		
+		mv.clear();
+
+		mv.setViewName("local/editorsearch");
+		return mv;
+	}
+	
 }
