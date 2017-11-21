@@ -115,7 +115,7 @@
 					</tr>
 					<tr>
 						<td width="200">아이디</td>
-						<td width="400"><input type="text" name="id" size="10"
+						<td width="400"><input type="text" name="id" size="18"
 							class="w3-border" maxlength="12"> <input type="hidden"
 							name="idchk"> <input type="button"
 							class="w3-white w3-border" style="font-size: 12px; height:19px;"
