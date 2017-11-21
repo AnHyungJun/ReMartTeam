@@ -530,7 +530,7 @@
 				var documentHeight = $(document).height();
 				if (scrollHeight == documentHeight) {
 					for (var i = 0; i < 10; i++) {
-						$('<h1>무한스크롤</h1>').appendTo('#test');
+						$('<h4>scroll test</h4>').appendTo('#test');
 					}
 				}
 			});

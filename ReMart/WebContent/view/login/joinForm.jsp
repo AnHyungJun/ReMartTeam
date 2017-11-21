@@ -105,8 +105,8 @@
 
 								<img align="center" id="blah1"
 									src="<%=request.getContextPath()%>/images/icon/noProfile.png"
-									alt="your image" width="50" height="50" class="w3-circle" /><br><br>
-								<input type="file" class="uploadimg"
+									alt="your image" width="50" height="50" class="w3-circle" /><br>
+								<br> <input type="file" class="uploadimg"
 									style="left: 850px; top: 350px;" onchange="statefile(this);"
 									name="uploadfile" onfocus="this.blur()">
 							</div>
@@ -118,7 +118,7 @@
 						<td width="400"><input type="text" name="id" size="10"
 							class="w3-border" maxlength="12"> <input type="hidden"
 							name="idchk"> <input type="button"
-							class="w3-white w3-border" style="font-size: 12px;"
+							class="w3-white w3-border" style="font-size: 12px; height:19px;"
 							name="confirm_id" value="중복확인" OnClick="openConfirmid(this.form)"></td>
 					</tr>
 					<tr>
@@ -139,8 +139,9 @@
 					<tr>
 						<td width="200">성별</td>
 						<td width="400"><input type="radio" name="sex" value="M"
-							checked="checked"> 남성 &nbsp;&nbsp; <input type="radio"
-							name="sex" value="F"> 여성 <br></td>
+							checked="checked" style="vertical-align: middle;"> 남성
+							&nbsp;&nbsp; <input type="radio" name="sex" value="F"
+							style="vertical-align: middle;"> 여성 <br></td>
 					</tr>
 					<tr>
 						<td width="200">생년월일</td>
@@ -154,7 +155,7 @@
 							readonly="readonly" style="width: 60px" class="w3-border" /> - <input
 							type="text" id='zip2' name='zip2' readonly="readonly"
 							style="width: 60px" class="w3-border"></input> <input
-							type="button" class="w3-white w3-border" style="font-size: 12px;"
+							type="button" class="w3-white w3-border" style="font-size: 12px; height:20px;"
 							onclick="openDaumPostcode();" value="우편번호"></td>
 					</tr>
 					<tr>
@@ -190,8 +191,8 @@
 					<br>
 				<tr height="30">
 					<td align=center><br> <input type="submit"
-						class="w3-button w3-white w3-border w3-hover-black" style="font-size: 12px;"
-						value="회원가입"> <input type="reset"
+						class="w3-button w3-white w3-border w3-hover-black"
+						style="font-size: 12px;" value="회원가입"> <input type="reset"
 						class="w3-button w3-white w3-border" style="font-size: 12px;"
 						value="취소"></td>
 				</tr>

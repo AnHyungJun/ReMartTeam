@@ -111,7 +111,7 @@ function down(val){
 </head>
 <body>
 
-	<div style="margin-top: 150px"></div>
+	<div style="margin-top: 180px"></div>
 
 	<!-- shopping_wrap -->
 	<div align="center" class="shopping_wrap">
