@@ -10,7 +10,7 @@
 	<center>
 		<div class="w3-container w3-margin-top" style="width: 500px;">
 			<a href="<%=request.getContextPath()%>/main/main"><img
-				src="/ReMart/images/icon/login.png" style="width: 90px;"></a> <br>
+				src="<%=request.getContextPath()%>/images/icon/login.png" style="width: 90px;"></a> <br>
 			<br> <br>
 			<form class="w3-container w3-card-4" method="post"
 				action="<%=request.getContextPath()%>/login/loginPro">
