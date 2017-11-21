@@ -30,7 +30,7 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 </style>
 <div class="w3-top w3-white">
-	<div class="w3-bar w3-border w3-center-align w3-large"
+	<div class="w3-bar w3-border-bottom w3-center-align w3-large"
 		style="height: 135px;">
 		<div class="w3-row">
 			<div class="w3-col" style="width: 20%">

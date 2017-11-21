@@ -40,35 +40,35 @@
 			</tr>
 
 			<tr height="40" class="w3-white" style="font-size: 12px;">
-				<td align="center" width="50">5</td>
-				<td align="center" width="250">김밥</td>
-				<td align="center" width="150">2017/11/15</td>
-				<td align="center" width="50">4</td>
+				<td align="center" width="50" style="vertical-align: middle;">5</td>
+				<td align="center" width="250" style="vertical-align: middle;">김밥</td>
+				<td align="center" width="150" style="vertical-align: middle;">2017/11/15</td>
+				<td align="center" width="50" style="vertical-align: middle;">4</td>
 			</tr>
 
 			<tr height="40" class="w3-white" style="font-size: 12px;">
-				<td align="center" width="50">4</td>
-				<td align="center" width="250">불고기</td>
-				<td align="center" width="150">2017/11/15</td>
-				<td align="center" width="50">4</td>
+				<td align="center" width="50" style="vertical-align: middle;">4</td>
+				<td align="center" width="250" style="vertical-align: middle;">불고기</td>
+				<td align="center" width="150" style="vertical-align: middle;">2017/11/15</td>
+				<td align="center" width="50" style="vertical-align: middle;">4</td>
 			</tr>
 			<tr height="40" class="w3-white" style="font-size: 12px;">
-				<td align="center" width="50">3</td>
-				<td align="center" width="250">김치찌개</td>
-				<td align="center" width="150">2017/11/15</td>
-				<td align="center" width="50">3</td>
+				<td align="center" width="50" style="vertical-align: middle;">3</td>
+				<td align="center" width="250" style="vertical-align: middle;">김치찌개</td>
+				<td align="center" width="150" style="vertical-align: middle;">2017/11/15</td>
+				<td align="center" width="50" style="vertical-align: middle;">3</td>
 			</tr>
 			<tr height="40" class="w3-white" style="font-size: 12px;">
-				<td align="center" width="50">2</td>
-				<td align="center" width="250">샌드위치</td>
-				<td align="center" width="150">2017/11/15</td>
-				<td align="center" width="50">4</td>
+				<td align="center" width="50" style="vertical-align: middle;">2</td>
+				<td align="center" width="250" style="vertical-align: middle;">샌드위치</td>
+				<td align="center" width="150" style="vertical-align: middle;">2017/11/15</td>
+				<td align="center" width="50" style="vertical-align: middle;">4</td>
 			</tr>
 			<tr height="40" class="w3-white" style="font-size: 12px;">
-				<td align="center" width="50">1</td>
-				<td align="center" width="250">제육볶음</td>
-				<td align="center" width="150">2017/11/15</td>
-				<td align="center" width="50">5</td>
+				<td align="center" width="50" style="vertical-align: middle;">1</td>
+				<td align="center" width="250" style="vertical-align: middle;">제육볶음</td>
+				<td align="center" width="150" style="vertical-align: middle;">2017/11/15</td>
+				<td align="center" width="50" style="vertical-align: middle;">5</td>
 			</tr>
 
 		</table>
