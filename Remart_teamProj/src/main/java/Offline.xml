@@ -5,5 +5,8 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="offline.mybatis">
    <cache />
-
+	<select id="offlineLoginCheck" parameterType="hashmap" resultType="String">
+		select password from offline_mart
+		WHERE offline_mart_id = #{id}
+	</select>
 </mapper>
