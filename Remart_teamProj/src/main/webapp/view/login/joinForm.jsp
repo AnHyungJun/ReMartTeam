@@ -105,7 +105,7 @@
 
 								<img align="center" id="blah1"
 									src="<%=request.getContextPath()%>/images/icon/noProfile.png"
-									alt="your image" width="50" height="50" class="w3-circle" /><br>
+									alt="your image" width="150" height="150" class="w3-circle" /><br>
 								<br> <input type="file" class="uploadimg"
 									style="left: 850px; top: 350px;" onchange="statefile(this);"
 									name="uploadfile" onfocus="this.blur()">

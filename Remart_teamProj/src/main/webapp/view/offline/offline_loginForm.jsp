@@ -9,7 +9,7 @@
 	<div style="margin-top: 150px"></div>
 	<center>
 		<div class="w3-container w3-margin-top" style="width: 25%;">
-			<img src="<%=request.getContextPath() %>/images/icon/logo_offline.JPG" style="width: 30%">
+			<img src="<%=request.getContextPath() %>/images/icon/logo_offline.JPG" style="width: 50%">
 			<br><br><br>
 			<form class="w3-container w3-card-4" method="post" action="<%=request.getContextPath() %>/offline/offline_loginPro">
 				<br>
@@ -33,25 +33,7 @@
 						 type="submit" value="LOGIN">
 				</div>
 				<br>
-				<div class="w3-row">
-					<div class="w3-col w3-text-grey"
-						style="width: 8%; font-size: 13px;">
-						<a style="font-size: 13px; text-decoration: none;"
-							class="con_link" onmouseover="this.style.textDecoration='none';"
-							onmouseout="this.style.textDecoration='none';"
-							href="joinForm">JOIN</a>
-					</div>
-					<div class="w3-col" style="width: 54%; font-size: 13px;">
-						<p>&nbsp;</p>
-					</div>
-					<div class="w3-col w3-text-grey"
-						" style="width: 38%; font-size: 13px;">
-						<a style="font-size: 13px; text-decoration: none;"
-							class="con_link" onmouseover="this.style.textDecoration='none';"
-							onmouseout="this.style.textDecoration='none';" href="forgotForm">forgot
-							ID/PASSWORD?</a>
-					</div>
-				</div>
+
 			</form>
 		</div>
 	</center>
