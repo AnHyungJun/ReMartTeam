@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 <style>
 .uploadimg {
@@ -40,18 +40,19 @@
 			<button id="rightpage" style="float: right" type="button"
 				onclick="plusDivs(1)">이미지)</button>
 		</div>
-		<form action="writePro">
+		<form action="writePro" method="post" enctype="multipart/form-data">
 
 			<div class="mySlides">
 				<br>메인 메뉴 등록<br> 
 				<img align="center" id="blah1"
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
-					alt="your image" width="650" height="400" /><br> <input
+					alt="your image" width="650" height="400" /><br> 
+					<input
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
-					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
-				<br> <input type="text" size="50" height="14" name="feedtitle"
+					onchange="statefile(this);" name="img_name" onfocus="this.blur()">
+				<br> <input type="text" size="50" height="14" name="recipe_name"
 					placeholder="제     목"> <br> <input type="text"
-					size="50" height="14" placeholder="재     료" name="foodmaterial">
+					size="50" height="14" placeholder="재     료" name="content">
 
 			</div>
 			<div class="mySlides">
@@ -59,7 +60,7 @@
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
-					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+					onchange="statefile(this);" name="img_name" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
 					placeholder="내     용" name="content">
 
@@ -69,7 +70,7 @@
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
-					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+					onchange="statefile(this);" name="img_name" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
 					placeholder="내     용" name="content">
 
@@ -79,7 +80,7 @@
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
-					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+					onchange="statefile(this);" name="img_name" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
 					placeholder="내     용" name="content">
 
@@ -89,7 +90,7 @@
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
-					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+					onchange="statefile(this);" name="img_name" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
 					placeholder="내     용" name="content">
 
@@ -99,7 +100,7 @@
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
-					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+					onchange="statefile(this);" name="img_name" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
 					placeholder="내     용" name="content">
 
@@ -109,7 +110,7 @@
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
-					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+					onchange="statefile(this);" name="img_name" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
 					placeholder="내     용" name="content">
 
@@ -119,7 +120,7 @@
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
-					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+					onchange="statefile(this);" name="img_name" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
 					placeholder="내     용" name="content">
 
@@ -129,7 +130,7 @@
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
-					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+					onchange="statefile(this);" name="img_name" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
 					placeholder="내     용" name="content">
 
@@ -139,7 +140,7 @@
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="400" /><br> <input
 					type="file" class="uploadimg" style="left: 350px; top: 200px;"
-					onchange="statefile(this);" name="uploadfile" onfocus="this.blur()">
+					onchange="statefile(this);" name="img_name" onfocus="this.blur()">
 				<br> <input type="text" size="50" height="14"
 					placeholder="내     용" name="content">
 
