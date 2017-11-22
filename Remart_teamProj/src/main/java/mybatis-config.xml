@@ -42,6 +42,7 @@
 		<mapper resource="Writepage.xml" />
 		<mapper resource="Main.xml" />
 		<mapper resource="Shopping.xml" />
+		<mapper resource="Offline.xml" />
 	</mappers>
 
 </configuration>
