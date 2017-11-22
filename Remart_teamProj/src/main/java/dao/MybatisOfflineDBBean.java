@@ -21,7 +21,6 @@ public class MybatisOfflineDBBean extends MybatisConnector{
 		int x = -1;
 		try{
 			String cuPasswd = sqlSession.selectOne(namespace + ".offlineLoginCheck",map);
-			System.out.println(cuPasswd);
 			if(cuPasswd == null)
 				x = -1; //해당아이디 없음
 			else if(cuPasswd.equals(passwd))
@@ -33,6 +32,26 @@ public class MybatisOfflineDBBean extends MybatisConnector{
 			return x;
 		}
 		
+	}
+
+	public int staffLoginCheck(String id, String passwd) {
+		System.out.println("staffLoginCheck:");
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("id", id);
+		int x = -1;
+		try{
+			String cuPasswd = sqlSession.selectOne(namespace + ".staffLoginCheck",map);
+			if(cuPasswd == null)
+				x = -1; //해당아이디 없음
+			else if(cuPasswd.equals(passwd))
+				x = 1; //일치
+			else
+				x = 0; //비밀번호틀림
+		}finally{
+			sqlSession.close();
+			return x;
+		}
 	}
 
 }

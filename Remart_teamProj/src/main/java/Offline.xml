@@ -9,4 +9,10 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 		select password from offline_mart
 		WHERE offline_mart_id = #{id}
 	</select>
+	
+	
+	<select id="staffLoginCheck" parameterType="hashmap" resultType="String">
+		select password from staff
+		WHERE staff_id = #{id}
+	</select>
 </mapper>
