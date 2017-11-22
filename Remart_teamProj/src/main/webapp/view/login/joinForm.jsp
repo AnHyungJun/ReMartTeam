@@ -9,8 +9,8 @@
 .uploadimg {
 	font-size: 7px;
 	position: absolute;
-	height: 300px;
-	width: 300px;
+	height: 150px;
+	width: 150px;
 	opacity: 0;
 	filter: alpha(opacity = 0);
 	-ms-filter: alpha(opacity = 0);
@@ -105,9 +105,9 @@
 
 								<img align="center" id="blah1"
 									src="<%=request.getContextPath()%>/images/icon/noProfile.png"
-									alt="your image" width="50" height="50" class="w3-circle" /><br>
+									alt="your image" width="150" height="150" class="w3-circle" /><br>
 								<br> <input type="file" class="uploadimg"
-									style="left: 850px; top: 350px;" onchange="statefile(this);"
+									style="left: 850px; top: 220px;" onchange="statefile(this);"
 									name="uploadfile" onfocus="this.blur()">
 							</div>
 
