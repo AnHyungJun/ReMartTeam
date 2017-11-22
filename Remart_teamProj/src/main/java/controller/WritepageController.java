@@ -106,7 +106,7 @@ public class WritepageController {
 			 * dbPro.insertMember(member); mv.clear();
 			 */
 		mv.clear();
-		mv.setViewName("writepage/writePro");
+		mv.setViewName("main");
 		return mv;
 	}
 
