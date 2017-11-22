@@ -5,7 +5,7 @@ import java.security.Timestamp;
 
 public class SaleDataBean implements Serializable{
 	int sale_id;
-	String product_id;
+	int product_id;
 	String staff_id;
 	Timestamp s_date;
 	int qty;
@@ -17,10 +17,10 @@ public class SaleDataBean implements Serializable{
 	public void setSale_id(int sale_id) {
 		this.sale_id = sale_id;
 	}
-	public String getProduct_id() {
+	public int getProduct_id() {
 		return product_id;
 	}
-	public void setProduct_id(String product_id) {
+	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
 	}
 	public String getStaff_id() {
