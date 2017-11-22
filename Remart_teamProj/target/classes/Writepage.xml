@@ -4,5 +4,22 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="writepage.mybatis">
 	<cache />
-	
+	<select id="findfk" parameterType="hashmap" resultType="int">
+		select nvl(max(feed_id),0) from feed
+	</select>
+	<select id="findifk" parameterType="hashmap" resultType="int">
+		select nvl(max(img_id),0) from img
+	</select>
+	<insert id="insertNFeed"  parameterType="hashmap">
+		insert into feed
+		(feed_id,id,like_num,reg_date, recipe_name)
+		values
+		(#{number},#{id},0,sysdate,#{feed.recipe_name})
+	</insert>
+	<insert id="insertFeedimg"  parameterType="hashmap">
+		insert into img
+		(img_id,feed_id,image_name,content)
+		values
+		(#{inumber},#{number},#{img_name},#{content})
+	</insert>
 </mapper>

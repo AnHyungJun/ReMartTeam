@@ -2,13 +2,17 @@ package model;
 
 import java.io.Serializable;
 import java.security.Timestamp;
+import java.util.List;
 
 public class FeedDataBean implements Serializable{
 	int feed_id;
 	String id;
 	int like_num;
+	
 	Timestamp reg_date;
 	String recipe_name;
+	List<String> img_name;
+	List<String> content;
 	public int getFeed_id() {
 		return feed_id;
 	}
@@ -38,6 +42,19 @@ public class FeedDataBean implements Serializable{
 	}
 	public void setRecipe_name(String recipe_name) {
 		this.recipe_name = recipe_name;
+	}
+
+	public List getImg_name() {
+		return img_name;
+	}
+	public void setImg_name(List img_name) {
+		this.img_name = img_name;
+	}
+	public List getContent() {
+		return content;
+	}
+	public void setContent(List content) {
+		this.content = content;
 	}
 	@Override
 	public String toString() {
