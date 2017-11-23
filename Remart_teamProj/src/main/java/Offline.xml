@@ -26,4 +26,29 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE staff_id = #{id}
 	</select>
 	
+	<select id="getMart_order_num" resultType="int">
+		select nvl(max(mart_order_id),0) from mart_order
+	</select>
+	
+	<insert id="insertMart_Order"  parameterType="hashmap">
+		insert into mart_order
+		(mart_order_id, re_date, or_date, offline_mart_id,status )
+		values
+		(#{mart_order.mart_order_id},sysdate,
+		#{mart_order.or_date},#{mart_order.offline_mart_id},
+		#{mart_order.status})
+	</insert>
+	
+	<select id="getFood_num_id" resultType="int">
+		select nvl(max(food_num_id),0) from food_num
+	</select>
+	
+	<insert id="insertFood_num"  parameterType="hashmap">
+		insert into food_num
+		(food_num_id, food_id, qty, div, order_id)
+		values
+		(#{food_num_id}, #{food_num.food_id},#{food_num.qty},
+		#{food_num.div},#{food_num.order_id})
+	</insert>
+	
 </mapper>

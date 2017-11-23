@@ -2,6 +2,8 @@ package dao;
 
 import java.util.HashMap;
 
+import model.Food_numDataBean;
+import model.Mart_orderDataBean;
 import model.Offline_martDataBean;
 import model.R_memberDataBean;
 import model.StaffDataBean;
@@ -81,6 +83,46 @@ public class MybatisOfflineDBBean extends MybatisConnector{
 		}finally{
 			sqlSession.close();
 			return staff;
+		}
+	}
+	public int getMart_order_num() {
+		sqlSession = sqlSession();
+		try{
+			return sqlSession.selectOne(namespace+".getMart_order_num");
+		}finally{
+			sqlSession.close();
+			
+		}
+	}
+
+	public void insertMart_Order(Mart_orderDataBean mart_order) {
+		System.out.println("insertMart_Order:");
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("mart_order", mart_order);
+		try{
+			int result = sqlSession.insert(namespace + ".insertMart_Order",map);
+			System.out.println("insert Ok:"+result);
+		}finally{
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	}
+
+	public void insertFood_num(Food_numDataBean food_num) {
+		System.out.println("insertFood_num:");
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("food_num", food_num);
+		try{
+			int food_num_id = sqlSession.selectOne(namespace+".getFood_num_id");
+			food_num_id++;
+			map.put("food_num_id", food_num_id);
+			int result = sqlSession.insert(namespace + ".insertFood_num",map);
+			System.out.println("insert Ok:"+result);
+		}finally{
+			sqlSession.commit();
+			sqlSession.close();
 		}
 	}
 

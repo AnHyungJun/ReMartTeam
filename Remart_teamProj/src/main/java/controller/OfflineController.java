@@ -1,8 +1,12 @@
 package controller;
 
+import java.sql.Timestamp;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import model.Food_numDataBean;
+import model.Mart_orderDataBean;
 import model.Offline_martDataBean;
 import model.R_memberDataBean;
 import model.StaffDataBean;
@@ -78,5 +82,27 @@ public class OfflineController {
 		mv.clear();
 		mv.setViewName("local/suggestclientSearch");
 		return mv;
+	}
+	@RequestMapping(value="product_orderPro")
+	public ModelAndView product_orderPro(Mart_orderDataBean mart_order, String or_date_before,HttpServletRequest request){
+		mart_order.setOr_date(Timestamp.valueOf(or_date_before+" 00:00:00"));
+		mart_order.setStatus("order");
+		int mart_order_num = dbPro.getMart_order_num();
+		mart_order_num ++;
+		mart_order.setMart_order_id(mart_order_num);
+		dbPro.insertMart_Order(mart_order);
+		String[] food_id = request.getParameterValues("food_id");
+		String[] qty = request.getParameterValues("qty");
+		if(food_id != null)
+			for(int i=0; i<food_id.length; i++){
+				Food_numDataBean food_num = new Food_numDataBean();
+				food_num.setFood_id(Integer.parseInt(food_id[i]));
+				food_num.setQty(Integer.parseInt(qty[i]));
+				food_num.setDiv("offline");
+				food_num.setOrder_id(mart_order_num);
+				dbPro.insertFood_num(food_num);
+			}
+		
+		return product_orderForm();
 	}
 }

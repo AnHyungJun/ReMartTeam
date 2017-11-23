@@ -30,7 +30,7 @@ $(function() {
 							buttonImageOnly : true,
 							showButtonPanel : true,
 							closeText : '닫기',
-							dateFormat : "yymmdd",
+							dateFormat : "yy-mm-dd",
 							minDate : +3
 						});
 	});
@@ -139,11 +139,11 @@ function sumsum(){
 				<form method="post" name="product_orderForm"
 					action="<%=request.getContextPath() %>/offline/product_orderPro">
 
-
+					<input type="hidden" name="offline_mart_id" value="${offlineInfo.offline_mart_id }">
 
 					<div class="w3-col" style="width: 60%">
 						<br> 발주계획입력> <br> <br> <br> 입고 일자 <input
-							type="text" id="testDatepicker"> <br> <br> 입고 될
+							type="text" id="testDatepicker" name="or_date_before"> <br> <br> 입고 될
 						곳 <input type="text" id="location"
 							value="${offlineInfo.location }"> <br> <br>
 
