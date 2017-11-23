@@ -16,9 +16,18 @@ public class MainController {
 	MybatisMainDBBean dbPro;
 	
 	@RequestMapping(value="main")
-	public ModelAndView main(){	
+	public ModelAndView main(){
 		mv.clear();
-		mv.setViewName("main");
+		mv.setViewName("main/main");
+		return mv;
+	}
+	@RequestMapping(value="like")
+	public ModelAndView like(String like){	
+		System.out.println(like);
+		
+		mv.clear();
+		mv.addObject("like",like);
+		mv.setViewName("main/like");
 		return mv;
 	}
 }

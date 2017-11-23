@@ -13,7 +13,7 @@
 
 	<jsp-config>
 		<jsp-property-group>
-			<url-pattern>/view/main.jsp</url-pattern>
+			<url-pattern>/view/main/*</url-pattern>
 			<url-pattern>/view/mypage/*</url-pattern>
 			<url-pattern>/view/shopping/*</url-pattern>
 			<url-pattern>/view/tvrecipe/*</url-pattern>

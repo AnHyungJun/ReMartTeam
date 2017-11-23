@@ -22,11 +22,11 @@ public class MybatisOfflineDBBean extends MybatisConnector{
 		try{
 			String cuPasswd = sqlSession.selectOne(namespace + ".offlineLoginCheck",map);
 			if(cuPasswd == null)
-				x = -1; //해당아이디 없음
+				x = -1; 
 			else if(cuPasswd.equals(passwd))
-				x = 1; //일치
+				x = 1; 
 			else
-				x = 0; //비밀번호틀림
+				x = 0; 
 		}finally{
 			sqlSession.close();
 			return x;
@@ -43,11 +43,11 @@ public class MybatisOfflineDBBean extends MybatisConnector{
 		try{
 			String cuPasswd = sqlSession.selectOne(namespace + ".staffLoginCheck",map);
 			if(cuPasswd == null)
-				x = -1; //해당아이디 없음
+				x = -1; 
 			else if(cuPasswd.equals(passwd))
-				x = 1; //일치
+				x = 1;
 			else
-				x = 0; //비밀번호틀림
+				x = 0; 
 		}finally{
 			sqlSession.close();
 			return x;
