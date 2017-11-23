@@ -11,10 +11,7 @@
 <style>
 a {text-decoration: none;cursor:pointer}
 
-img{margin-top: 15px; margin-bottom: 15px;}
-.dropdown_shopping {
-	
-}
+
 
 .dropdown_shopping ul {
 	border-top: 2.5px solid #ccc;
@@ -61,58 +58,14 @@ img{margin-top: 15px; margin-bottom: 15px;}
 
 
 </style>
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function(){
-    $('.__count_range input[count_range]').click(function(e){
-        e.preventDefault();
-        var type = $(this).attr('count_range');
-        var $count = $(this).parent().children('input.count');
-        var count_val = $count.val(); // min 1
-        if(type=='m'){
-            if(count_val<1){
-                return;
-            }
-            $count.val(parseInt(count_val)-1);
-        }else if(type=='p'){
-            $count.val(parseInt(count_val)+1);
-        }
-    });
-});
-
-
-
-function numcheck(val,jaego){
-                      if (val>jaego-1){
-                              alert("재고량이 없습니다")
-                              document.frm.ea.value=jaego}
-                      else if (val<2){
-                              document.frm.ea.value=1        }
-      }
-function up(val,jaego){
-                      if (val>jaego-1){
-                              alert("재고량이 없습니다")
-                              document.frm.ea.value=jaego}
-                      else{
-                              document.frm.ea.value=(val/1)+1}
-}
-                                                       
-function down(val){
-                      if (val<2){
-                              document.frm.ea.value=1}
-                      else{
-                              document.frm.ea.value=val-1}
-}
-
-</script>
 </head>
 <body>
 
 <div style="margin-top: 150px"></div>
 
 <!-- shopping_wrap -->
-<div class="w3-center">
+<center>
 <div class="shopping_wrap">
 	<!-- dropdown_shopping -->
 	<div class="dropdown_shopping" style="width: 900px">
@@ -185,15 +138,25 @@ function down(val){
 
 	<div class="shopping_list" >
 		
-		<c:forEach var="article"  items="${articleList}">
+		<c:forEach var="articleFood"  items="${articleFoodList}">
 		<div class="w3-border" style="width: 25%; height: 350px; float: left; border-collapse : collapse;">
-			<img alt="사진" src="<%=request.getContextPath() %>/images/food/${article.name }.jpg" width="80%" >
-			<h5>${article.name }</h5>
-		ddfd
-		
+			<img alt="사진" src="<%=request.getContextPath() %>/images/food/${articleFood.name }.jpg" width="80%" style="margin-top: 8px;" >
+			<h5>${articleFood.name }</h5>
+			<h4>${articleFood.price }원</h4>
+			<form method="post" name="aa" >
+				<input type="hidden" name="food_id" value="${articleFood.food_id }">
+				<div class="__count_range">
+					<input type="button" value="-" count_range="m" style="width:15% ">
+					<input class="count" value="1" readonly="" name="food_num" style="width: 40%">
+					<input type="button" value="+" count_range="p" style="width: 15%">
+					<input type="button" class="w3-white w3-border w3-border-black" 
+					style="font-size: 16px; width: 50%; margin-top: 8px;" value="장바구니"
+					name="confirm_basket" onclick="openConfirmBasket(this.form)">
+					
+				</div>
+			</form>
 		</div>
 		</c:forEach>
-
 	</div>
 
 	
@@ -244,6 +207,36 @@ function down(val){
 
 
 </div><!-- shopping_wrap end -->
-</div>
+</center>
+
+
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.__count_range input[count_range]').click(function(e){
+        e.preventDefault();
+        var type = $(this).attr('count_range');
+        var $count = $(this).parent().children('input.count');
+        var count_val = $count.val(); // min 1
+        if(type=='m'){
+            if(count_val<1){
+                return;
+            }
+            $count.val(parseInt(count_val)-1);
+        }else if(type=='p'){
+            $count.val(parseInt(count_val)+1);
+        }
+    });
+});
+
+
+function openConfirmBasket(aa) {
+	open("confirmBasket", "confirmbasket", "toolbar = no, location=no, status= no, menubar = no, resizable=no, width = 1000, height = 1000");
+}
+
+</script>
+
+
 </body>
 </html>
