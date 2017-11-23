@@ -72,13 +72,13 @@ body, h1, h2, h3, h4, h5, h6 {
 
 					<div class="w3-bar-item" style="height: 135px">
 						<div class="w3-row">
-							<div class="w3-col" style="width: 20%">
+							<div class="w3-col w3-center" style="width: 20%">
 								<a href="<%=request.getContextPath()%>/main/main"><img
 									alt="로고"
 									src="<%=request.getContextPath()%>/images/icon/logo.png"
 									width="100px"></a>
 							</div>
-							<div class="w3-col" style="width: 60%">
+							<div class="w3-col" style="width: 50%">
 								<div class="w3-bar-block w3-center">
 									<div class="w3-bar-item w3-margin-top" style="height: 40px;">
 										<input type="text" style="width: 300px;">
@@ -110,8 +110,18 @@ body, h1, h2, h3, h4, h5, h6 {
 									</div>
 								</div>
 							</div>
-							<div class="w3-col" style="width: 20%">
-								<p>&nbsp;</p>
+							<div class="w3-col" style="width: 30%;">
+								<div class="w3-bar-block">
+									<div class="w3-bar-item" style="height: 30px;">&nbsp;</div>
+									<div class="w3-bar-item w3-center" style="height: 50px;">
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<a href="<%=request.getContextPath()%>/shopping/shoppingMain"><img
+											alt="로고"
+											src="<%=request.getContextPath()%>/images/icon/foodmall.png"
+											width="130px"></a>
+									</div>
+									<div class="w3-bar-item" style="height: 20px;">&nbsp;</div>
+								</div>
 							</div>
 						</div>
 					</div>
