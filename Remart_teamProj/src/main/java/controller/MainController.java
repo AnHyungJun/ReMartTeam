@@ -33,7 +33,7 @@ public class MainController {
 	@RequestMapping(value="getFeed")
 	public ModelAndView getFeed(){
 		mv.clear();
-		mv.setViewName("main/feed");
+		mv.setViewName("local/feed");
 		return mv;
 	}
 }
