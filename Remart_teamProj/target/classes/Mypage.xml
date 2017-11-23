@@ -4,5 +4,20 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mypage.mybatis">
 	<cache />
+	<select id="pagea" parameterType="hashmap" resultType="R_member">
+	select id,name,phone,grade,point,use_like,sex,profileimg,(select count(*) from feed e where e.id=#{id}) writenum, 
+	(select count(*) from follow z where z.my_id=#{id}) follownum 
+ 	from r_member where id=#{id}
+	</select>
 	
+	
+	<select id="getfeedlist" parameterType="hashmap" resultType="feed">
+		select * from feed where id=#{id} order by reg_date desc
+	</select>
+	<select id="getImg_name" parameterType="hashmap" resultType="String">
+		select image_name from img where feed_id=#{feed_id} order by img_id
+	</select>
+	<select id="getContent" parameterType="hashmap" resultType="String">
+		select content from img where feed_id=#{feed_id} order by img_id
+	</select>
 </mapper>

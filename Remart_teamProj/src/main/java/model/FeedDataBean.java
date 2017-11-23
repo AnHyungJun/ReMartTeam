@@ -8,11 +8,18 @@ public class FeedDataBean implements Serializable{
 	int feed_id;
 	String id;
 	int like_num;
-	
+	String preImg;
 	Timestamp reg_date;
 	String recipe_name;
 	List<String> img_name;
 	List<String> content;
+	public String getPreImg() {
+		return preImg;
+	}
+	public void setPreImg(String preImg) {
+		this.preImg = preImg;
+	}
+	
 	public int getFeed_id() {
 		return feed_id;
 	}

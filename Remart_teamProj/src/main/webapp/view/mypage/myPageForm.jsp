@@ -1,29 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<title>REMART</title>
+<title>follow form</title>
 </head>
 <body>
 	<div style="margin-top: 140px"></div>
 	<div class="w3-container w3-border-bottom">
 		<div class="w3-left-align"
 			style="float: left; margin-bottom: 20px; margin-top: 20px;">
-			<h3>${memberInfo.id }´Ô</h3>
+			<h3>${member.id}ë‹˜ì˜í”„ë¡œí•„</h3>
 		</div>
 		<div class="w3-right-align"
 			style="float: right; margin-bottom: 20px; margin-top: 20px;">
 
-			<a href="<%=request.getContextPath() %>/mypage/likeForm"><img
+			<a
+				href="<%=request.getContextPath() %>/mypage/likeForm?id=${member.id}"><img
 				class="w3-right-align"
 				src="<%=request.getContextPath()%>/images/icon/like_before.png"
-				style="width: 50px; height: 50px; margin: 3px"></a> 
+				style="width: 50px; height: 50px; margin: 3px"></a> <a
+				href="<%=request.getContextPath() %>/mypage/bookmarkForm?id=${member.id}"><img
+				class="w3-right-align"
+				src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+				style="width: 50px; height: 50px; margin: 3px"></a>
+			<!-- ì´ë¶€ë¶„ì€ íŒ”ë¡œìš°  -->
 			<a
-				href="<%=request.getContextPath() %>/mypage/bookmarkForm"><img
+				href="<%=request.getContextPath() %>/mypage/bookmarkForm?id=${member.id}"><img
 				class="w3-right-align"
 				src="<%=request.getContextPath()%>/images/icon/bookmark.png"
 				style="width: 50px; height: 50px; margin: 3px"></a>
@@ -33,37 +41,47 @@
 		<div class="w3-display-topleft"></div>
 		<div class="w3-display-topright"></div>
 		<div class="w3-display-bottomleft w3-center" style="margin-left: 5%;">
-			<h4>${memberInfo.info }</h4>
+			<h4>${member.name }</h4>
 		</div>
 		<div class="w3-display-bottomright"></div>
 		<div class="w3-display-left">
 			<div style="float: left; margin: 30px; margin-left: 30%;">
 				<img
-					src="<%=request.getContextPath()%>/fileSave/${memberInfo.profileImg}"
+					src="<%=request.getContextPath()%>/fileSave/${member.profileImg}"
 					class="w3-circle" alt="Norway" style="width: 200px; height: 200px">
 			</div>
 		</div>
-		<div class="w3-display-right " style="margin-right: 10%;">
-			<button class="w3-button w3-white w3-border" style="width: 200px;">
-				<h4>È¸¿ø Á¤º¸ ¼öÁ¤</h4>
-			</button>
-		</div>
+		<!-- ìê¸° ì•„ì´ë””ë©´ ì •ë³´ ìˆ˜ì • ì•„ë‹ˆë©´ íŒ”ë¡œìš° -->
+		<c:if test="${checkpage==0}">
+			<div class="w3-display-right " style="margin-right: 10%;">
+				<button class="w3-button w3-white w3-border" style="width: 200px;">
+					<h4>íšŒì› ì •ë³´ ìˆ˜ì •</h4>
+				</button>
+			</div>
+		</c:if>
+		<c:if test="${checkpage==1}">
+			<div class="w3-display-right " style="margin-right: 10%;">
+				<button class="w3-button w3-white w3-border" style="width: 200px;">
+					<h4>íŒ”ë¡œìš° í•˜ê¸°</h4>
+				</button>
+			</div>
+		</c:if>
 		<div class="w3-display-middle">
 
 			<div style="float: left; margin: 30px;">
-				<h3>118</h3>
+				<h3>${member.writenum}</h3>
 				<br>
-				<h3>°Ô½Ã¹°</h3>
+				<h3>ê²Œì‹œë¬¼</h3>
 			</div>
 			<div style="float: left; margin: 30px;">
-				<h3>307</h3>
+				<h3>${member.follownum}</h3>
 				<br>
-				<h3>ÆÈ·Î¿ì</h3>
+				<h3>íŒ”ë¡œìš°</h3>
 			</div>
 			<div style="float: left; margin: 30px;">
-				<h3>5500¿ø</h3>
+				<h3>${member.point}</h3>
 				<br>
-				<h3>Àû¸³±İ</h3>
+				<h3>ì ë¦½ê¸ˆ</h3>
 			</div>
 		</div>
 		<div class="w3-display-topmiddle"></div>
@@ -73,30 +91,36 @@
 	<div class="w3-container">
 		<div>
 			<br>
-			<h4>> ¸¶ÀÌÆäÀÌÁö</h4>
+			<h4>ë§ˆì´í˜ì´ì§€</h4>
 			<br> <br>
 		</div>
+		<c:if test="${fn:length(feedlist) != 0}">
 
-		<c:forEach var="k" begin="1" end="5">
-			<c:if test="${k % 3 == 1}">
-				<div class="w3-container" style="margin-bottom: 10px">
-			</c:if>
-			
-			
-			<div class="w3-container"
-				style="float: left; width: 33%; height: 300px">
-				
-				<div class="w3-center">
-					<img src="<%=request.getContextPath()%>/images/temp/temp1.JPG"
-						style="width: 300px; height: 300px">
+			<c:forEach var="list" items="${feedlist}" varStatus="status">
+				<%-- <c:if test="${status.count % 3 == 1}">
+					<div class="w3-container" style="margin-bottom: 10px;border: solid 4px;"/>
+				</c:if> --%>
+				<div class="w3-container"
+					style="float: left; width: 33%; height: 300px">
+
+					<div class="w3-center">
+						<img src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
+							style="width: 300px; height: 300px">
+					</div>
+
 				</div>
+			</c:forEach>
+		</c:if>
+		<c:if test="${fn:length(feedlist) == 0}">
+			<br>
+			<br>
+			<h1>ì•„ì§ ì“´ ê¸€ì´ ì—†ìŠµë‹ˆë‹¤.</h1>
+			<br>
+		</c:if>
 
-			</div>
-
-			<c:if test="${k % 3 == 0}">
 	</div>
-	</c:if>
-	</c:forEach>
+
+
 
 
 
