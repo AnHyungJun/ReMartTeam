@@ -73,7 +73,7 @@ body, h1, h2, h3, h4, h5, h6 {
 
 					<div class="w3-bar-item" style="height: 135px">
 						<div class="w3-row">
-							<div class="w3-col w3-center" style="width: 20%">
+							<div class="w3-col w3-left" style="width: 20%">
 								<a href="<%=request.getContextPath()%>/main/main"><img
 									alt="로고"
 									src="<%=request.getContextPath()%>/images/icon/logo.png"
