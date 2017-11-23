@@ -13,6 +13,13 @@ public class FeedDataBean implements Serializable{
 	String recipe_name;
 	List<String> img_name;
 	List<String> content;
+	List replelist;
+	public List getReplelist() {
+		return replelist;
+	}
+	public void setReplelist(List replelist) {
+		this.replelist = replelist;
+	}
 	public String getPreImg() {
 		return preImg;
 	}
@@ -65,10 +72,10 @@ public class FeedDataBean implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "FeedDataBean [feed_id=" + feed_id + ", id=" + id
-				+ ", like_num=" + like_num + ", reg_date=" + reg_date
-				+ ", recipe_name=" + recipe_name
-				+ "]";
+		return  feed_id + "," + id
+				+ "," + like_num + "," + reg_date
+				+ "," + recipe_name
+				;
 	}
 	
 	

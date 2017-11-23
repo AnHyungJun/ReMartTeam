@@ -41,9 +41,9 @@ public class RepleDataBean implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "RepleDataBean [reple_id=" + reple_id + ", feed_id=" + feed_id
-				+ ", id=" + id + ", content=" + content + ", reg_date="
-				+ reg_date + "]";
+		return reple_id + "," + feed_id
+				+ "," + id + "," + content + ","
+				+ reg_date;
 	}
 	
 	
