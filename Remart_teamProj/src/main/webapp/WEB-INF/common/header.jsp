@@ -45,22 +45,22 @@ body, h1, h2, h3, h4, h5, h6 {
 								style="font-size: 12px; text-decoration: none;" class="con_link"
 								onmouseover="this.style.textDecoration='none';"
 								onmouseout="this.style.textDecoration='none';">로그인</a>
+								| <a href="<%=request.getContextPath()%>/login/joinForm"
+								style="font-size: 12px; text-decoration: none;" class="con_link"
+								onmouseover="this.style.textDecoration='none';"
+								onmouseout="this.style.textDecoration='none';">회원가입</a>
 						</c:if>
 						<c:if test="${!empty memberInfo }">
 							<a href="<%=request.getContextPath()%>/login/loginOut"
 								style="font-size: 12px; text-decoration: none;" class="con_link"
 								onmouseover="this.style.textDecoration='none';"
 								onmouseout="this.style.textDecoration='none';">로그아웃</a>
+								| <a href="<%=request.getContextPath()%>/mypage/myPageForm?id=${memberInfo.id}"
+								style="font-size: 12px; text-decoration: none;" class="con_link"
+								onmouseover="this.style.textDecoration='none';"
+								onmouseout="this.style.textDecoration='none';">마이페이지</a>
 						</c:if>
-						| <a href="<%=request.getContextPath()%>/login/joinForm"
-							style="font-size: 12px; text-decoration: none;" class="con_link"
-							onmouseover="this.style.textDecoration='none';"
-							onmouseout="this.style.textDecoration='none';">회원가입</a> | <a
-							href="<%=request.getContextPath()%>/mypage/myPageForm"
-							style="font-size: 12px; text-decoration: none;" class="con_link"
-							onmouseover="this.style.textDecoration='none';"
-							onmouseout="this.style.textDecoration='none';">마이페이지</a> | <a
-							href="<%=request.getContextPath()%>/shopping/shoppingMain"
+						| <a href="<%=request.getContextPath()%>/shopping/shoppingMain"
 							style="font-size: 12px; text-decoration: none;" class="con_link"
 							onmouseover="this.style.textDecoration='none';"
 							onmouseout="this.style.textDecoration='none';">쇼핑몰</a> | <a
@@ -114,8 +114,8 @@ body, h1, h2, h3, h4, h5, h6 {
 								<div class="w3-bar-block">
 									<div class="w3-bar-item" style="height: 30px;">&nbsp;</div>
 									<div class="w3-bar-item w3-center" style="height: 50px;">
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<a href="<%=request.getContextPath()%>/shopping/shoppingMain"><img
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+											href="<%=request.getContextPath()%>/shopping/shoppingMain"><img
 											alt="로고"
 											src="<%=request.getContextPath()%>/images/icon/foodmall.png"
 											width="130px"></a>
