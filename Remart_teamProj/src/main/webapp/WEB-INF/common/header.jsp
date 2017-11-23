@@ -116,7 +116,7 @@ body, h1, h2, h3, h4, h5, h6 {
 									<div class="w3-bar-item" style="height: 30px;">&nbsp;</div>
 									<div class="w3-bar-item w3-center" style="height: 50px;">
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;
 										<a
 											href="<%=request.getContextPath()%>/shopping/shoppingMain"><img
 											alt="로고"
