@@ -11,9 +11,9 @@
 	position: absolute;
 	height: 150px;
 	width: 150px;
-	/* opacity: 0;
+	opacity: 0;
 	filter: alpha(opacity = 0);
-	-ms-filter: alpha(opacity = 0); */
+	-ms-filter: alpha(opacity = 0);
 	cursor: pointer;
 }
 </style>

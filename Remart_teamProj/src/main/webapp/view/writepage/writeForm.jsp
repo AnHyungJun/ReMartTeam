@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<title>Insert title here</title>
+<title>WRITE</title>
 <style>
 .uploadimg {
 	font-size: 7px;
@@ -32,7 +32,7 @@
 
 <center>
 
-<div class="w3-bar w3-red" style="width: 700px;">
+<div class="w3-bar" style="width: 700px;">
 	<!-- 글쓰기 head -->
 		
 
