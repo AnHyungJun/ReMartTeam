@@ -41,7 +41,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>REMART</title>
 </head>
 <body>
 	<div style="margin-top: 100px"></div>

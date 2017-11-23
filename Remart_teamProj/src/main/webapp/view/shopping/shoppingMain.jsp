@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<title>Insert title here</title>
+<title>REMART</title>
 <style>
 a {text-decoration: none;cursor:pointer}
 

@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<title>follow form</title>
+<title>REMART</title>
 </head>
 <body>
 	<div style="margin-top: 100px"></div>

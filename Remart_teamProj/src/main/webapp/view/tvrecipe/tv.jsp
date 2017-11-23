@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>TV레시피</title>
+<title>REMART</title>
 </head>
 <body>
 	<div style="margin-top: 180px"></div>
