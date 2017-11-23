@@ -1,7 +1,7 @@
 package model;
 
 import java.io.Serializable;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class SaleDataBean implements Serializable{
 	int sale_id;

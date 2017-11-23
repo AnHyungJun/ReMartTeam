@@ -1,7 +1,7 @@
 package model;
 
 import java.io.Serializable;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class RepleDataBean implements Serializable{
 	int reple_id;

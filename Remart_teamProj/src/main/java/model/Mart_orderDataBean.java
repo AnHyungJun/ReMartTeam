@@ -1,7 +1,7 @@
 package model;
 
 import java.io.Serializable;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class Mart_orderDataBean implements Serializable{
 	int mart_order_id;

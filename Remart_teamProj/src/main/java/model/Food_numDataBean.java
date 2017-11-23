@@ -1,6 +1,8 @@
 package model;
 
-public class Food_numDataBean {
+import java.io.Serializable;
+
+public class Food_numDataBean implements Serializable{
 	int food_num_id;
 	int food_id;
 	int qty;
