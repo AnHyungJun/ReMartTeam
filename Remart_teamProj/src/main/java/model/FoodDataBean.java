@@ -7,7 +7,7 @@ public class FoodDataBean implements Serializable{
    private int food_id;
    private String category_id;
    private String name;
-   private String price;
+   private int price;
    private int qty;
    private String category_name;
    private String category_group;
@@ -36,11 +36,11 @@ public class FoodDataBean implements Serializable{
       this.name = name;
    }
    
-   public String getPrice() {
+   public int getPrice() {
       return price;
    }
    
-   public void setPrice(String price) {
+   public void setPrice(int price) {
       this.price = price;
    }
    
@@ -67,6 +67,11 @@ public class FoodDataBean implements Serializable{
    public void setCategory_group(String category_group) {
       this.category_group = category_group;
    }
-   
+	
+	@Override
+	public String toString() {
+		return  food_id + "," + name + "," + price;
+	}
+	   
    
 }

@@ -15,4 +15,15 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 		select password from staff
 		WHERE staff_id = #{id}
 	</select>
+	
+	<select id="getOfflineInfo" parameterType="hashmap" resultType="offline_mart">
+		select * from offline_mart
+		WHERE offline_mart_id = #{id}
+	</select>
+	
+	<select id="getStaffInfo" parameterType="hashmap" resultType="staff">
+		select * from staff
+		WHERE staff_id = #{id}
+	</select>
+	
 </mapper>
