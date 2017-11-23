@@ -30,4 +30,10 @@ public class MainController {
 		mv.setViewName("main/like");
 		return mv;
 	}
+	@RequestMapping(value="getFeed")
+	public ModelAndView getFeed(){
+		mv.clear();
+		mv.setViewName("main/feed");
+		return mv;
+	}
 }

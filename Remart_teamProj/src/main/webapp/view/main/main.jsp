@@ -93,6 +93,31 @@
 			}
 		}
 	}
+	// Add contents for max height
+	$(document).ready(function() {
+		$(document).scroll(function() {
+			var maxHeight = $(document).height();
+			var currentScroll = $(window).scrollTop() + $(window).height();
+
+			if (maxHeight <= currentScroll + 100) {
+				getFeed();
+			}
+		})
+	});
+	function getFeed() {
+		var test = "bookmark";
+		var params = "like=" + encodeURIComponent(test);
+		sendRequest("/Remart_teamProj/main/getFeed", params, return_getFeed, "GET");
+
+	}
+	function return_getFeed() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				document.getElementById("feed").innerHTML += httpRequest.responseText;
+			}
+		}
+	}
+	
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
@@ -155,110 +180,94 @@
 	</script>
 
 
-	<div class="w3-twothird" id="feed">
+	<div class="w3-twothird" >
+		<div id="feed" style="left: 30%; position: relative;">
+			<c:forEach var="i" begin="1" end="18" step="1">
+				<div style="float: left; width: 300px">
+					<div class="w3-card-4">
+						<div class="w3-display-container" style="height: 230">
+							<img
+								src="<%=request.getContextPath()%>/images/icon/noProfile.png"
+								style="width: 25px; height: 25px"><b>이재연</b> <img
+								src="<%=request.getContextPath()%>/images/temp/감자볶음4.JPG"
+								style="width: 300px; height: 200px">
+						</div>
+						<div style="width: 300px">
+							<div class="w3-container w3-white">
+								<c:if test="${likely_bookmark!=null }">
 
+								</c:if>
+								<label id="like"> <img onclick="like()"
+									src="<%=request.getContextPath()%>/images/icon/like_before.png"
+									style="height: 20px; cursor: pointer;"></label> <img
+									src="<%=request.getContextPath()%>/images/icon/comment.png"
+									style="height: 20px; cursor: pointer;"> <img
+									onclick="bookmark()"
+									src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+									style="height: 20px; cursor: pointer; position: relative; left: 80%">
+							</div>
 
-		<div style="float: left; width: 300px">
-			<div class="w3-card-4">
-				<div class="w3-display-container" style="height: 230">
-					<img src="<%=request.getContextPath()%>/images/icon/noProfile.png"
-						style="width: 25px; height: 25px"><b>이재연</b> <img
-						src="<%=request.getContextPath()%>/images/temp/감자볶음4.JPG"
-						style="width: 300px; height: 200px">
-				</div>
-				<div style="width: 300px">
-					<div class="w3-container w3-white">
-						<c:if test="${likely_bookmark!=null }">
-
-						</c:if>
-						<label id="like"> <img onclick="like()"
-							src="<%=request.getContextPath()%>/images/icon/like_before.png"
-							style="height: 20px; cursor: pointer;"></label> <img
-							src="<%=request.getContextPath()%>/images/icon/comment.png"
-							style="height: 20px; cursor: pointer;"> <img
-							onclick="bookmark()"
-							src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-							style="height: 20px; cursor: pointer; position: relative; left: 80%">
+							<div class="w3-container w3-light-grey"
+								style="height: 200px; cursor: pointer"
+								onclick="document.getElementById('userplant').style.display='block'">
+								<p>좋아요 100개</p>
+								<p>#자취생#감자</p>
+								<p>맛있는 감자볶음</p>
+								<p>
+									유저1:댓글<br> 유저2:댓글
+								</p>
+							</div>
+						</div>
 					</div>
-
-					<div class="w3-container w3-light-grey"
-						style="height: 200px; cursor: pointer"
-						onclick="document.getElementById('userplant').style.display='block'">
-						<p>좋아요 100개</p>
-						<p>#자취생#감자</p>
-						<p>맛있는 감자볶음</p>
-						<p>
-							유저1:댓글<br> 유저2:댓글
-						</p>
-					</div>
 				</div>
-			</div>
+			</c:forEach>
 		</div>
-
-
+		<div id="test"></div>
 	</div>
 
 
-	<div id="test"></div>
-	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$(window).scroll(function() {
-				var scrollHeight = $(window).scrollTop() + $(window).height();
-				var documentHeight = $(document).height();
-				if (scrollHeight == documentHeight) {
-					for (var i = 0; i < 10; i++) {
-						$('<h4>scroll test</h4>').appendTo('#test');
-					}
-				}
-			});
-
-		});
-
-		/* var page = 1;
-		$(window)
-				.scroll(
-						function() {
-							if ($(window).scrollTop() == $(document).height()
-									- $(window).height()) {
-								console.log(++page);
-								$("#test")
-										.append(
-												"<h1>Page "
-														+ page
-														+ "</h1><BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~<BR/>So<BR/>MANY<BR/>BRS<BR/>YEAHHH~");
-							}
-						}); */
-	</script>
 
 </body>
+
+
 <div id="userplant" class="w3-modal">
 	<div class="w3-modal-content w3-card-4 w3-animate-zoom"
-		style="max-width: 600px">
+		style="max-width: 300px">
 		<div class="w3-center">
-			<br>
-			<p class="w3-center">현재 키우고 계신 작물을 선택해 주세요.</p>
 			<span
 				onclick="document.getElementById('userplant').style.display='none'"
 				class="w3-button w3-xlarge w3-transparent w3-display-topright"
 				title="Close Modal">×</span> <br>
 		</div>
+		<div class="w3-display-container" style="height: 230">
+			<img src="<%=request.getContextPath()%>/images/icon/noProfile.png"
+				style="width: 25px; height: 25px"><b>이재연</b> <img
+				src="<%=request.getContextPath()%>/images/temp/감자볶음4.JPG"
+				style="width: 300px; height: 200px">
+		</div>
+		<div style="width: 300px">
+			<div class="w3-container w3-white">
+				<c:if test="${likely_bookmark!=null }">
 
-		<div class="w3-container"
-			style="overflow-x: hidden; overflow: auto; width: 100%; max-height: 400px;">
+				</c:if>
+				<label id="like"> <img onclick="like()"
+					src="<%=request.getContextPath()%>/images/icon/like_before.png"
+					style="height: 20px; cursor: pointer;"></label> <img
+					src="<%=request.getContextPath()%>/images/icon/comment.png"
+					style="height: 20px; cursor: pointer;"> <img
+					onclick="bookmark()"
+					src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+					style="height: 20px; cursor: pointer; position: relative; left: 80%">
+			</div>
 
-			<ul class="w3-ul w3-card-4">
-				<c:forEach var="pn" items="${allPlant }">
-					<li class="w3-bar w3-hover-gray" onclick="userplantPro('${pn }')">
-						<img src="/soloP/images/${pn }.jpg" class="w3-left"
-						style="width: 100px; height: 100px;">
-						<div class="w3-bar-item">
-							<p class="w3-xlarge">${pn }</p>
-						</div>
-					</li>
-				</c:forEach>
-
-			</ul>
+			<div class="w3-container w3-light-grey" style="height: 200px;">
+				<p>좋아요 100개</p>
+				<p>#자취생#감자</p>
+				<p>맛있는 감자볶음</p>
+				<p>
+					유저1:댓글<br> 유저2:댓글
+				</p>
+			</div>
 		</div>
 		<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
 
