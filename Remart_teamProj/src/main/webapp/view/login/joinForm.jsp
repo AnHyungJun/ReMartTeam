@@ -2,7 +2,7 @@
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
-<title>회원가입</title>
+<title>JOIN</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
