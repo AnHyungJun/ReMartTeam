@@ -85,18 +85,18 @@ body, h1, h2, h3, h4, h5, h6 {
 										<input type="text" style="width: 300px;">
 									</div>
 									<div class="w3-bar-item" style="height: 100px;">
-										<a href="#" style="font-size: 12px; text-decoration: none;"
+										<a href="#" style="font-size: 13px; text-decoration: none;"
 											class="con_link w3-button w3-hover-white"
 											onmouseover="this.style.textDecoration='none';"
 											onmouseout="this.style.textDecoration='none';">EDITOR
 											RECOMMAND</a> <a href="<%=request.getContextPath()%>/tvrecipe/tv"
-											style="font-size: 12px; text-decoration: none;"
+											style="font-size: 13px; text-decoration: none;"
 											class="con_link w3-button w3-hover-white"
 											onmouseover="this.style.textDecoration='none';"
 											onmouseout="this.style.textDecoration='none';">TV RECIPE</a>
 										<c:if test="${!empty memberInfo }">
 											<a href="<%=request.getContextPath()%>/writepage/writeForm"
-												style="font-size: 12px; text-decoration: none;"
+												style="font-size: 13px; text-decoration: none;"
 												class="con_link w3-button w3-hover-white"
 												onmouseover="this.style.textDecoration='none';"
 												onmouseout="this.style.textDecoration='none';">WRITE</a>
