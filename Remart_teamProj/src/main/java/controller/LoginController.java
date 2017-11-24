@@ -92,7 +92,7 @@ public class LoginController {
 	public ModelAndView loginOut(HttpSession session){	
 		session.invalidate();
 		
-		mv.setViewName("/main");
+		mv.setViewName("login/loginOutPro");
 		return mv;
 	}
 }
