@@ -50,10 +50,10 @@
 					onclick="plusDivs(1)">다음</button>
 			</div>
 			<!-- 글쓰기 head 끝 -->
-
+	<form action="writePro" method="post" enctype="multipart/form-data">
 			<!-- 글쓰기 body -->
 			<div class="">
-				<form action="writePro" method="post" enctype="multipart/form-data">
+				
 					<div class="mySlides">
 						<div class="w3-col w3-center"
 							style="width: 650px; font-size: 12px;">
@@ -63,7 +63,7 @@
 						<br> <br> <img align="center" id="blah1"
 							src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 							alt="your image" width="650" height="365" /><br> <input
-							type="file" class="uploadimg" style="left: 200px; top: 200px;"
+							type="file" class="uploadimg" style="left: 350px; top: 300px; border: solid 5px;"
 							onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
 
 						<br>
@@ -85,7 +85,7 @@
 						<br> <br> <img align="center" id="blah2"
 							src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 							alt="your image" width="650" height="365" /><br> <input
-							type="file" class="uploadimg" style="left: 200px; top: 200px;"
+							type="file" class="uploadimg" style="left: 350px; top: 300px;"
 							onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
 						<br>
 						<div class="w3-left">
@@ -103,7 +103,7 @@
 						<br> <br> <img align="center" id="blah3"
 							src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 							alt="your image" width="650" height="365" /><br> <input
-							type="file" class="uploadimg" style="left: 200px; top: 200px;"
+							type="file" class="uploadimg" style="left: 350px; top: 300px;"
 							onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
 						<br>
 						<div class="w3-left">
@@ -120,7 +120,7 @@
 				<br> <br> <img align="center" id="blah4"
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="365" /><br> <input
-					type="file" class="uploadimg" style="left: 200px; top: 200px;"
+					type="file" class="uploadimg" style="left: 350px; top: 300px;"
 					onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
 				<br>
 				<div class="w3-left">
@@ -138,7 +138,7 @@
 				<br> <br> <img align="center" id="blah5"
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="365" /><br> <input
-					type="file" class="uploadimg" style="left: 200px; top: 200px;"
+					type="file" class="uploadimg" style="left: 350px; top: 300px;"
 					onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
 				<br>
 				<div class="w3-left">
@@ -155,7 +155,7 @@
 				<br> <br> <img align="center" id="blah6"
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="365" /><br> <input
-					type="file" class="uploadimg" style="left: 200px; top: 200px;"
+					type="file" class="uploadimg" style="left: 350px; top: 300px;"
 					onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
 				<br>
 				<div class="w3-left">
@@ -172,7 +172,7 @@
 				<br> <br> <img align="center" id="blah7"
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="365" /><br> <input
-					type="file" class="uploadimg" style="left: 200px; top: 200px;"
+					type="file" class="uploadimg" style="left: 350px; top: 300px;"
 					onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
 					<br>
 				<div class="w3-left">
@@ -189,7 +189,7 @@
 				<br> <br> <img align="center" id="blah8"
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="365" /><br> <input
-					type="file" class="uploadimg" style="left: 200px; top: 200px;"
+					type="file" class="uploadimg" style="left: 350px; top: 300px;"
 					onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
 				<br>
 				<div class="w3-left">
@@ -206,7 +206,7 @@
 				<br> <br> <img align="center" id="blah9"
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="365" /><br> <input
-					type="file" class="uploadimg" style="left: 200px; top: 200px;"
+					type="file" class="uploadimg" style="left: 350px; top: 300px;"
 					onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
 				<br>
 				<div class="w3-left">
@@ -223,7 +223,7 @@
 				<br> <br> <img align="center" id="blah10"
 					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 					alt="your image" width="650" height="365" /><br> <input
-					type="file" class="uploadimg" style="left: 200px; top: 200px;"
+					type="file" class="uploadimg" style="left: 350px; top: 300px;"
 					onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
 				<br>
 				<div class="w3-left">
@@ -233,7 +233,7 @@
 						</div>
 					</div>
 
-			</form>
+			
 		</div>
 		</div>
 		<div style="width: 650px;">
@@ -263,6 +263,7 @@
 			<input type="submit" value="작성" style="font-size: 12px;"
 				class="w3-button w3-border w3-white w3-hover-black">
 		</div>
+		</form>
 		<br> <br>
 	</center>
 

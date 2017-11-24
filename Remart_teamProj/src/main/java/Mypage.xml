@@ -15,10 +15,10 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		select feed_id,id,like_num,reg_date,recipe_name from feed where id=#{id} order by reg_date desc
 	</select>
 	<select id="getImg_name" parameterType="hashmap" resultType="String">
-		select image_name from img where feed_id=#{feed_id} order by img_id
+		select image_name from img where feed_id=#{feed_id} order by img_id 
 	</select>
 	<select id="getContent" parameterType="hashmap" resultType="String">
-		select content from img where feed_id=#{feed_id} order by img_id
+		select content from img where feed_id=#{feed_id} order by img_id 
 	</select>
 	<select id="feedreple" parameterType="hashmap" resultType="reple">
 		select * from reple where feed_id=#{feed_id} order by reg_date desc

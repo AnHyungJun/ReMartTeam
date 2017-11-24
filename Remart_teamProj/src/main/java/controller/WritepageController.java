@@ -86,9 +86,6 @@ public class WritepageController {
 				feed.getContent().remove(i);
 			}
 		}
-		Collections.reverse(feed.getImg_name());
-		Collections.reverse(feed.getContent());
-		System.out.println(feed.getRecipe_name());
 		if (r_member.getGrade().equals("nomal"))
 			dbPro.insertNFeed(feed, r_member.getId());
 		else
@@ -106,7 +103,7 @@ public class WritepageController {
 			 * dbPro.insertMember(member); mv.clear();
 			 */
 		mv.clear();
-		mv.setViewName("main");
+		mv.setViewName("main/main");
 		return mv;
 	}
 
