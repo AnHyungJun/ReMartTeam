@@ -1,7 +1,7 @@
 package model;
 
 import java.io.Serializable;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.List;
 
 public class FeedDataBean implements Serializable{
@@ -13,7 +13,7 @@ public class FeedDataBean implements Serializable{
 	String recipe_name;
 	List<String> img_name;
 	List<String> content;
-	List replelist;
+	List<RepleDataBean> replelist;
 	public List getReplelist() {
 		return replelist;
 	}
@@ -35,6 +35,9 @@ public class FeedDataBean implements Serializable{
 	}
 	public String getId() {
 		return id;
+	}
+	public String getLast() {
+		return img_name.get(img_name.size()-1);
 	}
 	public void setId(String id) {
 		this.id = id;
@@ -72,11 +75,13 @@ public class FeedDataBean implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return  feed_id + "," + id
-				+ "," + like_num + "," + reg_date
-				+ "," + recipe_name
-				;
+		return "FeedDataBean [feed_id=" + feed_id + ", id=" + id
+				+ ", like_num=" + like_num + ", preImg=" + preImg
+				+ ", reg_date=" + reg_date + ", recipe_name=" + recipe_name
+				+ ", img_name=" + img_name + ", content=" + content
+				+ ", replelist=" + replelist + "]";
 	}
+
 	
 	
 	

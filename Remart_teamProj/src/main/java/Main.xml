@@ -5,5 +5,17 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="main.mybatis">
 	<cache />
+		<select id="getfeeds" resultType="feed">
+		select * from feed order by reg_date desc
+	</select>
+	<select id="getImg_name" parameterType="int" resultType="String">
+		select image_name from img where feed_id=#{feed_id} order by img_id
+	</select>
+	<select id="getContent" parameterType="int" resultType="String">
+		select content from img where feed_id=#{feed_id} order by img_id
+	</select>
 	
+	<select id="getLikeList" parameterType="String" resultType="likely_bookmark">
+		select * from likely_bookmark where id=#{id}
+	</select>
 </mapper>

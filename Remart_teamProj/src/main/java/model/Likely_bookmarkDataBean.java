@@ -33,10 +33,9 @@ public class Likely_bookmarkDataBean implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "likely_bookmarkDataBean [likely_bookmark_id="
-				+ likely_bookmark_id + ", id=" + id + ", feed_id=" + feed_id
-				+ ", type=" + type + "]";
+		return "("+feed_id+")"+type;
 	}
+	
 	
 	
 }

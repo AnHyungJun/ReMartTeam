@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -94,7 +95,7 @@
 		}
 	}
 	// Add contents for max height
-	$(document).ready(function() {
+	/* $(document).ready(function() {
 		$(document).scroll(function() {
 			var maxHeight = $(document).height();
 			var currentScroll = $(window).scrollTop() + $(window).height();
@@ -103,11 +104,12 @@
 				getFeed();
 			}
 		})
-	});
+	}); */
 	function getFeed() {
 		var test = "bookmark";
 		var params = "like=" + encodeURIComponent(test);
-		sendRequest("/Remart_teamProj/main/getFeed", params, return_getFeed, "GET");
+		sendRequest("/Remart_teamProj/main/getFeed", params, return_getFeed,
+				"GET");
 
 	}
 	function return_getFeed() {
@@ -117,9 +119,10 @@
 			}
 		}
 	}
-	
+	function login() {
+		alert("로그인하세요");
+	}
 </script>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
@@ -180,46 +183,75 @@
 	</script>
 
 
-	<div class="w3-twothird" >
+	<div class="w3-twothird">
 		<div id="feed" style="left: 30%; position: relative;">
-			<c:forEach var="i" begin="1" end="18" step="1">
-				<div style="float: left; width: 300px">
-					<div class="w3-card-4">
-						<div class="w3-display-container" style="height: 230">
-							<img
-								src="<%=request.getContextPath()%>/images/icon/noProfile.png"
-								style="width: 25px; height: 25px"><b>이재연</b> <img
-								src="<%=request.getContextPath()%>/images/temp/감자볶음4.JPG"
-								style="width: 300px; height: 200px">
-						</div>
-						<div style="width: 300px">
-							<div class="w3-container w3-white">
-								<c:if test="${likely_bookmark!=null }">
-
-								</c:if>
-								<label id="like"> <img onclick="like()"
-									src="<%=request.getContextPath()%>/images/icon/like_before.png"
-									style="height: 20px; cursor: pointer;"></label> <img
-									src="<%=request.getContextPath()%>/images/icon/comment.png"
-									style="height: 20px; cursor: pointer;"> <img
-									onclick="bookmark()"
-									src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-									style="height: 20px; cursor: pointer; position: relative; left: 80%">
+			<c:set var="Loop" value="true" />
+			<c:forEach var="i" begin="0" end="17" step="1">
+				<c:if test="${empty Feeds[i] }">
+					<c:set var="Loop" value="false" />
+				</c:if>
+				<c:if test="${Loop==true}">
+					<div style="float: left; width: 300px">
+						<div class="w3-card-4">
+							<div class="w3-display-container" style="height: 230">
+								<img
+									src="<%=request.getContextPath()%>/images/icon/noProfile.png"
+									style="width: 25px; height: 25px"><b>${Feeds[i].id }</b>
+								<img
+									src="<%=request.getContextPath()%>/fileSave/${Feeds[i].last}.JPG"
+									style="width: 300px; height: 200px">
 							</div>
+							<div style="width: 300px">
+								<div class="w3-container w3-white">
+									<c:if test="${likely_bookmark!=null }">
 
-							<div class="w3-container w3-light-grey"
-								style="height: 200px; cursor: pointer"
-								onclick="document.getElementById('userplant').style.display='block'">
-								<p>좋아요 100개</p>
-								<p>#자취생#감자</p>
-								<p>맛있는 감자볶음</p>
-								<p>
-									유저1:댓글<br> 유저2:댓글
-								</p>
+									</c:if>
+									<c:if test="${empty memberInfo }">
+										<img onclick="login()"
+											src="<%=request.getContextPath()%>/images/icon/like_before.png"
+											style="height: 20px; cursor: pointer;">
+									</c:if>
+									<c:if test="${!empty memberInfo }">
+										<label id="like"> <img onclick="like()"
+											src="<%=request.getContextPath()%>/images/icon/like_before.png"
+											style="height: 20px; cursor: pointer;"></label>
+
+									</c:if>
+									<img
+										src="<%=request.getContextPath()%>/images/icon/comment.png"
+										style="height: 20px; cursor: pointer;">
+									<c:if test="${empty memberInfo }">
+										<img onclick="login()"
+											src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+											style="height: 20px; cursor: pointer; position: relative; left: 80%">
+									</c:if>
+									<c:if test="${!empty memberInfo }">
+
+										<img onclick="bookmark()"
+											src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+											style="height: 20px; cursor: pointer; position: relative; left: 80%">
+									</c:if>
+								</div>
+
+								<div class="w3-container w3-light-grey"
+									style="height: 200px; cursor: pointer"
+									onclick="document.getElementById('userplant').style.display='block'">
+									<p>좋아요:${Feeds[i].like_num }</p>
+									<p>#자취생#감자</p>
+									<p>${Feeds[i].recipe_name }</p>
+									<p>
+										<c:forEach var="reple" items="${Feeds[i].replelist }">
+								${reple.reple_id }:${reple.content }<br>
+										</c:forEach>
+										<c:if test="${empty Feeds[i].replelist }">
+									댓글이 없습니다.
+									</c:if>
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</c:if>
 			</c:forEach>
 		</div>
 		<div id="test"></div>
