@@ -48,7 +48,7 @@
 	position: relative;
 	min-height: 60px;
 	border-top: 1px solid #24221f;
-	background: #f4f8f9;
+	background: #f7f7f7;
 	font-size: 16px;
 }
 
