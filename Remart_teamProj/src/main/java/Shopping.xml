@@ -13,12 +13,68 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
       </if>
    </select>
    
-   <select id="getFoods" parameterType="hashmap" resultType="Food">
+   <select id="getFoods" parameterType="hashmap" resultType="food">
       select * from (select rownum rnum, a.* from(
       select food_id, name, price, qty from food where category_id = #{category_id})
       a) where rnum between #{start} and #{end}
    </select>
    
+   <insert id="insertBasket" parameterType="hashmap">
+		insert into basket (basket_id, id, food_id, food_num) 
+		 values(#{basket_id}, #{id}, #{food_id}, #{food_num})
+   </insert>
+   
+   <select id="insertBasket_new" resultType="int">
+   		select nvl(max(basket_id),0) from basket
+   </select>
+   
+    <select id="getBasketCount" parameterType="hashmap" resultType="int">
+      	select count(*) from basket
+      <if test="id != null">
+        WHERE id = #{id}
+      </if>
+   </select>
+  
+  
+  <!-- 
+  <resultMap type="hashmap" id="basketResultMap">
+   		<result column="id" property="id"/>
+		<result column="food_id" property="food_id"/>
+   		<result column="food_num" property="food_num"/>
+   		<collection property="foods" javaType="List" resultMap="foodResultMap"></collection>
+   </resultMap>
+   
+   <resultMap type="hashmap" id="foodResultMap">
+   		<result column="food_id" property="food_id"/>
+		<result column="name" property="name"/>
+		<result column="price" property="price"/>
+   </resultMap> -->
+   
+   <select id="getBaskets" parameterType="hashmap" resultType="basket">
+		select basket_id, id, food_num, (select name from food f where f.food_id = b.food_id) bname, 
+		(select price from food f where f.food_id = b.food_id) bprice from basket b where id = #{id}
+   </select>
+   
+   <select id="deleteBasket"   parameterType="hashmap" >
+	 	delete from basket where basket_id = #{basket_id}
+    </select>
+   
+   <update id="updateFoodNum" parameterType="hashmap">
+   		update basket set food_num=#{food_num} where basket_id=#{basket_id}
+   </update>
+   
+   <insert id="insertPayment" parameterType="hashmap">
+		insert into food_payment (payment_id, id, order_date, pay_method, phone, name, all_price, zip1, zip2, address1, address2 ) 
+		 values(#{payment_id}, #{id}, sysdate, #{pay_method}, #{phone}, #{name}, #{all_price}, #{zip1}, #{zip2}, #{address1}, #{address2})
+   </insert>
+   
+   <select id="insertPayment_new" resultType="int">
+   		select nvl(max(payment_id),0) from food_payment
+   </select>
+   
+   <select id="deletePaidBasket"   parameterType="hashmap" >
+	 	delete from basket where id = #{id}
+    </select>
    
    
    
@@ -28,10 +84,10 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
    
    
    
+  
    
-   
-   
-   
+ 
+
    
    
    

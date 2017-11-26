@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<title>REMART</title>
+<title>Insert title here</title>
 <style>
 a {text-decoration: none;cursor:pointer}
 
@@ -143,16 +143,14 @@ a {text-decoration: none;cursor:pointer}
 			<img alt="사진" src="<%=request.getContextPath() %>/images/food/${articleFood.name }.jpg" width="80%" style="margin-top: 8px;" >
 			<h5>${articleFood.name }</h5>
 			<h4>${articleFood.price }원</h4>
-			<form method="post" name="aa" >
+			<form method="post" name="food_form" action="shoppingPro">
 				<input type="hidden" name="food_id" value="${articleFood.food_id }">
 				<div class="__count_range">
 					<input type="button" value="-" count_range="m" style="width:15% ">
-					<input class="count" value="1" readonly="" name="food_num" style="width: 40%">
+					<input class="count" value="1" readonly="" name="food_num" style="width: 40%" id="food_num"> 
 					<input type="button" value="+" count_range="p" style="width: 15%">
-					<input type="button" class="w3-white w3-border w3-border-black" 
-					style="font-size: 16px; width: 50%; margin-top: 8px;" value="장바구니"
-					name="confirm_basket" onclick="openConfirmBasket(this.form)">
-					
+					<input type="submit" class="w3-white w3-border w3-border-black" 
+					style="font-size: 16px; width: 50%; margin-top: 8px;" value="장바구니" name="confirm_basket" >
 				</div>
 			</form>
 		</div>
@@ -160,51 +158,6 @@ a {text-decoration: none;cursor:pointer}
 	</div>
 
 	
-	<%-- <!-- paging -->
-	<div class="w3-center">
-	
-	<c:if test="${count > 0 }">
-	
-	<c:if test="${startPage > bottomLine }">
-		<a href="list?pageNum=${startPage - bottomLine}">[이전]</a>
-	</c:if>
-	
-	<c:forEach var="i" begin="${startPage}" end="${endPage}">	
-		<a href="list?pageNum=${i}"> 
-		<c:if test="${i != currentPage}">[${i}]</c:if>
- 		<c:if test="${i == currentPage}"> 
- 			<font color='red'>[${i}]</font>	
- 		</c:if>
- 		</a>
- 	</c:forEach>
- 
- 	<c:if test="${endPage < pageCount}">	
-		<a href="list?pageNum=${startPage+bottomLine}">[다음]</a>
-	</c:if>	
-	
-	</c:if>	
-		
-		</div>
- --%>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </div><!-- shopping_wrap end -->
 </center>
@@ -231,8 +184,10 @@ $(document).ready(function(){
 });
 
 
-function openConfirmBasket(aa) {
-	open("confirmBasket", "confirmbasket", "toolbar = no, location=no, status= no, menubar = no, resizable=no, width = 1000, height = 1000");
+function openConfirmBasket(food_form) {
+	/* url = "confirmBasket?food_id=" + encodeURIComponent(food_form.food_id.value) */
+	open("confirmBasket", "confirmbasket", "toolbar = no, location=no, status= no, menubar = no, " +
+			"resizable=no, width = 1000, height = 1000");
 }
 
 </script>

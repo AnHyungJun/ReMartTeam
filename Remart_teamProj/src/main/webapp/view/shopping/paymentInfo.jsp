@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +9,42 @@
 <title>REMART</title>
 
 <style type="text/css">
+.shopping_process {
+	border: 1px solid #bbb;
+	padding: 0px;
+	margin-bottom: 50px;
+}
+
+.order {
+	display: table;
+	width: 100%;
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.order li.active {
+	background: #24221f;
+	color: #fff;
+}
+
+.order li {
+	display: table-cell;
+	position: relative;
+	padding: 14px 25px;
+	background: #fff;
+	font-size: 22px;
+	color: #999;
+	border-left: 1px solid #bbb;
+	vertical-align: middle;
+}
+
+.process .order li em {
+	font-family: 'Gotham Book';
+	font-size: 26px;
+	font-weight: 400;
+	vertical-align: -2px;
+}
 .paymentInfo h2 {
 	font-size: 20px;
 	font-weight: 700;
@@ -106,6 +143,18 @@
 		</div>
 
 		<div class="w3-col" style="width: 1213px">
+			<div class="basket_wrap">
+				<!-- shopping_process -->
+				<div class="shopping_process">
+					<ol class="order">
+						<li class="second"><em>01</em> <b>장바구니</b></li>
+						<li class="active"><em>02</em> <b>주문결제</b></li>
+						<li><em>03</em> <b>주문완료</b></li>
+					</ol>
+				</div>
+				<!-- shopping_process end -->
+			
+			<form action="paymentPro" method="post" name="paymentInfo_form">
 			<!-- paymentInfo -->
 			<div class="paymentInfo"
 				style="margin-left: 50px; margin-right: 50px;">
@@ -116,28 +165,25 @@
 					<table class="w3-table w3-bordered" style="font-size: 13px;">
 						<tr style="border-top: 1px solid #666">
 							<th width="15%"
-								style="border-right: none; background-color: #fff; font-weight: 100; vertical-align: middle;">보내는
-								분</th>
-							<td width="auto" style="padding: 12px 0 10px 20px;"><input
-								type="text"
-								style="width: 15%; height: 23px; line-height: 20px; text-indent: 4px; border: 1px solid #bbb;"
-								value=""></td>
+								style="border-right: none; background-color: #fff; font-weight: 100; vertical-align: middle;">
+								보내는 분</th>
+							<td width="auto" style="padding: 12px 0 10px 20px;">
+								<input type="text" style="width: 15%; height: 23px; line-height: 20px; 
+								text-indent: 4px; border: 1px solid #bbb;" value="${name }"></td>
 						</tr>
 						<tr>
 							<th width="15%"
 								style="border-right: none; background-color: #fff; font-weight: 100; vertical-align: middle;">휴대폰</th>
-							<td width="auto" style="padding: 12px 0 10px 20px;"><input
-								type="text"
-								style="width: 25%; height: 23px; line-height: 20px; text-indent: 4px; border: 1px solid #bbb;"
-								value=""></td>
+							<td width="auto" style="padding: 12px 0 10px 20px;">
+								<input type="text"style="width: 25%; height: 23px; line-height: 20px; 
+								text-indent: 4px; border: 1px solid #bbb;" value="${phone }"></td>
 						</tr>
 						<tr>
 							<th width="15%"
 								style="border-right: none; background-color: #fff; font-weight: 100; vertical-align: middle;">이메일</th>
-							<td width="auto" style="padding: 12px 0 10px 20px;"><input
-								type="text"
-								style="width: 40%; height: 23px; line-height: 20px; text-indent: 4px; border: 1px solid #bbb;"
-								value=""></td>
+							<td width="auto" style="padding: 12px 0 10px 20px;">
+								<input type="text" style="width: 40%; height: 23px; line-height: 20px; 
+								text-indent: 4px; border: 1px solid #bbb;" value="${email }"></td>
 						</tr>
 					</table>
 				</div>
@@ -149,30 +195,28 @@
 				<div class="info_area">
 					<table class="w3-table w3-bordered" style="font-size: 13px;">
 						<tr style="border-top: 1px solid #666">
-							<th width="15%"
-								style="border-right: none; background-color: #fff; font-weight: 100; vertical-align: middle;">받는
-								분</th>
-							<td width="auto" style="padding: 12px 0 10px 20px;"><input
-								type="text"
-								style="width: 15%; height: 23px; line-height: 28px; text-indent: 4px; border: 1px solid #bbb;"
-								value=""></td>
+							<th width="15%" 
+							style="border-right: none; background-color: #fff; font-weight: 100; vertical-align: middle;">
+							받는 분</th>
+							<td width="auto" style="padding: 12px 0 10px 20px;">
+							<input name="name" type="text" style="width: 15%; height: 23px; line-height: 28px; 
+							text-indent: 4px; border: 1px solid #bbb;" value="${name }"></td>
 						</tr>
 						<tr>
 							<th width="15%"
 								style="border-right: none; background-color: #fff; font-weight: 100; vertical-align: middle;">휴대폰</th>
-							<td width="auto" style="padding: 12px 0 10px 20px;"><input
-								type="text"
-								style="width: 25%; height: 23px; line-height: 28px; text-indent: 4px; border: 1px solid #bbb;"
-								value=""></td>
+							<td width="auto" style="padding: 12px 0 10px 20px;">
+								<input name="phone" type="text" style="width: 25%; height: 23px; line-height: 28px; 
+								text-indent: 4px; border: 1px solid #bbb;" value="${phone }"></td>
 						</tr>
 						<tr>
 							<th scope="row" rowspan="3"><label for="zip"
 								style="vertical-align: middle;">주소</label></th>
 							<td class="bg_none">&nbsp;&nbsp;<input type="text" id='zip1'
-								name='zip1' readonly="readonly" style="width: 60px"
+								name='zip1' readonly="readonly" style="width: 60px" value="${zip1 }"
 								class="w3-border" /> - <input type="text" id='zip2' name='zip2'
 								readonly="readonly" style="width: 60px; height: 23px;"
-								class="w3-border"></input> <input type="button"
+								class="w3-border" value="${zip2 }"></input> <input type="button"
 								class="w3-white w3-border"
 								style="font-size: 12px; height: 23px;"
 								onclick="openDaumPostcode();" value="우편번호"></td>
@@ -181,13 +225,13 @@
 							<td class="bg_none"><label for="address1" class="tts">기본주소
 							</label>&nbsp;&nbsp;<input type="text" id="address1" name="address1"
 								class="w3-border" readonly="readonly"
-								style="width: 340px; height: 23px; margin-right: 5px" /></td>
+								style="width: 340px; height: 23px; margin-right: 5px" value="${address1 }" /></td>
 						</tr>
 						<tr>
 							<td><label for="address2" class="tts">상세주소
 									&nbsp;&nbsp;</label><input type="text" id="address2" name="address2"
 								class="w3-border"
-								style="width: 340px; height: 23px; margin-right: 5px" /></td>
+								style="width: 340px; height: 23px; margin-right: 5px" value="${address2 }"  /></td>
 						</tr>
 					</table>
 				</div>
@@ -200,55 +244,39 @@
 					<table class="w3-table w3-bordered" width="100%">
 						<tr style="border-top: 1px solid #666; font-size: 13px;">
 							<th width="auto"></th>
-							<th width="32%" class="w3-center">상품정보</th>
-							<th width="11%" class="w3-center">판매가</th>
+							<th width="37%" class="w3-center">상품정보</th>
+							<th width="14%" class="w3-center">판매가</th>
 							<th width="15%" class="w3-center">수량</th>
-							<th width="10%" class="w3-center">할인금액</th>
-							<th width="10%" class="w3-center">구매가</th>
-							<th width="8%" class="w3-center">배송비</th>
-							<th width="8%" class="w3-center">주문</th>
+							<th width="14%" class="w3-center">할인금액</th>
+							<th width="14%" class="w3-center">구매가</th>
 						</tr>
+						
+						<c:set var="totalPrice" value="0"/>
+						<c:forEach var="articleBasket" items="${articleBasketList}">
 						<tr>
 							<td></td>
 							<td class="pro_info">
 								<div class="pro_img">
 									<img alt="사진1"
-										src="<%=request.getContextPath()%>/images/food/가브리살(300g).jpg"
+										src="<%=request.getContextPath()%>/images/food/${articleBasket.bname }.jpg"
 										width="100" height="100">
 								</div>
 								<div class="pro_name">
-									<a href="#" class="w3-center" style="vertical-align: middle;">가브리살
-										(300g)</a>
+									<a href="#" class="w3-center" style="vertical-align: middle;">${articleBasket.bname }</a>
 								</div>
 							</td>
 							<td class="w3-center"
-								style="font-size: 14px; vertical-align: middle;">25800원</td>
-							<td class="w3-center" style="vertical-align: middle;"><input
-								type="text" style="width: 30px;" name="ea" class="form" size="2"
-								value="1" maxlength="2" onblur="numcheck(this.form.ea.value,10)"
-								onkeyup="if(isNaN(this.value)) {alert('숫자만 입력해 주세요.');this.value=''};">
-
-								<input type="button" value="▲"
-								onclick="up(this.form.ea.value,10)"
-								style="background-color: white; border: 0; height: 10px; font-size: 12px"
-								name="plus"><br> <input type="button" value="▼"
-								onclick="down(this.form.ea.value)"
-								style="background-color: white; border: 0; height: 10px; font-size: 12px"
-								name="minus"></td>
-
+								style="font-size: 14px; vertical-align: middle;">${articleBasket.bprice }원</td>
+							<td class="w3-center" 
+								style="vertical-align: middle;">${articleBasket.food_num }</td>
 							<td class="w3-center"
 								style="font-size: 14px; vertical-align: middle;">-</td>
 							<td class="w3-center"
-								style="color: red; font-size: 14px; vertical-align: middle;">25800원</td>
-							<td class="w3-center"
-								style="font-size: 14px; vertical-align: middle;">2500원</td>
-							<td style="vertical-align: middle;"><input type="button"
-								class="w3-button w3-white w3-hover-white"
-								style="font-size: 12px; width: 100px;" value="삭제">
-								<p>
-									<input type="button" class="w3-button w3-white w3-hover-white"
-										style="font-size: 12px; width: 100px;" value="계속담기"></td>
+								style="color: red; font-size: 14px; vertical-align: middle;">
+								${articleBasket.bprice*articleBasket.food_num }원</td>
 						</tr>
+						<c:set var="totalPrice" value="${totalPrice + (articleBasket.bprice*articleBasket.food_num) }"/>
+						</c:forEach>
 					</table>
 				</div>
 
@@ -261,7 +289,7 @@
 								<dl>
 									<dt style="font-size: 15px;">판매가</dt>
 									<br>
-									<dd style="font-size: 16px;">0원</dd>
+									<dd style="font-size: 16px;"><c:out value="${totalPrice }"/>원</dd>
 								</dl>
 							</li>
 							<li>
@@ -275,14 +303,14 @@
 								<dl>
 									<dt style="font-size: 15px;">배송비</dt>
 									<br>
-									<dd style="font-size: 16px;">0원</dd>
+									<dd style="font-size: 16px;">2500원</dd>
 								</dl>
 							</li>
 							<li>
 								<dl>
 									<dt style="font-size: 15px;">주문금액</dt>
 									<br>
-									<dd style="color: red; font-size: 16px;">0원</dd>
+									<dd style="color: red; font-size: 16px;">${totalPrice+2500 }원</dd>
 								</dl>
 							</li>
 						</ul>
@@ -301,12 +329,12 @@
 								style="border-right: none; background-color: #fff; font-weight: 100; vertical-align: middle;">결제
 								수단</th>
 							<td width="auto" style="padding: 12px 0 10px 20px;"><input
-								type="checkbox" name="pay_method" value="신용카드"
+								type="checkbox" name="pay_method" value="card"
 								style="vertical-align: middle;">&nbsp;신용카드&nbsp;&nbsp;&nbsp;
-								<input type="checkbox" name="pay_method" value="실시간계좌이체"
+								<!-- <input type="checkbox" name="pay_method" value="실시간계좌이체"
 								style="vertical-align: middle;">&nbsp;실시간계좌이체&nbsp;&nbsp;&nbsp;
 								<input type="checkbox" name="pay_method" value="가상계좌"
-								style="vertical-align: middle;">&nbsp;가상계좌</td>
+								style="vertical-align: middle;">&nbsp;가상계좌</td> -->
 						</tr>
 					</table>
 				</div>
@@ -317,7 +345,9 @@
 				</div>
 			</div>
 		</div>
-
+		<input type="hidden" name="all_price" value="${totalPrice+2500 }">
+		</form>
+		
 		<div class="w3-col" style="width: 345px">
 			<p>&nbsp;</p>
 		</div>

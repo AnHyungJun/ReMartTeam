@@ -1,12 +1,15 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class BasketDataBean implements Serializable{
 	int basket_id;
 	String id;
 	String food_id;
 	int food_num;
+	String bname;
+	int bprice;
 	public int getBasket_id() {
 		return basket_id;
 	}
@@ -31,11 +34,16 @@ public class BasketDataBean implements Serializable{
 	public void setFood_num(int food_num) {
 		this.food_num = food_num;
 	}
-	@Override
-	public String toString() {
-		return "BasketDataBean [basket_id=" + basket_id + ", id=" + id
-				+ ", food_id=" + food_id + ", food_num=" + food_num + "]";
+	public String getBname() {
+		return bname;
 	}
-	
-	
+	public void setBname(String bname) {
+		this.bname = bname;
+	}
+	public int getBprice() {
+		return bprice;
+	}
+	public void setBprice(int bprice) {
+		this.bprice = bprice;
+	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -117,6 +118,7 @@
 	color: #666;
 	font-size: 13px;
 	margin-left: 30px;
+	
 }
 
 .pro_name a {
@@ -182,146 +184,180 @@
 </head>
 <body>
 
-	<div style="margin-top: 200px"></div>
+<div style="margin-top: 200px"></div>
 
-	<div class="w3-row">
-		<div class="w3-col" style="width: 380px;">
-			<p>&nbsp;</p>
-		</div>
+<div class="w3-row">
+	<div class="w3-col" style="width: 380px;">
+		<p>&nbsp;</p>
+	</div>
 
-		<div class="w3-col" style="width: 1142px;">
-			<!-- basket_wrap -->
-			<form method="post"
-				action="<%=request.getContextPath()%>/shopping/paymentInfo">
-				<div class="basket_wrap">
-					<!-- shopping_process -->
-					<div class="shopping_process">
-						<ol class="order">
-							<li class="active"><em>01</em> <b>장바구니</b></li>
-							<li class="second"><em>02</em> <b>주문결제</b></li>
-							<li><em>03</em> <b>주문완료</b></li>
-						</ol>
-					</div>
-					<!-- shopping_process end -->
+	<div class="w3-col" style="width: 1142px;">
+		<!-- basket_wrap -->
+		<form method="post"
+			action="<%=request.getContextPath()%>/shopping/paymentInfo">
+			<div class="basket_wrap">
+				<!-- shopping_process -->
+				<div class="shopping_process">
+					<ol class="order">
+						<li class="active"><em>01</em> <b>장바구니</b></li>
+						<li class="second"><em>02</em> <b>주문결제</b></li>
+						<li><em>03</em> <b>주문완료</b></li>
+					</ol>
+				</div>
+				<!-- shopping_process end -->
 
-					<!-- delivery_list -->
-					<div class="delivery_list">
-						<div class="list_head">
-							<div class="list_head_title">
-								<p>매장 배송 상품</p>
-								<p class="item_count">1</p>
-							</div>
-						</div>
-
-						<div class="list_body">
-							<table class="list_body_table" width="100%">
-								<tr style="border-top: 1px solid #666; font-size: 13px;">
-									<th width="auto"></th>
-									<th width="32%" class="w3-center">상품정보</th>
-									<th width="11%" class="w3-center">판매가</th>
-									<th width="15%" class="w3-center">수량</th>
-									<th width="10%" class="w3-center">할인금액</th>
-									<th width="10%" class="w3-center">구매가</th>
-									<th width="8%" class="w3-center">배송비</th>
-									<th width="8%" class="w3-center">주문</th>
-								</tr>
-								<tr>
-									<td></td>
-									<td class="pro_info">
-										<div class="pro_img">
-											<img alt="사진1"
-												src="<%=request.getContextPath()%>/images/food/가브리살(300g).jpg"
-												width="100" height="100">
-										</div>
-										<div class="pro_name">
-											<a href="#" class="w3-center" style="vertical-align: middle;">가브리살(300g)</a>
-										</div>
-									</td>
-									<td class="w3-center"
-										style="font-size: 14px; vertical-align: middle;">25800원</td>
-									<td class="w3-center"
-										style="font-size: 14px; vertical-align: middle;"><input
-										type="text" name="ea" class="form" size="2" value="1"
-										maxlength="2" onblur="numcheck(this.form.ea.value,10)"
-										onkeyup="if(isNaN(this.value)) {alert('숫자만 입력해 주세요.');this.value=''};">
-
-										<input type="button" value="▲"
-										onclick="up(this.form.ea.value,10)"
-										style="background-color: white; border: 0; height: 10px; font-size: 12px"
-										name="plus"><br> <input type="button" value="▼"
-										onclick="down(this.form.ea.value)"
-										style="background-color: white; border: 0; height: 10px; font-size: 12px"
-										name="minus"></td>
-
-									<td class="w3-center"
-										style="font-size: 14px; vertical-align: middle;">-</td>
-									<td class="w3-center"
-										style="font-size: 14px; vertical-align: middle; color: red;">25800원</td>
-									<td class="w3-center"
-										style="font-size: 14px; vertical-align: middle;">2500원</td>
-									<td><input type="button"
-										class="w3-button w3-white w3-hover-white"
-										style="font-size: 12px; width: 100px;" value="삭제">
-										<p>
-											<input type="button"
-												class="w3-button w3-white w3-hover-white"
-												style="font-size: 12px; width: 100px;" value="계속담기"></td>
-								</tr>
-							</table>
+				<!-- delivery_list -->
+				<div class="delivery_list">
+					<div class="list_head">
+						<div class="list_head_title">
+							<p>매장 배송 상품</p>
+							<p class="item_count">${count }</p>
 						</div>
 					</div>
-					<!-- delivery_list end -->
 
+					<div class="list_body">
+						<table class="list_body_table" width="100%">
+							<tr style="border-top: 1px solid #666; font-size: 13px;">
+								<th width="auto"></th>
+								<th width="35%" class="w3-center">상품정보</th>
+								<th width="12%" class="w3-center">판매가</th>
+								<th width="15%" class="w3-center">수량</th>
+								<th width="10%" class="w3-center">할인금액</th>
+								<th width="12%" class="w3-center">구매가</th>
+								<th width="10%" class="w3-center">주문</th>
+							</tr>
+							
+							<c:set var="totalPrice" value="0"/>
+							<c:forEach var="articleBasket" items="${articleBasketList}">
+							<tr>
+								<td></td>
+								<td class="pro_info">
+									<div class="pro_img">
+										<img alt="사진1"
+											src="<%=request.getContextPath()%>/images/food/${articleBasket.bname }.jpg"
+											width="100" height="100">
+									</div>
+									<div class="pro_name">
+										<a href="#" class="w3-center" style="vertical-align: middle;">${articleBasket.bname }</a>
+									</div>
+								</td>
+								<td class="w3-center"
+									style="font-size: 14px; vertical-align: middle;">${articleBasket.bprice }원</td>
+								<td class="w3-center"
+									style="font-size: 14px; vertical-align: middle;">
+									<form method="post" name="update_foodNum" action="updateNumPro">
+									<input type="hidden" name="basket_id" value="${articleBasket.basket_id }">
+									<div class="__count_range">
+										<input type="button" value="-" count_range="m" style="width:15% ">
+										<input class="count" value="${articleBasket.food_num }" readonly="" name="food_num" style="width: 40%" id="food_num"> 
+										<input type="button" value="+" count_range="p" style="width: 15%">
+										<input type="submit" class="w3-white w3-border w3-border-black" 
+										style="font-size: 16px; width: 50%; margin-top: 8px;" value="변경">
+									</div>
+									</form>
+								</td>
 
-					<!-- paysum_wrap -->
-					<br> <br>
-					<div class="paysum_wrap">
-						<div class="paysum" style="vertical-align: middle;">
-							<ul>
-								<li>
-									<dl>
-										<dt style="font-size: 15px;">판매가</dt>
-										<br>
-										<dd style="font-size: 16px;">0원</dd>
-									</dl>
-								</li>
-								<li>
-									<dl>
-										<dt style="font-size: 15px;">할인금액</dt>
-										<br>
-										<dd style="font-size: 16px;">0원</dd>
-									</dl>
-								</li>
-								<li>
-									<dl>
-										<dt style="font-size: 15px;">배송비</dt>
-										<br>
-										<dd style="font-size: 16px;">0원</dd>
-									</dl>
-								</li>
-								<li>
-									<dl>
-										<dt style="font-size: 15px;">주문금액</dt>
-										<br>
-										<dd style="color: red; font-size: 16px;">0원</dd>
-									</dl>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<br> <br> <br>
-					<!-- paysum_wrap end -->
-					<div class="w3-center">
-						<input type="submit" value="결제하기" style="font-size: 13px;"
-							class="w3-button w3-border w3-white w3-hover-black">
+								<td class="w3-center"
+									style="font-size: 14px; vertical-align: middle;">-</td>
+								<td class="w3-center"
+									style="font-size: 14px; vertical-align: middle; color: red;">
+									${articleBasket.bprice*articleBasket.food_num }원</td>
+								<td><input type="button" class="w3-button w3-white w3-hover-white"
+									style="font-size: 12px; width: 100px;" value="삭제" 
+									onclick="document.location.href='deleteBasket?basket_id=${articleBasket.basket_id}'">
+									<p>
+									<input type="button" class="w3-button w3-white w3-hover-white"
+									style="font-size: 12px; width: 100px;" value="계속담기"
+									onclick="document.location.href='shoppingMain'">
+								</td>
+							</tr>
+							<c:set var="totalPrice" value="${totalPrice + (articleBasket.bprice*articleBasket.food_num) }"/>
+							</c:forEach>
+						</table>
 					</div>
 				</div>
-				<!-- basket_wrap end -->
-			</form>
-		</div>
-		<div class="w3-col" style="width: 380px;">
-			<p>&nbsp;</p>
-		</div>
+				<!-- delivery_list end -->
+
+
+				<!-- paysum_wrap -->
+				<br> <br>
+				<div class="paysum_wrap">
+					<div class="paysum" style="vertical-align: middle;">
+						<ul>
+							<li>
+								<dl>
+									<dt style="font-size: 15px;">판매가</dt>
+									<br>
+									
+									<dd style="font-size: 16px;"><c:out value="${totalPrice }"/>원</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt style="font-size: 15px;">할인금액</dt>
+									<br>
+									<dd style="font-size: 16px;">0원</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt style="font-size: 15px;">배송비</dt>
+									<br>
+									<dd style="font-size: 16px;">2500원</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt style="font-size: 15px;">주문금액</dt>
+									<br>
+									<dd style="color: red; font-size: 16px;">${totalPrice+2500 }원</dd>
+								</dl>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<br> <br> <br>
+				<!-- paysum_wrap end -->
+				<div class="w3-center">
+					<input type="submit" value="결제하기" style="font-size: 13px;"
+						class="w3-button w3-border w3-white w3-hover-black">
+				</div>
+			</div>
+			<!-- basket_wrap end -->
+		</form>
 	</div>
+	<div class="w3-col" style="width: 380px;">
+		<p>&nbsp;</p>
+	</div>
+</div>
+	
+
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.__count_range input[count_range]').click(function(e){
+        e.preventDefault();
+        var type = $(this).attr('count_range');
+        var $count = $(this).parent().children('input.count');
+        var count_val = $count.val(); // min 1
+        if(type=='m'){
+            if(count_val<1){
+                return;
+            }
+            $count.val(parseInt(count_val)-1);
+        }else if(type=='p'){
+            $count.val(parseInt(count_val)+1);
+        }
+    });
+});
+
+</script>
+	
+	
+	
+	
+	
+	
 </body>
 </html>
