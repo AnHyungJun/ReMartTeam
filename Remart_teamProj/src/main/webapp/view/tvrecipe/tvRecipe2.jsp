@@ -24,7 +24,7 @@ table {
 
 
 
-String url ="http://tv.jtbc.joins.com/photo/pr10010331/pm10026814";
+String url ="http://program.tving.com/tvn/zipbob/20/Board/View";
 
 String line2="";
 String line="";
@@ -33,7 +33,7 @@ try {
 	doc = Jsoup.connect(url).get();
 	Elements media2 = doc.select("head");
 	
-	Elements media1 = doc.select("div.intention_plan_area");
+	Elements media1 = doc.select("div.contentInnerWrap");
 	
 
 

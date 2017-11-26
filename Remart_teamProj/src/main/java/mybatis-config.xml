@@ -38,7 +38,6 @@
 	<mappers>
 		<mapper resource="Login.xml" />
 		<mapper resource="Mypage.xml" />
-		<mapper resource="Tvrecipe.xml" />
 		<mapper resource="Writepage.xml" />
 		<mapper resource="Main.xml" />
 		<mapper resource="Shopping.xml" />

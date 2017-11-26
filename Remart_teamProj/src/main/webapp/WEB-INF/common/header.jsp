@@ -89,7 +89,7 @@ body, h1, h2, h3, h4, h5, h6 {
 											class="con_link w3-button w3-hover-white"
 											onmouseover="this.style.textDecoration='none';"
 											onmouseout="this.style.textDecoration='none';">EDITOR
-											RECOMMAND</a> <a href="<%=request.getContextPath()%>/tvrecipe/tv"
+											RECOMMAND</a> <a href="<%=request.getContextPath()%>/tvrecipe/tvRecipe1"
 											style="font-size: 13px; text-decoration: none;"
 											class="con_link w3-button w3-hover-white"
 											onmouseover="this.style.textDecoration='none';"
