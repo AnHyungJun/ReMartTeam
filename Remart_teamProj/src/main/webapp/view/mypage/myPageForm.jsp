@@ -81,7 +81,7 @@
 		<c:if test="${checkpage==0}">
 			<div class="w3-display-right " style="margin-right: 10%;">
 				<button class="w3-button w3-white w3-border" style="width: 200px;">
-					<h4>회원 정보 수정</h4>
+					<a href="updateForm"><h4>회원 정보 수정</h4></a>
 				</button>
 			</div>
 		</c:if>
@@ -134,7 +134,7 @@
 						<img id="${list.feed_id}" class="showMask"
 							src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 							style="width: 300px; height: 300px" onclick="popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');"><br>
-						${list.recipe_name }///${list.img_name[0]}///<%=request.getContextPath()%>
+						${list.recipe_name }
 					</div>
 
 				</div>
@@ -198,7 +198,7 @@
 		x[slideIndex - 1].style.display = "block";
 	}
    	function popup(imagenum,feeddate,imagename,contentname,repledata,replenum){
-   		
+   		var myArray ;
 		//리스트 받은거 문자 쪼개는거
    		imagename=imagename.substring(1,imagename.length-1);
    		contentname=contentname.substring(1,contentname.length-1);
@@ -207,8 +207,6 @@
    		imagename=imagename.split(', ');
    		feeddate=feeddate.split(',');
    		contentname=contentname.split(',');
-   		repledata=repledata.split(',');
-   		//버튼 보이고 안보이고
    		if(imagenum>1){
    			document.getElementById("rightpage").style.display = 'block';
    			document.getElementById("leftpage").style.display = 'none';
@@ -216,19 +214,33 @@
    			document.getElementById("rightpage").style.display = 'none';
    			document.getElementById("leftpage").style.display = 'none';
    		}
-   		/*여기 부분은 슬라이드 등록 하는 부분*/
-   		<!-- reple_id,feed_id,id,content,reg_date-->
-   		for(var i=0;i<imagenum;i++){
-   			
-   			
-   			var y="<div align=\"center\" class=\"mySlides\"\" style=\"float: left; width: 55%; height: 350px; margin-top: 10px;\">"+
+   		for(var i=0;i<imagenum;i++){   			
+   			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 55%; height: 350px; margin-top: 10px;\">"+
     		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=100%><br>"+
-    		"<label>"+contentname[i]+"</label>"
-    		+"</div>";
-    		
+    		"<label>"+contentname[i]+"</label>"+"</div>";
     		$('.window').append(y); 
     		
    		}
+   		/*reple_id,feed_id,id,content,reg_date  */
+   		if(replenum!=0){
+   			myArray = new Array( new Array(replenum), new Array(5) );
+   			repledata=repledata.split(', ');
+   			for(var i=0;i<replenum;i++){
+   					var tmp=repledata[i].split(',');
+   					myArray[i]=tmp;
+   			}
+   			alert(myArray[0][2]);
+   	   		var makereplelist="";
+   	   		for(var i=0;i<replenum;i++){
+   	   			makereplelist+="<lable>"+myArray[i][2]+"님의 댓글 /"+myArray[i][3]+"</lable><br>";
+   	   		}
+   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 350px; margin-top: 10px;\">"
+   	   		+makereplelist+"</div>"
+   	   		
+   	   		$('.window').append(z); 
+   		}
+   		
+   		
    		showDivs(1);//슬라이더 처음값
    		
    	}
@@ -267,6 +279,7 @@
         $('.window .close').click(function (e) {
             e.preventDefault();
             slideIndex=1;
+            $('.reples').remove();
             $('.mySlides').remove();
             $('.mask, .window').hide();
         });
@@ -275,6 +288,8 @@
         $('.mask').click(function () {
             $(this).hide();
             slideIndex=1;
+            
+            $('.reples').remove();
             $('.mySlides').remove();
             $('.window').hide();
         });

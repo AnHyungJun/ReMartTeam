@@ -51,7 +51,9 @@ public class MypageController {
 	public ModelAndView myPageForm(HttpSession session){
 		List<FeedDataBean> feedlist=null;
 		feedlist=dbPro.getFeedList(member.getId());
-		
+		for(int i=0;i<feedlist.get(18).getContent().size();i++){
+			System.out.println(feedlist.get(18).getContent().get(i));
+		}
 		mv.addObject("feedlist",feedlist);
 		mv.setViewName("mypage/myPageForm");
 		
@@ -64,7 +66,12 @@ public class MypageController {
 		mv.setViewName("mypage/bookmarkForm");
 		return mv;
 	}
-
+	@RequestMapping(value="updateForm")
+	public ModelAndView updateForm(){
+		mv.clear();
+		mv.setViewName("mypage/updateForm");
+		return mv;
+	}
 	@RequestMapping(value="likeForm")
 	public ModelAndView likeForm(){
 		mv.clear();
