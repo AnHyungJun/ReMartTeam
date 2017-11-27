@@ -21,6 +21,6 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		select content from img where feed_id=#{feed_id} order by img_id 
 	</select>
 	<select id="feedreple" parameterType="hashmap" resultType="reple">
-		select * from reple where feed_id=#{feed_id} order by reg_date desc
+		select * from reple where feed_id=#{feed_id} order by reple_id desc
 	</select>
 </mapper>
