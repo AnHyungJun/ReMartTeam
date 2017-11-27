@@ -185,6 +185,9 @@
 
 	<div class="w3-twothird">
 		<div id="feed" style="left: 30%; position: relative;">
+		<c:if test="${empty Feeds }">
+		게시글이 없습니다.
+		</c:if>
 			<c:set var="Loop" value="true" />
 			<c:forEach var="i" begin="0" end="17" step="1">
 				<c:if test="${empty Feeds[i] }">
@@ -203,50 +206,18 @@
 							</div>
 							<div style="width: 300px">
 								<div class="w3-container w3-white">
-									<c:if test="${likely_bookmark!=null }">
-
-									</c:if>
-									<c:if test="${empty memberInfo }">
-										<img onclick="login()"
-											src="<%=request.getContextPath()%>/images/icon/like_before.png"
-											style="height: 20px; cursor: pointer;">
-									</c:if>
-									<c:if test="${!empty memberInfo }">
-										<label id="like"> <img onclick="like()"
-											src="<%=request.getContextPath()%>/images/icon/like_before.png"
-											style="height: 20px; cursor: pointer;"></label>
-
-									</c:if>
-									<img
-										src="<%=request.getContextPath()%>/images/icon/comment.png"
-										style="height: 20px; cursor: pointer;">
-									<c:if test="${empty memberInfo }">
-										<img onclick="login()"
-											src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-											style="height: 20px; cursor: pointer; position: relative; left: 80%">
-									</c:if>
-									<c:if test="${!empty memberInfo }">
-
-										<img onclick="bookmark()"
-											src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-											style="height: 20px; cursor: pointer; position: relative; left: 80%">
-									</c:if>
+								<img src="<%=request.getContextPath()%>/images/icon/like_before.png"
+											style="height: 20px;">: ${Feeds[i].like_num }
+											<img src="<%=request.getContextPath()%>/images/icon/comment.png"
+											style="height: 20px;">:${Feeds[i].repleNum }
 								</div>
 
 								<div class="w3-container w3-light-grey"
-									style="height: 200px; cursor: pointer"
+									style="height: 150px; cursor: pointer"
 									onclick="document.getElementById('userplant').style.display='block'">
-									<p>좋아요:${Feeds[i].like_num }</p>
+									
 									<p>#자취생#감자</p>
 									<p>${Feeds[i].recipe_name }</p>
-									<p>
-										<c:forEach var="reple" items="${Feeds[i].replelist }">
-								${reple.reple_id }:${reple.content }<br>
-										</c:forEach>
-										<c:if test="${empty Feeds[i].replelist }">
-									댓글이 없습니다.
-									</c:if>
-									</p>
 								</div>
 							</div>
 						</div>
@@ -254,7 +225,6 @@
 				</c:if>
 			</c:forEach>
 		</div>
-		<div id="test"></div>
 	</div>
 
 

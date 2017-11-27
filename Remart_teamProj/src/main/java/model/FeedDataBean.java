@@ -17,6 +17,12 @@ public class FeedDataBean implements Serializable{
 	public List getReplelist() {
 		return replelist;
 	}
+	public int getRepleNum(){
+		if(getReplelist()==null)
+			return 0;
+		else
+			return replelist.size();
+	}
 	public void setReplelist(List replelist) {
 		this.replelist = replelist;
 	}
