@@ -136,13 +136,13 @@
 </head>
 <body>
 
-	<div style="margin-top: 180px"></div>
+	<div style="margin-top: 200px"></div>
 	<div class="w3-row">
-		<div class="w3-col" style="width: 345px">
+		<div class="w3-col" style="width: 380px">
 			<p>&nbsp;</p>
 		</div>
 
-		<div class="w3-col" style="width: 1213px">
+		<div class="w3-col" style="width: 1142px;">
 			<div class="basket_wrap">
 				<!-- shopping_process -->
 				<div class="shopping_process">
@@ -348,7 +348,7 @@
 		<input type="hidden" name="all_price" value="${totalPrice+2500 }">
 		</form>
 		
-		<div class="w3-col" style="width: 345px">
+		<div class="w3-col" style="width: 380px">
 			<p>&nbsp;</p>
 		</div>
 	</div>

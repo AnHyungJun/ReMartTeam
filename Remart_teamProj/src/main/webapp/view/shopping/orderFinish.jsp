@@ -46,13 +46,13 @@
 </style>
 </head>
 <body>
-<div style="margin-top: 180px"></div>
+<div style="margin-top: 200px"></div>
 	<div class="w3-row">
-		<div class="w3-col" style="width: 345px">
+		<div class="w3-col" style="width: 380px">
 			<p>&nbsp;</p>
 		</div>
 
-		<div class="w3-col" style="width: 1213px">
+		<div class="w3-col" style="width: 1142px;">
 			<div class="orderFinish_wrap">
 				<!-- shopping_process -->
 				<div class="shopping_process">
@@ -65,10 +65,14 @@
 				<!-- shopping_process end -->
 				
 				<div class="w3-center">
-				결제가 완료되었습니다~
+				<h6> <b> 결제가 완료되었습니다 </b> </h6>
 				</div>
 			</div>
+			
 		</div>
+		<div class="w3-col" style="width: 380px;">
+		<p>&nbsp;</p>
+	</div>
 	</div>
 </body>
 </html>

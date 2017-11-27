@@ -71,6 +71,7 @@
 	font-weight: 700;
 	vertical-align: 2px;
 	margin-left: 7px;
+	vertical-align: middle;
 }
 
 .list_body {
@@ -193,7 +194,8 @@
 
 	<div class="w3-col" style="width: 1142px;">
 		<!-- basket_wrap -->
-		
+		<form method="post"
+			action="<%=request.getContextPath()%>/shopping/paymentInfo">
 			<div class="basket_wrap">
 				<!-- shopping_process -->
 				<div class="shopping_process">
@@ -209,7 +211,7 @@
 				<div class="delivery_list">
 					<div class="list_head">
 						<div class="list_head_title">
-							<p>매장 배송 상품</p>
+							<p style=" vertical-align: middle;">매장 배송 상품</p>
 							<p class="item_count">${count }</p>
 						</div>
 					</div>
@@ -318,11 +320,12 @@
 				<br> <br> <br>
 				<!-- paysum_wrap end -->
 				<div class="w3-center">
-					<input type="button" value="결제하기" style="font-size: 13px;"
-						class="w3-button w3-border w3-white w3-hover-black" onclick="document.location.href='paymentInfo'">
+					<input type="submit" value="결제하기" style="font-size: 13px;"
+						class="w3-button w3-border w3-white w3-hover-black">
 				</div>
 			</div>
 			<!-- basket_wrap end -->
+		</form>
 	</div>
 	<div class="w3-col" style="width: 380px;">
 		<p>&nbsp;</p>
