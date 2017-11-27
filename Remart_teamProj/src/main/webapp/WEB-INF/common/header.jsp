@@ -61,10 +61,7 @@ body, h1, h2, h3, h4, h5, h6 {
 								onmouseover="this.style.textDecoration='none';"
 								onmouseout="this.style.textDecoration='none';">마이페이지</a>
 						</c:if>
-						| <a href="<%=request.getContextPath()%>/shopping/shoppingMain"
-							style="font-size: 12px; text-decoration: none;" class="con_link"
-							onmouseover="this.style.textDecoration='none';"
-							onmouseout="this.style.textDecoration='none';">쇼핑몰</a> | <a
+						| <a
 							href="<%=request.getContextPath()%>/shopping/basket"
 							style="font-size: 12px; text-decoration: none;" class="con_link"
 							onmouseover="this.style.textDecoration='none';"
