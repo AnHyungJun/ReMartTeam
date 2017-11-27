@@ -123,7 +123,7 @@
 		alert("로그인하세요");
 	}
 </script>
-<title>Insert title here</title>
+<title>REMART</title>
 </head>
 <body>
 	<div style="margin-top: 100px"></div>
