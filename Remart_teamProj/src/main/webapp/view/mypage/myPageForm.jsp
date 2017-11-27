@@ -80,9 +80,9 @@
 		<!-- 자기 아이디면 정보 수정 아니면 팔로우 -->
 		<c:if test="${checkpage==0}">
 			<div class="w3-display-right " style="margin-right: 10%;">
-				<button class="w3-button w3-white w3-border" style="width: 200px;">
-					<a href="updateForm"><h4>회원 정보 수정</h4></a>
-				</button>
+				<a href="updateForm?id=${memberInfo.id}"><button class="w3-button w3-white w3-border" style="width: 200px;">
+					<h4>회원 정보 수정</h4>
+				</button></a>
 			</div>
 		</c:if>
 		<c:if test="${checkpage==1}">
