@@ -250,10 +250,10 @@
 									<input type="hidden" name="basket_id" value="${articleBasket.basket_id }">
 									<div class="__count_range">
 										<input type="button" value="-" count_range="m" style="width:15% ">
-										<input class="count" value="${articleBasket.food_num }" readonly="" name="food_num" style="width: 40%" id="food_num"> 
+										<input class="count w3-center" value="${articleBasket.food_num }" readonly="" name="food_num" style="width: 40%" id="food_num"> 
 										<input type="button" value="+" count_range="p" style="width: 15%">
-										<input type="submit" class="w3-white w3-border w3-border-black" 
-										style="font-size: 16px; width: 50%; margin-top: 8px;" value="변경">
+										<input type="submit" class="w3-white w3-border w3-border-grey" 
+										style="font-size: 13px; width: 40%; margin-top: 8px;" value="변경">
 									</div>
 									</form>
 								</td>
