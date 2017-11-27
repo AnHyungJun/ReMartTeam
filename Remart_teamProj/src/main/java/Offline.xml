@@ -51,4 +51,63 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{food_num.div},#{food_num.order_id})
 	</insert>
 	
+	 <select id="getMart_orders"  parameterType="hashmap" 
+	 resultType="mart_order">
+		select * from mart_order 
+		where offline_mart_id = #{offline_mart_id} 
+		order by  re_date desc
+	</select>
+	
+	<update id="updateMartOrderStatus"  parameterType="hashmap">
+		update mart_order set status='finish' where mart_order_id = #{mart_order_id}
+	</update>
+	
+	<select id="getFood_nums"  parameterType="hashmap" 
+	 resultType="product">
+		select food_id,
+		TRUNC((select price from food where food_id = fn.food_id)*1.2,-1) price, 
+		qty 
+		from food_num fn 
+		where div = 'offline' 
+		and order_id = #{mart_order_id}
+	</select>
+	
+	<select id="getProductCnt"  parameterType="hashmap" 
+	 resultType="int">
+		select count(*) from product
+		where food_id = #{food_id}
+	</select>
+	
+	<select id="getProduct_id" resultType="int">
+		select nvl(max(product_id),0) from product
+	</select>
+	
+	<insert id="insertProduct"  parameterType="hashmap">
+		insert into product
+		(product_id, food_id, price, qty, offline_mart_id)
+		values
+		(#{product_id}, #{product.food_id},#{product.price},
+		#{product.qty},#{product.offline_mart_id})
+	</insert>
+	
+	<update id="updateProduct"  parameterType="hashmap">
+		update product set qty = qty + #{product.qty} where food_id = #{product.food_id}
+	</update>
+	
+	<select id="getMart_ordersDate"  parameterType="hashmap" 
+	 resultType="mart_order">
+		select * from mart_order 
+		where offline_mart_id = 'offline1' 
+		and re_date between to_date(#{date1}, 'YYYY-MM-DD')  and to_date(#{date2}, 'YYYY-MM-DD')  +1
+		order by  re_date desc
+	</select>
+	
+	<select id="getFood_nums2"  parameterType="hashmap" 
+	 resultType="food_num">
+		select
+		(select name from food where fn.food_id = food_id)food_name,
+		qty from food_num fn 
+		where div = 'offline' and order_id = #{mart_order_id}
+	</select>
+	
 </mapper>
