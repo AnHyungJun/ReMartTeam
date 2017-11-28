@@ -5,27 +5,121 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
 <title>Insert title here</title>
 </head>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/ajax/httpRequest.js">
+</script>
 <body>
+<BR>
 	<BR>
-	<BR>
-	<input type="text" id="qq">
-	<input type="button" onclick="">
-	<BR>
-	<BR>
-	<BR>
-	<div id="aa"></div>
-	<input type="button" onclick="writefood()" name="등록">
-	<input type="button" onclick="end()" name="닫기">
-	<script>
-		function writefood() {       
-			opener.parent.foodimg('/Remart_teamProj/images/food/'+'[남양]프렌치카페 믹스 250입'+'.jpg');
+	<form	name = "search">
+	<div style="height:50px;" align="center">
+	<input type="text" id="searchFood" name="searchFood"onkeydown = "startSuggest()"/>
+	<input type="button" onclick="" value="찾기">
+	</div>
+	<div align="center" id="suggest" style = "display:; margin-top:20px;">
+		<div id = "suggestList" align="center" style="width: 500px; height:100%;" >
+			
+		</div>
+	</div>
+	<div align="center" style="margin-top:20px;">
+			<input type="button" onclick="end()" value="닫기">
+	</div>
+</form>
+<script>
+	var checkFirst = false;
+	var lastKeyword = '';
+	var loopSendKeyword = false;
+	function startSuggest(){
+		
+		if(checkFirst == false){
+			setTimeout("sendKeyword();",500);
+			loopSendKeyword = true;
+		}
+		checkFirst = true;
+	}
+	function sendKeyword(){
+		if(loopSendKeyword == false)
+			return;
+		var keyword = document.search.searchFood.value;
+		if(keyword == ''){
+			lastKeyword = '';
+			hide('suggest');
+		}
+		else if(keyword != lastKeyword){
+			lastKeyword = keyword;
+			if(keyword != ''){
+				var params = "keyword=" + encodeURIComponent(keyword);
+				sendRequest("<%=request.getContextPath()%>/common/suggestFileSearch.jsp",
+				params, displayResult, 'POST');
+			} else {
+				hide('suggest');
+			}
+		}
+		setTimeout("sendKeyword();", 500);
+	}
+
+		function displayResult() {
+			if (httpRequest.readyState == 4) {
+				if (httpRequest.status == 200) {
+					var resText = httpRequest.responseText;
+					//사이즈 , 코드 , 이름=사진 ,가격 
+					var res = resText.split('|');
+					
+					var count = parseInt(res[0]);
+					var keywordList = null;
+					if (count > 0) {
+						keywordList = res[1].split('=');
+						var html = "<table class=\"w3-table w3-bordered w3-centered\" width=100%><tr><th width=200;>상품</th><th width=150;>상품명</th><th>가격</th><th>상품 등록</th></tr>";
+						for (var i = 0; i < keywordList.length; i++) {
+							
+							var keywordList2 = keywordList[i].split('-');
+							html += "<tr height=140px;><td align=\"center\">"
+									+"<img src=\"/Remart_teamProj/images/food/"+keywordList2[1]+".jpg\" width=110 height=110><br>"
+									+"</td><td align=\"center\">"
+									+ keywordList2[1] + "</td><td align=\"center\">"
+									+ keywordList2[2] + "</td><td align=\"center\">"
+									+"<button type=\"button\" onclick=\"writefood('"+keywordList[i]+"')\">등록</button></td></tr>";
+							// alert(html); 
+						}
+						html += "</table>";
+						var listView = document.getElementById('suggestList');
+						listView.innerHTML = html;
+						show('suggest');
+						reload();
+					}
+				} else {
+					alert("에러: " + httpRequest.status);
+				}
+			}
+		}
+		function show(elementId) {
+			var element = document.getElementById(elementId);
+			if (element) {
+				element.style.display = '';
+			}
+		}
+		function hide(elementId) {
+			var element = document.getElementById(elementId);
+			if (element) {
+				element.style.display = 'none';
+			}
+		}
+
+		function writefood(key) {
+			opener.parent.foodimg(key);
+			document.search.searchFood.value = "";
+			loopSendKeyword = false;
+			lastKeyword = '';
+			checkFirst = false;
+			hide('suggest');
 		}
 		function end() {
 
 			self.close();
 		}
-	</script>
+	</script> 
 </body>
 </html>

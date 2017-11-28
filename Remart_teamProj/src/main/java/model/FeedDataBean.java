@@ -14,6 +14,13 @@ public class FeedDataBean implements Serializable{
 	List<String> img_name;
 	List<String> content;
 	List<RepleDataBean> replelist;
+	List<String> food_id;
+	public List getFood_id() {
+		return food_id;
+	}
+	public void setFood_id(List food_id) {
+		this.food_id = food_id;
+	}
 	public List getReplelist() {
 		return replelist;
 	}

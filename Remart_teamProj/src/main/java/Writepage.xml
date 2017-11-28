@@ -10,6 +10,9 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findifk" parameterType="hashmap" resultType="int">
 		select nvl(max(img_id),0) from img
 	</select>
+	<select id="findfoodfeedfk" parameterType="hashmap" resultType="int">
+		select nvl(max(feed_food_id),0) from feed_food
+	</select>
 	<insert id="insertNFeed"  parameterType="hashmap">
 		insert into feed
 		(feed_id,id,like_num,reg_date, recipe_name)
@@ -22,4 +25,11 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		values
 		(#{inumber},#{number},#{img_name},#{content})
 	</insert>
+	<insert id="insertFeedFood"  parameterType="hashmap">
+		insert into feed_food
+		(food_id,feed_id,feed_food_id)
+		values
+		(#{food_id},#{feed_id},#{feed_food_id})
+	</insert>
+	
 </mapper>

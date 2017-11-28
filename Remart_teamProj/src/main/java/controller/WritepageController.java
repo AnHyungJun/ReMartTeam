@@ -68,19 +68,19 @@ public class WritepageController {
 		List<MultipartFile> multi = null;
 
 		multi = (List<MultipartFile>) multipart.getFiles("img_name");
-
+		
 		for (int i = multi.size() - 1; i > -1; i--) {
 			String filename = multi.get(i).getOriginalFilename();
 			if (filename != null && !filename.equals("")) {
 				String uploadPath = multipart.getRealPath("/") + "fileSave";
-				System.out.println(uploadPath);
 
 				FileCopyUtils.copy(multi.get(i).getInputStream(),
 						new FileOutputStream(uploadPath + "/"
 								+ multi.get(i).getOriginalFilename()));
-
+			
 				feed.getImg_name().set(i, filename);
-
+				System.out.println(feed.getImg_name().get(i));
+				System.out.println(feed.getContent().get(i));
 			} else {
 				feed.getImg_name().remove(i);
 				feed.getContent().remove(i);
@@ -88,7 +88,10 @@ public class WritepageController {
 		}
 		if (r_member.getGrade().equals("nomal"))
 			dbPro.insertNFeed(feed, r_member.getId());
-		else
+		else{
+			int feednum=dbPro.insertNFeed(feed, r_member.getId());
+			dbPro.insertEFeed(feed,feednum);
+		}
 
 			/*
 			 * String filename = multi.getOriginalFilename(); if(filename !=
