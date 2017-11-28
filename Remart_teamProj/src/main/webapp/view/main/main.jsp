@@ -65,10 +65,9 @@
 		httpRequest.send(httpMethod == 'POST' ? httpParams : null);
 	}
 
-	function like() {
-		alert("좋아요");
-		var test = "like";
-		var params = "like=" + encodeURIComponent(test);
+	function like(feed_id) {
+		alert(feed_id);
+		var params = "feed_id=" + encodeURIComponent(feed_id);
 		sendRequest("/Remart_teamProj/main/like", params, return_like, "GET");
 	}
 	function return_like() {
@@ -206,10 +205,18 @@
 							</div>
 							<div style="width: 300px">
 								<div class="w3-container w3-white">
-								<img src="<%=request.getContextPath()%>/images/icon/like_before.png"
+								<label id="like"> <img onclick="like(${Feeds[i].feed_id})"
+									src="<%=request.getContextPath()%>/images/icon/like_before.png"
+									style="height: 20px; cursor: pointer;"></label> <img
+									src="<%=request.getContextPath()%>/images/icon/comment.png"
+									style="height: 20px; cursor: pointer;"> <img
+									onclick="bookmark()"
+									src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+									style="height: 20px; cursor: pointer; position: relative; left: 80%">
+								<%-- <img src="<%=request.getContextPath()%>/images/icon/like_before.png"
 											style="height: 20px;">: ${Feeds[i].like_num }
 											<img src="<%=request.getContextPath()%>/images/icon/comment.png"
-											style="height: 20px;">:${Feeds[i].repleNum }
+											style="height: 20px;">:${Feeds[i].repleNum } --%>
 								</div>
 
 								<div class="w3-container w3-light-grey"
