@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ajax.mybatis">
+   <cache />
+   <select id="selectUserNameDb" parameterType="hashmap" resultType="R_member">
+		select name from r_member where phone = #{keyword}
+	</select>
+	
+   <select id="selectProductDb" parameterType="hashmap" resultType="product">
+		select food_id, 
+		(select name  from food where p.food_id = food_id)name, 
+		price, qty 
+		from product p 
+		where food_id = #{keyword}
+	</select>
+	
+</mapper>

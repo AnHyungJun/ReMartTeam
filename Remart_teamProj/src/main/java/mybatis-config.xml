@@ -42,6 +42,7 @@
 		<mapper resource="Main.xml" />
 		<mapper resource="Shopping.xml" />
 		<mapper resource="Offline.xml" />
+		<mapper resource="Ajax.xml" />
 	</mappers>
 
 </configuration>
