@@ -11,7 +11,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>REMART</title>
 </head>
 <body>
 	<div class="w3-top w3-white">
@@ -24,16 +24,24 @@
 
 				<div class="w3-col w3-container" style="width: 60%">
 					<br>
-					<div style=" float: left">
-						
-						<img  style="text-align:left"alt="로고" src="<%=request.getContextPath()%>/images/icon/logo.png" width="100px">
+					<div class="w3-col" style="width: 20%">
+
+						<img style="text-align: left" alt="로고"
+							src="<%=request.getContextPath()%>/images/icon/logo.png"
+							width="100px">
 					</div>
-					<div style=" float: right">
-						<p style=" float: left"> ${staffInfo.name }님 &nbsp;&nbsp;</p>
-						<a href="<%=request.getContextPath()%>/offline/loginOut" style=" float: left" class="w3-bar-item w3-button w3-white "><i class="fa fa-sign-out"></i> 로그아웃</a>
-						
+
+					<div class="w3-col w3-right" style="width: 40%;">
+						<div class="w3-bar w3-right-align">
+							<p style="font-size: 13px;">${offlineInfo.offline_mart_id } 님
+								&nbsp;&nbsp;&nbsp;</p>
+							<a href="<%=request.getContextPath()%>/offline/loginOut"
+								style="font-size: 12px;"
+								class="w3-bar-item w3-right w3-button w3-white w3-hover-light-grey"><i
+								class="fa fa-sign-out"></i> 로그아웃</a>
+						</div>
 					</div>
-					
+
 				</div>
 				<div class="w3-col" style="width: 20%">
 					<p>&nbsp;</p>
@@ -46,16 +54,16 @@
 					<p>&nbsp;</p>
 				</div>
 
-				<div class="w3-col" style="width: 60%">
-					<br>
-					포스기
+				<div class="w3-col" style="width: 60%; font-size: 13px; ">
+				<br> <h6> <b> 포스기 </b> </h6>
 				</div>
+				<div style="margin-top: 100px"></div>
 				<div class="w3-col" style="width: 20%">
 					<p>&nbsp;</p>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 </body>
 </html>

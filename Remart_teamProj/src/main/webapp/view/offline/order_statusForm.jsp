@@ -116,13 +116,13 @@ function detail(userinput) {
 
 					<div class="w3-col" style="width: 60%; font-size: 13px;">
 						<br>
-						<h6><b>발주현황></b></h6>
+						<h6><b>발주현황</b></h6>
 						<br>날짜 검색 <br>
 						<input type="text" id="testDatepicker" name="date1"> 
-						~
+						-
 						<input type="text" id="testDatepicker2" name="date2" onchange="dataCheck(this.value)"> 
 						<input type="submit"
-							class="w3-button w3-white w3-hover-white" style="font-size: 13px; vertical-align: middle;"
+							class="w3-button w3-white w3-hover-white" style="font-size: 12px; vertical-align: middle;"
 							name="search" value="검색">
 						
 						<br> <br>
@@ -169,7 +169,7 @@ function detail(userinput) {
 							</tr>
 							</c:forEach>
 						</table>
-						
+						<div style="margin-top: 100px"></div>
 					</div>
 				</form>
 
