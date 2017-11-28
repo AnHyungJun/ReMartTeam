@@ -194,8 +194,6 @@
 
 	<div class="w3-col" style="width: 1142px;">
 		<!-- basket_wrap -->
-		<form method="post"
-			action="<%=request.getContextPath()%>/shopping/paymentInfo">
 			<div class="basket_wrap">
 				<!-- shopping_process -->
 				<div class="shopping_process">
@@ -321,7 +319,7 @@
 				<!-- paysum_wrap end -->
 				<div class="w3-center">
 					<input type="submit" value="결제하기" style="font-size: 13px;"
-						class="w3-button w3-border w3-white w3-hover-black">
+						class="w3-button w3-border w3-white w3-hover-black" onclick="document.location.href='paymentInfo'">
 				</div>
 			</div>
 			<!-- basket_wrap end -->
