@@ -25,7 +25,7 @@
 <script type="text/javascript">
 	function startSuggest(){
 		var keyword = document.getElementById('userName').value;
-		
+		document.getElementById('userPhone').value = keyword;
 		if(keyword == ''){
 			alert("고객님의 핸드폰 번호를 입력해주세요");
 		}else{
@@ -39,6 +39,7 @@
 	         if(httpRequest.status == 200) {
 	            var resText = httpRequest.responseText;
 	            var res =  resText.split(',');
+	            
 	            document.getElementById('userName').value = res[0];
 	            document.getElementById('userPoint').value = res[1];
 	         } else {
@@ -153,7 +154,7 @@
 
 	}
 	function usePoint(){
-		document.getElementById('usable').value = "Y";
+		document.getElementById('pointUse').value = "Y";
 		document.getElementById('priceSum').value = 
 			parseInt(document.getElementById('priceSum').value) - parseInt(document.getElementById('userPoint').value);
 		document.getElementById('userPoint').value = "0";
@@ -220,7 +221,8 @@
 					Point: 
 					<input type="text" id="userPoint">
 					<input type="button" value="사용" onclick="usePoint()">
-					<input type="hidden" value="N" id="usable">
+					<input type="hidden" value="N" id="pointUse" name="pointUse">
+					<input type="hidden" value="N" id="userPhone" name="userPhone">
 					<input type="text" value="담당자명: ${staffInfo.name }">
 					금액:
 					<input type="text" value="0" style=" float: right" id="priceSum">

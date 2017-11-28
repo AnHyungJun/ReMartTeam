@@ -183,10 +183,11 @@ public class OfflineController {
 		return mv;
 	}
 	@RequestMapping(value="salePro")
-	public ModelAndView salePro(HttpServletRequest request){
+	public ModelAndView salePro(HttpServletRequest request, String pointUse, String userPhone){
 		String[] product_id = request.getParameterValues("product_id");
 		String[] qty = request.getParameterValues("qty");
 		
+		if(product_id != null)
 		for(int i=0; i<product_id.length; i++){
 			SaleDataBean sale = new SaleDataBean();
 			sale.setProduct_id(Integer.parseInt(product_id[i]));
@@ -194,6 +195,8 @@ public class OfflineController {
 			sale.setQty(Integer.parseInt(qty[i]));
 			dbPro.insertSale(sale);
 		}
+		if(pointUse.equals("Y"))
+			dbPro.updatePoint(userPhone);
 		
 		return saleForm();
 	}

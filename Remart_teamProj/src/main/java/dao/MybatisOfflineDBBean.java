@@ -258,5 +258,16 @@ public class MybatisOfflineDBBean extends MybatisConnector{
 		}
 	}
 
-
+	public void updatePoint(String userPhone) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("userPhone", userPhone);
+		try {
+			sqlSession.update(namespace + ".updatePoint", map);
+			System.out.println("update ok:");
+		} finally {
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	}
 }

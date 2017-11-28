@@ -127,4 +127,7 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 		update product set qty = qty - #{sale.qty} where product_id = #{sale.product_id}
 	</update>
 	
+	<update id="updatePoint"  parameterType="hashmap">
+		update r_member set point=0 where phone = #{userPhone}
+	</update>
 </mapper>
