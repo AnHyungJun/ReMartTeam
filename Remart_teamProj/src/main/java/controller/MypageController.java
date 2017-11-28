@@ -21,7 +21,7 @@ import dao.MybatisMypageDBBean;
 @Controller
 public class MypageController {
 	ModelAndView mv = new ModelAndView();
-	String id;//ÆÄ¶ó ¹ÌÅÍ·Î ¹ÞÀº ¾ÆÀÌµð ¼¼¼Ç¿¡ ¿Ã¶ó°£ ¾ÆÀÌµð¶û °°À¸¸é ³» Á¤º¸ ¾Æ´Ï¸é ´Ù¸¥ Á¤º¸
+	String id;//ï¿½Ä¶ï¿½ ï¿½ï¿½ï¿½Í·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½Ã¶ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï¸ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 	R_memberDataBean member;
 	@Autowired
 	MybatisMypageDBBean dbPro;
@@ -33,8 +33,8 @@ public class MypageController {
 			member = (R_memberDataBean) request.getSession().getAttribute(
 					"memberInfo");
 			mv.clear();
-			//¼­¿¬¾Æ ¿©±â°¡ »ç¶÷ Á¤º¸ ºÒ·¯ ¿À´Â°Å ºÏ¸¶Æ® ÆÈ·Î¿ì ÀÌ·±°Å ´Ù °øÅëÀ¸·Î ºÒ·¯ ¿À´Â°Å 
-			// °°À¸¸é checkpage 0 ´Ù¸£¸é 1 
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½â°¡ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ ï¿½ï¿½ï¿½Â°ï¿½ ï¿½Ï¸ï¿½Æ® ï¿½È·Î¿ï¿½ ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ ï¿½ï¿½ï¿½Â°ï¿½ 
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ checkpage 0 ï¿½Ù¸ï¿½ï¿½ï¿½ 1 
 			if(id.equals(member.getId())){
 				mv.addObject("checkpage",0);
 				member=dbPro.selectMember(member.getId());	
@@ -51,9 +51,7 @@ public class MypageController {
 	public ModelAndView myPageForm(HttpSession session){
 		List<FeedDataBean> feedlist=null;
 		feedlist=dbPro.getFeedList(member.getId());
-		for(int i=0;i<feedlist.get(18).getContent().size();i++){
-			System.out.println(feedlist.get(18).getContent().get(i));
-		}
+		
 		mv.addObject("feedlist",feedlist);
 		mv.setViewName("mypage/myPageForm");
 		

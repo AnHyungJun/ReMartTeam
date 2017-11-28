@@ -20,6 +20,7 @@
 		<typeAlias type="model.SaleDataBean" alias="sale" />
 		<typeAlias type="model.StaffDataBean" alias="staff" />
 		<typeAlias type="model.Likely_bookmarkDataBean" alias="likely_bookmark" />
+		<typeAlias type="model.Food_numDataBean" alias="food_num" />
 	</typeAliases>
 
 

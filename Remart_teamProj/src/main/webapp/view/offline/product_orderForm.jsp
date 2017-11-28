@@ -104,6 +104,14 @@ $(function() {
 		document.getElementById('qtySum').value = qs;
 
 	}
+	
+	function order_status() {
+		url = "order_status";
+
+		open(url, "order_status",
+				"toolbar = no,location=no, status= no, menubar = no,"
+						+ "resizable=no, width = 1000, height = 800");
+	}
 </script>
 
 <body>
@@ -128,6 +136,9 @@ $(function() {
 						<div class="w3-bar w3-right-align">
 							<p style="font-size: 13px;">${offlineInfo.offline_mart_id }님
 								&nbsp;&nbsp;&nbsp;</p>
+							<input type="button"
+							class="w3-bar-item w3-button w3-white w3-hover-light-grey" style="font-size: 12px;"
+							name="order_status" value="발주현황" OnClick="order_status()">
 							<a href="<%=request.getContextPath()%>/offline/loginOut"
 								style="font-size: 13px;"
 								class="w3-bar-item w3-right w3-button w3-white w3-hover-light-grey"><i

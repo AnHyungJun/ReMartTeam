@@ -70,7 +70,7 @@ public class FoodDataBean implements Serializable{
 	
 	@Override
 	public String toString() {
-		return  food_id + "," + name + "," + price;
+		return  food_id + "-" + name + "-" + price;
 	}
 	   
    

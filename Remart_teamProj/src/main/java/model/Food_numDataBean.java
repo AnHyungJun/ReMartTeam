@@ -8,6 +8,7 @@ public class Food_numDataBean implements Serializable{
 	int qty;
 	String div;
 	int order_id;
+	String food_name;
 	public int getFood_num_id() {
 		return food_num_id;
 	}
@@ -37,6 +38,13 @@ public class Food_numDataBean implements Serializable{
 	}
 	public void setOrder_id(int order_id) {
 		this.order_id = order_id;
+	}
+	
+	public String getFood_name() {
+		return food_name;
+	}
+	public void setFood_name(String food_name) {
+		this.food_name = food_name;
 	}
 	@Override
 	public String toString() {

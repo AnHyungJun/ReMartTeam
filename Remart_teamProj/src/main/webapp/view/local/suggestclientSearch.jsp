@@ -54,7 +54,7 @@
 	               var html = "<table class=\"w3-table w3-bordered w3-centered\"><tr><th>상품코드</th><th>상품명</th><th>가격</th></tr>";
 	               for ( var i = 0 ; i < keywordList.length ; i++) {
 	                  
-	            	   var keywordList2 = keywordList[i].split(',');
+	            	   var keywordList2 = keywordList[i].split('-');
 	                  html+= "<tr><td><a href=\"javascript:select('" +
 	                  keywordList2[0]+"-"+keywordList2[1] +"-"+keywordList2[2]  + "')\">" +
 	                  keywordList2[0] + "</a></td><td>" + keywordList2[1] 

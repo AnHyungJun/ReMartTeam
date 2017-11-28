@@ -46,11 +46,9 @@ public class MybatisMypageDBBean extends MybatisConnector {
 			feedlist=sqlSession.selectList(namespace + ".getfeedlist", map);
 			for(int i=0;i<feedlist.size();i++){
 				map.clear();
-				System.out.println(feedlist.get(i).getReg_date());
 				map.put("feed_id", feedlist.get(i).getFeed_id());
 				feedlist.get(i).setImg_name(sqlSession.selectList(namespace + ".getImg_name", map));
 				feedlist.get(i).setContent(sqlSession.selectList(namespace + ".getContent", map));
-				
 				feedlist.get(i).setReplelist(sqlSession.selectList(namespace + ".feedreple", map));
 			}
 			
