@@ -6,7 +6,7 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="ajax.mybatis">
    <cache />
    <select id="selectUserNameDb" parameterType="hashmap" resultType="R_member">
-		select name from r_member where phone = #{keyword}
+		select * from r_member where phone = #{keyword}
 	</select>
 	
    <select id="selectProductDb" parameterType="hashmap" resultType="product">
