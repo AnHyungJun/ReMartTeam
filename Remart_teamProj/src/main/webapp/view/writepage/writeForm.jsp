@@ -19,12 +19,7 @@
 	cursor: pointer;
 }
 
-.ttt {
-	width: 150px;
-	height: 150px;
-	float: left;
-	border: solid 4px;
-}
+
 </style>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
@@ -32,7 +27,7 @@
 	<div style="margin-top: 200px"></div>
 
 	<center>
-
+	<form action="writePro" method="post" enctype="multipart/form-data">
 		<div class="w3-bar" style="width: 650px;">
 			<!-- 글쓰기 head -->
 
@@ -50,7 +45,7 @@
 					onclick="plusDivs(1)">다음</button>
 			</div>
 			<!-- 글쓰기 head 끝 -->
-	<form action="writePro" method="post" enctype="multipart/form-data">
+	
 			<!-- 글쓰기 body -->
 			<div class="">
 				
@@ -245,10 +240,15 @@
 		</div>
 		
 		<c:if test="${memberInfo.grade eq 'editor'}">
-				<div style="width: 650px;" align="left">
+				<div style="width:610px;" align="center">
 					<!--밑에 등록 버튼-->
 					<br> 에디터 상품 등록 <br>
-					<div id="editorfood2" align="center"></div>
+					
+					<table id="editorfood2" width="100%" >
+						<tr align="center" height="30"><th width="80">상품 </th><th width="200">상품 이미지</th><th width="150">상품 이름</th><th width="80">상품 가격</th><th width="100">삭 제</th></tr>
+					</table>
+					
+					
 					<br> <br> <br>
 					<button type="button" onclick="findfood()" />
 					<br>
@@ -269,20 +269,37 @@
 
 	<script>
 		var openWin;
-		var foodnum = 0;
+		var rowlen=1;
 		function foodimg(foodname) {
-			foodnum++;
-			var y = "<div align=\"center\" class=\"ttt\" id="+"ttt"+foodnum+"\">"
-					+ "<img src=\""+foodname+"\" width=110 height=110><br>"
-					+ "<label>" + foodname + "</label>" + "</div>";
-			$(editorfood2).append(y);
+			
+			
+			var table = document.getElementById("editorfood2");
+			var food = foodname.split('-');
+			
+			var row = "<tr height=\"140\"><input type=\"hidden\" name=\"food_id\" value=\""+food[0]+"\"/>"; 
+			row += "<td>"+rowlen+"</td>"; 
+			rowlen++;
+			row += "<td>"+"<img src=\"/Remart_teamProj/images/food/"+food[1]+".jpg\" width=110 height=110/>"+"</td>"; 
+			row += "<td>"+food[1]+"</td>"; 
+			row += "<td>"+food[2]+"</td>";
+			row += "<td><button name=\"delStaff\" type=\"button\">삭제</button></td>"; 
+			row += "</tr>";
+			alert(row);
+			$("#editorfood2").append(row);
 		}
+		$(document).on("click","button[name=delStaff]",function(){
+		        var trHtml = $(this).parent().parent();
+		        rowlen--;
+		        trHtml.remove();
+		         
+		});
+		
 		function findfood() {
 			// window.name = "부모창 이름"; 
 			window.name = "parentForm";
 			// window.open("open할 window", "자식창 이름", "팝업창 옵션");
 			openWin = window.open("editorsearch", "childForm",
-					"width=570, height=350, resizable = no, scrollbars = no");
+					"width=600, height=800, resizable = no, scrollbars = no");
 		}
 
 		var slideIndex = 1;
