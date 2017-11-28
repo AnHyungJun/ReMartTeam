@@ -13,12 +13,15 @@ import model.Mart_orderDataBean;
 import model.Offline_martDataBean;
 import model.ProductDataBean;
 import model.R_memberDataBean;
+import model.SaleDataBean;
 import model.StaffDataBean;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.MybatisLoginDBBean;
@@ -31,14 +34,25 @@ public class OfflineController {
 	@Autowired
 	MybatisOfflineDBBean dbPro;
 	
+	Offline_martDataBean offlineInfo;
+	String offline_mart_id;
+	StaffDataBean staffInfo;
+	String staff_id;
+	
 	@ModelAttribute
-	public void addAttributes(HttpServletRequest request){
+	public void addAttributes(HttpServletRequest request, HttpSession session){
 		try{
 			request.setCharacterEncoding("utf-8");
 		}catch(UnsupportedEncodingException e1){
 			e1.printStackTrace();
 		}
+		 offlineInfo = (Offline_martDataBean)(session.getAttribute("offlineInfo"));
+		 if(offlineInfo != null)
+			 offline_mart_id = offlineInfo.getOffline_mart_id();
 		
+		 staffInfo = (StaffDataBean)(session.getAttribute("staffInfo"));
+		 if(staffInfo != null)
+		 staff_id = staffInfo.getStaff_id();
 	}
 	
 	@RequestMapping(value="offline_loginForm")
@@ -93,7 +107,7 @@ public class OfflineController {
 	}
 	
 	@RequestMapping(value="offlineSearch")
-	public ModelAndView offlineSearch(HttpServletRequest request){
+	public ModelAndView offlineSearch(){
 		mv.clear();
 		mv.setViewName("local/suggestclientSearch");
 		return mv;
@@ -122,11 +136,10 @@ public class OfflineController {
 	}
 	
 	@RequestMapping(value="order_status")
-	public ModelAndView order_status(HttpSession session, String date1,String date2){
+	public ModelAndView order_status( String date1,String date2){
 		
 		mv.clear();
-		Offline_martDataBean offlineInfo = (Offline_martDataBean)(session.getAttribute("offlineInfo"));
-		String offline_mart_id = offlineInfo.getOffline_mart_id();
+
 		List mart_orderList = null;
 		if(date1 == null)
 			mart_orderList = dbPro.getMart_orders(offline_mart_id);
@@ -138,9 +151,7 @@ public class OfflineController {
 		return mv;
 	}
 	@RequestMapping(value="confirm")
-	public ModelAndView confirm(HttpSession session, String mart_order_id){
-		Offline_martDataBean offlineInfo = (Offline_martDataBean)(session.getAttribute("offlineInfo"));
-		String offline_mart_id = offlineInfo.getOffline_mart_id();
+	public ModelAndView confirm( String mart_order_id){
 		
 		List food_numList = null;
 		food_numList = dbPro.getFood_nums(mart_order_id);
@@ -158,11 +169,10 @@ public class OfflineController {
 			dbPro.updateMartOrderStatus(mart_order_id);
 		}
 		
-		return order_status(session,null,null);
+		return order_status(null,null);
 	}
 	@RequestMapping(value="detail")
 	public ModelAndView detail(String mart_order_id){
-		System.out.println(mart_order_id);
 		
 		List food_numList = null;
 		food_numList = dbPro.getFood_nums2(mart_order_id);
@@ -171,5 +181,20 @@ public class OfflineController {
 		mv.addObject("food_numList",food_numList);
 		mv.setViewName("offline/detailForm");
 		return mv;
+	}
+	@RequestMapping(value="salePro")
+	public ModelAndView salePro(HttpServletRequest request){
+		String[] product_id = request.getParameterValues("product_id");
+		String[] qty = request.getParameterValues("qty");
+		
+		for(int i=0; i<product_id.length; i++){
+			SaleDataBean sale = new SaleDataBean();
+			sale.setProduct_id(Integer.parseInt(product_id[i]));
+			sale.setStaff_id(staff_id);
+			sale.setQty(Integer.parseInt(qty[i]));
+			dbPro.insertSale(sale);
+		}
+		
+		return saleForm();
 	}
 }

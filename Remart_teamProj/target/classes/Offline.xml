@@ -110,4 +110,21 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 		where div = 'offline' and order_id = #{mart_order_id}
 	</select>
 	
+	
+	<select id="getSale_id" resultType="int">
+		select nvl(max(sale_id),0) from sale
+	</select>
+	
+	<insert id="insertSale"  parameterType="hashmap">
+		insert into sale
+		(sale_id, product_id, staff_id, s_date, qty)
+		values
+		(#{sale_id}, #{sale.product_id},#{sale.staff_id},
+		sysdate,#{sale.qty})
+	</insert>
+	
+	<update id="updateProductM"  parameterType="hashmap">
+		update product set qty = qty - #{sale.qty} where product_id = #{sale.product_id}
+	</update>
+	
 </mapper>

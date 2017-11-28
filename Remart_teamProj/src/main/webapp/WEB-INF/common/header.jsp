@@ -28,6 +28,22 @@ body, h1, h2, h3, h4, h5, h6 {
 .fa-anchor, .fa-coffee {
 	font-size: 200px
 }
+
+.btn_search {
+border : 0px;
+background : #ffffff;
+}
+
+.search {
+border : 0px;
+}
+
+.search_mold {
+border : 1px solid #000000;
+width : 350px;
+margin-left : 100px;
+}
+
 </style>
 <div class="w3-top w3-white">
 	<div class="w3-bar w3-border-bottom w3-center-align w3-large"
@@ -61,8 +77,7 @@ body, h1, h2, h3, h4, h5, h6 {
 								onmouseover="this.style.textDecoration='none';"
 								onmouseout="this.style.textDecoration='none';">마이페이지</a>
 						</c:if>
-						| <a
-							href="<%=request.getContextPath()%>/shopping/basket"
+						| <a href="<%=request.getContextPath()%>/shopping/basket"
 							style="font-size: 12px; text-decoration: none;" class="con_link"
 							onmouseover="this.style.textDecoration='none';"
 							onmouseout="this.style.textDecoration='none';">장바구니</a>
@@ -78,15 +93,21 @@ body, h1, h2, h3, h4, h5, h6 {
 							</div>
 							<div class="w3-col" style="width: 50%">
 								<div class="w3-bar-block w3-center">
-									<div class="w3-bar-item w3-margin-top" style="height: 40px;">
-										<input type="text" style="width: 300px;">
+									<div class="w3-center w3-margin-top" style="height: 40px;">
+									<div class="search_mold">
+										<input class="search" type="text"
+											style="width: 300px; font-size: 14px; height: 30px;"><button class="btn_search" style="font-size: 13px; height: 30px;" >
+											<img src="<%=request.getContextPath()%>/images/icon/search.png">
+										</button></div> 
 									</div>
+									
 									<div class="w3-bar-item" style="height: 100px;">
-										<a href="#" style="font-size: 13px; text-decoration: none;"
+										<a href="#" style="font-size: 12px; text-decoration: none;"
 											class="con_link w3-button w3-hover-white"
 											onmouseover="this.style.textDecoration='none';"
 											onmouseout="this.style.textDecoration='none';">EDITOR
-											RECOMMAND</a> <a href="<%=request.getContextPath()%>/tvrecipe/tvRecipe1"
+											RECOMMAND</a> <a
+											href="<%=request.getContextPath()%>/tvrecipe/tvRecipe1"
 											style="font-size: 13px; text-decoration: none;"
 											class="con_link w3-button w3-hover-white"
 											onmouseover="this.style.textDecoration='none';"
@@ -112,8 +133,7 @@ body, h1, h2, h3, h4, h5, h6 {
 								<div class="w3-bar-block">
 									<div class="w3-bar-item" style="height: 30px;">&nbsp;</div>
 									<div class="w3-bar-item" style="height: 50px;">
-										<a
-											href="<%=request.getContextPath()%>/shopping/shoppingMain"><img
+										<a href="<%=request.getContextPath()%>/shopping/shoppingMain"><img
 											alt="로고"
 											src="<%=request.getContextPath()%>/images/icon/foodmall.png"
 											width="130px" align="right"></a>
