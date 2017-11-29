@@ -42,7 +42,7 @@
 						<p>&nbsp;</p>
 					</div>
 					<div class="w3-col w3-text-grey"
-						" style="width: 32%; font-size: 13px;">
+						style="width: 32%; font-size: 13px;">
 						<a style="font-size: 12px; text-decoration: none;"
 							class="con_link" onmouseover="this.style.textDecoration='none';"
 							onmouseout="this.style.textDecoration='none';" href="forgotForm">forgot
