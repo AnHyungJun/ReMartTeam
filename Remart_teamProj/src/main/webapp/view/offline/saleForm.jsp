@@ -18,9 +18,10 @@
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>REMART</title>
+<title>REMART OFFLINE</title>
 </head>
-<script	type = "text/javascript" src = "<%=request.getContextPath() %>/ajax/httpRequest.js">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/ajax/httpRequest.js">
 </script>
 <script type="text/javascript">
 	function startSuggest(){
@@ -55,53 +56,65 @@
 			alert("상품코드를 입력해주세요");
 		}else{
 			var params = "keyword=" + encodeURIComponent(keyword);
-			sendRequest("<%=request.getContextPath()%>/common/suggestFileCodeSearch.jsp", params, displayResult2, 'POST');
+			sendRequest("<%=request.getContextPath()%>
+	/common/suggestFileCodeSearch.jsp",
+					params, displayResult2, 'POST');
 		}
 	}
-	
-	function displayResult2(){
-		if(httpRequest.readyState == 4) {
-	         if(httpRequest.status == 200) {
-	            var resText = httpRequest.responseText;
-	             var res =  resText.split(',');
-	             
-	             var table = document.getElementById('posTable');
-	     		var rowlen = table.rows.length;
-	     		var row = table.insertRow(rowlen);	
-	     			
-	     		if(parseInt(res[3]) > 0){
-		     		row.insertCell(0).innerHTML = "<input class='w3-input' type='text' name = 'product_id' value = '"+res[0]+"'>";
-		     		row.insertCell(1).innerHTML = "<input class='w3-input' type='text' name = 'name' value = '"+res[1]+"'>";
-		    		row.insertCell(2).innerHTML = "<input type='text' size='2' name = 'qty' value = '1' id='"+res[0].replace(/(^\s*)|(\s*$)/g,"")+"q'>" 
-		    		+ "<button onclick=\"up("+res[0]+")\" class=\"w3-button w3-white \" type=\"button\">▲</button>"
-		    		+ "<button onclick=\"down("+res[0]+")\" class=\"w3-button w3-white \" type=\"button\">▼</button>";
-		     		row.insertCell(3).innerHTML = "<input class='w3-input' type='text' name = 'priceFit' value = '"+res[2]+"' >";
-		     		row.insertCell(4).innerHTML = "<input class='w3-input' type='text' name = 'price' value = '"+res[2]+"'  id='"+res[0].replace(/(^\s*)|(\s*$)/g,"")+"p'>" ;
-		     		row.insertCell(5).innerHTML = "<input class='w3-input' type='text' name = 'rest' value = '"+res[3]+"' id='"+res[0].replace(/(^\s*)|(\s*$)/g,"")+"r'>";
-		     		row.insertCell(6).innerHTML = "<button onclick=\"remove_this()\" class=\"w3-button w3-border w3-round-xlarge\" type=\"button\">삭제</button>";
-		     		
-		     		
-		     		
-		     		sumsum();
-	     		}else{
-	     			alert("재고가 없거나 없는 상품입니다.");
-	     			
-	     		}
-	     		document.getElementById('productCode').value = "";
-	         } else {
-	            alert("에러: " + httpRequest.status);
-	         }
-	      }
+
+	function displayResult2() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				var resText = httpRequest.responseText;
+				var res = resText.split(',');
+
+				var table = document.getElementById('posTable');
+				var rowlen = table.rows.length;
+				var row = table.insertRow(rowlen);
+
+				if (parseInt(res[3]) > 0) {
+					row.insertCell(0).innerHTML = "<input class='w3-input' type='text' name = 'product_id' value = '"+res[0]+"'>";
+					row.insertCell(1).innerHTML = "<input class='w3-input' type='text' name = 'name' value = '"+res[1]+"'>";
+					row.insertCell(2).innerHTML = "<input type='text' size='2' name = 'qty' value = '1' id='"
+							+ res[0].replace(/(^\s*)|(\s*$)/g, "")
+							+ "q'>"
+							+ "<button onclick=\"up("
+							+ res[0]
+							+ ")\" class=\"w3-button w3-white \" type=\"button\">▲</button>"
+							+ "<button onclick=\"down("
+							+ res[0]
+							+ ")\" class=\"w3-button w3-white \" type=\"button\">▼</button>";
+					row.insertCell(3).innerHTML = "<input class='w3-input' type='text' name = 'priceFit' value = '"+res[2]+"' >";
+					row.insertCell(4).innerHTML = "<input class='w3-input' type='text' name = 'price' value = '"
+							+ res[2]
+							+ "'  id='"
+							+ res[0].replace(/(^\s*)|(\s*$)/g, "") + "p'>";
+					row.insertCell(5).innerHTML = "<input class='w3-input' type='text' name = 'rest' value = '"
+							+ res[3]
+							+ "' id='"
+							+ res[0].replace(/(^\s*)|(\s*$)/g, "") + "r'>";
+					row.insertCell(6).innerHTML = "<button onclick=\"remove_this()\" class=\"w3-button w3-border w3-round-xlarge\" type=\"button\">삭제</button>";
+
+					sumsum();
+				} else {
+					alert("재고가 없거나 없는 상품입니다.");
+
+				}
+				document.getElementById('productCode').value = "";
+			} else {
+				alert("에러: " + httpRequest.status);
+			}
+		}
 	}
 	function remove_this() {
 
 		if (!confirm("삭제하시겠습니까?"))
 			return;
 
-		var lo_this = window.event.srcElement; 
-		var lo_table = lo_this.parentNode.parentNode.parentNode  
-		var li_row_index = lo_this.parentNode.parentNode.rowIndex; 
-		lo_table.deleteRow(li_row_index); 
+		var lo_this = window.event.srcElement;
+		var lo_table = lo_this.parentNode.parentNode.parentNode
+		var li_row_index = lo_this.parentNode.parentNode.rowIndex;
+		lo_table.deleteRow(li_row_index);
 
 		sumsum();
 	}
@@ -111,15 +124,16 @@
 		var id_p = rowlen + "p";
 		var id_r = rowlen + "r";
 
-		if(parseInt(document.getElementById(id_q).value)<parseInt(document.getElementById(id_r).value)){
-		document.getElementById(id_p).value = parseInt(document
-				.getElementById(id_p).value)
-				/ document.getElementById(id_q).value;
-		document.getElementById(id_q).value = parseInt(document
-				.getElementById(id_q).value) + 1;
-		document.getElementById(id_p).value = parseInt(document
-				.getElementById(id_p).value)
-				* parseInt(document.getElementById(id_q).value);
+		if (parseInt(document.getElementById(id_q).value) < parseInt(document
+				.getElementById(id_r).value)) {
+			document.getElementById(id_p).value = parseInt(document
+					.getElementById(id_p).value)
+					/ document.getElementById(id_q).value;
+			document.getElementById(id_q).value = parseInt(document
+					.getElementById(id_q).value) + 1;
+			document.getElementById(id_p).value = parseInt(document
+					.getElementById(id_p).value)
+					* parseInt(document.getElementById(id_q).value);
 		}
 		sumsum();
 	}
@@ -141,7 +155,6 @@
 		}
 	}
 
-
 	function sumsum() {
 		var ps = 0;
 
@@ -153,10 +166,11 @@
 		document.getElementById('priceSum').value = ps;
 
 	}
-	function usePoint(){
+	function usePoint() {
 		document.getElementById('pointUse').value = "Y";
-		document.getElementById('priceSum').value = 
-			parseInt(document.getElementById('priceSum').value) - parseInt(document.getElementById('userPoint').value);
+		document.getElementById('priceSum').value = parseInt(document
+				.getElementById('priceSum').value)
+				- parseInt(document.getElementById('userPoint').value);
 		document.getElementById('userPoint').value = "0";
 	}
 </script>
@@ -172,15 +186,19 @@
 
 				<div class="w3-col w3-container" style="width: 60%">
 					<br>
-					<div style=" float: left">
-						
-						<img  style="text-align:left"alt="로고" src="<%=request.getContextPath()%>/images/icon/logo.png" width="100px">
+					<div style="float: left">
+
+						<img style="text-align: left" alt="로고"
+							src="<%=request.getContextPath()%>/images/icon/logo.png"
+							width="100px">
 					</div>
-					<div style=" float: right">
-						<a href="<%=request.getContextPath()%>/offline/loginOut" style=" float: left" class="w3-bar-item w3-button w3-white "><i class="fa fa-sign-out"></i> 로그아웃</a>
-						
+					<div style="float: right">
+						<br> <a href="<%=request.getContextPath()%>/offline/loginOut"
+							style="font-size: 12px;"
+							class="w3-bar-item w3-right w3-button w3-white w3-hover-light-grey"><i
+							class="fa fa-sign-out"></i> 로그아웃</a>
 					</div>
-					
+
 				</div>
 				<div class="w3-col" style="width: 20%">
 					<p>&nbsp;</p>
@@ -194,39 +212,50 @@
 				</div>
 
 				<div class="w3-col" style="width: 60%">
-					<br><br>
-					<input type="text" id="productCode" placeholder="상품 코드 입력">
-					<input type="button" onclick="startSuggest2()" value="찾기">
+					<br> <br> <input type="text" id="productCode"
+						placeholder="상품 코드 입력"
+						style="font-size: 13px; vertical-align: middle;"> <input
+						type="button" class="w3-button w3-white w3-hover-white"
+						style="font-size: 13px; vertical-align: middle;"
+						onclick="startSuggest2()" value="찾기">
+					<div style="margin-bottom: 50px;"></div>
 					<form action="salePro" method="post">
-					<div style="height: 400px;">
-						<table style=" float: left" id = "posTable">
-							<tr>
-								<th  style="width: 150px">바코드</th>
-								<th  style="width: 150px">상품명</th>
-								<th  style="width: 50px">수량</th>
-								<th  style="width: 150px">단가</th>
-								<th  style="width: 150px">금액</th>
-								<th  style="width: 50px">재고</th>
-								<th style="width: 50px">삭제</th>
-							<tr>
-						</table>
-						
-						<div style=" float: right">
-							<button style="height: 70px;width:70px">결제진행</button><br><br>
+						<div style="height: 400px;">
+							<table style="float: left; font-size: 13px;" id="posTable">
+								<tr>
+									<th style="width: 150px">바코드</th>
+									<th style="width: 150px">상품명</th>
+									<th style="width: 50px">수량</th>
+									<th style="width: 150px">단가</th>
+									<th style="width: 150px">금액</th>
+									<th style="width: 50px">재고</th>
+									<th style="width: 50px">삭제</th>
+								<tr>
+							</table>
+
+							<div style="float: right">
+								<button class="w3-button w3-black w3-hover-red"
+									style="width: 90px; font-size: 13px;">결제진행</button>
+								<br> <br>
+							</div>
 						</div>
-					</div>
-					고객명:
-					<input type="text" id="userName" placeholder="고객 전화번호 입력">
-					<input type="button" onclick="startSuggest()" value="조회"><br>
-					Point: 
-					<input type="text" id="userPoint">
-					<input type="button" value="사용" onclick="usePoint()">
-					<input type="hidden" value="N" id="pointUse" name="pointUse">
-					<input type="hidden" value="N" id="userPhone" name="userPhone">
-					<input type="text" value="담당자명: ${staffInfo.name }">
-					금액:
-					<input type="text" value="0" style=" float: right" id="priceSum">
-					<br><br>
+						<div style="font-size: 13px;">
+							고객명 : <input type="text" id="userName" placeholder="고객 전화번호 입력"
+								style="font-size: 13px;"><input type="button"
+								onclick="startSuggest()" value="조회"
+								class="w3-button w3-white w3-hover-white"
+								style="font-size: 13px;"> Point : <input type="text"
+								id="userPoint" style="font-size: 13px;"><input
+								type="button" value="사용" onclick="usePoint()"
+								class="w3-button w3-white w3-hover-white"
+								style="font-size: 13px;">
+						<input type="hidden" value="N" id="pointUse" name="pointUse">
+						<input type="hidden" value="N" id="userPhone" name="userPhone">
+						<div style="float:right">
+						<input type="text" value="담당자명 : ${staffInfo.name }"
+							style="font-size: 13px;"> 금액 : <input type="text"
+							value="0" id="priceSum" style="font-size: 13px;"></div> </div>
+							<div style="margin-top:30px;"></div>
 					</form>
 				</div>
 				<div class="w3-col" style="width: 20%">
@@ -235,6 +264,6 @@
 			</div>
 		</div>
 	</div>
-	
+
 </body>
 </html>

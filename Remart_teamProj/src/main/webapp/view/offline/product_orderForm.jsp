@@ -18,7 +18,7 @@
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>REMART</title>
+<title>REMART OFFLINE</title>
 
 </head>
 
@@ -140,7 +140,7 @@ $(function() {
 							class="w3-bar-item w3-button w3-white w3-hover-light-grey" style="font-size: 12px;"
 							name="order_status" value="발주현황" OnClick="order_status()">
 							<a href="<%=request.getContextPath()%>/offline/loginOut"
-								style="font-size: 13px;"
+								style="font-size: 12px;"
 								class="w3-bar-item w3-right w3-button w3-white w3-hover-light-grey"><i
 								class="fa fa-sign-out"></i> 로그아웃</a>
 						</div>
@@ -171,8 +171,7 @@ $(function() {
 						<br>입고 일자 <input type="text"
 							id="testDatepicker" name="or_date_before"> <br> <br>
 						입고 장소 <input type="text" id="location"
-							value="${offlineInfo.location }"> <br> <br>
-							<input type="button"
+							value="${offlineInfo.location }"><input type="button"
 							class="w3-button w3-white w3-hover-white" style="font-size: 13px; vertical-align: middle;"
 							name="search" value="찾기" onclick="openOfflineSearch(this.form)">
 						<br> <br>

@@ -8,7 +8,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>REMART</title>
+<title>REMART OFFLINE</title>
 
 </head>
 
@@ -22,7 +22,7 @@
 					<p>&nbsp;</p>
 				</div>
 				
-				<table>
+				<table style="font-size:13px;">
 					<tr>
 						<th style="width: 100px;">NO</th>
 						<th style="width: 200px;">상품명</th>
