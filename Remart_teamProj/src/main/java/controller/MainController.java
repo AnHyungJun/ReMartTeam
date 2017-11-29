@@ -23,7 +23,7 @@ public class MainController {
 	@Autowired
 	MybatisMainDBBean dbPro;
 
-	/*@RequestMapping(value = "main")
+	@RequestMapping(value = "main")
 	public ModelAndView main(HttpServletRequest request) throws UnsupportedEncodingException {
 	
 			request.setCharacterEncoding("utf-8");
@@ -31,16 +31,16 @@ public class MainController {
 					.getAttribute("memberInfo");
 			
 		List<FeedDataBean> feeds = dbPro.getFeeds(r_member);
-		System.out.println("¹Ù²ï¸ÞÀÎÄÁÆ®·Ñ·¯");
+		System.out.println("ï¿½Ù²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Ñ·ï¿½");
 		System.out.println(feeds.toString());
 		mv.clear();
 		mv.addObject("Feeds", feeds);
 
 		mv.setViewName("main/main");
 		return mv;
-	}*/
+	}
 
-/*	@RequestMapping(value = "like")
+	@RequestMapping(value = "like")
 	public ModelAndView like(String like) {
 		System.out.println("ff");
 
@@ -48,7 +48,7 @@ public class MainController {
 		mv.addObject("like", like);
 		mv.setViewName("local/like");
 		return mv;
-	}*/
+	}
 
 	@RequestMapping(value = "getFeed")
 	public ModelAndView getFeed() {
