@@ -104,7 +104,7 @@ function myFunction() {
 				});
 				
 			}, //최소 몇자 이상되면 통신을 시작하겠다라는 옵션 
-			minLength : 2,
+			//minLength : 2,
 			//자동완성 목록에서 특정 값 선택시 처리하는 동작 구현
 			//구현없으면 단순 text태그내에 값이 들어간다. 
 			select : function(event, ui) {
