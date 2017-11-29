@@ -56,8 +56,7 @@
 			alert("상품코드를 입력해주세요");
 		}else{
 			var params = "keyword=" + encodeURIComponent(keyword);
-			sendRequest("<%=request.getContextPath()%>
-	/common/suggestFileCodeSearch.jsp",
+			sendRequest("<%=request.getContextPath()%>/common/suggestFileCodeSearch.jsp",
 					params, displayResult2, 'POST');
 		}
 	}
