@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>REMART</title>
+<title>REMART OFFLINE</title>
 </head>
 <body>
  <% String path=request.getContextPath(); %>
