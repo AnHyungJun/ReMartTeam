@@ -32,7 +32,7 @@ public class ShoppingController {
    MybatisShoppingDBBean dbPro;
    
    @ModelAttribute
-   public void addAttributes(HttpServletRequest request) {
+   public void addAttributes(HttpServletRequest request, HttpSession session) {
       try {
          request.setCharacterEncoding("utf-8");
          r_member = (R_memberDataBean) request.getSession().getAttribute("memberInfo");
@@ -40,7 +40,6 @@ public class ShoppingController {
          el.printStackTrace();
       }
       
-      HttpSession session = request.getSession();
       String reqcategory_id = request.getParameter("category_id");
       
       try{
@@ -59,6 +58,7 @@ public class ShoppingController {
          category_id = (String) session.getAttribute("category_id");
       }
       
+      session.setAttribute("curPage", "shopping");
    }
    
    

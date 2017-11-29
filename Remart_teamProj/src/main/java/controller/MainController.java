@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import model.FeedDataBean;
 import model.Likely_bookmarkDataBean;
@@ -11,6 +12,7 @@ import model.R_memberDataBean;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,6 +24,12 @@ public class MainController {
 
 	@Autowired
 	MybatisMainDBBean dbPro;
+	
+	@ModelAttribute
+	   public void addAttributes(HttpServletRequest request, HttpSession session) {
+	      
+	      session.setAttribute("curPage", "n");
+	   }
 
 	@RequestMapping(value = "main")
 	public ModelAndView main(HttpServletRequest request) throws UnsupportedEncodingException {

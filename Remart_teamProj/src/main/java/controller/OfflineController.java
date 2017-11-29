@@ -53,6 +53,8 @@ public class OfflineController {
 		 staffInfo = (StaffDataBean)(session.getAttribute("staffInfo"));
 		 if(staffInfo != null)
 		 staff_id = staffInfo.getStaff_id();
+		 
+		 session.setAttribute("curPage", "n");
 	}
 	
 	@RequestMapping(value="offline_loginForm")

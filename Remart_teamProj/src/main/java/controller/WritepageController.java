@@ -34,7 +34,7 @@ public class WritepageController {
 	MybatisWritepageDBBean dbPro;
 
 	@ModelAttribute
-	public void addAttributes(HttpServletRequest request) {
+	public void addAttributes(HttpServletRequest request,HttpSession session) {
 		try {
 			request.setCharacterEncoding("utf-8");
 			r_member = (R_memberDataBean) request.getSession().getAttribute(
@@ -42,6 +42,7 @@ public class WritepageController {
 		} catch (UnsupportedEncodingException el) {
 			el.printStackTrace();
 		}
+		session.setAttribute("curPage", "n");
 	}
 
 	@RequestMapping(value = "writeForm")

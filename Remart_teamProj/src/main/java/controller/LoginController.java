@@ -12,6 +12,7 @@ import model.R_memberDataBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,6 +27,12 @@ public class LoginController {
 	
 	@Autowired
 	MybatisLoginDBBean dbPro;
+	
+	@ModelAttribute
+	   public void addAttributes(HttpServletRequest request, HttpSession session) {
+	      
+	      session.setAttribute("curPage", "n");
+	   }
 	
 	@RequestMapping(value="loginForm")
 	public ModelAndView loginForm(){	

@@ -27,8 +27,16 @@ public class MypageController {
 	ModelAndView mv = new ModelAndView();
 	String id;//�Ķ� ���ͷ� ���� ���̵� ���ǿ� �ö� ���̵�� ������ �� ���� �ƴϸ� �ٸ� ����
 	R_memberDataBean member;
+	
 	@Autowired
 	MybatisMypageDBBean dbPro;
+	
+	@ModelAttribute
+	   public void addAttributes(HttpServletRequest request, HttpSession session) {
+	      
+	      session.setAttribute("curPage", "n");
+	   }
+	
 	@ModelAttribute
 	public void addAttributes(HttpServletRequest request) {
 		try {
