@@ -30,7 +30,7 @@
 		
 		List hashList = sel.selectHashDb();
 		for(int i=0; i<hashList.size(); i++){
-			dblist.add((String)hashList.get(i));
+			dblist.add("#"+(String)hashList.get(i));
 		}
 
 		for (String str : dblist) {
