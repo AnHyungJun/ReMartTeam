@@ -181,6 +181,10 @@
 .pay {
 	
 }
+
+.tiny {
+font-size:2px;
+}
 </style>
 </head>
 <body>
@@ -194,6 +198,8 @@
 
 	<div class="w3-col" style="width: 1142px;">
 		<!-- basket_wrap -->
+		<form method="post"
+			action="<%=request.getContextPath()%>/shopping/paymentInfo">
 			<div class="basket_wrap">
 				<!-- shopping_process -->
 				<div class="shopping_process">
@@ -250,8 +256,8 @@
 										<input type="button" value="-" count_range="m" style="width:15% ">
 										<input class="count w3-center" value="${articleBasket.food_num }" readonly="" name="food_num" style="width: 40%" id="food_num"> 
 										<input type="button" value="+" count_range="p" style="width: 15%">
-										<input type="submit" class="w3-white w3-border w3-border-grey" 
-										style="font-size: 13px; width: 40%; margin-top: 8px;" value="변경">
+										<input type="submit" class="w3-white w3-border w3-border-white" 
+										style="font-size: 13px; width: 41%; margin-top: 8px;" value="변경">
 									</div>
 									</form>
 								</td>
@@ -261,13 +267,14 @@
 								<td class="w3-center"
 									style="font-size: 14px; vertical-align: middle; color: red;">
 									${articleBasket.bprice*articleBasket.food_num }원</td>
-								<td><input type="button" class="w3-button w3-white w3-hover-white"
-									style="font-size: 12px; width: 100px;" value="삭제" 
-									onclick="document.location.href='deleteBasket?basket_id=${articleBasket.basket_id}'">
-									<p>
-									<input type="button" class="w3-button w3-white w3-hover-white"
-									style="font-size: 12px; width: 100px;" value="계속담기"
+								<td>
+									<input type="button" class="w3-button w3-black w3-hover-black"
+									style="font-size: 11px; width: 80px;" value="계속담기"
 									onclick="document.location.href='shoppingMain'">
+									<p class="tiny">
+									<input type="button" class="w3-button w3-light-grey w3-hover-light-grey"
+									style="font-size: 11px; width: 80px;" value="삭제" 
+									onclick="document.location.href='deleteBasket?basket_id=${articleBasket.basket_id}'">
 								</td>
 							</tr>
 							<c:set var="totalPrice" value="${totalPrice + (articleBasket.bprice*articleBasket.food_num) }"/>
@@ -319,7 +326,7 @@
 				<!-- paysum_wrap end -->
 				<div class="w3-center">
 					<input type="submit" value="결제하기" style="font-size: 13px;"
-						class="w3-button w3-border w3-white w3-hover-black" onclick="document.location.href='paymentInfo'">
+						class="w3-button w3-black w3-hover-red">
 				</div>
 			</div>
 			<!-- basket_wrap end -->
