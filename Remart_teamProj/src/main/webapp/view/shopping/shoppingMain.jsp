@@ -156,7 +156,7 @@ a {
 										class="count w3-center" value="1" readonly="" name="food_num"
 										style="width: 40px; height: 30px;" id="food_num"> <input
 										type="button" value="+" class="count_btn w3-white"
-										count_range="p" style="width: 20px;">
+										count_range="p" style="width: 25px;">
 								</div>
 								<input type="image"
 									class="w3-black w3-round w3-border w3-border-black"
