@@ -30,4 +30,19 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE id = #{id}
 	</select>
 	
+	<select id="getId" parameterType="hashmap" resultType="String">
+		select id from r_member
+		where email=#{email}
+	</select>
+	
+	<select id="getName" parameterType="hashmap" resultType="String">
+		select name from r_member
+		where email=#{email}
+	</select>
+	
+ 	<update id="updatePw" parameterType="hashmap">
+		update r_member set passwd=#{passwd}
+		where id=#{id}
+	</update>
+	
 </mapper>

@@ -57,11 +57,11 @@ public class MybatisLoginDBBean extends MybatisConnector{
 		try{
 			String cuPasswd = sqlSession.selectOne(namespace + ".loginCheck",map);
 			if(cuPasswd == null)
-				x = -1; //해당아이디 없음
+				x = -1; //�빐�떦�븘�씠�뵒 �뾾�쓬
 			else if(cuPasswd.equals(passwd))
-				x = 1; //일치
+				x = 1; //�씪移�
 			else
-				x = 0; //비밀번호틀림
+				x = 0; //鍮꾨�踰덊샇��由�
 		}finally{
 			sqlSession.close();
 			return x;
@@ -80,6 +80,50 @@ public class MybatisLoginDBBean extends MybatisConnector{
 		}finally{
 			sqlSession.close();
 			return member;
+		}
+	}
+	
+	public String getId(String email) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("email", email);
+		try {
+			return sqlSession.selectOne(namespace + ".getId", map);
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	public void updatePasswd(String id, String passwd) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("id", id);
+		map.put("passwd", passwd);
+		try {
+			sqlSession.update(namespace + ".updatePw", map);
+		} finally {
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	}
+
+	public int forgotCheck(String name, String email) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("email", email);
+		int chkidpw = 1;
+		try {
+			// String conid = sqlSession.selectOne(namespace + ".getId", map);
+			String conname = sqlSession.selectOne(namespace + ".getName", map);
+			if(conname == null)
+				chkidpw = -1;
+			else if (conname.equals(name))
+					chkidpw = 1;
+			else
+				chkidpw = 0;
+		} finally {
+			sqlSession.close();
+			return chkidpw;
 		}
 	}
 }

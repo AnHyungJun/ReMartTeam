@@ -47,6 +47,34 @@ public class LoginController {
 		mv.setViewName("login/forgotForm");
 		return mv;
 	}
+	
+	@RequestMapping(value="forgotPro")
+	public ModelAndView forgotPro(String name, String email){	
+		int check = dbPro.forgotCheck(name, email);
+		mv.clear();
+		mv.addObject("check", check);
+		mv.addObject("email", email);
+		mv.setViewName("login/forgotPro");
+		return mv;
+	}
+	
+	@RequestMapping(value="findForm")
+	public ModelAndView findForm(String email){	
+		String chkid = dbPro.getId(email);
+		mv.clear();
+		mv.addObject("chkid", chkid);
+		mv.setViewName("login/findForm");
+		return mv;
+	}
+	
+	@RequestMapping(value="findPro")
+	public ModelAndView findPro(String id, String passwd){
+		dbPro.updatePasswd(id, passwd);
+		mv.clear();
+		mv.setViewName("login/loginForm");
+		return mv;
+	}
+	
 	@RequestMapping(value="confirmId")
 	public ModelAndView confirmId(String id) throws Exception{
 		int check = dbPro.comfirmId(id);

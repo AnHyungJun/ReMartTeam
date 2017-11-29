@@ -9,27 +9,26 @@
 	<div style="margin-top: 190px"></div>
 	<center>
 		<a href="<%=request.getContextPath()%>/main/main"><img
-			src="<%=request.getContextPath()%>/images/icon/forgot.png" style="width: 100px"></a>
-			<div style="margin-top:20px;"></div>
+			src="<%=request.getContextPath()%>/images/icon/forgot.png"
+			style="width: 100px"></a>
+		<div style="margin-top: 20px;"></div>
 		<h4>
 			<b style="font-size: 22px;"> Forgot your ID/PASSWORD? </b>
 		</h4>
 		<p class="w3-text-grey" style="font-size: 13px;">가입하신 이메일로 아이디 찾기와
 			비밀번호 변경이 가능합니다.</p>
-		<div style="margin-top:20px;"></div>
+		<div style="margin-top: 20px;"></div>
 		<div class="w3-container w3-margin-top" style="width: 500px;">
-			<form class="w3-container">
+			<form class="w3-container" action="forgotPro">
 				<div class="w3-container" align="left">
 					<p>
 						<br> <a style="font-size: 13px;">NAME</a> <input
-							class="w3-input" type="text">
-
+							name="name" class="w3-input" type="text">
 					</p>
 					<p>
-						<a style="font-size: 13px;">EMAIL</a> <input class="w3-input"
+						<a style="font-size: 13px;">EMAIL</a> <input name="email" class="w3-input"
 							type="text">
 					</p>
-
 					<div style="margin-top: 50px;"></div>
 					<div class="w3-right">
 						<input type="submit"
