@@ -7,7 +7,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/ajax/httpRequest.js"></script>
 <title>follow form</title>
 
 <style>
@@ -157,7 +160,7 @@
     
         <input type="button" href="#" class="close" value="(닫기)"/>
     	
-    	<div style="width: 500px; height: 50px;">
+    	<div style="width: 100%; height: 50px;">
 			<!--글쓰는데 상단 고정바-->
 			<button id="leftpage" style="float: left;"
 				onclick="plusDivs(-1)">(이미지</button>
@@ -187,6 +190,7 @@
 		}
 		if (slideIndex == 1) {
 			document.getElementById("leftpage").style.display = 'none';
+			document.getElementById("rightpage").style.display = 'block';
 		} else if (slideIndex == x.length) {
 			document.getElementById("leftpage").style.display = 'block';
 			document.getElementById("rightpage").style.display = 'none';
@@ -205,13 +209,15 @@
    		<!-- feed_id,id,like_num,reg_date,recipe_name-->
    		imagename=imagename.split(', ');
    		feeddate=feeddate.split(',');
+   		feeddate=feeddate[0].substring(22);
+   		
    		contentname=contentname.split(',');
    		if(imagenum>1){
    			document.getElementById("rightpage").style.display = 'block';
    			document.getElementById("leftpage").style.display = 'none';
    		}else{
    			document.getElementById("rightpage").style.display = 'none';
-   			document.getElementById("leftpage").style.display = 'none';
+   			document.getElementById("leftpage").style.display = 'block';
    		}
    		for(var i=0;i<imagenum;i++){   			
    			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 55%; height: 350px; margin-top: 10px;\">"+
@@ -228,12 +234,12 @@
    					var tmp=repledata[i].split(',');
    					myArray[i]=tmp;
    			}
-   			alert(myArray[0][2]);
    	   		var makereplelist="";
    	   		for(var i=0;i<replenum;i++){
    	   			makereplelist+="<lable>"+myArray[i][2]+"님의 댓글 /"+myArray[i][3]+"</lable><br>";
    	   		}
-   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 350px; margin-top: 10px;\">"
+   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 350px; margin-top: 10px;\"><input type=\"text\" name=\""+feeddate+"\"/><input type=\"button\" value=\"replecontent\""
+   	   		+"  onclick=\"replecommit('"+feeddate+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist+"</div>"
    	   		
    	   		$('.window').append(z); 
@@ -243,6 +249,55 @@
    		showDivs(1);//슬라이더 처음값
    		
    	}
+   	function replecommit(feed_id,m_id) {
+		
+		var txtval=$('input:text[name="'+feed_id+'"]');
+		
+		if(txtval.val()=='') alert("입력하신 댓글이 없습니다");
+		else{
+			var params =  "feed_id="+feed_id+"&id="+m_id+"&content="+encodeURIComponent(txtval.val());
+			sendRequest("<%=request.getContextPath()%>/common/repleInsert.jsp",
+			params, displayResult, 'GET');
+		}
+		txtval.val("");
+   	}
+   	
+   	function displayResult() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				var resText = httpRequest.responseText;
+				//사이즈 , 코드 , 이름=사진 ,가격 
+				var res = resText.split('|');
+				
+				var count = parseInt(res[0]);
+				var keywordList = null;
+				alert(res);
+				/* if (count > 0) {
+					keywordList = res[1].split('=');
+					var html = "<table class=\"w3-table w3-bordered w3-centered\" width=100%><tr><th width=200;>상품</th><th width=150;>상품명</th><th>가격</th><th>상품 등록</th></tr>";
+					for (var i = 0; i < keywordList.length; i++) {
+						
+						var keywordList2 = keywordList[i].split('-');
+						html += "<tr height=140px;><td align=\"center\">"
+								+"<img src=\"/Remart_teamProj/images/food/"+keywordList2[1]+".jpg\" width=110 height=110><br>"
+								+"</td><td align=\"center\">"
+								+ keywordList2[1] + "</td><td align=\"center\">"
+								+ keywordList2[2] + "</td><td align=\"center\">"
+								+"<button type=\"button\" onclick=\"writefood('"+keywordList[i]+"')\">등록</button></td></tr>";
+						// alert(html); 
+					}
+					html += "</table>";
+					var listView = document.getElementById('suggestList');
+					listView.innerHTML = html;
+					show('suggest');
+					reload();
+				}*/
+			} else {
+				alert("에러: " + httpRequest.status);
+			} 
+		}
+	}
+   	
 	function wrapWindowByMask(){
        
         var maskHeight = $(document).height();
@@ -257,13 +312,13 @@
  
        
         var left = ( $(window).scrollLeft() + ( $(window).width() - $('.window').width()) / 2 );
-        var top = ( $(window).scrollTop() + ( $(window).height() - $('.window').height()) / 2 );
+        var top = ( $(window).scrollTop() + ( $(window).height() - $('.window').height()) / 3 );
  
       
         $('.window').css({'left':left,'top':top, 'position':'absolute'});
  
         
-        $('.window').show();
+       	$('.window').show();
     }
  
     $(document).ready(function(){

@@ -5,20 +5,28 @@ import java.sql.Timestamp;
 
 public class RepleDataBean implements Serializable{
 	int reple_id;
-	String feed_id;
+	int feed_id;
 	String id;
 	String content;
+	String img;
 	Timestamp reg_date;
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	
 	public int getReple_id() {
 		return reple_id;
 	}
 	public void setReple_id(int reple_id) {
 		this.reple_id = reple_id;
 	}
-	public String getFeed_id() {
+	public int getFeed_id() {
 		return feed_id;
 	}
-	public void setFeed_id(String feed_id) {
+	public void setFeed_id(int feed_id) {
 		this.feed_id = feed_id;
 	}
 	public String getId() {
@@ -43,7 +51,7 @@ public class RepleDataBean implements Serializable{
 	public String toString() {
 		return reple_id + "," + feed_id
 				+ "," + id + "," + content + ","
-				+ reg_date;
+				+ reg_date+img;
 	}
 	
 	
