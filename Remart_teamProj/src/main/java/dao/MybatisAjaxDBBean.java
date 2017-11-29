@@ -101,4 +101,20 @@ public class MybatisAjaxDBBean extends MybatisConnector{
 			sqlSession.close();
 		}
 	}
+	public List selectUserIdDb() {
+		sqlSession = sqlSession();
+		try {
+			return sqlSession.selectList(namespace + ".selectUserIdDb");
+		} finally {
+			sqlSession.close();
+		}
+	}
+	public List selectHashDb() {
+		sqlSession = sqlSession();
+		try {
+			return sqlSession.selectList(namespace + ".selectHashDb");
+		} finally {
+			sqlSession.close();
+		}
+	}
 }
