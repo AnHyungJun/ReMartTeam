@@ -22,4 +22,12 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from food where name like '%${keyword}%'
 	</select>
 	
+		<select id="selectUserIdDb" resultType="String">
+		select id from r_member
+	</select>
+	
+	<select id="selectHashDb" resultType="String">
+		select hashtag_content from hashtag
+	</select>
+	
 </mapper>
