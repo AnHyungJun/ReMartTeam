@@ -23,42 +23,32 @@ public class MainController {
 	@Autowired
 	MybatisMainDBBean dbPro;
 
-	@RequestMapping(value = "main")
-	public ModelAndView main(HttpServletRequest request) {
-		List<FeedDataBean> feeds = dbPro.getFeeds();
-		try {
+	/*@RequestMapping(value = "main")
+	public ModelAndView main(HttpServletRequest request) throws UnsupportedEncodingException {
+	
 			request.setCharacterEncoding("utf-8");
 			R_memberDataBean r_member = (R_memberDataBean) request.getSession()
 					.getAttribute("memberInfo");
-			if(r_member!=null){
-			List<Likely_bookmarkDataBean> likeList = dbPro.getLikeList(r_member
-					.getId());
-			System.out.println(likeList);
-			String like=likeList.toString();
-			mv.addObject("LikeList", like);}
-		} catch (UnsupportedEncodingException el) {
-			el.printStackTrace();
-		}
-
+			
+		List<FeedDataBean> feeds = dbPro.getFeeds(r_member);
+		System.out.println("바뀐메인컨트롤러");
 		System.out.println(feeds.toString());
-		System.out.println("컨트롤러확인");
 		mv.clear();
 		mv.addObject("Feeds", feeds);
 
 		mv.setViewName("main/main");
 		return mv;
-	}
+	}*/
 
-	@RequestMapping(value = "like")
+/*	@RequestMapping(value = "like")
 	public ModelAndView like(String like) {
-		System.out.println("fff");
-		System.out.println(like);
+		System.out.println("ff");
 
 		mv.clear();
 		mv.addObject("like", like);
 		mv.setViewName("local/like");
 		return mv;
-	}
+	}*/
 
 	@RequestMapping(value = "getFeed")
 	public ModelAndView getFeed() {

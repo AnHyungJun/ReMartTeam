@@ -15,6 +15,22 @@ public class FeedDataBean implements Serializable{
 	List<String> content;
 	List<RepleDataBean> replelist;
 	List<String> food_id;
+	int likestate;
+	int bookmarkstate;
+	
+	
+	public int getLikestate() {
+		return likestate;
+	}
+	public void setLikestate(int likestate) {
+		this.likestate = likestate;
+	}
+	public int getBookmarkstate() {
+		return bookmarkstate;
+	}
+	public void setBookmarkstate(int bookmarkstate) {
+		this.bookmarkstate = bookmarkstate;
+	}
 	public List getFood_id() {
 		return food_id;
 	}
@@ -92,8 +108,11 @@ public class FeedDataBean implements Serializable{
 				+ ", like_num=" + like_num + ", preImg=" + preImg
 				+ ", reg_date=" + reg_date + ", recipe_name=" + recipe_name
 				+ ", img_name=" + img_name + ", content=" + content
-				+ ", replelist=" + replelist + "]";
+				+ ", replelist=" + replelist + ", food_id=" + food_id
+				+ ", likestate=" + likestate + ", bookmarkstate="
+				+ bookmarkstate + "]";
 	}
+	
 
 	
 	
