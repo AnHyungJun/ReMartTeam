@@ -167,8 +167,7 @@
 	position: relative;
 	text-align: right;
 	min-height: 20px;
-	font-family: NerisBlack;
-	font-size: 22px;
+	font-size: 20px;
 	font-weight: 700;
 	padding-right: 30px;
 	padding-left: 0;

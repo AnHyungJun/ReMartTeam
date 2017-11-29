@@ -18,7 +18,7 @@
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>REMART</title>
+<title>REMART OFFLINE</title>
 
 </head>
 
@@ -116,10 +116,10 @@ function detail(userinput) {
 
 					<div class="w3-col" style="width: 60%; font-size: 13px;">
 						<br>
-						<h6><b>발주현황></b></h6>
+						<h6><b>발주현황</b></h6>
 						<br>날짜 검색 <br>
 						<input type="text" id="testDatepicker" name="date1"> 
-						~
+						-
 						<input type="text" id="testDatepicker2" name="date2" onchange="dataCheck(this.value)"> 
 						<input type="submit"
 							class="w3-button w3-white w3-hover-white" style="font-size: 13px; vertical-align: middle;"
@@ -169,7 +169,7 @@ function detail(userinput) {
 							</tr>
 							</c:forEach>
 						</table>
-						
+						<div style="margin-top: 100px"></div>
 					</div>
 				</form>
 
