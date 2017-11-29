@@ -63,7 +63,21 @@ public class MybatisMypageDBBean extends MybatisConnector {
 		}
 	}
 	
-	
+	public void updateMember(R_memberDataBean member) {
+		System.out.println("updateMember:");
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("member", member);
+		
+		System.out.println("member"+member);
+		try{
+			sqlSession.update(namespace + ".updateMember",map);
+			System.out.println("update Ok:");
+		}finally{
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	}
 	
 	
 	

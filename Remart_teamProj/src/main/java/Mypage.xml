@@ -23,4 +23,14 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="feedreple" parameterType="hashmap" resultType="reple">
 		select * from reple where feed_id=#{feed_id} order by reple_id desc
 	</select>
+	<select id="getMemberInfo" parameterType="hashmap" resultType="R_member">
+		select passwd, name, phone, sex, zip1, zip2, address1, address2, jumin1, email, info from r_member where id=#{id} 
+	</select>
+	
+	<update id="updateMember" parameterType="hashmap">
+		update r_member set id=#{member.id}, passwd=#{member.passwd}, name=#{member.name}, phone=#{member.phone}, address1=#{member.address1},
+		address2=#{member.address2}, zip1=#{member.zip1}, zip2=#{member.zip2}, sex=#{member.sex}, jumin1=#{member.jumin1},
+		email=#{member.email}, info=#{member.info}, profileImg=#{member.profileImg} where id=#{member.id}
+	
+	</update>
 </mapper>

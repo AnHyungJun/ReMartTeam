@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.FileOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -11,8 +12,11 @@ import model.R_memberDataBean;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.MybatisMainDBBean;
@@ -64,12 +68,46 @@ public class MypageController {
 		mv.setViewName("mypage/bookmarkForm");
 		return mv;
 	}
-	@RequestMapping(value="updateForm")
-	public ModelAndView updateForm(){
+	
+	@RequestMapping(value="pwdcheck")
+	public ModelAndView pwdcheck() throws Exception{
+		
+		System.out.println("pwdcheck");
 		mv.clear();
+		mv.setViewName("mypage/pwdcheck");
+		return mv;
+	}
+	
+	@RequestMapping(value="updateForm")
+	public ModelAndView updateForm() throws Exception{
+		System.out.println("updateForm");
+		
+		mv.clear();
+		
 		mv.setViewName("mypage/updateForm");
 		return mv;
 	}
+	
+	@RequestMapping(value="updatePro")
+	public ModelAndView updatePro(MultipartHttpServletRequest multipart, R_memberDataBean member) throws Exception{
+		MultipartFile multi = multipart.getFile("uploadfile");
+		String filename = multi.getOriginalFilename();
+		if(filename != null && !filename.equals("")){
+			String uploadPath = multipart.getRealPath("/") + "fileSave";
+			System.out.println(uploadPath);
+			FileCopyUtils.copy(multi.getInputStream(), new FileOutputStream(uploadPath+"/"+multi.getOriginalFilename()));
+			member.setProfileImg(filename);;
+		}else{
+			member.setProfileImg("");
+		}
+		
+		dbPro.updateMember(member);
+		
+		mv.clear();
+		mv.setViewName("main/main");
+		return mv;
+	}
+	
 	@RequestMapping(value="likeForm")
 	public ModelAndView likeForm(){
 		mv.clear();
