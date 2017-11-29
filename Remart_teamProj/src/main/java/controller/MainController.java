@@ -41,6 +41,7 @@ public class MainController {
 		}
 
 		System.out.println(feeds.toString());
+		System.out.println("컨트롤러확인");
 		mv.clear();
 		mv.addObject("Feeds", feeds);
 
@@ -50,6 +51,7 @@ public class MainController {
 
 	@RequestMapping(value = "like")
 	public ModelAndView like(String like) {
+		System.out.println("fff");
 		System.out.println(like);
 
 		mv.clear();
