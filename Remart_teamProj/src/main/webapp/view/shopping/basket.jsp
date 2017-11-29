@@ -361,8 +361,6 @@
 	</div>
 
 
-	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('.__count_range input[count_range]').click(function(e) {
