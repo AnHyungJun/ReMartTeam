@@ -78,4 +78,39 @@ public class MybatisMainDBBean extends MybatisConnector {
 	         sqlSession.close();
 	      }
 	   }
+	public List getUserSearchList(String autocompleteText) {
+		System.out.println("getUserSearchList:");
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("autocompleteText", autocompleteText);
+		try {
+			return sqlSession.selectList(namespace + ".getUserSearchList", map);
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	public List getFeedSearchList(String autocompleteText) {
+		System.out.println("getFeedSearchList:");
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("autocompleteText", autocompleteText);
+		try {
+			return sqlSession.selectList(namespace + ".getFeedSearchList", map);
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	public List getFoodSearchList(String autocompleteText2) {
+		System.out.println("getFoodSearchList:");
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("autocompleteText2", autocompleteText2);
+		try {
+			return sqlSession.selectList(namespace + ".getFoodSearchList", map);
+		} finally {
+			sqlSession.close();
+		}
+	}
 }

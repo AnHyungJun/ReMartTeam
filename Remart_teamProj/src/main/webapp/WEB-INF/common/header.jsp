@@ -205,6 +205,7 @@ function myFunction() {
 									<div class="w3-center w3-margin-top" style="height: 40px;">
 									<div class="search_mold">
 										
+										<form action="<%=request.getContextPath()%>/main/searchForm" method="post">
 										<c:if test="${curPage != 'shopping' }">
 										<input class="search" type="text" id="autocompleteText" name="autocompleteText"
 											style="width: 300px; font-size: 14px; height: 30px;"><button class="btn_search" style="font-size: 13px; height: 30px;" >
@@ -218,6 +219,7 @@ function myFunction() {
 											<img src="<%=request.getContextPath()%>/images/icon/search.png">
 										</button>
 										</c:if>
+									</form>
 										
 										</div> 
 										

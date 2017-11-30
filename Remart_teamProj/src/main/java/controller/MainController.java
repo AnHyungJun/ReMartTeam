@@ -64,4 +64,26 @@ public class MainController {
 		mv.setViewName("local/feed");
 		return mv;
 	}
+	@RequestMapping(value = "searchForm")
+	public ModelAndView searchForm(String autocompleteText, String autocompleteText2) {
+		mv.clear();
+		List searchList = null;
+		if(autocompleteText2 != null){ //쇼핑서치
+			searchList = dbPro.getFoodSearchList(autocompleteText2);
+			System.out.println(searchList);
+			mv.setViewName("main/foodSearchForm");
+		}else{
+			
+			if(autocompleteText.contains("#")){ // 글 서치
+				autocompleteText = autocompleteText.replace("#", "");
+				searchList = dbPro.getFeedSearchList(autocompleteText);
+				mv.setViewName("main/feedSearchForm");
+			}else{ //사용자 서치
+				searchList = dbPro.getUserSearchList(autocompleteText);
+				mv.setViewName("main/userSearchForm");
+			}
+		}
+		mv.addObject("searchList",searchList);
+		return mv;
+	}
 }
