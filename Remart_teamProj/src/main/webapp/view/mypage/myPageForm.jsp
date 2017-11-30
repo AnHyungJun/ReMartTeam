@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/ajax/httpRequest.js"></script>
-<title>follow form</title>
+<title>REMART</title>
 
 <style>
 .setDiv {
@@ -31,7 +31,7 @@
 .window {
 	display: none;
 	background-color: #ffffff;
-	width:750px;
+	width: 750px;
 	height: 500px;
 	z-index: 99999;
 }
@@ -40,136 +40,134 @@
 </head>
 <body>
 	<div style="margin-top: 140px"></div>
-	<div class="w3-container w3-border-bottom">
-		<div class="w3-left-align"
-			style="float: left; margin-bottom: 20px; margin-top: 20px;">
-			<h3>${member.id}님의프로필</h3>
-		</div>
-		<div class="w3-right-align"
-			style="float: right; margin-bottom: 20px; margin-top: 20px;">
 
-			<a
-				href="<%=request.getContextPath() %>/mypage/likeForm?id=${member.id}"><img
-				class="w3-right-align"
-				src="<%=request.getContextPath()%>/images/icon/like_before.png"
-				style="width: 50px; height: 50px; margin: 3px"></a> <a
-				href="<%=request.getContextPath() %>/mypage/bookmarkForm?id=${member.id}"><img
-				class="w3-right-align"
-				src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-				style="width: 50px; height: 50px; margin: 3px"></a>
-			<!-- 이부분은 팔로우  -->
-			<a
-				href="<%=request.getContextPath() %>/mypage/bookmarkForm?id=${member.id}"><img
-				class="w3-right-align"
-				src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-				style="width: 50px; height: 50px; margin: 3px"></a>
-		</div>
-	</div>
-	<div class="w3-display-container w3-border" style="height: 350px;">
-		<div class="w3-display-topleft"></div>
-		<div class="w3-display-topright"></div>
-		<div class="w3-display-bottomleft w3-center" style="margin-left: 5%;">
-			<h4>${member.name }</h4>
-		</div>
-		<div class="w3-display-bottomright"></div>
-		<div class="w3-display-left">
-			<div style="float: left; margin: 30px; margin-left: 30%;">
-				<img
-					src="<%=request.getContextPath()%>/fileSave/${member.profileImg}"
-					class="w3-circle" alt="Norway" style="width: 200px; height: 200px">
+	<center>
+		<div class="w3-center" style="width: 1000px">
+			<div class="w3-container w3-border-bottom">
+				<div class="w3-left-align"
+					style="float: left; margin-bottom: 5px; margin-top: 30px; font-size: 14px;">
+					<b> ${member.id}</b> 님
+				</div>
+				<div class="w3-right-align"
+					style="float: right; margin-bottom: 0px; margin-top: 20px;">
+					<a
+						href="<%=request.getContextPath() %>/mypage/likeForm?id=${member.id}"><img
+						class="w3-right-align"
+						src="<%=request.getContextPath()%>/images/icon/like_before.png"
+						style="width: 17px;"></a> <a
+						href="<%=request.getContextPath() %>/mypage/bookmarkForm?id=${member.id}"><img
+						class="w3-right-align"
+						src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+						style="width: 30px;"></a>
+				</div>
 			</div>
-		</div>
-		<!-- 자기 아이디면 정보 수정 아니면 팔로우 -->
-		<c:if test="${checkpage==0}">
-			<div class="w3-display-right " style="margin-right: 10%;">
-				<button class="w3-button w3-white w3-border" style="width: 200px;" onclick="document.location.href='pwdcheck?id=${memberInfo.id}'">
-						<h4>회원 정보 수정</h4>
-					</button>
-			</div>
-		</c:if>
-		<c:if test="${checkpage==1}">
-			<div class="w3-display-right " style="margin-right: 10%;">
-				<button class="w3-button w3-white w3-border" style="width: 200px;">
-					<h4>팔로우 하기</h4>
-				</button>
-			</div>
-		</c:if>
-		<div class="w3-display-middle">
+			<div class="w3-display-container w3-border-bottom"
+				style="height: 330px;">
+				<div class="w3-bar w3-display-bottomleft w3-center"
+					style="margin-left: 8%; font-size: 14px; margin-top:30px;">${member.name}<div
+						style="margin-top: 20px;"></div>
+				</div>
+				<div class="w3-display-bottomright"></div>
+				<div class="w3-display-left">
+					<div style="float: left; margin-left: 30%;">
+						<img
+							src="<%=request.getContextPath()%>/fileSave/${member.profileImg}"
+							class="w3-circle" alt="Norway" style="width: 200px; height: 200px">
+					</div>
+				</div>
+				<!-- 자기 아이디면 정보 수정 아니면 팔로우 -->
+				<c:if test="${checkpage==0}">
+					<div class="w3-display-right " style="margin-right: 10%;">
+						<button
+							class="w3-button w3-white w3-hover-light-grey w3-border w3-round-xlarge"
+							style="width: 130px; font-size: 12px;"
+							onclick="document.location.href='pwdcheck?id=${memberInfo.id}'">
+							프로필 수정</button>
+					</div>
+				</c:if>
+				<c:if test="${checkpage==1}">
+					<div class="w3-display-right " style="margin-right: 10%;">
+						<button
+							class="w3-button w3-white w3-hover-light-grey w3-border w3-round-xlarge"
+							style="width: 150px;">팔로우</button>
+					</div>
+				</c:if>
+				<div class="w3-display-middle">
 
-			<div style="float: left; margin: 30px;">
-				<h3>${member.writenum}</h3>
-				<br>
-				<h3>게시물</h3>
+					<div style="float: left; margin: 30px; font-size: 13px;">
+						<h4>
+							<b>${member.writenum}</b>
+						</h4>
+						게시물
+					</div>
+					<div style="float: left; margin: 30px; font-size: 13px;">
+						<h4>
+							<b>${member.follownum}</b>
+						</h4>
+						팔로우
+					</div>
+					<div style="float: left; margin: 30px; font-size: 13px;">
+						<h4>
+							<b>${member.point}</b>
+						</h4>
+						적립금
+					</div>
+				</div>
+				<div class="w3-display-topmiddle"></div>
+				<div class="w3-display-bottommiddle "></div>
 			</div>
-			<div style="float: left; margin: 30px;">
-				<h3>${member.follownum}</h3>
-				<br>
-				<h3>팔로우</h3>
-			</div>
-			<div style="float: left; margin: 30px;">
-				<h3>${member.point}</h3>
-				<br>
-				<h3>적립금</h3>
-			</div>
-		</div>
-		<div class="w3-display-topmiddle"></div>
-		<div class="w3-display-bottommiddle "></div>
-	</div>
 
-	<div class="w3-container">
-		<div>
-			<br>
-			<h4>마이페이지</h4>
-			<br> <br>
-		</div>
-		<c:if test="${fn:length(feedlist) != 0}">
-			<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
-			<c:forEach var="list" items="${feedlist}" varStatus="status">
-				<%-- <c:if test="${status.count % 3 == 1}">
+			<div class="w3-container">
+				<div style="margin-top: 50px;"></div>
+				<div class="w3-center">
+					<c:if test="${fn:length(feedlist) != 0}">
+						<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
+						<c:forEach var="list" items="${feedlist}" varStatus="status">
+							<%-- <c:if test="${status.count % 3 == 1}">
 					<div class="w3-container" style="margin-bottom: 10px;border: solid 4px;"/>
 				</c:if> --%>
-				<div class="w3-container"
-					style="float: left; width: 33%; height: 350px; margin-top: 10px;">
+							<div class="w3-container"
+								style="float: left; width: 33%; height: 350px; margin-top: 10px;">
 
-					<div class="w3-center">
-					<!-- 함수 실행해서 이미지 이름 ,사이즈 등등 넘겨주는 부ㅜ분 -->
-						<img id="${list.feed_id}" class="showMask"
-							src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
-							style="width: 300px; height: 300px" onclick="popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');"><br>
-						${list.recipe_name }
-					</div>
-
+								<div class="w3-center">
+									<!-- 함수 실행해서 이미지 이름 ,사이즈 등등 넘겨주는 부ㅜ분 -->
+									<img id="${list.feed_id}" class="showMask"
+										src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
+										style="width: 300px; height: 300px"
+										onclick="popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');"><br>
+									${list.recipe_name }
+								</div>
+							</div>
+						</c:forEach>
+					</c:if>
 				</div>
-			</c:forEach>
-		</c:if>
-		<c:if test="${fn:length(feedlist) == 0}">
-			<br>
-			<br>
-			<h1>아직 쓴 글이 없습니다.</h1>
-			<br>
-		</c:if>
+				<c:if test="${fn:length(feedlist) == 0}">
+					<div style="margin-top: 100px; font-size: 13px;">
+						<b> 아직 쓴 글이 없습니다. </b>
+					</div>
+				</c:if>
 
-	</div>
-	
-<!-- 레이어창 -->	
-<div class="setDiv">
-   
-    <div class="mask"></div>
-    <div class="window">
-    
-    
-        <input type="button" href="#" class="close" value="(닫기)"/>
-    	
-    	<div style="width: 100%; height: 50px;">
-			<!--글쓰는데 상단 고정바-->
-			<button id="leftpage" style="float: left;"
-				onclick="plusDivs(-1)">(이미지</button>
-			<button id="rightpage" style="float: right" type="button"
-				onclick="plusDivs(1)">이미지)</button>
+			</div>
 		</div>
-    </div>
-</div>
-<script type="text/javascript">
+	</center>
+
+	<!-- 레이어창 -->
+	<div class="setDiv">
+
+		<div class="mask"></div>
+		<div class="window w3-modal w3-modal-content w3-animate-opacity">
+			<button type="button" href="#" class="close w3-button w3-white w3-hover-white w3-right"> X </button>
+			<div style="margin-top:40px;"></div>
+			<div style="width: 100%; height: 50px;">
+				<!--글쓰는데 상단 고정바-->
+				<button id="leftpage" style="float: left;" onclick="plusDivs(-1)"
+				class="w3-button w3-white w3-hover-white"> <b>〈 </b> </button>
+				<button id="rightpage" style="float: right" type="button"
+					class="w3-button w3-white w3-hover-white" onclick="plusDivs(1)"> <b> 〉 </b></button>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
 
 	var slideIndex = 1;//슬라이드 변수
 
