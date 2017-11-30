@@ -76,10 +76,17 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	delete from basket where id = #{id}
     </select>
    
+   <select id="selectPaymentid" resultType="int">
+   		select nvl(max(payment_id),0) from food_payment
+   </select>
    
+   <update id="updateHistory" parameterType="hashmap">
+   		update food_payment set order_state=#{order_state} where payment_id=#{payment_id}
+   </update>
    
-   
-   
+   <select id="getPayment" parameterType="hashmap" resultType="food_payment">
+		select payment_id, order_date, order_state, all_price, pro_name  from food_payment b where id = #{id}
+   </select>
    
    
    

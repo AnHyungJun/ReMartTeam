@@ -45,4 +45,13 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectFoodNameDb" resultType="String">
 		select name from food
 	</select>
+	
+	<insert id="insertBasket" parameterType="hashmap">
+		insert into basket (basket_id, id, food_id, food_num) 
+		 values(#{number}, #{id}, #{food_id}, #{food_num})
+  	 </insert>
+   
+   	 <select id="insertBasket_new" resultType="int">
+   		select nvl(max(basket_id),0) from basket
+   	 </select>
 </mapper>

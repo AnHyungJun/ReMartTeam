@@ -19,6 +19,14 @@ public class R_memberDataBean implements Serializable{
 	private String sex;
 	private String email;
 	private String jumin1;
+	private int follow_status;
+	public int getFollow_status() {
+		return follow_status;
+	}
+
+	public void setFollow_status(int follow_status) {
+		this.follow_status = follow_status;
+	}
 	public int getFollownum() {
 		return follownum;
 	}

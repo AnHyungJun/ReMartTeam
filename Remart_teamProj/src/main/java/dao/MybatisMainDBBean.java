@@ -113,4 +113,17 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+	
+	public List getUserSearchListWithFollow(String autocompleteText,String id) {
+		System.out.println("getUserSearchListWithFollow:");
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("autocompleteText", autocompleteText);
+		map.put("id", id);
+		try {
+			return sqlSession.selectList(namespace + ".getUserSearchListWithFollow", map);
+		} finally {
+			sqlSession.close();
+		}
+	}
 }

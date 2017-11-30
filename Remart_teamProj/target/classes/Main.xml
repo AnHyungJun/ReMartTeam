@@ -53,4 +53,11 @@ and hf.hashtag_id = (select hashtag_id from hashtag where hashtag_content LIKE '
 	 resultType="food">
 		select * from food where name like '%${autocompleteText2}%'
 	</select>
+	
+	<select id="getUserSearchListWithFollow"  parameterType="hashmap" 
+	 resultType="R_member">
+		select id, profileImg, info,
+(select count(*) from r_member r, follow f where r.id = #{id} and other_id = rm.id) follow_status 
+from r_member rm where id like '%${autocompleteText}%'
+	</select>
 </mapper>

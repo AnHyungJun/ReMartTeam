@@ -24,11 +24,17 @@ public class MainController {
 
 	@Autowired
 	MybatisMainDBBean dbPro;
+	String curPage;
+	R_memberDataBean memberInfo;
+	String id;
 	
 	@ModelAttribute
 	   public void addAttributes(HttpServletRequest request, HttpSession session) {
 	      
 	      session.setAttribute("curPage", "n");
+	      
+	      memberInfo = (R_memberDataBean) session.getAttribute("memberInfo");
+	      if(memberInfo != null) id = memberInfo.getId();
 	   }
 
 	@RequestMapping(value = "main")
@@ -70,7 +76,6 @@ public class MainController {
 		List searchList = null;
 		if(autocompleteText2 != null){ //쇼핑서치
 			searchList = dbPro.getFoodSearchList(autocompleteText2);
-			System.out.println(searchList);
 			mv.setViewName("main/foodSearchForm");
 		}else{
 			
@@ -79,7 +84,11 @@ public class MainController {
 				searchList = dbPro.getFeedSearchList(autocompleteText);
 				mv.setViewName("main/feedSearchForm");
 			}else{ //사용자 서치
-				searchList = dbPro.getUserSearchList(autocompleteText);
+				
+				if(memberInfo == null) //로그인 안했을때
+					searchList = dbPro.getUserSearchList(autocompleteText);
+				else //로그인 했을때
+					searchList = dbPro.getUserSearchListWithFollow(autocompleteText,id );
 				mv.setViewName("main/userSearchForm");
 			}
 		}
