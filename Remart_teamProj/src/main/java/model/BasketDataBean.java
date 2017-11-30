@@ -6,10 +6,11 @@ import java.util.List;
 public class BasketDataBean implements Serializable{
 	int basket_id;
 	String id;
-	String food_id;
+	int food_id;
 	int food_num;
 	String bname;
 	int bprice;
+	
 	public int getBasket_id() {
 		return basket_id;
 	}
@@ -22,10 +23,10 @@ public class BasketDataBean implements Serializable{
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getFood_id() {
+	public int getFood_id() {
 		return food_id;
 	}
-	public void setFood_id(String food_id) {
+	public void setFood_id(int food_id) {
 		this.food_id = food_id;
 	}
 	public int getFood_num() {
@@ -46,4 +47,5 @@ public class BasketDataBean implements Serializable{
 	public void setBprice(int bprice) {
 		this.bprice = bprice;
 	}
+
 }

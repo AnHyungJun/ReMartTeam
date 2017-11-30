@@ -167,9 +167,47 @@ public class MybatisShoppingDBBean extends MybatisConnector{
 	   }   
    }
    
+   public int getpaymentId() throws Exception{
+	   sqlSession = sqlSession();
+	   
+	   try {
+		   int payment_id = sqlSession.selectOne(namespace + ".selectPaymentid");
+		   System.out.println("payment_id = " + payment_id);
+		   return payment_id;
+	   }finally {
+		   sqlSession.commit();
+			sqlSession.close();
+	   }
+   }
    
+   public void updateHistoryArticle(int payment_id) throws Exception {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		String order_state = "pay";
+		
+		map.put("payment_id", payment_id);
+		map.put("order_state", order_state);
+		
+		try {
+			sqlSession.update(namespace + ".updateHistory", map);
+			
+		} finally {
+				sqlSession.commit();
+				sqlSession.close();
+		}			
+   }
    
-   
+   public List getPaymentArticle(String id) throws Exception {
+	      sqlSession = sqlSession();
+	      HashMap map = new HashMap();
+	      map.put("id", id);
+	      
+	      try {
+	         return sqlSession.selectList(namespace + ".getPayment", map);
+	      } finally {
+	         sqlSession.close();
+	      }
+	}
    
    
    

@@ -9,7 +9,7 @@ IMP.request_pay({
    	pg : 'nice', // 결제방식
     pay_method : '${pay_method }',	// 결제 수단
     merchant_uid : 'remart_' + new Date().getTime(),
-   	name : '1',	// order 테이블에 들어갈 주문명 혹은 주문 번호
+   	name : '${pro_name} 외${count-1}개',	// order 테이블에 들어갈 주문명 혹은 주문 번호
     amount : '${all_price }',	// 결제 금액
   	buyer_name :  '${name }',	// 구매자 이름
     buyer_tel :  '${phone }',	// 구매자 전화번호

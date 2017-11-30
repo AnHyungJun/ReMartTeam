@@ -275,6 +275,7 @@
 								style="color: red; font-size: 14px; vertical-align: middle;">
 								${articleBasket.bprice*articleBasket.food_num }원</td>
 						</tr>
+						<input type="hidden" name="pro_name" value="${articleBasket.bname }">
 						<c:set var="totalPrice" value="${totalPrice + (articleBasket.bprice*articleBasket.food_num) }"/>
 						</c:forEach>
 					</table>

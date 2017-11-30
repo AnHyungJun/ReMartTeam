@@ -112,11 +112,6 @@ public class ShoppingController {
 	   		return mv;
 	   }
 	   else{
-		   String id = r_member.getId();
-		   articleBasket.setId(id);
-		   System.out.println("shoppingPro :" + articleBasket);
-		   dbPro.insertArticleBasket(articleBasket);
-		   
 		   mv.clear();
 		   return basket(session);
 	   }
@@ -223,6 +218,8 @@ public class ShoppingController {
 	   dbPro.insertArticlePayment(articlePayment);
 	   System.out.println("articlePayment");
 	   
+	   int count = dbPro.getBasketCount(id);
+	   
 	   String name = request.getParameter("name");
 	   String phone = request.getParameter("phone");
 	   String address1 = request.getParameter("address1");
@@ -232,6 +229,8 @@ public class ShoppingController {
 	   String email = request.getParameter("email");
 	   int all_price = Integer.parseInt(request.getParameter("all_price"));
 	   String pay_method = request.getParameter("pay_method");
+	   String pro_name = request.getParameter("pro_name");
+	   
 	   
 	   mv.clear();
 	   mv.addObject("id", id);
@@ -243,6 +242,8 @@ public class ShoppingController {
 	   mv.addObject("zip2", zip2);
 	   mv.addObject("all_price", all_price);
 	   mv.addObject("pay_method", pay_method);
+	   mv.addObject("count", count);
+	   mv.addObject("pro_name", pro_name);
 	   mv.setViewName("shopping/paymentPro");
 	   return mv;
 	  
@@ -256,12 +257,32 @@ public class ShoppingController {
 	   dbPro.deleteBasketArticle(id);
 	   System.out.println("deleteBasketArticle");
 	   
+	   int payment_id = dbPro.getpaymentId();
+	   
+	   dbPro.updateHistoryArticle(payment_id);
+	   System.out.println("updateHistoryArticle");
+	   
 	   mv.clear();
+	   mv.addObject("payment_id", payment_id);
 	   mv.setViewName("shopping/orderFinish");
 	   return mv;
 	  
    }
    
-   
+   @RequestMapping(value="historyPayment")
+   public ModelAndView historyPayment(HttpServletRequest request) throws Exception {
+	   
+	   String id = r_member.getId();
+	   System.out.println(id);
+	   
+	   List articlePaymentInfoList = null;
+	   articlePaymentInfoList = dbPro.getPaymentArticle(id);
+	   System.out.println("articlePaymentInfoList");
+	   
+	   mv.clear();
+	   mv.addObject("articlePaymentInfoList", articlePaymentInfoList);
+	   mv.setViewName("shopping/historyPayment");
+	   return mv;
+   }
    
 }

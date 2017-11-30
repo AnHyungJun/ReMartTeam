@@ -65,7 +65,11 @@
 				<!-- shopping_process end -->
 				
 				<div class="w3-center">
-				<h6> <b> 결제가 완료되었습니다 </b> </h6>
+				<h6> <b> 결제가 완료되었습니다 ${memberInfo.id }</b> </h6>
+				</div>
+				
+				<div>
+					<a href="historyPayment?payment_id=${payment_id }">결제내역보기</a>
 				</div>
 			</div>
 			

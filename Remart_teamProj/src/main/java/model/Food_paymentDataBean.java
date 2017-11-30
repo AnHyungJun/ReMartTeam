@@ -8,6 +8,8 @@ public class Food_paymentDataBean implements Serializable{
 	int payment_id;
 	String id;
 	Timestamp order_date;
+	String order_state;
+	String pro_name;
 	String pay_method;
 	String phone;
 	String name;
@@ -34,6 +36,18 @@ public class Food_paymentDataBean implements Serializable{
 	}
 	public void setOrder_date(Timestamp order_date) {
 		this.order_date = order_date;
+	}
+	public String getOrder_state() {
+		return order_state;
+	}
+	public void setOrder_state(String order_state) {
+		this.order_state = order_state;
+	}
+	public String getPro_name() {
+		return pro_name;
+	}
+	public void setPro_name(String pro_name) {
+		this.pro_name = pro_name;
 	}
 	public String getPay_method() {
 		return pay_method;
@@ -83,13 +97,15 @@ public class Food_paymentDataBean implements Serializable{
 	public void setAddress2(String address2) {
 		this.address2 = address2;
 	}
-	
 	@Override
 	public String toString() {
 		return "Food_paymentDataBean [payment_id=" + payment_id + ", id=" + id
-				+ ", order_date=" + order_date + ", pay_method=" + pay_method
+				+ ", order_date=" + order_date + ", order_state=" + order_state
+				+ ", pro_name=" + pro_name + ", pay_method=" + pay_method
 				+ ", phone=" + phone + ", name=" + name + ", all_price="
 				+ all_price + ", zip1=" + zip1 + ", zip2=" + zip2
 				+ ", address1=" + address1 + ", address2=" + address2 + "]";
 	}
+	
+	
 }
