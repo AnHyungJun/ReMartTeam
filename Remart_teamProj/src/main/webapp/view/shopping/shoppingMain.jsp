@@ -14,7 +14,7 @@
 <style>
 a {
 	text-decoration: none;
-	cursor: pointer
+	cursor: pointer;
 }
 
 .dropdown_shopping ul {
@@ -65,6 +65,10 @@ a {
 
 .count_btn {
 	border: 0px;
+}
+.btn_basket {
+	background-image: url("<%=request.getContextPath()%>/images/icon/cart.png");
+	cursor: pointer;
 }
 </style>
 
@@ -149,8 +153,6 @@ a {
 						<p style="font-size: 13px;">${articleFood.name }</p>
 						<p style="font-size: 13px;">${articleFood.price }원</p>
 						<form method="post" name="food_form" action="shoppingPro">
-							<input type="hidden" name="food_id"
-								value="${articleFood.food_id }">
 							<div class="__count_range">
 								<div class="w3-row w3-border w3-left"
 									style="width: 100px; margin-left: 20px;">
@@ -161,14 +163,16 @@ a {
 										type="button" value="+" class="count_btn w3-white"
 										count_range="p" style="width: 25px;">
 								</div>
-								<input type="button" class="w3-white w3-border w3-border-black" 
+								<!-- <input type="button" class="w3-white w3-border w3-border-black" 
 									style="font-size: 16px; width: 50%; margin-top: 8px;" value="장바" 
+									name="confirm_basket" onclick="inputbasket(this.form)"> -->
+								<input type="button" class="btn_basket w3-black w3-round w3-border w3-border-black" 
+									style="font-size: 16px; margin-top: 8px; width:40px; height:30px"
 									name="confirm_basket" onclick="inputbasket(this.form)">
-								<%-- <input type="image"
-									class="w3-black w3-round w3-border w3-border-black"
-									src="<%=request.getContextPath()%>/images/icon/cart.png"
-									style="font-size: 13px;" value="" name="confirm_basket"> --%>
+								
 							</div>
+							<input type="hidden" name="id" value="${memberInfo.id }">
+							<input type="hidden" name="food_id" value="${articleFood.food_id }">
 						</form>
 					</div>
 				</c:forEach>
@@ -216,6 +220,8 @@ a {
 		            location.replace("shoppingMain");
 		         }
 			}
+		
+		function displayResult(){ }
 	</script>
 
 
