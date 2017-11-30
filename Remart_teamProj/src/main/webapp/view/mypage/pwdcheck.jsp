@@ -26,30 +26,32 @@ function checkPw() {
 }
 
 </script>
-<title>비밀번호 확인</title>
+<title>REMART</title>
 </head>
 <body>
-<div style="margin-top: 200px"></div>
+<div style="margin-top: 350px"></div>
 <center>
 <div class="w3-container ">
 <form action="updateForm?id=${memberInfo.id}" method="POST" name="pwdcheck">
 <table class="talble-bordered" width="360">
 	<tr height="30">
 		<td align=center>
-			<b>비밀번호를 입력해주세요</b>
+			<b>PASSWORD CHECK</b>
+			<p style="font-size:12px;"> 비밀번호를 입력하세요. </p>
 		</td>
 	</tr>
 
 	<tr height="30">
 		<td align=center>
-			비밀번호 : ${memberInfo.id }
-			<input type="password" size="10" maxlength="16" name="passwd">
+		<p style="font-size:13px;"> PASSWORD :
+			<input type="password" size="10" maxlength="16" name="passwd" style="height:20px;"> </p>
 		</td>
 	</tr>
 	
 	<tr height="30">
 		<td align=center>
-			<input type="submit" value="확인">
+		<br>
+			<input type="submit" class="w3-button w3-black w3-hover-black" style="font-size:12px;" value="확인">
 		</td>
 	</tr>
 </table>

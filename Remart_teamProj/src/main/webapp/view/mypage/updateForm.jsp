@@ -12,9 +12,9 @@
 	position: absolute;
 	height: 150px;
 	width: 150px;
-	/* opacity: 0;
+	opacity: 0;
 	filter: alpha(opacity = 0);
-	-ms-filter: alpha(opacity = 0); */
+	-ms-filter: alpha(opacity = 0);
 	cursor: pointer;
 }
 </style>
@@ -66,12 +66,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div style="margin-top: 150px"></div>
+<div style="margin-top: 180px"></div>
 <div>
 <center>
 	<div class="w3-container">
 	<a href="<%=request.getContextPath()%>/main/main">
-		<img src="<%=request.getContextPath()%>/images/icon/join.png" style="width: 100px;">
+		<img src="<%=request.getContextPath()%>/images/icon/modify.png" style="width:100px;">
 	</a> <br> <br> <br>
 	
 	<form method="post" action="updatePro?id=${member.id}" name="userinput" enctype="multipart/form-data" onSubmit="return checkIt()">
@@ -82,7 +82,7 @@
 				<td width="330">
 					<div class="mySlides">
 						<img src="<%=request.getContextPath()%>/fileSave/${memberInfo.profileImg}"
-					class="w3-circle" alt="Norway" style="width: 200px; height: 200px">
+					class="w3-circle" alt="" style="width: 200px; height: 100px">
 						<br> <input type="file" class="uploadimg"
 							style="left: 800px; top: 220px; border: solid 4px;" onchange="statefile(this);"
 							name="uploadfile" onfocus="this.blur()" value=${memberInfo.profileImg }>
@@ -172,7 +172,7 @@
 		<tr height="30">
 			<td align=center><br> <input type="submit"
 				class="w3-button w3-white w3-border w3-hover-black"
-				style="font-size: 12px;" value="수정하기"> <input type="reset"
+				style="font-size: 12px;" value="수정"> <input type="reset"
 				class="w3-button w3-white w3-border" style="font-size: 12px;"
 				value="취소"></td>
 		</tr>
