@@ -42,5 +42,7 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 		select hashtag_content from hashtag
 	</select>
 	
-	
+	<select id="selectFoodNameDb" resultType="String">
+		select name from food
+	</select>
 </mapper>
