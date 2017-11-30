@@ -5,6 +5,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script   type = "text/javascript" 
+	src = "<%=request.getContextPath() %>/ajax/httpRequest.js">
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <title>REMART</title>
@@ -158,10 +161,13 @@ a {
 										type="button" value="+" class="count_btn w3-white"
 										count_range="p" style="width: 25px;">
 								</div>
-								<input type="image"
+								<input type="button" class="w3-white w3-border w3-border-black" 
+									style="font-size: 16px; width: 50%; margin-top: 8px;" value="장바" 
+									name="confirm_basket" onclick="inputbasket(this.form)">
+								<%-- <input type="image"
 									class="w3-black w3-round w3-border w3-border-black"
 									src="<%=request.getContextPath()%>/images/icon/cart.png"
-									style="font-size: 13px;" value="" name="confirm_basket">
+									style="font-size: 13px;" value="" name="confirm_basket"> --%>
 							</div>
 						</form>
 					</div>
@@ -193,13 +199,23 @@ a {
 				}
 			});
 		});
+		
+		function inputbasket(thisform){
+			   
+			   var food_id = thisform.food_id.value;
+			   var food_num = thisform.food_num.value;
+			   var id = thisform.id.value;
+			   
+			   var params = "food_id=" + encodeURIComponent(food_id) + "&food_num=" + encodeURIComponent(food_num)+ "&id=" + encodeURIComponent(id);
+			   sendRequest("<%=request.getContextPath()%>/common/suggestFileBasketSearch.jsp", params, displayResult, 'POST');
+			   var q = confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?");
+	         	if (q == true) {
+		            location.replace("basket");
 
-		function openConfirmBasket(food_form) {
-			/* url = "confirmBasket?food_id=" + encodeURIComponent(food_form.food_id.value) */
-			open("confirmBasket", "confirmbasket",
-					"toolbar = no, location=no, status= no, menubar = no, "
-							+ "resizable=no, width = 1000, height = 1000");
-		}
+		         } else {
+		            location.replace("shoppingMain");
+		         }
+			}
 	</script>
 
 

@@ -125,4 +125,29 @@ public class MybatisAjaxDBBean extends MybatisConnector{
 			sqlSession.close();
 		}
 	}
+	
+	public void selectBasketDb(int food_id, int food_num, String id) {
+		   System.out.println("insertBasket");
+		   sqlSession = sqlSession();
+		   
+		   try {
+			   HashMap map = new HashMap();
+			   map.put("food_id", food_id);
+			   map.put("food_num", food_num);
+			   map.put("id", id);
+			   int number = sqlSession.selectOne(namespace + ".insertBasket_new");
+			   if(number != 0)
+				   number++;
+			   else 
+				   number = 1;
+			   map.put("number", number);
+			   
+			   System.out.println("insert : " + number);
+			   int result = sqlSession.insert(namespace + ".insertBasket", map);
+			   System.out.println("insert ok:" + result);
+		   }finally {
+			   sqlSession.commit();
+			   sqlSession.close();
+		   }   
+	   }
 }
