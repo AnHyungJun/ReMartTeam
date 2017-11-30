@@ -238,23 +238,32 @@
 			</div>
 		</div>
 		
-		<c:if test="${memberInfo.grade eq 'editor'}">
-				<div style="width:610px;" align="center">
-					<!--밑에 등록 버튼-->
-					<br> 에디터 상품 등록 <br>
-					
-					<table id="editorfood2" width="100%" >
-						<tr align="center" height="30"><th width="80">상품 </th><th width="200">상품 이미지</th><th width="150">상품 이름</th><th width="80">상품 가격</th><th width="100">삭 제</th></tr>
-					</table>
-					
-					
-					<br> <br> <br>
-					<button type="button" onclick="findfood()" />
-					<br>
+		<div style="margin-top: 20px;"></div>
+					<c:if test="${memberInfo.grade eq 'editor'}">
+						<div style="width: 610px; font-size: 13px;" align="center">
+							<!--밑에 등록 버튼-->
+							에디터 상품 등록
 
-				</div>
+							<table id="editorfood2" width="100%">
+								<tr align="center" height="30">
+									<th width="80">상품</th>
+									<th width="200">상품 이미지</th>
+									<th width="150">상품 이름</th>
+									<th width="80">상품 가격</th>
+									<th width="100">삭 제</th>
+								</tr>
+							</table>
 
-			</c:if>
+
+							<br> <br> <br>
+							<button type="button" onclick="findfood()"
+								style="font-size: 12px;"
+								class="w3-button w3-white w3-hover-white">상품 등록</button>
+							<br>
+
+						</div>
+
+					</c:if>
 			
 		<br>
 		<br>
