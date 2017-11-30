@@ -117,4 +117,12 @@ public class MybatisAjaxDBBean extends MybatisConnector{
 			sqlSession.close();
 		}
 	}
+	public List selectFoodNameDb() {
+		sqlSession = sqlSession();
+		try {
+			return sqlSession.selectList(namespace + ".selectFoodNameDb");
+		} finally {
+			sqlSession.close();
+		}
+	}
 }
