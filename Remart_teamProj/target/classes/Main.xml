@@ -37,5 +37,20 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from feed order by
 		reg_date desc
 	</select>
+		<select id="getUserSearchList"  parameterType="hashmap" 
+	 resultType="R_member">
+		select * from r_member where id like '%${autocompleteText}%'
+	</select>
 	
+	<select id="getFeedSearchList"  parameterType="hashmap" 
+	 resultType="feed">
+		select f.feed_id, f.id, f.like_num,f.reg_date, f.recipe_name from feed f, hash_feed hf 
+where f.feed_id = hf.feed_id 
+and hf.hashtag_id = (select hashtag_id from hashtag where hashtag_content LIKE '%${autocompleteText}%')
+	</select>
+	
+	<select id="getFoodSearchList"  parameterType="hashmap" 
+	 resultType="food">
+		select * from food where name like '%${autocompleteText2}%'
+	</select>
 </mapper>
