@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>REMART</title>
 </head>
 <body>
 <div style="margin-top: 200px"></div>
@@ -15,17 +15,19 @@
 	<p>&nbsp;</p>
 </div>
 
-<div class="w3-col" style="width: 1142px;">
+<div class="w3-col w3-center" style="width: 1142px;">
 	<!-- delivery_list -->
 	<div class="delivery_list">
 		<div class="list_head">
 			<div class="list_head_title">
-				<p style=" vertical-align: middle;">결제 내역</p>
+				<p style=" vertical-align: middle; font-size:14px;">결제 내역</p>
 			</div>
 		</div>
+		
+		<div style="margin-top: 50px"></div>
 
 		<div class="list_body">
-			<table class="list_body_table" width="100%">
+			<table class="list_body_table w3-table w3-bordered" width="100%">
 				<tr style="border-top: 1px solid #666; font-size: 13px;">
 					<th width="auto"></th>
 					<th width="19%" class="w3-center">주문일자</th>
