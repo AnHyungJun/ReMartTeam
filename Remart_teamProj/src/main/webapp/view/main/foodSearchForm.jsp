@@ -5,13 +5,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script   type = "text/javascript" 
+	src = "<%=request.getContextPath() %>/ajax/httpRequest.js">
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <title>REMART</title>
 <style>
 a {
 	text-decoration: none;
-	cursor: pointer
+	cursor: pointer;
 }
 
 .dropdown_shopping ul {
@@ -63,19 +66,23 @@ a {
 .count_btn {
 	border: 0px;
 }
+.btn_basket {
+	background-image: url("<%=request.getContextPath()%>/images/icon/cart.png");
+	cursor: pointer;
+}
 </style>
 
 </head>
 <body>
 
 	<div style="margin-top: 200px"></div>
-	
+
 	<!-- shopping_wrap -->
 	<center>
 		<div class="shopping_wrap">
-			
+
 			<div class="shopping_list">
-				<h2>푸드</h2>
+
 				<c:forEach var="articleFood" items="${searchList}">
 					<div class="w3-border"
 						style="width: 25%; height: 310px; float: left; border-collapse: collapse;">
@@ -85,8 +92,6 @@ a {
 						<p style="font-size: 13px;">${articleFood.name }</p>
 						<p style="font-size: 13px;">${articleFood.price }원</p>
 						<form method="post" name="food_form" action="<%=request.getContextPath() %>/shopping/shoppingPro">
-							<input type="hidden" name="food_id"
-								value="${articleFood.food_id }">
 							<div class="__count_range">
 								<div class="w3-row w3-border w3-left"
 									style="width: 100px; margin-left: 20px;">
@@ -97,11 +102,16 @@ a {
 										type="button" value="+" class="count_btn w3-white"
 										count_range="p" style="width: 25px;">
 								</div>
-								<input type="image"
-									class="w3-black w3-round w3-border w3-border-black"
-									src="<%=request.getContextPath()%>/images/icon/cart.png"
-									style="font-size: 13px;" value="" name="confirm_basket">
+								<!-- <input type="button" class="w3-white w3-border w3-border-black" 
+									style="font-size: 16px; width: 50%; margin-top: 8px;" value="장바" 
+									name="confirm_basket" onclick="inputbasket(this.form)"> -->
+								<input type="button" class="btn_basket w3-black w3-round w3-border w3-border-black" 
+									style="font-size: 16px; margin-top: 8px; width:40px; height:30px"
+									name="confirm_basket" onclick="inputbasket(this.form)">
+								
 							</div>
+							<input type="hidden" name="id" value="${memberInfo.id }">
+							<input type="hidden" name="food_id" value="${articleFood.food_id }">
 						</form>
 					</div>
 				</c:forEach>
@@ -132,13 +142,25 @@ a {
 				}
 			});
 		});
+		
+		function inputbasket(thisform){
+			   
+			   var food_id = thisform.food_id.value;
+			   var food_num = thisform.food_num.value;
+			   var id = thisform.id.value;
+			   
+			   var params = "food_id=" + encodeURIComponent(food_id) + "&food_num=" + encodeURIComponent(food_num)+ "&id=" + encodeURIComponent(id);
+			   sendRequest("<%=request.getContextPath()%>/common/suggestFileBasketSearch.jsp", params, displayResult, 'POST');
+			   var q = confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?");
+	         	if (q == true) {
+		            location.replace("<%=request.getContextPath() %>/shopping/basket");
 
-		function openConfirmBasket(food_form) {
-			/* url = "confirmBasket?food_id=" + encodeURIComponent(food_form.food_id.value) */
-			open("confirmBasket", "confirmbasket",
-					"toolbar = no, location=no, status= no, menubar = no, "
-							+ "resizable=no, width = 1000, height = 1000");
-		}
+		         } else {
+		            location.replace("shoppingMain");
+		         }
+			}
+		
+		function displayResult(){ }
 	</script>
 
 

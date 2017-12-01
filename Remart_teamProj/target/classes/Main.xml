@@ -60,7 +60,7 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 	 resultType="feed">
 		select f.feed_id, f.id, f.like_num,f.reg_date, f.recipe_name from feed f, hash_feed hf 
 where f.feed_id = hf.feed_id 
-and hf.hashtag_id = (select hashtag_id from hashtag where hashtag_content LIKE '%${autocompleteText}%') order by f.reg_date desc
+and hf.hashtag_id in (select hashtag_id from hashtag where hashtag_content LIKE '%${autocompleteText}%') order by f.reg_date desc
 	</select>
 	
 	<select id="getFoodSearchList"  parameterType="hashmap" 
