@@ -139,11 +139,22 @@ public class MybatisMainDBBean extends MybatisConnector {
 
 	public List getFeedSearchList(String autocompleteText) {
 		System.out.println("getFeedSearchList:");
+		List<FeedDataBean> feedlist=null;
 		sqlSession = sqlSession();
+		List<ImgDataBean> tmp=null;
 		HashMap map = new HashMap();
 		map.put("autocompleteText", autocompleteText);
 		try {
-			return sqlSession.selectList(namespace + ".getFeedSearchList", map);
+			feedlist =  sqlSession.selectList(namespace + ".getFeedSearchList", map);
+			for(int i=0;i<feedlist.size();i++){
+				map.clear();
+				map.put("feed_id", feedlist.get(i).getFeed_id());
+				feedlist.get(i).setImg_name(sqlSession.selectList(namespace + ".getImg_name", map));
+				feedlist.get(i).setContent(sqlSession.selectList(namespace + ".getContent", map));
+				feedlist.get(i).setReplelist(sqlSession.selectList(namespace + ".feedreple", map));
+			}
+			
+			return feedlist;
 		} finally {
 			sqlSession.close();
 		}
