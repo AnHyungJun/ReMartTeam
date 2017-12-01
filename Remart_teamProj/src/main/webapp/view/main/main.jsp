@@ -4,13 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/ajax/httpRequest.js"></script>
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.2.7/css/swiper.css"
-	rel="stylesheet" type="text/css" media="screen" />
-
 <style>
 .display-none {
 	display: none;
@@ -22,31 +19,6 @@
 	bottom: 0px;
 	height: 60px;
 	width: 100%;
-}
-
-.swiper-container {
-	width: 980px;
-	height: 100%;
-	z-index: 0;
-}
-
-.swiper-slide {
-	text-align: center;
-	font-size: 18px;
-	background: #fff;
-	/* Center slide text vertically */
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	-webkit-justify-content: center;
-	justify-content: center;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	-webkit-align-items: center;
-	align-items: center;
 }
 
 .setDiv {
@@ -72,57 +44,65 @@
 }
 </style>
 <head>
-<script type="text/javascript">
-/* 
-	  $(document).ready(function() {
-		  var index=18;
-		$(document).scroll(function() {
-			
-			static var maxHeight = $(document).height();
-			var currentScroll = $(window).scrollTop() + $(window).height();
-			 console.log(index++);
-			if (maxHeight <= currentScroll+100) {
-				alert("dd");
-				//getFeed(index);
-			}
-		})
-	});   */
-	  
-	 function getFeed(index) {
-		/*  $.ajax({
-			 url:'/Remart_teamProj/main/getFeed',
-		 	dataType:'html',type:'post',
-		 	data:{index:index,id:'<c:out value="${memberInfo.id}"/>'}
-		 	,beforeSend:function(){$('.loading').removeClass('display-none');}
-		 	,complete:function(){},
-		 	success:function(){$('.loading').addClass('display-none');
-		 	document.getElementById("feed").innerHTML += httpRequest.responseText;}
-		 
-		 }
-		 
-		 ); */
-		// maxHeight = $(document).height();
-		 var id='<c:out value="${memberInfo.id}"/>'; 
-		
-		//속도를 늦춰야함 ex 로딩중 띄우기
-		alert("feeds"); 
-		var params = "index=" + encodeURIComponent(index)+"&id="+id;
-		sendRequest("/Remart_teamProj/main/getFeed", params, return_getFeed,
-				"GET"); 
 
-	}
-	 
-	function return_getFeed() {
-		if (httpRequest.readyState == 4) {
-			if (httpRequest.status == 200) {
-				document.getElementById("feed").innerHTML += httpRequest.responseText;
-			}
-		}
-	}  
-	
+<title>REMART</title>
+</head>
+<body>
+	<div style="margin-top: 100px"></div>
+<div class="w3-container">
+				<div style="margin-top: 50px;"></div>
+				<div class="w3-center">
+					<c:if test="${fn:length(Feeds) != 0}">
+						<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
+						<!-- 리스트가 있으면 뿌려주는 FOREACH -->
+						<c:forEach var="list" items="${Feeds}" varStatus="status">
+							
+							<div class="w3-container"
+								style="float: left; width: 33%; height: 350px; margin-top: 10px;">
+			<!-- FEED  이부분을 너가 꾸몄던걸로 바꾸면 됨-->
+								<div class="w3-center">
+									
+									<!-- 여기가 이미지 부분인데 SHOWMASK클래스를 클릭하면  READY 부분에 SHOWMASK 클릭이벤트 실행 그러면 레이어창이 올라옴-->
+									<img id="${list.feed_id}" class="showMask"
+										src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
+										style="width: 300px; height: 300px"
+										onclick="popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');"><br>
+									${list.recipe_name }
+									<!-- POPUP함수는 누르면 실행인데 %이미지 몇개인지 보내는거 ,FEED,이미지 이름 보내고,이미지에 달린 내용 보내고, 리플 리스트 통채로 보내고 , 리플리스트 사이즈 보내고%-->
+								</div>
+							</div>
+						</c:forEach>
+					</c:if>
+				</div>
+				<c:if test="${fn:length(Feeds) == 0}">
+					<div style="margin-top: 100px; font-size: 13px;">
+						<b> 아직 쓴 글이 없습니다. </b>
+					</div>
+				</c:if>
 
-	
-var slideIndex = 1;//슬라이드 변수
+			</div>
+		</div>
+	</center>
+
+	<!-- 레이어창 -->
+	<div class="setDiv">
+		<!--이부분 이해안되면 찾아오고 -->
+		<div class="mask"></div>
+		<div class="window w3-modal w3-modal-content w3-animate-opacity">
+			<button type="button" href="#" class="close w3-button w3-white w3-hover-white w3-right"> X </button>
+			<div style="margin-top:40px;"></div>
+			<div style="width: 100%; height: 50px;">
+				<!--글쓰는데 상단 고정바-->
+				<button id="leftpage" style="float: left;" onclick="plusDivs(-1)"
+				class="w3-button w3-white w3-hover-white"> <b>〈 </b> </button>
+				<button id="rightpage" style="float: right" type="button"
+					class="w3-button w3-white w3-hover-white" onclick="plusDivs(1)"> <b> 〉 </b></button>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	//여기부터 피드에 사진 여러개 슬라이드로
+	var slideIndex = 1;//슬라이드 변수
 
 	
 
@@ -141,6 +121,7 @@ var slideIndex = 1;//슬라이드 변수
 		}
 		if (slideIndex == 1) {
 			document.getElementById("leftpage").style.display = 'none';
+			document.getElementById("rightpage").style.display = 'block';
 		} else if (slideIndex == x.length) {
 			document.getElementById("leftpage").style.display = 'block';
 			document.getElementById("rightpage").style.display = 'none';
@@ -150,33 +131,36 @@ var slideIndex = 1;//슬라이드 변수
 		}
 		x[slideIndex - 1].style.display = "block";
 	}
+	//여기까지
    	function popup(imagenum,feeddate,imagename,contentname,repledata,replenum){
    		var myArray ;
 		//리스트 받은거 문자 쪼개는거
-		
    		imagename=imagename.substring(1,imagename.length-1);
    		contentname=contentname.substring(1,contentname.length-1);
    		repledata=repledata.substring(1,repledata.length-1);
-   		<!-- feed_id,id,like_num,reg_date,recipe_name-->
+   		//매개 변수로 받은거 ALERT찍어보면 다 ,로 구분하는데 그걸 쪼개서 배열에 담기
    		imagename=imagename.split(', ');
    		feeddate=feeddate.split(',');
+   		feeddate=feeddate[0].substring(22);
    		contentname=contentname.split(',');
    		if(imagenum>1){
    			document.getElementById("rightpage").style.display = 'block';
    			document.getElementById("leftpage").style.display = 'none';
    		}else{
    			document.getElementById("rightpage").style.display = 'none';
-   			document.getElementById("leftpage").style.display = 'none';
+   			document.getElementById("leftpage").style.display = 'block';
    		}
-   		alert(imagename[0]);
+   		
+   		//이미지 하고 컨텐츠 추가 class=\"mySlides\" 가 슬라이더 하나
    		for(var i=0;i<imagenum;i++){   			
    			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 55%; height: 350px; margin-top: 10px;\">"+
-    		"<img src='"+"/Remart_teamProj/fileSave/"+/* encodeURIcomponent(imagename[i]) */ +imagename[i] +"' width=100% height=100%><br>"+
+    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=100%><br>"+
     		"<label>"+contentname[i]+"</label>"+"</div>";
     		$('.window').append(y); 
     		
    		}
-   		reple_id,feed_id,id,content,reg_date  
+   		//여기부턴 리플추가 DIV100%라 치면 이미지,내용 부분이 55% 댓글보이는게 45%
+   		/*reple_id,feed_id,id,content,reg_date  */
    		if(replenum!=0){
    			myArray = new Array( new Array(replenum), new Array(5) );
    			repledata=repledata.split(', ');
@@ -184,12 +168,12 @@ var slideIndex = 1;//슬라이드 변수
    					var tmp=repledata[i].split(',');
    					myArray[i]=tmp;
    			}
-   			alert(myArray[0][2]);
    	   		var makereplelist="";
    	   		for(var i=0;i<replenum;i++){
    	   			makereplelist+="<lable>"+myArray[i][2]+"님의 댓글 /"+myArray[i][3]+"</lable><br>";
    	   		}
-   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 350px; margin-top: 10px;\">"
+   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 350px; margin-top: 10px;\"><input type=\"text\" name=\""+feeddate+"\"/><input type=\"button\" value=\"replecontent\""
+   	   		+"  onclick=\"replecommit('"+feeddate+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist+"</div>"
    	   		
    	   		$('.window').append(z); 
@@ -199,6 +183,56 @@ var slideIndex = 1;//슬라이드 변수
    		showDivs(1);//슬라이더 처음값
    		
    	}
+	//여기는 댓글에서 등록 누르면 되는곳 아직 고칠때 있어서 지워도 괜춘
+   	function replecommit(feed_id,m_id) {
+		
+		var txtval=$('input:text[name="'+feed_id+'"]');
+		
+		if(txtval.val()=='') alert("입력하신 댓글이 없습니다");
+		else{
+			var params =  "feed_id="+feed_id+"&id="+m_id+"&content="+encodeURIComponent(txtval.val());
+			sendRequest("<%=request.getContextPath()%>/common/repleInsert.jsp",
+			params, displayResult, 'GET');
+		}
+		txtval.val("");
+   	}
+   	//마찬가지
+   	function displayResult() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				var resText = httpRequest.responseText;
+				//사이즈 , 코드 , 이름=사진 ,가격 
+				var res = resText.split('|');
+				
+				var count = parseInt(res[0]);
+				var keywordList = null;
+				alert(res);
+				/* if (count > 0) {
+					keywordList = res[1].split('=');
+					var html = "<table class=\"w3-table w3-bordered w3-centered\" width=100%><tr><th width=200;>상품</th><th width=150;>상품명</th><th>가격</th><th>상품 등록</th></tr>";
+					for (var i = 0; i < keywordList.length; i++) {
+						
+						var keywordList2 = keywordList[i].split('-');
+						html += "<tr height=140px;><td align=\"center\">"
+								+"<img src=\"/Remart_teamProj/images/food/"+keywordList2[1]+".jpg\" width=110 height=110><br>"
+								+"</td><td align=\"center\">"
+								+ keywordList2[1] + "</td><td align=\"center\">"
+								+ keywordList2[2] + "</td><td align=\"center\">"
+								+"<button type=\"button\" onclick=\"writefood('"+keywordList[i]+"')\">등록</button></td></tr>";
+						// alert(html); 
+					}
+					html += "</table>";
+					var listView = document.getElementById('suggestList');
+					listView.innerHTML = html;
+					show('suggest');
+					reload();
+				}*/
+			} else {
+				alert("에러: " + httpRequest.status);
+			} 
+		}
+	}
+   	//여기는 FEED눌렀을때 창 띄우는거 조절하는부분
 	function wrapWindowByMask(){
        
         var maskHeight = $(document).height();
@@ -213,33 +247,34 @@ var slideIndex = 1;//슬라이드 변수
  
        
         var left = ( $(window).scrollLeft() + ( $(window).width() - $('.window').width()) / 2 );
-        var top = ( $(window).scrollTop() + ( $(window).height() - $('.window').height()) / 2 );
+        var top = ( $(window).scrollTop() + ( $(window).height() - $('.window').height()) / 3 );
  
       
         $('.window').css({'left':left,'top':top, 'position':'absolute'});
  
         
-        $('.window').show();
+       	$('.window').show();//WINDOW클래스 보여짐 
     }
  
     $(document).ready(function(){
-       
+       //SHOWMASK클릭할때 시작
         $('.showMask').click(function(e){
             
             e.preventDefault();
             wrapWindowByMask();
         });
  
-       
+       // FEED이외 부분 클릭했을시
         $('.window .close').click(function (e) {
             e.preventDefault();
             slideIndex=1;
+            //WINDOW DIV에 추가했던 댓글 사진 다지우고 안보이게
             $('.reples').remove();
             $('.mySlides').remove();
             $('.mask, .window').hide();
         });
  
-       
+       //위와 동일
         $('.mask').click(function () {
             $(this).hide();
             slideIndex=1;
@@ -250,260 +285,5 @@ var slideIndex = 1;//슬라이드 변수
         });
     });
 </script>
-<title>REMART</title>
-</head>
-<script>
-function aaaa() {
-	alert("로그인하세요");
-}
-var httpRequest = null;
-function sendRequest(url, params, callback, method) {
-	httpRequest = new XMLHttpRequest();
-	var httpMethod = method ? method : 'GET';
-	if (httpMethod != 'GET' && httpMethod != 'POST') {
-		httpMethod = 'GET';
-	}
-
-	var httpParams = (params == null || params == '') ? null : params;
-	var httpUrl = url;
-	if (httpMethod == 'GET' && httpParams != null) {
-		httpUrl = httpUrl + "?" + httpParams;
-	}
-
-	httpRequest.open(httpMethod, httpUrl, true);
-	httpRequest.setRequestHeader('content-Type',
-			'application/x-www-form-urlencoded');
-	httpRequest.onreadystatechange = callback;
-	httpRequest.send(httpMethod == 'POST' ? httpParams : null);
-}
-
-function like(feed_id,action) {
-	alert(action);
-	var params = "feed_id=" + encodeURIComponent(feed_id)+"&action="+ encodeURIComponent(action);
-	sendRequest("/Remart_teamProj/main/like", params, return_like, "GET");
-}
-function return_like() {
-	if (httpRequest.readyState == 4) {
-		if (httpRequest.status == 200) {
-
-			document.getElementById("like").innerHTML = httpRequest.responseText;
-		}
-	}
-}
-function needlogin(){
-	alert("로그인하세요");
-} 
-</script>
-<body>
-	<div style="margin-top: 100px"></div>
-
-	<div>
-		<section class="main-artist-rolling">
-		<div class="swiper-container">
-			<div class="swiper-wrapper">
-
-				<div class="swiper-slide">
-					<img src="<%=request.getContextPath()%>/images/temp/감자볶음4.JPG"
-						class="w3-circle"
-						style="cursor: pointer; width: 600px; height: 450px;" />
-				</div>
-
-				<div class="swiper-slide">
-					<img src="<%=request.getContextPath()%>/images/temp/계란국수8.JPG"
-						class="w3-circle"
-						style="cursor: pointer; width: 600px; height: 450px;" />
-				</div>
-
-				<div class="swiper-slide">
-					<img src="<%=request.getContextPath()%>/images/temp/만두전6.JPG"
-						class="w3-circle"
-						style="cursor: pointer; width: 600px; height: 450px;" />
-				</div>
-
-				<div class="swiper-slide">
-					<img src="<%=request.getContextPath()%>/images/temp/바나나샐러드4.JPG"
-						class="w3-circle"
-						style="cursor: pointer; width: 600px; height: 450px;" />
-				</div>
-
-			</div>
-
-
-			<div class="swiper-button-next"></div>
-			<div class="swiper-button-prev"></div>
-			<div class="swiper-pagination"></div>
-		</div>
-
-		</section>
-	</div>
-	<script type="text/javascript" language="javascript"
-		src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.2.7/js/swiper.js"></script>
-	<script>
-		var swiper = new Swiper('.swiper-container', {
-			pagination : '.swiper-pagination',
-			nextButton : '.swiper-button-next',
-			prevButton : '.swiper-button-prev',
-			paginationClickable : true,
-			spaceBetween : 30,
-			centeredSlides : true,
-			autoplay : 3000,
-			autoplayDisableOnInteraction : false
-		});
-	</script>
-
-
-	<div class="w3-twothird">
-		<div id="feed" style="left: 30%; position: relative;">
-			<c:if test="${empty Feeds }">
-		게시글이 없습니다.
-		</c:if>
-			<c:set var="Loop" value="true" />
-			<c:forEach var="i" begin="0" end="17" step="1">
-				<c:if test="${empty Feeds[i] }">
-					<c:set var="Loop" value="false" />
-				</c:if>
-				<c:if test="${Loop==true}">
-					<div style="float: left; width: 300px">
-						<div class="w3-card-4">
-							<div class="w3-display-container" style="height: 230">
-								<img
-									src="<%=request.getContextPath()%>/images/icon/noProfile.png"
-									style="width: 25px; height: 25px"><b>${Feeds[i].id }</b>
-								<img
-									src="<%=request.getContextPath()%>/fileSave/${Feeds[i].img_name[0]}"
-									style="width: 300px; height: 190px">
-							</div>
-							<div style="width: 300px">
-								<div class="w3-container w3-white">
-									<c:if test="${empty memberInfo }">
-										<label id="like"> <img onclick="needlogin()"
-											src="<%=request.getContextPath()%>/images/icon/like_before.png"
-											style="height: 20px; cursor: pointer;"></label>
-										<img
-											src="<%=request.getContextPath()%>/images/icon/comment.png"
-											style="height: 20px; cursor: pointer;">
-										<img onclick="needlogin()"
-											src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-											style="height: 20px; cursor: pointer; position: relative; left: 80%">
-									</c:if>
-									<c:if test="${!empty memberInfo }">
-										<c:if test="${Feeds[i].likestate==0 }">
-											<label id="like"> <img
-												onclick="like(${Feeds[i].feed_id},'like');"
-												src="<%=request.getContextPath()%>/images/icon/like_before.png"
-												style="height: 20px; cursor: pointer;"></label>
-										</c:if>
-										<c:if test="${Feeds[i].likestate==1 }">
-											<label id="like"> <img
-												src="<%=request.getContextPath()%>/images/icon/like_after.png"
-												style="height: 20px; cursor: pointer;"></label>
-										</c:if>
-
-										<img
-											src="<%=request.getContextPath()%>/images/icon/comment.png"
-											style="height: 20px; cursor: pointer;">:${Feeds[i].repleNum}
-										<c:if test="${Feeds[i].bookmarkstate==0 }">
-											<img onclick="like(${Feeds[i].feed_id},'bookmark')"
-												src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-												style="height: 20px; cursor: pointer; position: relative; left: 80%">
-										</c:if>
-										<c:if test="${Feeds[i].bookmarkstate==1 }">
-											<img onclick="like(${Feeds[i].feed_id},'unbookmark')"
-												src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-												style="height: 20px; cursor: pointer; position: relative; left: 80%">
-										</c:if>
-									</c:if>
-
-									<%-- <img src="<%=request.getContextPath()%>/images/icon/like_before.png"
-											style="height: 20px;">: ${Feeds[i].like_num }
-											<img src="<%=request.getContextPath()%>/images/icon/comment.png"
-											style="height: 20px;">:${Feeds[i].repleNum } --%>
-								</div>
-
-								<div class="showmask"
-									style="height: 150px; cursor: pointer"
-									onclick="popup('${fn:length(Feeds[i].img_name)}','${Feeds[i]}','${Feeds[i].img_name}','${Feeds[i].content}','${Feeds[i].replelist}','${fn:length(Feeds[i].replelist)}');">
-
-									<p>#자취생#감자</p>
-									<p>${Feeds[i].recipe_name }</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</c:if>
-			</c:forEach>
-			<div id="loading" class="loading display-none">
-				<img src="<%=request.getContextPath()%>/images/icon/lo3.gif"
-					style="vertical-align: middle">
-			</div>
-
-		</div>
-	</div>
-
 </body>
-
-
-<%-- <div id="userplant" class="w3-modal">
-	<div class="w3-modal-content w3-card-4 w3-animate-zoom"
-		style="max-width: 300px">
-		<div class="w3-center">
-			<span
-				onclick="document.getElementById('userplant').style.display='none'"
-				class="w3-button w3-xlarge w3-transparent w3-display-topright"
-				title="Close Modal">×</span> <br>
-		</div>
-		<div class="w3-display-container" style="height: 230">
-			<img src="<%=request.getContextPath()%>/images/icon/noProfile.png"
-				style="width: 25px; height: 25px"><b>이재연</b> <img
-				src="<%=request.getContextPath()%>/images/temp/감자볶음4.JPG"
-				style="width: 300px; height: 200px">
-		</div>
-		<div style="width: 300px">
-			<div class="w3-container w3-white">
-				<c:if test="${likely_bookmark!=null }">
-
-				</c:if>
-				<label id="like"> <img onclick="like()"
-					src="<%=request.getContextPath()%>/images/icon/like_before.png"
-					style="height: 20px; cursor: pointer;"></label> <img
-					src="<%=request.getContextPath()%>/images/icon/comment.png"
-					style="height: 20px; cursor: pointer;"> <img
-					onclick="bookmark()"
-					src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-					style="height: 20px; cursor: pointer; position: relative; left: 80%">
-			</div>
-
-			<div class="w3-container w3-light-grey" style="height: 200px;">
-				<p>좋아요 100개</p>
-				<p>#자취생#감자</p>
-				<p>맛있는 감자볶음</p>
-				<p>
-					유저1:댓글<br> 유저2:댓글
-				</p>
-			</div>
-		</div>
-		<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-
-			<button
-				onclick="document.getElementById('userplant').style.display='none'"
-				type="button" class="w3-button w3-red w3-right">취소</button>
-		</div>
-
-	</div>
-</div> --%>
-<div class="setDiv">
-
-	<div class="mask"></div>
-	<div class="window">
-
-
-		<input type="button" href="#" class="close" value="(닫기)" />
-
-		<div style="width: 500px; height: 50px;">
-			<!--글쓰는데 상단 고정바-->
-			<button id="leftpage" style="float: left;" onclick="plusDivs(-1)">(이미지</button>
-			<button id="rightpage" style="float: right" type="button"
-				onclick="plusDivs(1)">이미지)</button>
-		</div>
-	</div>
-</div>
+</html>
