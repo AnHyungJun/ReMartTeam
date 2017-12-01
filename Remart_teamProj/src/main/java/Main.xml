@@ -24,13 +24,13 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 
 	 <select id="getfeeds" resultType="feed" parameterType="String">
 		select feed_id,id,like_num,reg_date,recipe_name,
-		(select nvl(count(*),0) from likely_bookmark l,feed f 
-		where l.feed_id=f.feed_id and l.type='LIKE' and l.id=#{id})
+		(select nvl(count(*),0) from likely_bookmark l 
+		where l.feed_id=f.feed_id and l.type='LIKE' and l.id='12')
 		likestate,
-		(select nvl(count(*),0)from likely_bookmark l,feed 
-		f where l.feed_id=f.feed_id and l.type='BOOKMARK'and l.id=#{id}) bookmarkstate 
-		from feed
-		order by reg_date desc
+		(select nvl(count(*),0)from likely_bookmark l
+        where l.feed_id=f.feed_id and l.type='BOOKMARK'and l.id='12') bookmarkstate 
+		from feed f
+		order by reg_date desc ;
 	</select>
 		<select id="getfeedsNologin" resultType="feed">
 		select * from
