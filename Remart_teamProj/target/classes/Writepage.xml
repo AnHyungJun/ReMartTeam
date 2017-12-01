@@ -10,6 +10,15 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findifk" parameterType="hashmap" resultType="int">
 		select nvl(max(img_id),0) from img
 	</select>
+	<select id="checkhash" parameterType="hashmap" resultType="int">
+		select nvl(max(hashtag_id),0) from hashtag where hashtag_content=#{hashtag}
+	</select>
+	<select id="checkhashfeed" parameterType="hashmap" resultType="int">
+		select nvl(max(hash_feed_id),0) from hash_feed
+	</select>
+	<select id="hashid" parameterType="hashmap" resultType="int">
+		select nvl(max(hashtag_id),0) from hashtag
+	</select>
 	<select id="findfoodfeedfk" parameterType="hashmap" resultType="int">
 		select nvl(max(feed_food_id),0) from feed_food
 	</select>
@@ -31,5 +40,16 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		values
 		(#{food_id},#{feed_id},#{feed_food_id})
 	</insert>
-	
+	<insert id="inserthashtag"  parameterType="hashmap">
+		insert into hashtag
+		(hashtag_id,hashtag_content)
+		values
+		(#{checkhash},#{hashtag})
+	</insert>
+	<insert id="inserthashfeed"  parameterType="hashmap">
+		insert into hash_feed
+		(hash_feed_id ,hashtag_id ,feed_id )
+		values
+		(#{checkhashfeed},#{checkhash},#{feed_id})
+	</insert>
 </mapper>
