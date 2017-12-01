@@ -33,4 +33,13 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		email=#{member.email}, info=#{member.info}, profileImg=#{member.profileImg} where id=#{member.id}
 	
 	</update>
+	
+	<select id="getLikeFeedList" parameterType="hashmap" resultType="feed">
+		select * from feed f where f.feed_id in (select feed_id from likely_bookmark where id = #{id} and type='l') order by reg_date desc
+	</select>
+	
+	<select id="getBookmarkFeedList" parameterType="hashmap" resultType="feed">
+		select * from feed f where f.feed_id in (select feed_id from likely_bookmark where id = #{id} and type='b') order by reg_date desc
+	</select>
+	
 </mapper>

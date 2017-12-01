@@ -72,8 +72,12 @@ public class MypageController {
 
 	@RequestMapping(value="bookmarkForm")
 	public ModelAndView bookmarkForm(){
-		mv.clear();
-		mv.setViewName("mypage/bookmarkForm");
+		List<FeedDataBean> feedlist=null;
+		feedlist=dbPro.getBookmarkFeedList(member.getId());
+		
+		mv.addObject("feedlist",feedlist);
+		mv.setViewName("mypage/myPageForm");
+		
 		return mv;
 	}
 	
@@ -118,8 +122,12 @@ public class MypageController {
 	
 	@RequestMapping(value="likeForm")
 	public ModelAndView likeForm(){
-		mv.clear();
-		mv.setViewName("mypage/likeForm");
+		List<FeedDataBean> feedlist=null;
+		feedlist=dbPro.getLikeFeedList(member.getId());
+		
+		mv.addObject("feedlist",feedlist);
+		mv.setViewName("mypage/myPageForm");
+		
 		return mv;
 	}
 }
