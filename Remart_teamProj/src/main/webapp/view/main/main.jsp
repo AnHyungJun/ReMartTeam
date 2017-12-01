@@ -4,12 +4,26 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.2.7/css/swiper.css"
 	rel="stylesheet" type="text/css" media="screen" />
 
 <style>
+.display-none {
+	display: none;
+}
+
+.loading {
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	height: 60px;
+	width: 100%;
+}
+
 .swiper-container {
 	width: 980px;
 	height: 100%;
@@ -59,84 +73,54 @@
 </style>
 <head>
 <script type="text/javascript">
-	var httpRequest = null;
-	function sendRequest(url, params, callback, method) {
-		httpRequest = new XMLHttpRequest();
-		var httpMethod = method ? method : 'GET';
-		if (httpMethod != 'GET' && httpMethod != 'POST') {
-			httpMethod = 'GET';
-		}
-
-		var httpParams = (params == null || params == '') ? null : params;
-		var httpUrl = url;
-		if (httpMethod == 'GET' && httpParams != null) {
-			httpUrl = httpUrl + "?" + httpParams;
-		}
-
-		httpRequest.open(httpMethod, httpUrl, true);
-		httpRequest.setRequestHeader('content-Type',
-				'application/x-www-form-urlencoded');
-		httpRequest.onreadystatechange = callback;
-		httpRequest.send(httpMethod == 'POST' ? httpParams : null);
-	}
-
-	function like(feed_id) {
-		alert("dd");
-		alert(feed_id);
-		var params = "feed_id=" + encodeURIComponent(feed_id);
-		sendRequest("/Remart_teamProj/main/like", params, return_like, "GET");
-	}
-	function return_like() {
-		if (httpRequest.readyState == 4) {
-			if (httpRequest.status == 200) {
-
-				document.getElementById("like").innerHTML = httpRequest.responseText;
-			}
-		}
-	}
-	function bookmark() {
-		alert("북마크");
-		var test = "bookmark";
-		var params = "like=" + encodeURIComponent(test);
-		sendRequest("/Remart_teamProj/main/like", params, return_like, "GET");
-
-	}
-	function return_bookmark() {
-		if (httpRequest.readyState == 4) {
-			if (httpRequest.status == 200) {
-				alert("s");
-				//document.getElementById("dd").innerHTML = httpRequest.responseText;
-			}
-		}
-	}
-	// Add contents for max height
-	/* $(document).ready(function() {
+/* 
+	  $(document).ready(function() {
+		  var index=18;
 		$(document).scroll(function() {
-			var maxHeight = $(document).height();
+			
+			static var maxHeight = $(document).height();
 			var currentScroll = $(window).scrollTop() + $(window).height();
-
-			if (maxHeight <= currentScroll + 100) {
-				getFeed();
+			 console.log(index++);
+			if (maxHeight <= currentScroll+100) {
+				alert("dd");
+				//getFeed(index);
 			}
 		})
-	}); */
-	function getFeed() {
-		var test = "bookmark";
-		var params = "like=" + encodeURIComponent(test);
+	});   */
+	  
+	 function getFeed(index) {
+		/*  $.ajax({
+			 url:'/Remart_teamProj/main/getFeed',
+		 	dataType:'html',type:'post',
+		 	data:{index:index,id:'<c:out value="${memberInfo.id}"/>'}
+		 	,beforeSend:function(){$('.loading').removeClass('display-none');}
+		 	,complete:function(){},
+		 	success:function(){$('.loading').addClass('display-none');
+		 	document.getElementById("feed").innerHTML += httpRequest.responseText;}
+		 
+		 }
+		 
+		 ); */
+		// maxHeight = $(document).height();
+		 var id='<c:out value="${memberInfo.id}"/>'; 
+		
+		//속도를 늦춰야함 ex 로딩중 띄우기
+		alert("feeds"); 
+		var params = "index=" + encodeURIComponent(index)+"&id="+id;
 		sendRequest("/Remart_teamProj/main/getFeed", params, return_getFeed,
-				"GET");
+				"GET"); 
 
 	}
+	 
 	function return_getFeed() {
 		if (httpRequest.readyState == 4) {
 			if (httpRequest.status == 200) {
 				document.getElementById("feed").innerHTML += httpRequest.responseText;
 			}
 		}
-	}
-	function login() {
-		alert("로그인하세요");
-	}
+	}  
+	
+
 	
 var slideIndex = 1;//슬라이드 변수
 
@@ -187,12 +171,12 @@ var slideIndex = 1;//슬라이드 변수
    		alert(imagename[0]);
    		for(var i=0;i<imagenum;i++){   			
    			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 55%; height: 350px; margin-top: 10px;\">"+
-    		"<img src='"+"/Remart_teamProj/fileSave/"+encodeURIcomponent(imagename[i])/* +imagename[i] */+".JPG' width=100% height=100%><br>"+
+    		"<img src='"+"/Remart_teamProj/fileSave/"+/* encodeURIcomponent(imagename[i]) */ +imagename[i] +"' width=100% height=100%><br>"+
     		"<label>"+contentname[i]+"</label>"+"</div>";
     		$('.window').append(y); 
     		
    		}
-   		/*reple_id,feed_id,id,content,reg_date  */
+   		reple_id,feed_id,id,content,reg_date  
    		if(replenum!=0){
    			myArray = new Array( new Array(replenum), new Array(5) );
    			repledata=repledata.split(', ');
@@ -268,6 +252,48 @@ var slideIndex = 1;//슬라이드 변수
 </script>
 <title>REMART</title>
 </head>
+<script>
+function aaaa() {
+	alert("로그인하세요");
+}
+var httpRequest = null;
+function sendRequest(url, params, callback, method) {
+	httpRequest = new XMLHttpRequest();
+	var httpMethod = method ? method : 'GET';
+	if (httpMethod != 'GET' && httpMethod != 'POST') {
+		httpMethod = 'GET';
+	}
+
+	var httpParams = (params == null || params == '') ? null : params;
+	var httpUrl = url;
+	if (httpMethod == 'GET' && httpParams != null) {
+		httpUrl = httpUrl + "?" + httpParams;
+	}
+
+	httpRequest.open(httpMethod, httpUrl, true);
+	httpRequest.setRequestHeader('content-Type',
+			'application/x-www-form-urlencoded');
+	httpRequest.onreadystatechange = callback;
+	httpRequest.send(httpMethod == 'POST' ? httpParams : null);
+}
+
+function like(feed_id,action) {
+	alert(action);
+	var params = "feed_id=" + encodeURIComponent(feed_id)+"&action="+ encodeURIComponent(action);
+	sendRequest("/Remart_teamProj/main/like", params, return_like, "GET");
+}
+function return_like() {
+	if (httpRequest.readyState == 4) {
+		if (httpRequest.status == 200) {
+
+			document.getElementById("like").innerHTML = httpRequest.responseText;
+		}
+	}
+}
+function needlogin(){
+	alert("로그인하세요");
+} 
+</script>
 <body>
 	<div style="margin-top: 100px"></div>
 
@@ -344,27 +370,57 @@ var slideIndex = 1;//슬라이드 변수
 									src="<%=request.getContextPath()%>/images/icon/noProfile.png"
 									style="width: 25px; height: 25px"><b>${Feeds[i].id }</b>
 								<img
-									src="<%=request.getContextPath()%>/fileSave/${Feeds[i].last}.JPG"
-									style="width: 300px; height: 200px">
+									src="<%=request.getContextPath()%>/fileSave/${Feeds[i].img_name[0]}"
+									style="width: 300px; height: 190px">
 							</div>
 							<div style="width: 300px">
 								<div class="w3-container w3-white">
-									<label id="like"> <img
-										onclick="like(${Feeds[i].feed_id})"
-										src="<%=request.getContextPath()%>/images/icon/like_before.png"
-										style="height: 20px; cursor: pointer;"></label> <img
-										src="<%=request.getContextPath()%>/images/icon/comment.png"
-										style="height: 20px; cursor: pointer;"> <img
-										onclick="bookmark()"
-										src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-										style="height: 20px; cursor: pointer; position: relative; left: 80%">
+									<c:if test="${empty memberInfo }">
+										<label id="like"> <img onclick="needlogin()"
+											src="<%=request.getContextPath()%>/images/icon/like_before.png"
+											style="height: 20px; cursor: pointer;"></label>
+										<img
+											src="<%=request.getContextPath()%>/images/icon/comment.png"
+											style="height: 20px; cursor: pointer;">
+										<img onclick="needlogin()"
+											src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+											style="height: 20px; cursor: pointer; position: relative; left: 80%">
+									</c:if>
+									<c:if test="${!empty memberInfo }">
+										<c:if test="${Feeds[i].likestate==0 }">
+											<label id="like"> <img
+												onclick="like(${Feeds[i].feed_id},'like');"
+												src="<%=request.getContextPath()%>/images/icon/like_before.png"
+												style="height: 20px; cursor: pointer;"></label>
+										</c:if>
+										<c:if test="${Feeds[i].likestate==1 }">
+											<label id="like"> <img
+												src="<%=request.getContextPath()%>/images/icon/like_after.png"
+												style="height: 20px; cursor: pointer;"></label>
+										</c:if>
+
+										<img
+											src="<%=request.getContextPath()%>/images/icon/comment.png"
+											style="height: 20px; cursor: pointer;">:${Feeds[i].repleNum}
+										<c:if test="${Feeds[i].bookmarkstate==0 }">
+											<img onclick="like(${Feeds[i].feed_id},'bookmark')"
+												src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+												style="height: 20px; cursor: pointer; position: relative; left: 80%">
+										</c:if>
+										<c:if test="${Feeds[i].bookmarkstate==1 }">
+											<img onclick="like(${Feeds[i].feed_id},'unbookmark')"
+												src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+												style="height: 20px; cursor: pointer; position: relative; left: 80%">
+										</c:if>
+									</c:if>
+
 									<%-- <img src="<%=request.getContextPath()%>/images/icon/like_before.png"
 											style="height: 20px;">: ${Feeds[i].like_num }
 											<img src="<%=request.getContextPath()%>/images/icon/comment.png"
 											style="height: 20px;">:${Feeds[i].repleNum } --%>
 								</div>
 
-								<div class="w3-container w3-light-grey"
+								<div class="showmask"
 									style="height: 150px; cursor: pointer"
 									onclick="popup('${fn:length(Feeds[i].img_name)}','${Feeds[i]}','${Feeds[i].img_name}','${Feeds[i].content}','${Feeds[i].replelist}','${fn:length(Feeds[i].replelist)}');">
 
@@ -376,15 +432,18 @@ var slideIndex = 1;//슬라이드 변수
 					</div>
 				</c:if>
 			</c:forEach>
+			<div id="loading" class="loading display-none">
+				<img src="<%=request.getContextPath()%>/images/icon/lo3.gif"
+					style="vertical-align: middle">
+			</div>
+
 		</div>
 	</div>
-
-
 
 </body>
 
 
-<div id="userplant" class="w3-modal">
+<%-- <div id="userplant" class="w3-modal">
 	<div class="w3-modal-content w3-card-4 w3-animate-zoom"
 		style="max-width: 300px">
 		<div class="w3-center">
@@ -431,7 +490,7 @@ var slideIndex = 1;//슬라이드 변수
 		</div>
 
 	</div>
-</div>
+</div> --%>
 <div class="setDiv">
 
 	<div class="mask"></div>
