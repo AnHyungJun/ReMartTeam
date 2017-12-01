@@ -42,4 +42,8 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from feed f where f.feed_id in (select feed_id from likely_bookmark where id = #{id} and type='b') order by reg_date desc
 	</select>
 	
+	<select id="getFollowFeedList" parameterType="hashmap" resultType="feed">
+		select * from feed f where id in (select id from r_member where id in (select other_id from follow where my_id=#{id})) order by reg_date desc
+	</select>
+	
 </mapper>

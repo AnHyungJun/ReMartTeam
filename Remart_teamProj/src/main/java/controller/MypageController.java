@@ -130,4 +130,15 @@ public class MypageController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(value="followForm")
+	public ModelAndView followForm(){
+		List<FeedDataBean> feedlist=null;
+		feedlist=dbPro.getFollowFeedList(member.getId());
+		
+		mv.addObject("feedlist",feedlist);
+		mv.setViewName("mypage/myPageForm");
+		
+		return mv;
+	}
 }

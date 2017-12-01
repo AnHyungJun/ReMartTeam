@@ -52,11 +52,6 @@
 					style="float: right; margin-bottom: 0px; margin-top: 20px;">
 					<c:if test="${checkpage==0}">
 					<a
-						href="<%=request.getContextPath() %>/mypage/followForm?id=${member.id}"><img
-						class="w3-right-align"
-						src="<%=request.getContextPath()%>/images/icon/follow.png"
-						style="width: 17px;"></a>
-					<a
 						href="<%=request.getContextPath() %>/mypage/likeForm?id=${member.id}"><img
 						class="w3-right-align"
 						src="<%=request.getContextPath()%>/images/icon/like_before.png"

@@ -126,6 +126,30 @@ public class MybatisMypageDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+
+	public List<FeedDataBean> getFollowFeedList(String id) {
+		List<FeedDataBean> feedlist=null;
+		sqlSession = sqlSession();
+		List<ImgDataBean> tmp=null;
+		try {
+			HashMap map = new HashMap();
+			map.put("id", id);
+			feedlist=sqlSession.selectList(namespace + ".getFollowFeedList", map);
+			for(int i=0;i<feedlist.size();i++){
+				map.clear();
+				map.put("feed_id", feedlist.get(i).getFeed_id());
+				feedlist.get(i).setImg_name(sqlSession.selectList(namespace + ".getImg_name", map));
+				feedlist.get(i).setContent(sqlSession.selectList(namespace + ".getContent", map));
+				feedlist.get(i).setReplelist(sqlSession.selectList(namespace + ".feedreple", map));
+			}
+			
+			return feedlist;
+
+		} finally {
+
+			sqlSession.close();
+		}
+	}
 	
 	
 	
