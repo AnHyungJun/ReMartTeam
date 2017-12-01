@@ -21,6 +21,7 @@
 
 
 </style>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
 	<div style="margin-top: 200px"></div>
@@ -234,36 +235,27 @@
 			<div style="width: 650px;" align="left">
 				<div style="font-size: 13px;">#HASHTAG</div>
 				<input type="text" name="hashtag" size="94" height="20"
-					style="font-size: 13px;" /> <br> <br>
+					style="font-size: 13px;" value="#" /> <br> <br>
 			</div>
 		</div>
 		
-		<div style="margin-top: 20px;"></div>
-					<c:if test="${memberInfo.grade eq 'editor'}">
-						<div style="width: 610px; font-size: 13px;" align="center">
-							<!--밑에 등록 버튼-->
-							에디터 상품 등록
+		<c:if test="${memberInfo.grade eq 'editor'}">
+				<div style="width:610px;" align="center">
+					<!--밑에 등록 버튼-->
+					<br> 에디터 상품 등록 <br>
+					
+					<table id="editorfood2" width="100%" >
+						<tr align="center" height="30"><th width="80">상품 </th><th width="200">상품 이미지</th><th width="150">상품 이름</th><th width="80">상품 가격</th><th width="100">삭 제</th></tr>
+					</table>
+					
+					
+					<br> <br> <br>
+					<button type="button" onclick="findfood()" />
+					<br>
 
-							<table id="editorfood2" width="100%">
-								<tr align="center" height="30">
-									<th width="80">상품</th>
-									<th width="200">상품 이미지</th>
-									<th width="150">상품 이름</th>
-									<th width="80">상품 가격</th>
-									<th width="100">삭 제</th>
-								</tr>
-							</table>
+				</div>
 
-
-							<br> <br> <br>
-							<button type="button" onclick="findfood()"
-								style="font-size: 12px;"
-								class="w3-button w3-white w3-hover-white">상품 등록</button>
-							<br>
-
-						</div>
-
-					</c:if>
+			</c:if>
 			
 		<br>
 		<br>
@@ -278,6 +270,7 @@
 	<script>
 		var openWin;
 		var rowlen=1;
+		var hashinput=$('input:text[name=hashtag]');
 		function foodimg(foodname) {
 			
 			
@@ -295,13 +288,26 @@
 			alert(row);
 			$("#editorfood2").append(row);
 		}
-		$(document).on("click","button[name=delStaff]",function(){
-		        var trHtml = $(this).parent().parent();
-		        rowlen--;
-		        trHtml.remove();
-		         
-		});
-		
+		hashinput.keyup(function(event) { 
+			var tmp=hashinput.val();
+			if (event.keyCode == '32') {
+				
+				tmp=tmp.trim();
+				if(tmp.substr(-1,1)=="#"){
+					
+				}else{
+					tmp=tmp+"#";	
+				}
+				hashinput.val(tmp);
+			}
+			if(tmp.substr(0,1)!="#"){
+				hashinput.val("#"+hashinput.val());
+			} 
+			if(tmp.substr(-2,2)=="##"){
+				
+				hashinput.val(tmp.substring(0,tmp.length-1));
+			}
+		}); 
 		function findfood() {
 			// window.name = "부모창 이름"; 
 			window.name = "parentForm";
