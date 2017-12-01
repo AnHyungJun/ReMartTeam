@@ -130,9 +130,11 @@ public class MybatisShoppingDBBean extends MybatisConnector{
    
    public void insertArticlePayment(Food_paymentDataBean articlePayment) {
 	   System.out.println("insertPayment");
+	   articlePayment.setOrder_state("order");
 	   sqlSession = sqlSession();
 	   HashMap map = new HashMap();
 	   map.put("articlePayment", articlePayment);
+	   
 	   
 	   try {
 		   int number = sqlSession.selectOne(namespace + ".insertPayment_new");
@@ -142,6 +144,7 @@ public class MybatisShoppingDBBean extends MybatisConnector{
 			   number = 1;
 		  
 		   articlePayment.setPayment_id(number);
+		   
 		   System.out.println("insert : " + articlePayment);
 		   int result = sqlSession.insert(namespace + ".insertPayment", articlePayment);
 		   System.out.println("insert ok:" + result);
