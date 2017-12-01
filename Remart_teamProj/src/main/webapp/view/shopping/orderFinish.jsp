@@ -46,7 +46,7 @@
 </style>
 </head>
 <body>
-<div style="margin-top: 200px"></div>
+	<div style="margin-top: 200px"></div>
 	<div class="w3-row">
 		<div class="w3-col" style="width: 380px">
 			<p>&nbsp;</p>
@@ -63,20 +63,32 @@
 					</ol>
 				</div>
 				<!-- shopping_process end -->
-				
+
+				<div style="margin-top: 100px;"></div>
+
 				<div class="w3-center">
-				<h6> <b> 결제가 완료되었습니다 ${memberInfo.id }</b> </h6>
+					<h6>
+						<b> 결제가 완료되었습니다 </b>
+					</h6>
 				</div>
-				
-				<div>
-					<a href="historyPayment?payment_id=${payment_id }">결제내역보기</a>
+
+				<div style="margin-top: 100px;"></div>
+
+				<div class="w3-center">
+					<a href="historyPayment?payment_id=${payment_id }"> 결제내역 확인 </a> 
+					
+					<a
+						href="<%=request.getContextPath()%>/main/main">
+						<div class="w3-button w3-white w3-border w3-hover-light-grey w3-margin-left"
+							style="font-size: 12px;">메인</div>
+					</a>
 				</div>
 			</div>
-			
+
 		</div>
 		<div class="w3-col" style="width: 380px;">
-		<p>&nbsp;</p>
-	</div>
+			<p>&nbsp;</p>
+		</div>
 	</div>
 </body>
 </html>
