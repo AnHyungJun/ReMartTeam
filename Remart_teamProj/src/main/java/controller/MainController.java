@@ -92,23 +92,24 @@ public class MainController {
 		return mv;
 	}
 	@RequestMapping(value = "searchForm")
-	public ModelAndView searchForm(String autocompleteText, String autocompleteText2) {
+	public ModelAndView searchForm(String autocompleteText, String autocompleteText2, HttpSession session) {
 		mv.clear();
 		List searchList = null;
-		if(autocompleteText2 != null){ //
+		if(autocompleteText2 != null){ //쇼핑서치
 			searchList = dbPro.getFoodSearchList(autocompleteText2);
+			session.setAttribute("curPage", "shopping");
 			mv.setViewName("main/foodSearchForm");
 		}else{
 			
-			if(autocompleteText.contains("#")){ // 
+			if(autocompleteText.contains("#")){ // 글 서치
 				autocompleteText = autocompleteText.replace("#", "");
 				searchList = dbPro.getFeedSearchList(autocompleteText);
 				mv.setViewName("main/feedSearchForm");
-			}else{ //
+			}else{ //사용자 서치
 				
-				if(memberInfo == null) //
+				if(memberInfo == null) //로그인 안했을때
 					searchList = dbPro.getUserSearchList(autocompleteText);
-				else //
+				else //로그인 했을때
 					searchList = dbPro.getUserSearchListWithFollow(autocompleteText,id );
 				mv.setViewName("main/userSearchForm");
 			}
