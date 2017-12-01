@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/ajax/httpRequest.js"></script>
-<title>follow form</title>
+<title>REMART</title>
 
 <style>
 .setDiv {
@@ -31,7 +31,7 @@
 .window {
 	display: none;
 	background-color: #ffffff;
-	width:750px;
+	width: 750px;
 	height: 500px;
 	z-index: 99999;
 }
@@ -41,57 +41,60 @@
 <body>
 	<div style="margin-top: 140px"></div>
 
+	<center>
+		<div class="w3-center" style="width: 1000px">
 
-	<div class="w3-container">
-	<h2>게시물</h2>
-		<c:if test="${fn:length(searchList) != 0}">
-			<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
-			<c:forEach var="list" items="${searchList}" varStatus="status">
-				<%-- <c:if test="${status.count % 3 == 1}">
+			<div class="w3-container">
+				<div style="margin-top: 50px;"></div>
+				<div class="w3-center">
+					<c:if test="${fn:length(searchList) != 0}">
+						<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
+						<c:forEach var="list" items="${searchList}" varStatus="status">
+							<%-- <c:if test="${status.count % 3 == 1}">
 					<div class="w3-container" style="margin-bottom: 10px;border: solid 4px;"/>
 				</c:if> --%>
-				<div class="w3-container"
-					style="float: left; width: 33%; height: 350px; margin-top: 10px;">
+							<div class="w3-container"
+								style="float: left; width: 33%; height: 350px; margin-top: 10px;">
 
-					<div class="w3-center">
-					<!-- 함수 실행해서 이미지 이름 ,사이즈 등등 넘겨주는 부ㅜ분 -->
-						<img id="${list.feed_id}" class="showMask"
-							src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
-							style="width: 300px; height: 300px" onclick="popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');"><br>
-						${list.recipe_name }
-					</div>
-
+								<div class="w3-center">
+									<!-- 함수 실행해서 이미지 이름 ,사이즈 등등 넘겨주는 부ㅜ분 -->
+									<img id="${list.feed_id}" class="showMask"
+										src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
+										style="width: 300px; height: 300px"
+										onclick="popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');"><br>
+									${list.recipe_name }
+								</div>
+							</div>
+						</c:forEach>
+					</c:if>
 				</div>
-			</c:forEach>
-		</c:if>
-		<c:if test="${fn:length(searchList) == 0}">
-			<br>
-			<br>
-			<h1>아직 쓴 글이 없습니다.</h1>
-			<br>
-		</c:if>
+				<c:if test="${fn:length(searchList) == 0}">
+					<div style="margin-top: 100px; font-size: 13px;">
+						<b> 아직 쓴 글이 없습니다. </b>
+					</div>
+				</c:if>
 
-	</div>
-	
-<!-- 레이어창 -->	
-<div class="setDiv">
-   
-    <div class="mask"></div>
-    <div class="window">
-    
-    
-        <input type="button" href="#" class="close" value="(닫기)"/>
-    	
-    	<div style="width: 100%; height: 50px;">
-			<!--글쓰는데 상단 고정바-->
-			<button id="leftpage" style="float: left;"
-				onclick="plusDivs(-1)">(이미지</button>
-			<button id="rightpage" style="float: right" type="button"
-				onclick="plusDivs(1)">이미지)</button>
+			</div>
 		</div>
-    </div>
-</div>
-<script type="text/javascript">
+	</center>
+
+	<!-- 레이어창 -->
+	<div class="setDiv">
+
+		<div class="mask"></div>
+		<div class="window w3-modal w3-modal-content w3-animate-opacity">
+			<button type="button" href="#" class="close w3-button w3-white w3-hover-white w3-right"> X </button>
+			<div style="margin-top:40px;"></div>
+			<div style="width: 100%; height: 50px;">
+				<!--글쓰는데 상단 고정바-->
+				<button id="leftpage" style="float: left;" onclick="plusDivs(-1)"
+				class="w3-button w3-white w3-hover-white"> <b>〈 </b> </button>
+				<button id="rightpage" style="float: right" type="button"
+					class="w3-button w3-white w3-hover-white" onclick="plusDivs(1)"> <b> 〉 </b></button>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
 
 	var slideIndex = 1;//슬라이드 변수
 
