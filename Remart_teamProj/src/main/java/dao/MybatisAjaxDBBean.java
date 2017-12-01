@@ -150,4 +150,39 @@ public class MybatisAjaxDBBean extends MybatisConnector{
 			   sqlSession.close();
 		   }   
 	   }
+	
+	public void insertFollow(String myid, String otherid) {
+		System.out.println("insertFollow:");
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("myid", myid);
+		map.put("otherid", otherid);
+		try{
+			int follow_id = sqlSession.selectOne(namespace+".getFollow_id");
+			follow_id++;
+			map.put("follow_id", follow_id);
+			int result = sqlSession.insert(namespace + ".insertFollow",map);
+			System.out.println("insert Ok:"+result);
+		}finally{
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	}
+
+	public void deleteFollow(String myid, String otherid) 
+			throws Exception {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("myid", myid);
+		map.put("otherid", otherid);
+		try {
+
+			int result = sqlSession.delete(namespace + ".deleteFollow", map);
+			System.out.println("delete Ok:"+result);
+		} finally {
+			sqlSession.commit();
+			sqlSession.close();
+			
+		}
+	}
 }

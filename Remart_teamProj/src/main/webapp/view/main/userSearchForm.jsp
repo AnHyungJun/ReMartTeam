@@ -10,25 +10,38 @@
 <title>REMART</title>
 </head>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/ajax/httpRequest.js"></script>
 <style>
 table {
 	border: 2px solid grey;
 }
 </style>
 <script>
-	function followPush() {
+	function followPush(userInput) {
+		var followStatus = userInput.follow.value;
+		var otherid = userInput.otherid.value;
+		var myid = userInput.myid.value;
 		if (document.getElementById('loginId').value == "N") {
 			alert("로그인후 이용하세요");
 		} else {
-
+			var params = "followStatus=" + encodeURIComponent(followStatus) + "&myid=" + encodeURIComponent(myid) + "&otherid=" + encodeURIComponent(otherid);
+			sendRequest("<%=request.getContextPath()%>/view/main/followButton.jsp", params, followResult, 'POST');
+			if(userInput.follow.value == "follow"){
+				userInput.follow.value = "unfollow";
+			}else{
+				userInput.follow.value = "follow";
+			}
 		}
 	}
-	function unfollowPush() {
-		if (document.getElementById('loginId').value == "N") {
-			alert("로그인후 이용하세요");
-		} else {
-
-		}
+	function followResult(){
+		if(httpRequest.readyState == 4) {
+	         if(httpRequest.status == 200) {
+				
+	         } else {
+	            alert("에러: " + httpRequest.status);
+	         }
+	      }
 	}
 </script>
 <c:if test="${memberInfo eq null }">
@@ -63,8 +76,10 @@ table {
 								${search.id }
 							</c:if>
 							<c:if test="${memberInfo.id ne search.id  }">
-								<a
+								<a 
 									href="<%=request.getContextPath()%>/mypage/myPageForm?id=${search.id }">${search.id }</a>
+								<input type="hidden" value="${search.id }" name="otherid">
+								<input type="hidden" value="${memberInfo.id }" name="myid">
 							</c:if>
 
 							<br> ${search.info }
@@ -73,11 +88,11 @@ table {
 						<div style="float: right; margin: 30px;">
 							<c:if test="${search.follow_status == 0}">
 								<c:if test="${memberInfo.id ne search.id  }">
-									<button type="button" onclick="followPush()">follow</button>
+									<input type="button" onclick="followPush(this.form)" value="follow" name="follow">
 								</c:if>
 							</c:if>
 							<c:if test="${search.follow_status == 1}">
-								<button type="button" onclick="unfollowPush()">unfollow</button>
+								<input type="button" onclick="followPush(this.form)" value="unfollow" name="follow">
 							</c:if>
 						</div>
 

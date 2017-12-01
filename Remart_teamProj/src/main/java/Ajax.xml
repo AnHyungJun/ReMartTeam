@@ -54,4 +54,19 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
    	 <select id="insertBasket_new" resultType="int">
    		select nvl(max(basket_id),0) from basket
    	 </select>
+   	 
+   	 	<select id="getFollow_id" resultType="int">
+		select nvl(max(follow_id),0) from follow
+	</select>
+	
+	<insert id="insertFollow"  parameterType="hashmap">
+		insert into follow
+		(follow_id, my_id, other_id)
+		values
+		(#{follow_id}, #{myid},#{otherid})
+	</insert>
+	
+	 <select id="deleteFollow"   parameterType="hashmap" >
+	 	delete from follow where my_id = #{myid} and other_id = #{otherid}
+    </select>
 </mapper>
