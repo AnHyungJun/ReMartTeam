@@ -64,7 +64,7 @@
 			<div class="w3-display-container w3-border-bottom"
 				style="height: 330px;">
 				<div class="w3-bar w3-display-bottomleft w3-center"
-					style="margin-left: 8%; font-size: 14px; margin-top:30px;">${member.name}<div
+					style="margin-left: 8%; font-size: 14px; margin-top:30px;">${member.info}<div
 						style="margin-top: 20px;"></div>
 				</div>
 				<div class="w3-display-bottomright"></div>
