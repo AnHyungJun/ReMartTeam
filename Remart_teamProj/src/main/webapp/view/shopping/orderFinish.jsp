@@ -75,7 +75,10 @@
 				<div style="margin-top: 100px;"></div>
 
 				<div class="w3-center">
-					<a href="historyPayment?payment_id=${payment_id }"> 결제내역 확인 </a> 
+					<a href="historyPayment?payment_id=${payment_id }" style="text-decoration: none;"> 
+						<div class="w3-button w3-white w3-border w3-hover-light-grey w3-margin-left"
+								style="font-size: 12px;">결제내역 확인</div>
+					</a> &nbsp;&nbsp;&nbsp;
 					
 					<a
 						href="<%=request.getContextPath()%>/main/main">
