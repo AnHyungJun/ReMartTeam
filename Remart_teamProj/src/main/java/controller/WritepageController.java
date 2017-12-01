@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.FileNotFoundException;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -21,9 +20,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
 import dao.MybatisMainDBBean;
 import dao.MybatisWritepageDBBean;
 import model.FeedDataBean;
+import model.HashtagDataBean;
 import model.R_memberDataBean;
 
 @Controller
@@ -34,7 +36,7 @@ public class WritepageController {
 	MybatisWritepageDBBean dbPro;
 
 	@ModelAttribute
-	public void addAttributes(HttpServletRequest request,HttpSession session) {
+	public void addAttributes(HttpServletRequest request) {
 		try {
 			request.setCharacterEncoding("utf-8");
 			r_member = (R_memberDataBean) request.getSession().getAttribute(
@@ -42,7 +44,6 @@ public class WritepageController {
 		} catch (UnsupportedEncodingException el) {
 			el.printStackTrace();
 		}
-		session.setAttribute("curPage", "n");
 	}
 
 	@RequestMapping(value = "writeForm")
@@ -65,11 +66,12 @@ public class WritepageController {
 
 	@RequestMapping(value = "writePro")
 	public ModelAndView writePro(MultipartHttpServletRequest multipart,
-			FeedDataBean feed) throws FileNotFoundException, IOException {
+			FeedDataBean feed,String hashtag) throws FileNotFoundException, IOException {
 		List<MultipartFile> multi = null;
-
+		String[] array;
 		multi = (List<MultipartFile>) multipart.getFiles("img_name");
 		
+		array=hashtag.split("\\#");
 		for (int i = multi.size() - 1; i > -1; i--) {
 			String filename = multi.get(i).getOriginalFilename();
 			if (filename != null && !filename.equals("")) {
@@ -80,35 +82,23 @@ public class WritepageController {
 								+ multi.get(i).getOriginalFilename()));
 			
 				feed.getImg_name().set(i, filename);
-				System.out.println(feed.getImg_name().get(i));
-				System.out.println(feed.getContent().get(i));
 			} else {
 				feed.getImg_name().remove(i);
 				feed.getContent().remove(i);
 			}
 		}
 		if (r_member.getGrade().equals("nomal"))
-			dbPro.insertNFeed(feed, r_member.getId());
+			dbPro.insertNFeed(feed, r_member.getId(),array);
 		else{
-			int feednum=dbPro.insertNFeed(feed, r_member.getId());
+			int feednum=dbPro.insertNFeed(feed, r_member.getId(),array);
 			dbPro.insertEFeed(feed,feednum);
 		}
-
-			/*
-			 * String filename = multi.getOriginalFilename(); if(filename !=
-			 * null && !filename.equals("")){ String uploadPath =
-			 * multipart.getRealPath("/") + "fileSave";
-			 * System.out.println(uploadPath);
-			 * FileCopyUtils.copy(multi.getInputStream(), new
-			 * FileOutputStream(uploadPath+"/"+multi.getOriginalFilename()));
-			 * member.setProfileImg(filename);; }else{ member.setProfileImg("");
-			 * }
-			 * 
-			 * dbPro.insertMember(member); mv.clear();
-			 */
 		mv.clear();
 		mv.setViewName("main/main");
+		
 		return mv;
 	}
 
 }
+
+ 

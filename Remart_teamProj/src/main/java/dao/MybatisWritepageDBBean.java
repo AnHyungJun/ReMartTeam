@@ -15,16 +15,42 @@ public class MybatisWritepageDBBean extends MybatisConnector{
 		return instance;
 	}
 	SqlSession sqlSession;
-	public int insertNFeed(FeedDataBean feed,String id) {
-		System.out.println("insertMember:");
+	public int insertNFeed(FeedDataBean feed,String id,String[] array) {
+		
 		sqlSession = sqlSession();
 		int number=0;
 		try{
+			int checkhashfeed=sqlSession.selectOne(namespace+".checkhashfeed");
 			number = sqlSession.selectOne(namespace+".findfk");
 			if(number != 0)
 				number++;
 			else 
 				number = 1;
+			if(checkhashfeed==0) checkhashfeed=1;//nnid
+			else checkhashfeed++;
+			
+			HashMap map2 = new HashMap();
+			
+			for(int i=1;i<array.length;i++){
+				map2.clear();
+				map2.put("hashtag",array[i]);//content
+				map2.put("feed_id",number);//nnfeed_id
+				map2.put("checkhashfeed",checkhashfeed);//nnid
+				int checkhash=sqlSession.selectOne(namespace+".checkhash",map2);//해쉬 있나없나 있으면 checkhash가 hash아이디
+				if(checkhash==0){
+					int hashid=sqlSession.selectOne(namespace+".hashid");//해쉬테그없으니깐 max값 가져옴
+					hashid++;
+					map2.put("checkhash",hashid);
+					sqlSession.insert(namespace+".inserthashtag", map2);
+					sqlSession.insert(namespace+".inserthashfeed", map2);
+				}else{
+					map2.put("checkhash",checkhash);
+					sqlSession.insert(namespace+".inserthashfeed", map2);
+				}
+				checkhashfeed++;
+			}
+			
+			
 			HashMap map = new HashMap();
 			map.put("feed",feed);
 			map.put("number",number);
