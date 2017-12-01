@@ -32,6 +32,25 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		from feed
 		order by reg_date desc
 	</select>
+		<select id="getfeedsNologin" resultType="feed">
+		select * from
+		feed order
+		by
+		reg_date desc
+	</select>
+
+	<insert id="like" parameterType="hashmap">
+		INSERT INTO likely_bookmark
+		(likely_bookmark_id, id,feed_id, type)
+		VALUES(((select
+		nvl(max(likely_bookmark_id),0) from
+		likely_bookmark)+1),#{id},#{feed_id},#{type})
+	</insert>
+
+	<delete id="unlike" parameterType="hashmap">
+		delete from likely_bookmark where id=#{id} and feed_id=#{feed_id} and
+		type=#{type}
+	</delete>
 	
 	<select id="getfeedsNologin" resultType="feed" >
 		select * from feed order by
