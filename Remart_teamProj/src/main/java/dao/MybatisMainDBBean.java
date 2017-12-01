@@ -39,16 +39,35 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
-	
-	public List getLikeList(String id){
-		sqlSession=sqlSession();
-		try{
-			return sqlSession.selectList(namespace+".getLikeList",id);
-		}finally{
-			sqlSession.close();
-		}
-		
-	}
+	public List getFeeds(String userid) {
+	      sqlSession = sqlSession();
+	   
+	      List<FeedDataBean> feedlist = null;
+	      try {
+	         String id;
+	         if(userid == null||userid.equals("")){
+	            id="idnotexist";
+	            feedlist = sqlSession.selectList(namespace + ".getfeedsNologin");
+	         }
+	         else{
+	        	 id=userid;
+	        	 feedlist = sqlSession.selectList(namespace + ".getfeeds",id);
+	         }
+	         
+	         for (int i = 0; i < feedlist.size(); i++) {
+	            int feed_id= feedlist.get(i).getFeed_id();
+	            feedlist.get(i).setImg_name(
+	                  sqlSession.selectList(namespace + ".getImg_name", feed_id));
+	            feedlist.get(i).setContent(
+	                  sqlSession.selectList(namespace + ".getContent", feed_id));
+	         }
+	         return feedlist;
+
+	      } finally {
+
+	         sqlSession.close();
+	      }
+	   }
 	public List getFeeds(R_memberDataBean r_member) {
 	      sqlSession = sqlSession();
 	   
@@ -78,6 +97,34 @@ public class MybatisMainDBBean extends MybatisConnector {
 	         sqlSession.close();
 	      }
 	   }
+	
+	public void like(String id,int feed_id,String type){
+		 sqlSession = sqlSession();
+		 HashMap map = new HashMap();
+			map.put("id",id);
+			map.put("feed_id",feed_id);
+			map.put("type", type);
+		 try{
+			 sqlSession.insert(namespace+".like",map);
+		 }finally{
+			 sqlSession.commit();
+			 sqlSession.close();
+		 }
+	}
+	public void unlike(String id,int feed_id,String type){
+		 sqlSession = sqlSession();
+		 HashMap map = new HashMap();
+			map.put("id",id);
+			map.put("feed_id",feed_id);
+			map.put("type", type);
+		 try{
+			 sqlSession.delete(namespace+".unlike",map);
+		 }finally{
+			 sqlSession.commit();
+			 sqlSession.close();
+			 
+		 }
+	}
 	public List getUserSearchList(String autocompleteText) {
 		System.out.println("getUserSearchList:");
 		sqlSession = sqlSession();

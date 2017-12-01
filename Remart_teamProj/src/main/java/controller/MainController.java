@@ -45,7 +45,6 @@ public class MainController {
 					.getAttribute("memberInfo");
 			
 		List<FeedDataBean> feeds = dbPro.getFeeds(r_member);
-		System.out.println("�ٲ������Ʈ�ѷ�");
 		System.out.println(feeds.toString());
 		mv.clear();
 		mv.addObject("Feeds", feeds);
@@ -55,18 +54,40 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "like")
-	public ModelAndView like(String like) {
-		System.out.println("ff");
+	public ModelAndView like(HttpServletRequest request, int feed_id,
+			String action) throws UnsupportedEncodingException {
+		request.setCharacterEncoding("utf-8");
+		R_memberDataBean r_member = (R_memberDataBean) request.getSession()
+				.getAttribute("memberInfo");
+		String id = r_member.getId();
+		System.out.println("====");
+		System.out.println(action);
+		if (action.equals("like"))
+			dbPro.like(id, feed_id,"LIKE");
+		if (action.equals("bookmark"))
+			dbPro.like(id, feed_id,"BOOKMARK");
+		if (action.equals("unlike"))
+			dbPro.unlike(id, feed_id,"LIKE");
+		if (action.equals("unbookmark"))
+			dbPro.unlike(id, feed_id,"BOOKMARK");
 
 		mv.clear();
-		mv.addObject("like", like);
+		mv.addObject("action",action);
+		mv.addObject("feed_id", feed_id);
+		// mv.addObject(attributeValue)
 		mv.setViewName("local/like");
 		return mv;
 	}
 
 	@RequestMapping(value = "getFeed")
-	public ModelAndView getFeed() {
+	public ModelAndView getFeed(int index,String id) throws UnsupportedEncodingException {
+		System.out.println(index);
+		System.out.println(id);
+		List<FeedDataBean> feeds = dbPro.getFeeds(id);
+		System.out.println(feeds.toString());
 		mv.clear();
+		mv.addObject("index",index);
+		mv.addObject("Feeds",feeds);
 		mv.setViewName("local/feed");
 		return mv;
 	}
@@ -74,20 +95,20 @@ public class MainController {
 	public ModelAndView searchForm(String autocompleteText, String autocompleteText2) {
 		mv.clear();
 		List searchList = null;
-		if(autocompleteText2 != null){ //쇼핑서치
+		if(autocompleteText2 != null){ //
 			searchList = dbPro.getFoodSearchList(autocompleteText2);
 			mv.setViewName("main/foodSearchForm");
 		}else{
 			
-			if(autocompleteText.contains("#")){ // 글 서치
+			if(autocompleteText.contains("#")){ // 
 				autocompleteText = autocompleteText.replace("#", "");
 				searchList = dbPro.getFeedSearchList(autocompleteText);
 				mv.setViewName("main/feedSearchForm");
-			}else{ //사용자 서치
+			}else{ //
 				
-				if(memberInfo == null) //로그인 안했을때
+				if(memberInfo == null) //
 					searchList = dbPro.getUserSearchList(autocompleteText);
-				else //로그인 했을때
+				else //
 					searchList = dbPro.getUserSearchListWithFollow(autocompleteText,id );
 				mv.setViewName("main/userSearchForm");
 			}
