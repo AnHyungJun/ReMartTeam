@@ -50,6 +50,7 @@
 				</div>
 				<div class="w3-right-align"
 					style="float: right; margin-bottom: 0px; margin-top: 20px;">
+					<c:if test="${checkpage==0}">
 					<a
 						href="<%=request.getContextPath() %>/mypage/likeForm?id=${member.id}"><img
 						class="w3-right-align"
@@ -59,6 +60,7 @@
 						class="w3-right-align"
 						src="<%=request.getContextPath()%>/images/icon/bookmark.png"
 						style="width: 30px;"></a>
+					</c:if>
 				</div>
 			</div>
 			<div class="w3-display-container w3-border-bottom"
