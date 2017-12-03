@@ -98,21 +98,21 @@ public class MainController {
 	public ModelAndView searchForm(String autocompleteText, String autocompleteText2, HttpSession session) {
 		mv.clear();
 		List searchList = null;
-		if(autocompleteText2 != null){ //쇼핑서치
+		if(autocompleteText2 != null){ //�눥�븨�꽌移�
 			searchList = dbPro.getFoodSearchList(autocompleteText2);
 			session.setAttribute("curPage", "shopping");
 			mv.setViewName("main/foodSearchForm");
 		}else{
 			
-			if(autocompleteText.contains("#")){ // 글 서치
+			if(autocompleteText.contains("#")){ // 湲� �꽌移�
 				autocompleteText = autocompleteText.replace("#", "");
 				searchList = dbPro.getFeedSearchList(autocompleteText);
 				mv.setViewName("main/feedSearchForm");
-			}else{ //사용자 서치
+			}else{ //�궗�슜�옄 �꽌移�
 				
-				if(memberInfo == null) //로그인 안했을때
+				if(memberInfo == null) //濡쒓렇�씤 �븞�뻽�쓣�븣
 					searchList = dbPro.getUserSearchList(autocompleteText);
-				else //로그인 했을때
+				else //濡쒓렇�씤 �뻽�쓣�븣
 					searchList = dbPro.getUserSearchListWithFollow(autocompleteText,id );
 				mv.setViewName("main/userSearchForm");
 			}

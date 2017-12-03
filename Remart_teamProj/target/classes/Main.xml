@@ -5,10 +5,8 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="main.mybatis">
 	<cache />
-	<!-- <select id="getfeeds" resultType="feed">
-		select * from feed order by
-		reg_date desc
-	</select> -->
+	<!-- <select id="getfeeds" resultType="feed"> select * from feed order by 
+		reg_date desc </select> -->
 	<select id="getImg_name" parameterType="int" resultType="String">
 		select
 		image_name from img where feed_id=#{feed_id} order by img_id
@@ -22,17 +20,20 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from likely_bookmark where id=#{id}
 	</select>
 
-	 <select id="getfeeds" resultType="feed" parameterType="String">
-		select feed_id,id,like_num,reg_date,recipe_name,
-		(select nvl(count(*),0) from likely_bookmark l 
+	<select id="getfeeds" resultType="feed" parameterType="String">
+		select
+		feed_id,id,like_num,reg_date,recipe_name,
+		(select nvl(count(*),0) from
+		likely_bookmark l
 		where l.feed_id=f.feed_id and l.type='LIKE' and l.id=#{id})
 		likestate,
 		(select nvl(count(*),0)from likely_bookmark l
-        where l.feed_id=f.feed_id and l.type='BOOKMARK'and l.id=#{id}) bookmarkstate 
+		where l.feed_id=f.feed_id and l.type='BOOKMARK'and l.id=#{id})
+		bookmarkstate
 		from feed f
 		order by reg_date desc
 	</select>
-		
+
 
 	<insert id="like" parameterType="hashmap">
 		INSERT INTO likely_bookmark
@@ -43,39 +44,54 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<delete id="unlike" parameterType="hashmap">
-		delete from likely_bookmark where id=#{id} and feed_id=#{feed_id} and
+		delete from likely_bookmark
+		where id=#{id} and feed_id=#{feed_id} and
 		type=#{type}
 	</delete>
-	
-	<select id="getfeedsNologin" resultType="feed" >
-		select * from feed order by
+
+	<select id="getfeedsNologin" resultType="feed">
+		select * from
+		feed order by
 		reg_date desc
 	</select>
-		<select id="getUserSearchList"  parameterType="hashmap" 
-	 resultType="R_member">
-		select * from r_member where id like '%${autocompleteText}%'
+	<select id="getUserSearchList" parameterType="hashmap"
+		resultType="R_member">
+		select * from r_member where id like
+		'%${autocompleteText}%'
 	</select>
-	
-	<select id="getFeedSearchList"  parameterType="hashmap" 
-	 resultType="feed">
-		select f.feed_id, f.id, f.like_num,f.reg_date, f.recipe_name from feed f, hash_feed hf 
-where f.feed_id = hf.feed_id 
-and hf.hashtag_id = (select hashtag_id from hashtag where hashtag_content = #{autocompleteText}) order by f.reg_date desc
+
+	<select id="getFeedSearchList" parameterType="hashmap"
+		resultType="feed">
+		select f.feed_id, f.id, f.like_num,f.reg_date,
+		f.recipe_name from feed f, hash_feed hf
+		where f.feed_id = hf.feed_id
+		and hf.hashtag_id = (select hashtag_id from hashtag where hashtag_content
+		= #{autocompleteText}) order by f.reg_date desc
 	</select>
-	
-	<select id="getFoodSearchList"  parameterType="hashmap" 
-	 resultType="food">
+
+	<select id="getFoodSearchList" parameterType="hashmap"
+		resultType="food">
 		select * from food where name like '%${autocompleteText2}%'
 	</select>
-	
-	<select id="getUserSearchListWithFollow"  parameterType="hashmap" 
-	 resultType="R_member">
+
+	<select id="getUserSearchListWithFollow" parameterType="hashmap"
+		resultType="R_member">
 		select id, profileImg, info,
-(select count(*) from r_member r, follow f where r.id = #{id} and other_id = rm.id) follow_status 
-from r_member rm where id like '%${autocompleteText}%'
+		(select count(*) from r_member r, follow f where r.id = #{id} and other_id =
+		rm.id) follow_status
+		from r_member rm where id like '%${autocompleteText}%'
 	</select>
-	
-		<select id="feedreple" parameterType="hashmap" resultType="reple">
+
+	<select id="feedreple" parameterType="hashmap" resultType="reple">
 		select * from reple where feed_id=#{feed_id} order by reple_id desc
+	</select>
+
+	<select id="getTodayRecomendFeed" resultType="feed">
+	<![CDATA[
+		select * from
+		(select * from feed where to_char( trunc(reg_date), 'YYYYMMDD' ) =
+		to_char( trunc(sysdate-1), 'YYYYMMDD' ) order by like_num desc) where
+		rownum <= 3
+	]]>	
 	</select>
 </mapper>
