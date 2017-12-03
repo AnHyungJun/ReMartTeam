@@ -115,6 +115,13 @@
 						팔로잉
 					</div>
 					<div style="float: left; margin: 30px; font-size: 13px;">
+						<a href="<%=request.getContextPath()%>/mypage/follower?id=${member.id}"><h4>
+							<b>${member.followernum}</b>
+						</h4></a>
+						
+						팔로워
+					</div>
+					<div style="float: left; margin: 30px; font-size: 13px;">
 						<h4>
 							<b>${member.point}</b>
 						</h4>

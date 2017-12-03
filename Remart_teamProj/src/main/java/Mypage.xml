@@ -6,7 +6,7 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 	<cache />
 	<select id="pagea" parameterType="hashmap" resultType="R_member">
 	select id,name,phone,grade,point,use_like,sex,profileimg,(select count(*) from feed e where e.id=#{id}) writenum, 
-	(select count(*) from follow z where z.my_id=#{id}) follownum 
+	(select count(*) from follow z where z.my_id=#{id}) follownum ,(select count(*) from follow z where z.other_id=#{id}) followernum 
  	from r_member where id=#{id}
 	</select>
 	
@@ -48,6 +48,11 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getFollowingList" parameterType="hashmap" resultType="r_member">
 		select id,profileImg,info,1 follow_status from follow f,r_member r where my_id=#{id} and f.other_id = r.id
+	</select>
+	
+	<select id="getFollowerList" parameterType="hashmap" resultType="r_member">
+		select id,profileImg,info,(select count(*) from r_member rm, follow f where r.id = #{id} and other_id =
+		r.id) follow_status from follow f,r_member r where other_id=#{id} and f.my_id = r.id
 	</select>
 	
 </mapper>

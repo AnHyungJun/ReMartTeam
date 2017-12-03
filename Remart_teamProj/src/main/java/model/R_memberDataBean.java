@@ -15,11 +15,20 @@ public class R_memberDataBean implements Serializable{
 	private int point;
 	private int use_like;
 	private int follownum;
+	private int followernum;
 	private int writenum;
 	private String sex;
 	private String email;
 	private String jumin1;
 	private int follow_status;
+	public int getFollowernum() {
+		return followernum;
+	}
+
+	public void setFollowernum(int followernum) {
+		this.followernum = followernum;
+	}
+
 	public int getFollow_status() {
 		return follow_status;
 	}
