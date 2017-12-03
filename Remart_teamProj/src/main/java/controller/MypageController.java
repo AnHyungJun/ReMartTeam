@@ -141,4 +141,16 @@ public class MypageController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(value="following")
+	public ModelAndView following(){
+		System.out.println("뀨");
+		mv.clear();
+		List searchList = null;
+		searchList = dbPro.getFollowingList(id);
+		mv.addObject("searchList",searchList);
+		mv.addObject("divi",1);
+		mv.setViewName("main/userSearchForm");
+		return mv;
+	}
 }

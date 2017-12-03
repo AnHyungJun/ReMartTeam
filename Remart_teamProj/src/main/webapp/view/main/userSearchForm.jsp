@@ -60,7 +60,15 @@ table {
 		</div>
 
 		<div class="w3-col" style="width: 50%">
-			<h2>사람</h2>
+			<c:if test="${divi eq  '0'}">
+				<h2>사람</h2>
+			</c:if>
+			<c:if test="${divi eq  '1'}">
+				<h2>팔로잉</h2>
+			</c:if>
+			<c:if test="${divi eq  '2'}">
+				<h2>팔로워</h2>
+			</c:if>
 			<c:forEach items="${searchList }" var="search">
 				<form action="userSearchPro" method="post">
 					<div style="height: 100px">

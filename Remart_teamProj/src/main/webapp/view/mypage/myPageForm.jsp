@@ -108,10 +108,11 @@
 						게시물
 					</div>
 					<div style="float: left; margin: 30px; font-size: 13px;">
-						<h4>
+						<a href="<%=request.getContextPath()%>/mypage/following?id=${member.id}"><h4>
 							<b>${member.follownum}</b>
-						</h4>
-						팔로우
+						</h4></a>
+						
+						팔로잉
 					</div>
 					<div style="float: left; margin: 30px; font-size: 13px;">
 						<h4>

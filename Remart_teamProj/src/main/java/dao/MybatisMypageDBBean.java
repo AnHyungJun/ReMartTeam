@@ -150,6 +150,17 @@ public class MybatisMypageDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+
+	public List getFollowingList(String id) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("id", id);
+		try {
+			return sqlSession.selectList(namespace + ".getFollowingList", map);
+		} finally {
+			sqlSession.close();
+		}
+	}
 	
 	
 	

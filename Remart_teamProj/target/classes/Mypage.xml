@@ -46,4 +46,8 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from feed f where id in (select id from r_member where id in (select other_id from follow where my_id=#{id})) order by reg_date desc
 	</select>
 	
+	<select id="getFollowingList" parameterType="hashmap" resultType="r_member">
+		select id,profileImg,info,1 follow_status from follow f,r_member r where my_id=#{id} and f.other_id = r.id
+	</select>
+	
 </mapper>

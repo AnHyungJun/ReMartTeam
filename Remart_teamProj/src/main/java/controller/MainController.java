@@ -117,6 +117,7 @@ public class MainController {
 				mv.setViewName("main/userSearchForm");
 			}
 		}
+		mv.addObject("divi",0);
 		mv.addObject("searchList",searchList);
 		return mv;
 	}
