@@ -78,4 +78,10 @@ from r_member rm where id like '%${autocompleteText}%'
 		<select id="feedreple" parameterType="hashmap" resultType="reple">
 		select * from reple where feed_id=#{feed_id} order by reple_id desc
 	</select>
+	
+		<select id="getTodayRecomendFeed"  resultType="feed">
+		select * from 
+		(select * from feed where to_char( trunc(reg_date), 'YYYYMMDD' ) = to_char( trunc(sysdate-1), 'YYYYMMDD' ) 
+		order by like_num desc) where rownum <= 3
+	</select>
 </mapper>

@@ -45,10 +45,13 @@ public class MainController {
 					.getAttribute("memberInfo");
 			
 		List<FeedDataBean> feeds = dbPro.getFeeds(r_member);
-		System.out.println(feeds.toString());
+		//System.out.println(feeds.toString());
+		List<FeedDataBean> todayRecomendFeed = dbPro.getTodayRecomendFeed();
+		
+		
 		mv.clear();
 		mv.addObject("Feeds", feeds);
-
+		mv.addObject("todayRecomendFeed", todayRecomendFeed);
 		mv.setViewName("main/main");
 		return mv;
 	}

@@ -52,6 +52,37 @@
 <div class="w3-container">
 				<div style="margin-top: 50px;"></div>
 				<div class="w3-center">
+				<div style="height: 500px">
+				오늘의 추천<br>
+				<c:if test="${fn:length(todayRecomendFeed) != 0}">
+					<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
+					<!-- 리스트가 있으면 뿌려주는 FOREACH -->
+					<c:forEach var="list" items="${todayRecomendFeed}"
+						varStatus="status">
+
+						<div class="w3-container"
+							style="float: left; width: 33%; height: 350px; margin-top: 10px;">
+							<!-- FEED  이부분을 너가 꾸몄던걸로 바꾸면 됨-->
+							<div class="w3-center">
+
+								<!-- 여기가 이미지 부분인데 SHOWMASK클래스를 클릭하면  READY 부분에 SHOWMASK 클릭이벤트 실행 그러면 레이어창이 올라옴-->
+								<img id="${list.feed_id}" class="showMask"
+									src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
+									style="width: 300px; height: 300px"
+									onclick="popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');"><br>
+								${list.recipe_name }
+								<!-- POPUP함수는 누르면 실행인데 %이미지 몇개인지 보내는거 ,FEED,이미지 이름 보내고,이미지에 달린 내용 보내고, 리플 리스트 통채로 보내고 , 리플리스트 사이즈 보내고%-->
+							</div>
+						</div>
+					</c:forEach>
+				</c:if>
+			</div>
+			<c:if test="${fn:length(todayRecomendFeed) == 0}">
+				<div style="margin-top: 100px; font-size: 13px;">
+					<b> 추천없음 </b>
+				</div>
+			</c:if>
+		</div>
 					<c:if test="${fn:length(Feeds) != 0}">
 						<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
 						<!-- 리스트가 있으면 뿌려주는 FOREACH -->
