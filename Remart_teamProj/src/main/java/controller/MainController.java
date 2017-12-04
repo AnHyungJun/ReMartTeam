@@ -38,7 +38,7 @@ public class MainController {
 	   }
 
 	@RequestMapping(value = "main")
-	public ModelAndView main(HttpServletRequest request) throws UnsupportedEncodingException {
+	public ModelAndView main(HttpServletRequest request, HttpSession session) throws UnsupportedEncodingException {
 	
 			request.setCharacterEncoding("utf-8");
 			R_memberDataBean r_member = (R_memberDataBean) request.getSession()
@@ -48,6 +48,11 @@ public class MainController {
 		//System.out.println(feeds.toString());
 		List<FeedDataBean> todayRecomendFeed = dbPro.getTodayRecomendFeed();
 		
+		List hashtagCnt = dbPro.getHashtagCnt();
+		session.setAttribute("hashtagCnt", hashtagCnt);
+		
+		List hashtagCnt2 = dbPro.getHashtagCnt2();
+		session.setAttribute("hashtagCnt2", hashtagCnt2);
 		
 		mv.clear();
 		mv.addObject("Feeds", feeds);

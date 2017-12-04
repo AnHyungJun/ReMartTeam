@@ -6,6 +6,15 @@ public class HashtagDataBean implements Serializable{
 	int hashtag_id;
 	String hashtag_content;
 	String feed_id;
+	int cnt;
+
+
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	public int getHashtag_id() {
 		return hashtag_id;
 	}
@@ -30,6 +39,6 @@ public class HashtagDataBean implements Serializable{
 				+ ", hashtag_content=" + hashtag_content + ", feed_id="
 				+ feed_id + "]";
 	}
-	
-	
+
+
 }

@@ -239,4 +239,21 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+	
+	public List getHashtagCnt() {
+		sqlSession = sqlSession();
+		try {
+			return sqlSession.selectList(namespace + ".getHashtagCnt");
+		} finally {
+			sqlSession.close();
+		}
+	}
+	public List getHashtagCnt2() {
+		sqlSession = sqlSession();
+		try {
+			return sqlSession.selectList(namespace + ".getHashtagCnt2");
+		} finally {
+			sqlSession.close();
+		}
+	}
 }

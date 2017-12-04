@@ -28,7 +28,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<script type="text/javascript" src="/soloP/ajax/httpRequest.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/ajax/httpRequest.js"></script>
 </head>
 <style>
 .ui-autocomplete {
@@ -250,6 +250,11 @@ function myFunction() {
 												onmouseover="this.style.textDecoration='none';"
 												onmouseout="this.style.textDecoration='none';">WRITE</a>
 										</c:if>
+										<a href="<%=request.getContextPath()%>/view/local/hashtag.jsp"
+												style="font-size: 12px; text-decoration: none;"
+												class="con_link w3-button w3-hover-white"
+												onmouseover="this.style.textDecoration='none';"
+												onmouseout="this.style.textDecoration='none';">#</a>
 									</div>
 								</div>
 							</div>
