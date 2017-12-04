@@ -131,7 +131,7 @@ a {
 							<li><a href="shoppingMain?category_id=21">장류</a></li>
 						</ul></li>
 
-					<li style="border-right: 1px solid #ddd;"><a href="#">유제품/냉동식품/간편식</a>
+					<li style="border-right: 1px solid #ddd;"><a href="#">유제품/냉동식품/간편식/냉장식품</a>
 						<ul>
 							<li><a href="shoppingMain?category_id=22">유제품</a></li>
 							<li><a href="shoppingMain?category_id=23">냉동식품</a></li>
