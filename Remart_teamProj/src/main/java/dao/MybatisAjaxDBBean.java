@@ -175,4 +175,15 @@ public class MybatisAjaxDBBean extends MybatisConnector{
 			
 		}
 	}
+	public List selectFoodDb(String keyword) {
+	      System.out.println("selectFoodDb:");
+	      sqlSession = sqlSession();
+	      HashMap map = new HashMap();
+	      map.put("keyword", keyword);
+	      try {
+	         return sqlSession.selectList(namespace + ".selectFoodDb", map);
+	      } finally {
+	         sqlSession.close();
+	      }
+	   }
 }
