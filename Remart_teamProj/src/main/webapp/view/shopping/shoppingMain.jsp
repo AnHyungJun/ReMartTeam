@@ -81,7 +81,7 @@ a {
 	<center>
 		<div class="shopping_wrap">
 			<!-- dropdown_shopping -->
-			<div class="dropdown_shopping" style="width: 900px; font-size: 13px;">
+			<div class="dropdown_shopping" style="width: 910px; font-size: 13px;">
 				<ul>
 					<li><a href="#">과일/견과/채소</a>
 						<ul>
