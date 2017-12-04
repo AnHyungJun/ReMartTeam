@@ -161,7 +161,7 @@ a {
 										class="count w3-center" value="1" readonly="" name="food_num"
 										style="width: 40px; height: 30px;" id="food_num"> <input
 										type="button" value="+" class="count_btn w3-white"
-										count_range="p" style="width: 25px;">
+										count_range="p" style="width: 25px; font-size:9px;">
 								</div>
 								<!-- <input type="button" class="w3-white w3-border w3-border-black" 
 									style="font-size: 16px; width: 50%; margin-top: 8px;" value="장바" 
