@@ -42,6 +42,32 @@
 	height: 500px;
 	z-index: 99999;
 }
+
+.today:nth-child(2) {
+	float: left; 
+	width: 100px; 
+	height: 350px; 
+	margin-top: 10px;
+	display:none;
+}
+
+.today01 {
+	transform-origin:100% 100%;
+    transform:rotate(-20deg);
+    cursor: pointer;
+}
+
+.today02 {
+	transform-origin:0% 0%;
+    transform:rotate(-10deg);
+    cursor: pointer;
+}
+
+.today03 {
+	transform-origin:0% 0%;
+    transform:rotate(20deg);
+    cursor: pointer;
+}
 </style>
 <head>
 
@@ -55,7 +81,7 @@
 				<div style="height: 500px">
 				오늘의 추천<br>
 				<c:if test="${fn:length(todayRecomendFeed) != 0}">
-					<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
+					<%-- <!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
 					<!-- 리스트가 있으면 뿌려주는 FOREACH -->
 					<c:forEach var="list" items="${todayRecomendFeed}"
 						varStatus="status">
@@ -74,7 +100,32 @@
 								<!-- POPUP함수는 누르면 실행인데 %이미지 몇개인지 보내는거 ,FEED,이미지 이름 보내고,이미지에 달린 내용 보내고, 리플 리스트 통채로 보내고 , 리플리스트 사이즈 보내고%-->
 							</div>
 						</div>
-					</c:forEach>
+					</c:forEach> --%>
+					
+					<div class="w3-container"
+							style="float: left; width: 100%; height: 200px; margin-top: 10px;">
+						<div class="w3-center" style="width:30%; float:left; margin-right: 50px;">
+						<img id="${todayRecomendFeed[0].feed_id}" class="showMask today01"
+									src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[0].img_name[0]}"
+									style="width: 150px; height: 150px;"
+									onclick="popup('${fn:length(todayRecomendFeed[0].img_name)}','${todayRecomendFeed[0]}','${todayRecomendFeed[0].img_name}','${todayRecomendFeed[0].content}','${todayRecomendFeed[0].replelist}','${fn:length(todayRecomendFeed[0].replelist)}');"><br>
+								<br><br><br>${todayRecomendFeed[0].recipe_name }
+						</div>
+						<div class="w3-center" style="width:30%; float:left; margin-right: 50px; margin-top: 100px;">
+						<img id="${todayRecomendFeed[1].feed_id}" class="showMask today02"
+									src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[1].img_name[0]}"
+									style="width: 150px; height: 150px; "
+									onclick="popup('${fn:length(todayRecomendFeed[1].img_name)}','${todayRecomendFeed[1]}','${todayRecomendFeed[1].img_name}','${todayRecomendFeed[1].content}','${todayRecomendFeed[1].replelist}','${fn:length(todayRecomendFeed[1].replelist)}');"><br>
+								<br>${todayRecomendFeed[1].recipe_name }
+								</div>
+						<div class="w3-center" style="width:30%; float:left;">
+						<img id="${todayRecomendFeed[2].feed_id}" class="showMask today03"
+									src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[2].img_name[0]}"
+									style="width: 150px; height: 150px; "
+									onclick="popup('${fn:length(todayRecomendFeed[2].img_name)}','${todayRecomendFeed[2]}','${todayRecomendFeed[2].img_name}','${todayRecomendFeed[2].content}','${todayRecomendFeed[2].replelist}','${fn:length(todayRecomendFeed[2].replelist)}');"><br>
+								<br><br><br>${todayRecomendFeed[2].recipe_name }
+</div>
+					</div>
 				</c:if>
 			</div>
 			<c:if test="${fn:length(todayRecomendFeed) == 0}">
@@ -98,7 +149,7 @@
 									<img id="${list.feed_id}" class="showMask"
 										src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 										style="width: 300px; height: 300px"
-										onclick="popup2('${list.feed_id}','${memberInfo.id }');popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');"><br>
+										onclick="popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');"><br>
 									${list.recipe_name }
 									<!-- POPUP함수는 누르면 실행인데 %이미지 몇개인지 보내는거 ,FEED,이미지 이름 보내고,이미지에 달린 내용 보내고, 리플 리스트 통채로 보내고 , 리플리스트 사이즈 보내고%-->
 								</div>
@@ -121,7 +172,6 @@
 		<!--이부분 이해안되면 찾아오고 -->
 		<div class="mask"></div>
 		<div class="window w3-modal w3-modal-content w3-animate-opacity">
-			<div id="popup2"></div>
 			<button type="button" href="#" class="close w3-button w3-white w3-hover-white w3-right"> X </button>
 			<div style="margin-top:40px;"></div>
 			<div style="width: 100%; height: 50px;">
@@ -134,34 +184,6 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	function like(feed_id,action) {
-		var params = "feed_id=" + encodeURIComponent(feed_id)+"&action="+ encodeURIComponent(action);
-		sendRequest("/Remart_teamProj/main/like", params, return_like, "GET");
-	}
-	function return_like() {
-		if (httpRequest.readyState == 4) {
-			if (httpRequest.status == 200) {
-				document.getElementById("like").innerHTML = httpRequest.responseText;
-			}
-		}
-	}
-	function popup2(feed_id,id){
-		 var params = "feed_id=" + encodeURIComponent(feed_id)+"&id="+ encodeURIComponent(id);
-		sendRequest("/Remart_teamProj/main/popup2", params, return_popup2, "GET");
-	 
-	}
-	function return_popup2(){
-		if (httpRequest.readyState == 4) {
-			if (httpRequest.status == 200) {
-				document.getElementById("popup2").innerHTML = httpRequest.responseText;
-			}
-		}
-	}
-	function needlogin(){
-		alert("로그인하세요");
-	} 
-	
-	
 	//여기부터 피드에 사진 여러개 슬라이드로
 	var slideIndex = 1;//슬라이드 변수
 
