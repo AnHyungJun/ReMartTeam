@@ -12,13 +12,16 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<select id="getfeedlist" parameterType="hashmap" resultType="feed">
-		select feed_id,id,like_num,reg_date,recipe_name from feed where id=#{id} order by reg_date desc
+		select feed_id,id,like_num,reg_date,recipe_name,(select grade from r_member where id=f.id) feed_grade from feed f where id=#{id} order by reg_date desc
 	</select>
 	<select id="getImg_name" parameterType="hashmap" resultType="String">
 		select image_name from img where feed_id=#{feed_id} order by img_id 
 	</select>
 	<select id="getContent" parameterType="hashmap" resultType="String">
 		select content from img where feed_id=#{feed_id} order by img_id 
+	</select>
+	<select id="editorfood" parameterType="hashmap" resultType="String">
+		select (select q.name from food q where q.food_id=t.food_id) food_id from feed_food t where t.feed_id=#{feed_id}
 	</select>
 	<select id="feedreple" parameterType="hashmap" resultType="reple">
 		select * from reple where feed_id=#{feed_id} order by reple_id desc

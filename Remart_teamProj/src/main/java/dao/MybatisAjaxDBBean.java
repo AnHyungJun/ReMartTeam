@@ -61,15 +61,16 @@ public class MybatisAjaxDBBean extends MybatisConnector{
 		try {
 			HashMap map = new HashMap();
 			map.put("feed_id", feed_id);
-			num=sqlSession.selectOne(namespace + ".selectRepleid",map);
+			num=sqlSession.selectOne(namespace + ".selectRepleid");
 			if(num==0) num=1;
 			else num++;
+			System.out.println(num);
 			map.clear();
 			map.put("num", num);
 			map.put("feed_id", feed_id);
 			map.put("content", content);
 			map.put("member_id", member_id);
-			sqlSession.selectList(namespace + ".insertReple", map);
+			sqlSession.insert(namespace + ".insertReple", map);
 		} finally {
 			sqlSession.commit();
 			sqlSession.close();
@@ -86,17 +87,6 @@ public class MybatisAjaxDBBean extends MybatisConnector{
 			list=sqlSession.selectList(namespace + ".selectReple", map);
 			
 			return list;
-		} finally {
-			sqlSession.close();
-		}
-	}
-	public List selectFoodDb(String keyword) {
-		System.out.println("selectFoodDb:");
-		sqlSession = sqlSession();
-		HashMap map = new HashMap();
-		map.put("keyword", keyword);
-		try {
-			return sqlSession.selectList(namespace + ".selectFoodDb", map);
 		} finally {
 			sqlSession.close();
 		}

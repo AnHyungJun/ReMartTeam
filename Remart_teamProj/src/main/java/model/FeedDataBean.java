@@ -17,8 +17,14 @@ public class FeedDataBean implements Serializable{
 	List<String> food_id;
 	int likestate;
 	int bookmarkstate;
+	String feed_grade;
 	
-	
+	public String getFeed_grade() {
+		return feed_grade;
+	}
+	public void setFeed_grade(String feed_grade) {
+		this.feed_grade = feed_grade;
+	}
 	public int getLikestate() {
 		return likestate;
 	}

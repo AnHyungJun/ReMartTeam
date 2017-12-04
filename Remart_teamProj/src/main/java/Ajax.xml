@@ -4,69 +4,75 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ajax.mybatis">
-   <cache />
-   <select id="selectUserNameDb" parameterType="hashmap" resultType="R_member">
+	<cache />
+	<select id="selectUserNameDb" parameterType="hashmap"
+		resultType="R_member">
 		select * from r_member where phone = #{keyword}
 	</select>
-	
-   <select id="selectProductDb" parameterType="hashmap" resultType="product">
-		select product_id, 
-		(select name  from food where p.food_id = food_id)name, 
-		price, qty 
-		from product p 
+
+	<select id="selectProductDb" parameterType="hashmap" resultType="product">
+		select product_id,
+		(select name from food where p.food_id = food_id)name,
+		price, qty
+		from product p
 		where product_id = #{keyword}
 	</select>
-	<select id="selectRepleid"  parameterType="hashmap" 
-	 resultType="int">
-		select nvl(max(reple_id),0) from reple where feed_id=#{feed_id}
+	<select id="selectRepleid" resultType="int">
+		select
+		nvl(max(reple_id),0) from reple
 	</select>
-	
-	<insert id="insertReple"  parameterType="hashmap" >
-		insert into  reple (reple_id,feed_id,content,id) values (#{num},#{feed_id},#{content},#{member_id})
-	</insert>	
-	<select id="selectReple"  parameterType="hashmap" 
-	 resultType="reple">
-		select reple_id,feed_id,id,content,(select profileimg from r_member i where i.id=r.id) img from reple r where feed_id =#{feed_id}
-	</select>	
-	<select id="selectFoodDb"  parameterType="hashmap" 
-	 resultType="food">
+
+	<insert id="insertReple" parameterType="hashmap">
+		insert into
+		reple (reple_id,feed_id,content,id,reg_date) values
+		(#{num},#{feed_id},#{content},#{member_id},sysdate)
+	</insert>
+	<select id="selectReple" parameterType="hashmap" resultType="reple">
+		select reple_id,feed_id,id,content,reg_date,(select profileimg from
+		r_member i where i.id=r.id) img from reple r where feed_id =#{feed_id}
+		order by reg_date desc
+	</select>
+	<select id="selectFoodDb" parameterType="hashmap" resultType="food">
 		select * from food where name like '%${keyword}%'
 	</select>
-	
-		
+
+
 	<select id="selectUserIdDb" resultType="String">
 		select id from r_member
 	</select>
-	
+
 	<select id="selectHashDb" resultType="String">
-		select hashtag_content from hashtag
+		select hashtag_content from
+		hashtag
 	</select>
-	
+
 	<select id="selectFoodNameDb" resultType="String">
 		select name from food
 	</select>
-	
+
 	<insert id="insertBasket" parameterType="hashmap">
-		insert into basket (basket_id, id, food_id, food_num) 
-		 values(#{number}, #{id}, #{food_id}, #{food_num})
-  	 </insert>
-   
-   	 <select id="insertBasket_new" resultType="int">
-   		select nvl(max(basket_id),0) from basket
-   	 </select>
-   	 
-   	 	<select id="getFollow_id" resultType="int">
-		select nvl(max(follow_id),0) from follow
+		insert into basket
+		(basket_id, id, food_id, food_num)
+		values(#{number}, #{id}, #{food_id}, #{food_num})
+	</insert>
+
+	<select id="insertBasket_new" resultType="int">
+		select nvl(max(basket_id),0) from basket
 	</select>
-	
-	<insert id="insertFollow"  parameterType="hashmap">
+
+	<select id="getFollow_id" resultType="int">
+		select
+		nvl(max(follow_id),0) from follow
+	</select>
+
+	<insert id="insertFollow" parameterType="hashmap">
 		insert into follow
 		(follow_id, my_id, other_id)
 		values
 		(#{follow_id}, #{myid},#{otherid})
 	</insert>
-	
-	 <select id="deleteFollow"   parameterType="hashmap" >
-	 	delete from follow where my_id = #{myid} and other_id = #{otherid}
-    </select>
+
+	<select id="deleteFollow" parameterType="hashmap">
+		delete from follow where my_id = #{myid} and other_id = #{otherid}
+	</select>
 </mapper>

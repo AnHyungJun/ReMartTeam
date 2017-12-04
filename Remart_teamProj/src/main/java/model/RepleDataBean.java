@@ -51,7 +51,7 @@ public class RepleDataBean implements Serializable{
 	public String toString() {
 		return reple_id + "," + feed_id
 				+ "," + id + "," + content + ","
-				+ reg_date+img;
+				+ reg_date+","+img;
 	}
 	
 	
