@@ -339,11 +339,11 @@
    		}
    		
    		
-   		alert(foodname);
+   		
    		
   		var editorfood="";
   		for(var i=0;i<foodname.length;i++){
-  			alert(foodname[i]);
+  			
   			editorfood+="<input type=\"checkbox\" name=\"chk_info\" value=\""+foodname[i]+"\">"+"<img src=\"/Remart_teamProj/images/food/"+foodname[i]+".jpg\" width=100 height=70/><br>";
   		}
   		var z="<div align=\"center\"  class=\"food\"style=\"float: left; width: 19%; height: 350px; margin-top: 10px;\ border: solid 4px; \">"
@@ -368,7 +368,7 @@
 		if(txtval.val()=='') alert("입력하신 댓글이 없습니다");
 		else{
 			var params =  "feed_id="+feed_id+"&id="+m_id+"&content="+encodeURIComponent(txtval.val());
-			alert(params);
+			
 			sendRequest("<%=request.getContextPath()%>/common/repleInsert.jsp",
 			params, displayResult, 'GET');
 		}
@@ -384,45 +384,25 @@
 				var count = parseInt(res[0]);
 				
 				myArray = new Array( new Array(count), new Array(5) );
-				alert("eqweqw");
+				
 				var repledata=res[1].split('=');
 	   			for(var i=0;i<count;i++){
 	   					var tmp=repledata[i].split(',');
 	   					myArray[i]=tmp;
 	   			}
-	   			alert("eqweqw");
+	   			
 	   	   		var makereplelist="";
 	   	   		for(var i=0;i<count;i++){
 	   	   			makereplelist+="<lable  class=\"commentreple\">"+myArray[i][2]+"님의 댓글 /"+myArray[i][3]+"</lable><br>";
 	   	   		}
-	   	   	alert("eqweqw");
+	   	   
 	   	   	var z="<input type=\"text\" name=\""+myArray[0][1]+"\"/><input type=\"button\" value=\"replecontent\""
    	   		+"  onclick=\"replecommit('"+myArray[0][1]+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist;
-   	   	alert("eqweqw");	
+   	  
    	   		$('.reples').empty();
 	   	   		$('.reples').append(z); 
-	   	   		
-				/* if (count > 0) {
-					keywordList = res[1].split('=');
-					var html = "<table class=\"w3-table w3-bordered w3-centered\" width=100%><tr><th width=200;>상품</th><th width=150;>상품명</th><th>가격</th><th>상품 등록</th></tr>";
-					for (var i = 0; i < keywordList.length; i++) {
-						
-						var keywordList2 = keywordList[i].split('-');
-						html += "<tr height=140px;><td align=\"center\">"
-								+"<img src=\"/Remart_teamProj/images/food/"+keywordList2[1]+".jpg\" width=110 height=110><br>"
-								+"</td><td align=\"center\">"
-								+ keywordList2[1] + "</td><td align=\"center\">"
-								+ keywordList2[2] + "</td><td align=\"center\">"
-								+"<button type=\"button\" onclick=\"writefood('"+keywordList[i]+"')\">등록</button></td></tr>";
-						// alert(html); 
-					}
-					html += "</table>";
-					var listView = document.getElementById('suggestList');
-					listView.innerHTML = html;
-					show('suggest');
-					reload();
-				}*/
+	   	 
 			} else {
 				alert("에러: " + httpRequest.status);
 			} 
@@ -464,6 +444,7 @@
         $('.window .close').click(function (e) {
             e.preventDefault();
             slideIndex=1;
+            $('.food').remove();
             $('.reples').remove();
             $('.mySlides').remove();
             $('.mask, .window').hide();
@@ -473,7 +454,7 @@
         $('.mask').click(function () {
             $(this).hide();
             slideIndex=1;
-            
+            $('.food').remove();
             $('.reples').remove();
             $('.mySlides').remove();
             $('.window').hide();
