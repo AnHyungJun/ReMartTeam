@@ -18,7 +18,41 @@ public class MybatisMainDBBean extends MybatisConnector {
 	}
 
 	SqlSession sqlSession;
+	public FeedDataBean getFeed(int feed_id) {
+		sqlSession = sqlSession();
+		FeedDataBean feed = null;
+		try {
+			feed = sqlSession.selectOne(namespace + ".getfeednol",feed_id);
+			feed.setImg_name(sqlSession.selectList(namespace + ".getImg_name",
+					feed_id));
+			feed.setContent(sqlSession.selectList(namespace + ".getContent",
+					feed_id));
+			return feed;
 
+		} finally {
+
+			sqlSession.close();
+		}
+	}
+	public FeedDataBean getFeed(int feed_id,String id) {
+		sqlSession = sqlSession();
+		FeedDataBean feed = null;
+		HashMap map = new HashMap();
+		map.put("id", id);
+		map.put("feed_id", feed_id);
+		try {
+			feed = sqlSession.selectOne(namespace + ".getfeed",map);
+			feed.setImg_name(sqlSession.selectList(namespace + ".getImg_name",
+					feed_id));
+			feed.setContent(sqlSession.selectList(namespace + ".getContent",
+					feed_id));
+			return feed;
+
+		} finally {
+
+			sqlSession.close();
+		}
+	}
 	public List getFeeds() {
 		sqlSession = sqlSession();
 	

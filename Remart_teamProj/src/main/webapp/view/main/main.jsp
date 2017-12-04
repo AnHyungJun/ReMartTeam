@@ -98,7 +98,7 @@
 									<img id="${list.feed_id}" class="showMask"
 										src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 										style="width: 300px; height: 300px"
-										onclick="popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');"><br>
+										onclick="popup2('${list.feed_id}','${memberInfo.id }');popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');"><br>
 									${list.recipe_name }
 									<!-- POPUP함수는 누르면 실행인데 %이미지 몇개인지 보내는거 ,FEED,이미지 이름 보내고,이미지에 달린 내용 보내고, 리플 리스트 통채로 보내고 , 리플리스트 사이즈 보내고%-->
 								</div>
@@ -121,6 +121,7 @@
 		<!--이부분 이해안되면 찾아오고 -->
 		<div class="mask"></div>
 		<div class="window w3-modal w3-modal-content w3-animate-opacity">
+			<div id="popup2"></div>
 			<button type="button" href="#" class="close w3-button w3-white w3-hover-white w3-right"> X </button>
 			<div style="margin-top:40px;"></div>
 			<div style="width: 100%; height: 50px;">
@@ -133,6 +134,34 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	function like(feed_id,action) {
+		var params = "feed_id=" + encodeURIComponent(feed_id)+"&action="+ encodeURIComponent(action);
+		sendRequest("/Remart_teamProj/main/like", params, return_like, "GET");
+	}
+	function return_like() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				document.getElementById("like").innerHTML = httpRequest.responseText;
+			}
+		}
+	}
+	function popup2(feed_id,id){
+		 var params = "feed_id=" + encodeURIComponent(feed_id)+"&id="+ encodeURIComponent(id);
+		sendRequest("/Remart_teamProj/main/popup2", params, return_popup2, "GET");
+	 
+	}
+	function return_popup2(){
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				document.getElementById("popup2").innerHTML = httpRequest.responseText;
+			}
+		}
+	}
+	function needlogin(){
+		alert("로그인하세요");
+	} 
+	
+	
 	//여기부터 피드에 사진 여러개 슬라이드로
 	var slideIndex = 1;//슬라이드 변수
 

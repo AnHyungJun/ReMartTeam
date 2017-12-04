@@ -94,25 +94,41 @@ public class MainController {
 		mv.setViewName("local/feed");
 		return mv;
 	}
+	@RequestMapping(value = "popup2")
+	public ModelAndView popup2(int feed_id, String id)
+			throws UnsupportedEncodingException {
+		mv.clear();
+		FeedDataBean feed = null;
+		
+		if (id.equals(""))
+			feed = dbPro.getFeed(feed_id);
+		else
+			feed = dbPro.getFeed(feed_id, id);
+		mv.addObject("feed", feed);
+		mv.addObject("id", id);
+		mv.setViewName("local/popup2");
+		
+		return mv;
+	}
 	@RequestMapping(value = "searchForm")
 	public ModelAndView searchForm(String autocompleteText, String autocompleteText2, HttpSession session) {
 		mv.clear();
 		List searchList = null;
-		if(autocompleteText2 != null){ //�눥�븨�꽌移�
+		if(autocompleteText2 != null){ 
 			searchList = dbPro.getFoodSearchList(autocompleteText2);
 			session.setAttribute("curPage", "shopping");
 			mv.setViewName("main/foodSearchForm");
 		}else{
 			
-			if(autocompleteText.contains("#")){ // 湲� �꽌移�
+			if(autocompleteText.contains("#")){ 
 				autocompleteText = autocompleteText.replace("#", "");
 				searchList = dbPro.getFeedSearchList(autocompleteText);
 				mv.setViewName("main/feedSearchForm");
-			}else{ //�궗�슜�옄 �꽌移�
+			}else{ 
 				
-				if(memberInfo == null) //濡쒓렇�씤 �븞�뻽�쓣�븣
+				if(memberInfo == null) 
 					searchList = dbPro.getUserSearchList(autocompleteText);
-				else //濡쒓렇�씤 �뻽�쓣�븣
+				else 
 					searchList = dbPro.getUserSearchListWithFollow(autocompleteText,id );
 				mv.setViewName("main/userSearchForm");
 			}
