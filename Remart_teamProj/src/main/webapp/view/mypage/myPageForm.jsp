@@ -46,32 +46,33 @@
 			<div class="w3-container w3-border-bottom">
 				<div class="w3-left-align"
 					style="float: left; margin-bottom: 5px; margin-top: 30px; font-size: 14px;">
-					<b> ${member.id}</b> 님
+				<b>${member.id}</b> 님
 				</div>
 				<div class="w3-right-align"
 					style="float: right; margin-bottom: 0px; margin-top: 20px;">
 					<c:if test="${checkpage==0}">
-					<a
-						href="<%=request.getContextPath() %>/mypage/followForm?id=${member.id}"><img
-						class="w3-right-align"
-						src="<%=request.getContextPath()%>/images/icon/follow.png"
-						style="width: 17px;"></a>
-					<a
-						href="<%=request.getContextPath() %>/mypage/likeForm?id=${member.id}"><img
-						class="w3-right-align"
-						src="<%=request.getContextPath()%>/images/icon/like_before.png"
-						style="width: 17px;"></a> <a
-						href="<%=request.getContextPath() %>/mypage/bookmarkForm?id=${member.id}"><img
-						class="w3-right-align"
-						src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-						style="width: 30px;"></a>
+						<a
+							href="<%=request.getContextPath() %>/mypage/followForm?id=${member.id}"><img
+							class="w3-right-align"
+							src="<%=request.getContextPath()%>/images/icon/follow.png"
+							style="width: 17px;"></a>
+						<a
+							href="<%=request.getContextPath() %>/mypage/likeForm?id=${member.id}"><img
+							class="w3-right-align"
+							src="<%=request.getContextPath()%>/images/icon/like_before.png"
+							style="width: 17px;"></a>
+						<a
+							href="<%=request.getContextPath() %>/mypage/bookmarkForm?id=${member.id}"><img
+							class="w3-right-align"
+							src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+							style="width: 30px;"></a>
 					</c:if>
 				</div>
 			</div>
 			<div class="w3-display-container w3-border-bottom"
 				style="height: 330px;">
 				<div class="w3-bar w3-display-bottomleft w3-center"
-					style="margin-left: 8%; font-size: 14px; margin-top:30px;">${member.info}<div
+					style="margin-left: 8%; font-size: 14px; margin-top: 30px;">${member.info}<div
 						style="margin-top: 20px;"></div>
 				</div>
 				<div class="w3-display-bottomright"></div>
@@ -79,12 +80,13 @@
 					<div style="float: left; margin-left: 30%;">
 						<img
 							src="<%=request.getContextPath()%>/fileSave/${member.profileImg}"
-							class="w3-circle" alt="Norway" style="width: 200px; height: 200px">
+							class="w3-circle" alt="Norway"
+							style="width: 200px; height: 200px">
 					</div>
 				</div>
 				<!-- 자기 아이디면 정보 수정 아니면 팔로우 -->
 				<c:if test="${checkpage==0}">
-					<div class="w3-display-right " style="margin-right: 10%;">
+					<div class="w3-display-right" style="margin-left:30px;">
 						<button
 							class="w3-button w3-white w3-hover-light-grey w3-border w3-round-xlarge"
 							style="width: 130px; font-size: 12px;"
@@ -93,13 +95,13 @@
 					</div>
 				</c:if>
 				<c:if test="${checkpage==1}">
-					<div class="w3-display-right " style="margin-right: 10%;">
+					<div class="w3-display-right" style="margin-right: 10%;">
 						<button
 							class="w3-button w3-white w3-hover-light-grey w3-border w3-round-xlarge"
 							style="width: 150px;">팔로우</button>
 					</div>
 				</c:if>
-				<div class="w3-display-middle">
+				<div class="w3-display-middle" style="margin-left:70px;">
 
 					<div style="float: left; margin: 30px; font-size: 13px;">
 						<h4>
@@ -108,14 +110,23 @@
 						게시물
 					</div>
 					<div style="float: left; margin: 30px; font-size: 13px;">
-						<a href="<%=request.getContextPath()%>/mypage/following?id=${member.id}"><h4>
-							<b>${member.follownum}</b>
-						</h4></a>
-						
-						팔로잉
+						<a
+							href="<%=request.getContextPath()%>/mypage/following?id=${member.id}"
+							style="text-decoration: none;" class="con_link"
+							onmouseover="this.style.textDecoration='none';"
+							onmouseout="this.style.textDecoration='none';">
+							<h4>
+								<b>${member.follownum}</b>
+							</h4>
+						</a> 팔로잉
 					</div>
 					<div style="float: left; margin: 30px; font-size: 13px;">
-						<a href="<%=request.getContextPath()%>/mypage/follower?id=${member.id}"><h4>
+						<a
+							href="<%=request.getContextPath()%>/mypage/follower?id=${member.id}"
+							style="text-decoration: none;" class="con_link"
+							onmouseover="this.style.textDecoration='none';"
+							onmouseout="this.style.textDecoration='none';">
+						<h4>
 							<b>${member.followernum}</b>
 						</h4></a>
 						
@@ -197,58 +208,50 @@
 	function showDivs(n) {
 		
 		var i;
-		var x = document.getElementsByClassName("mySlides");
-		for (i = 0; i < x.length; i++) {
-			x[i].style.display = "none";
-		}
-		if (slideIndex == 1) {
-			document.getElementById("leftpage").style.display = 'none';
-			document.getElementById("rightpage").style.display = 'block';
-		} else if (slideIndex == x.length) {
-			document.getElementById("leftpage").style.display = 'block';
-			document.getElementById("rightpage").style.display = 'none';
-		} else {
-			document.getElementById("leftpage").style.display = 'block';
-			document.getElementById("rightpage").style.display = 'block';
-		}
-		x[slideIndex - 1].style.display = "block";
-	}
-   	function popup(imagenum,feeddate,imagename,contentname,repledata,replenum){
-   		var myArray ;
-		//리스트 받은거 문자 쪼개는거
-   		imagename=imagename.substring(1,imagename.length-1);
-   		contentname=contentname.substring(1,contentname.length-1);
-   		repledata=repledata.substring(1,repledata.length-1);
-   		<!-- feed_id,id,like_num,reg_date,recipe_name-->
-   		imagename=imagename.split(', ');
-   		feeddate=feeddate.split(',');
-   		feeddate=feeddate[0].substring(22);
-   		
-   		contentname=contentname.split(',');
-   		if(imagenum>1){
-   			document.getElementById("rightpage").style.display = 'block';
-   			document.getElementById("leftpage").style.display = 'none';
-   		}else{
-   			document.getElementById("rightpage").style.display = 'none';
-   			document.getElementById("leftpage").style.display = 'block';
-   		}
-   		for(var i=0;i<imagenum;i++){   			
-   			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 55%; height: 350px; margin-top: 10px;\">"+
-    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=100%><br>"+
-    		"<label>"+contentname[i]+"</label>"+"</div>";
-    		$('.window').append(y); 
-    		
-   		}
-   		/*reple_id,feed_id,id,content,reg_date  */
-   		if(replenum!=0){
-   			myArray = new Array( new Array(replenum), new Array(5) );
-   			repledata=repledata.split(', ');
-   			for(var i=0;i<replenum;i++){
-   					var tmp=repledata[i].split(',');
-   					myArray[i]=tmp;
-   			}
-   	   		var makereplelist="";
-   	   		for(var i=0;i<replenum;i++){
+		var x = document.getElementsByClassName("
+							mySlides");
+		for (i=0; i< x.length; i++) {
+							x[i].style.display = "none"; } if (slideIndex == 1) {
+							document.getElementById("leftpage").style.display = 'none';
+							document.getElementById("rightpage").style.display = 'block'; }
+							else if (slideIndex == x.length) {
+							document.getElementById("leftpage").style.display = 'block';
+							document.getElementById("rightpage").style.display = 'none'; }
+							else { document.getElementById("leftpage").style.display =
+							'block'; document.getElementById("rightpage").style.display =
+							'block'; } x[slideIndex - 1].style.display = "block"; } function
+							popup(imagenum,feeddate,imagename,contentname,repledata,replenum){
+							var myArray ; //리스트 받은거 문자 쪼개는거
+							imagename=imagename.substring(1,imagename.length-1);
+							contentname=contentname.substring(1,contentname.length-1);
+							repledata=repledata.substring(1,repledata.length-1); <!-- feed_id,id,like_num,reg_date,recipe_name-->
+							imagename=imagename.split(', '); feeddate=feeddate.split(',');
+							feeddate=feeddate[0].substring(22);
+
+							contentname=contentname.split(','); if(imagenum>1){
+							document.getElementById("rightpage").style.display = 'block';
+							document.getElementById("leftpage").style.display = 'none';
+							}else{ document.getElementById("rightpage").style.display =
+							'none'; document.getElementById("leftpage").style.display =
+							'block'; } for(var i=0;i<imagenum ;i++){   			
+   			var
+								y="<div align=\" center\" class=\ "mySlides\" style=\ "float:left; width: 55%; height: 350px; margin-top: 10px;\">"+
+							"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"'
+								width=100% height=100%>
+							<br>
+							"+ "<label>"+contentname[i]+"</label>"+"
+					</div>
+					"; $('.window').append(y); } /*reple_id,feed_id,id,content,reg_date
+					*/ if(replenum!=0){ myArray = new Array( new Array(replenum), new
+					Array(5) ); repledata=repledata.split(', '); for(var i=0;i
+					<replenum ;i++){
+   					var tmp=repledata[i].split(
+						',');
+   					myArray[i]=tmp; }
+   	   		var makereplelist=""
+						;
+   	   		for(var i=0;i
+						<replenum;i++){
    	   			makereplelist+="<lable>"+myArray[i][2]+"님의 댓글 /"+myArray[i][3]+"</lable><br>";
    	   		}
    	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 350px; margin-top: 10px;\"><input type=\"text\" name=\""+feeddate+"\"/><input type=\"button\" value=\"replecontent\""
