@@ -102,7 +102,7 @@ function detail(userinput) {
 			</div>
 		</div>
 
-		<div class="w3-bar w3-border-bottom w3-center-align w3-large">
+		<div class="w3-bar w3-center-align w3-large">
 			<div class="w3-row">
 				<div class="w3-col" style="width: 20%">
 					<p>&nbsp;</p>

@@ -13,15 +13,13 @@
 </head>
 
 <body>
+<center>
 	<div class="w3-top w3-white">
 		<br><br>
 
-		<div class="w3-bar w3-border-bottom w3-center-align w3-large">
-			<div class="w3-row">
-				<div class="w3-col" style="width: 20%">
-					<p>&nbsp;</p>
-				</div>
-				
+
+		<div class="w3-bar w3-border-bottom w3-center-align w3-large w3-center">
+			<div class="w3-row w3-center">
 				<table style="font-size:13px;">
 					<tr>
 						<th style="width: 100px;">NO</th>
@@ -43,6 +41,6 @@
 			</div>
 		</div>
 	</div>
-
+	</center>
 </body>
 </html>
