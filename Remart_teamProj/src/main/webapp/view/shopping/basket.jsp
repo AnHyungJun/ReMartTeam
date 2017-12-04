@@ -271,7 +271,7 @@
 															name="food_num" style="width: 40px; height: 30px;"
 															id="food_num"> <input type="button" value="+"
 															class="count_btn w3-white" count_range="p"
-															style="width: 25px;">
+															style="width: 25px; font-size:9px;">
 													</div>
 													<input type="submit"
 														class="w3-white w3-border w3-border-white w3-center"
