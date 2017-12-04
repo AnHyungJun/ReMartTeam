@@ -36,7 +36,7 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
    
    <select id="getBaskets" parameterType="hashmap" resultType="basket">
-		select basket_id, id, food_num, (select name from food f where f.food_id = b.food_id) bname, 
+		select basket_id, id, food_num, food_id, (select name from food f where f.food_id = b.food_id) bname, 
 		(select price from food f where f.food_id = b.food_id) bprice from basket b where id = #{id}
    </select>
    
@@ -70,12 +70,21 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
    </update>
    
    <select id="getPayment" parameterType="hashmap" resultType="food_payment">
-		select payment_id, order_date, order_state, all_price, pro_name  from food_payment b where id = #{id}
+		select payment_id, order_date, order_state, all_price, pro_name from food_payment b where id = #{id}
    </select>
    
+   <select id="insertFood_num_new" resultType="int">
+		select nvl(max(food_num_id),0) from food_num
+	</select>
+	
+	<insert id="insertFood_num"  parameterType="hashmap">
+		insert into food_num(food_num_id, food_id, qty, div, order_id)  
+		values (#{food_num_id}, #{food_num.food_id},#{food_num.qty}, #{food_num.div},#{food_num.order_id})
+	</insert>
    
-   
-   
+   <select id="getFoodNum" resultType="food_num">
+		select food_id, qty, order_id, (select a.name from food a where a.food_id = b.food_id) food_name from food_num b
+	</select>
   
    
  

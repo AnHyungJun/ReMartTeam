@@ -35,14 +35,27 @@
 					<th width="19%" class="w3-center">총 결제 금액</th>
 					<th width="19%" class="w3-center">진행현황</th>
 				</tr>
-				
+				<form action="" method="POST">
 				<c:forEach var="articlepayment" items="${articlePaymentInfoList}">
 				<tr>
 					<td></td>
 					<td class="w3-center"
 						style="font-size: 14px; vertical-align: middle;">${articlepayment.order_date }</td>
-					<td class="w3-center"
-						style="font-size: 14px; vertical-align: middle;">${articlepayment.pro_name }</td>
+					
+					<%-- <td class="w3-center"
+						style="font-size: 14px; vertical-align: middle;">${articlepayment.pro_name }</td> --%>
+					<td class="w3-center" style="font-size: 14px; vertical-align: middle;">
+					<table class="list_body_table w3-table w3-bordered" width="100%">
+						<c:forEach var="articlefoodNum" items="${articleFoodNumList }">
+						<c:if test="${articlepayment.payment_id == articlefoodNum.order_id }">
+							<tr>
+								<td class="">${articlefoodNum.food_name }/${articlefoodNum.qty }개</td>
+							</tr>	
+						</c:if>
+						</c:forEach>
+					</table>
+					</td>
+					
 					<td class="w3-center"
 						style="font-size: 14px; vertical-align: middle;">${articlepayment.all_price }원</td>
 						
@@ -70,6 +83,7 @@
 					</c:choose>
 				</tr>	
 				</c:forEach>
+				</form>
 			</table>
 		</div>
 	</div>

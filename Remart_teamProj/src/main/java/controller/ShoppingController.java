@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import model.BasketDataBean;
+import model.Food_numDataBean;
 import model.Food_paymentDataBean;
 import model.R_memberDataBean;
 
@@ -215,8 +216,6 @@ public class ShoppingController {
 	   String id = r_member.getId();
 	   articlePayment.setId(id);
 	   System.out.println("paymentPro :" + articlePayment);
-	   dbPro.insertArticlePayment(articlePayment);
-	   System.out.println("articlePayment");
 	   
 	   int count = dbPro.getBasketCount(id);
 	   
@@ -231,6 +230,26 @@ public class ShoppingController {
 	   String pay_method = request.getParameter("pay_method");
 	   String pro_name = request.getParameter("pro_name");
 	   
+	   // 결제 테이블 삽입
+	   dbPro.insertArticlePayment(articlePayment, pro_name, count);
+	   System.out.println("articlePayment");
+	   
+	   int payment_id = dbPro.getpaymentId() + 1;
+	   System.out.println("payment_id =" + payment_id);
+	   
+	   // 
+	   String[] food_id = request.getParameterValues("food_id");
+	   String[] qty = request.getParameterValues("food_num");
+	   if(food_id != null)
+		   for(int i=0; i<food_id.length; i++){
+				Food_numDataBean food_num = new Food_numDataBean();
+				food_num.setFood_id(Integer.parseInt(food_id[i]));
+				food_num.setQty(Integer.parseInt(qty[i]));
+				food_num.setDiv("offline");
+				food_num.setOrder_id(payment_id);
+				dbPro.insertFood_num(food_num);
+				System.out.println("food_id[]");
+			}
 	   
 	   mv.clear();
 	   mv.addObject("id", id);
@@ -279,8 +298,13 @@ public class ShoppingController {
 	   articlePaymentInfoList = dbPro.getPaymentArticle(id);
 	   System.out.println("articlePaymentInfoList");
 	   
+	   List articleFoodNumList = null;
+	   articleFoodNumList = dbPro.getFoodNumArticle();
+	   System.out.println("articleFoodNumList");
+	   
 	   mv.clear();
 	   mv.addObject("articlePaymentInfoList", articlePaymentInfoList);
+	   mv.addObject("articleFoodNumList", articleFoodNumList);
 	   mv.setViewName("shopping/historyPayment");
 	   return mv;
    }

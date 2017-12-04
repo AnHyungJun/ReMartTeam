@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import model.BasketDataBean;
+import model.Food_numDataBean;
 import model.Food_paymentDataBean;
 
 import org.apache.ibatis.session.SqlSession;
@@ -128,7 +129,7 @@ public class MybatisShoppingDBBean extends MybatisConnector{
    }	
 	
    
-   public void insertArticlePayment(Food_paymentDataBean articlePayment) {
+   public void insertArticlePayment(Food_paymentDataBean articlePayment, String pro_name, int count) {
 	   System.out.println("insertPayment");
 	   articlePayment.setOrder_state("order");
 	   sqlSession = sqlSession();
@@ -144,7 +145,12 @@ public class MybatisShoppingDBBean extends MybatisConnector{
 			   number = 1;
 		  
 		   articlePayment.setPayment_id(number);
-		   
+		   if(count == 0) {
+			   articlePayment.setPro_name(pro_name);
+		   }else {
+			   articlePayment.setPro_name(pro_name+"외"+(count-1)+"개");
+		   }
+		  
 		   System.out.println("insert : " + articlePayment);
 		   int result = sqlSession.insert(namespace + ".insertPayment", articlePayment);
 		   System.out.println("insert ok:" + result);
@@ -212,8 +218,31 @@ public class MybatisShoppingDBBean extends MybatisConnector{
 	      }
 	}
    
+   public void insertFood_num(Food_numDataBean food_num) {
+		System.out.println("insertFood_num:");
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("food_num", food_num);
+		try{
+			int food_num_id = sqlSession.selectOne(namespace+".insertFood_num_new");
+			food_num_id++;
+			map.put("food_num_id", food_num_id);
+			int result = sqlSession.insert(namespace + ".insertFood_num",map);
+			System.out.println("insert Ok:"+result);
+		}finally{
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	}
    
-   
-   
+   public List getFoodNumArticle() throws Exception {
+	      sqlSession = sqlSession();
+	      
+	      try {
+	         return sqlSession.selectList(namespace + ".getFoodNum");
+	      } finally {
+	         sqlSession.close();
+	      }
+	}
    
 }
