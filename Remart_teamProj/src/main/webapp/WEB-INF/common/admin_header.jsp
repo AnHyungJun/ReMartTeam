@@ -23,14 +23,17 @@
 				<div class="w3-col" style="width: 85%;">
 					<div
 						class="w3-bar w3-border-bottom w3-border-white w3-black w3-right w3-margin-right"
-						style="font-size: 12px; width: 280px; margin-top: 48px;">
-						<a href="#"
+						style="font-size: 12px; width: 375px; margin-top: 48px;">
+						<a href="<%=request.getContextPath() %>/admin/customForm"
 							class="w3-bar-item w3-button w3-border-right w3-hover-red">绊按
-							包府</a> <a href="#"
+							包府</a> <a href="<%=request.getContextPath() %>/admin/productForm"
 							class="w3-bar-item w3-button w3-border-right w3-hover-red">惑前
-							包府</a> <a href="#"
+							包府</a> <a href="<%=request.getContextPath() %>/admin/orderStatusForm"
 							class="w3-bar-item w3-button w3-border-right w3-border-white w3-hover-red">林巩泅炔
 							包府</a>
+							<a href="<%=request.getContextPath() %>/admin/salesStatusForm"
+							class="w3-bar-item w3-button w3-border-right w3-border-white w3-hover-red">概免泅炔
+							</a>
 					</div>
 				</div>
 			</div>

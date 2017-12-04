@@ -30,4 +30,28 @@ ModelAndView mv = new ModelAndView();
 		mv.setViewName("admin/main");
 		return mv;
 	}
+	@RequestMapping(value="customForm")
+	public ModelAndView customForm(){	
+		mv.clear();
+		mv.setViewName("admin/customForm");
+		return mv;
+	}
+	@RequestMapping(value="productForm")
+	public ModelAndView productForm(){	
+		mv.clear();
+		mv.setViewName("admin/productForm");
+		return mv;
+	}
+	@RequestMapping(value="orderStatusForm")
+	public ModelAndView orderStatusForm(){	
+		mv.clear();
+		mv.setViewName("admin/orderStatusForm");
+		return mv;
+	}
+	@RequestMapping(value="salesStatusForm")
+	public ModelAndView salesStatusForm(){	
+		mv.clear();
+		mv.setViewName("admin/salesStatusForm");
+		return mv;
+	}
 }
