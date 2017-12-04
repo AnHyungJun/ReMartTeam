@@ -20,6 +20,10 @@
 			<url-pattern>/view/writepage/*</url-pattern>
 			<include-prelude>/WEB-INF/common/header.jsp</include-prelude>
 		</jsp-property-group>
+		<jsp-property-group>
+			<url-pattern>/view/admin/*</url-pattern>
+			<include-prelude>/WEB-INF/common/admin_header.jsp</include-prelude>
+		</jsp-property-group>
 	</jsp-config>
 	
 	
