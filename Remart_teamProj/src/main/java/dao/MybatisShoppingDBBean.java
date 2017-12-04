@@ -245,4 +245,20 @@ public class MybatisShoppingDBBean extends MybatisConnector{
 	      }
 	}
    
+   public void updateFoodQty(String food_id, String food_num) {
+	   sqlSession = sqlSession();
+	   HashMap map = new HashMap();
+	   map.put("food_id", food_id);
+	   System.out.println("food_id:"  + food_id);
+	   int qty = Integer.parseInt(food_num);
+	   map.put("qty", qty);
+	   System.out.println(qty);
+	   try {
+		   sqlSession.update(namespace + ".updateFoodQty", map);
+		   System.out.println("updateFoodQty ok");
+	   }finally {
+		   sqlSession.close();
+	   }
+   }
+   
 }

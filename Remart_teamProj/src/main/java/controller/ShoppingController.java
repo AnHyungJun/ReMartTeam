@@ -234,7 +234,7 @@ public class ShoppingController {
 	   dbPro.insertArticlePayment(articlePayment, pro_name, count);
 	   System.out.println("articlePayment");
 	   
-	   int payment_id = dbPro.getpaymentId() + 1;
+	   int payment_id = dbPro.getpaymentId();
 	   System.out.println("payment_id =" + payment_id);
 	   
 	   // 
@@ -249,8 +249,11 @@ public class ShoppingController {
 				food_num.setOrder_id(payment_id);
 				dbPro.insertFood_num(food_num);
 				System.out.println("food_id[]");
+				
+				//구매한 상품 수량 감소
+				dbPro.updateFoodQty(food_id[i], qty[i]);
 			}
-	   
+
 	   mv.clear();
 	   mv.addObject("id", id);
 	   mv.addObject("name", name);
