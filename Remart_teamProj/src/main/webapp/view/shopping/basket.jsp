@@ -351,6 +351,7 @@
 						<input type="submit" value="결제하기" style="font-size: 13px;"
 							class="w3-button w3-black w3-hover-red">
 					</div>
+					<div style="margin-top: 50px"></div>
 				</div>
 				<!-- basket_wrap end -->
 			</form>
