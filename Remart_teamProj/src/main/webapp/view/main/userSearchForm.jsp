@@ -26,8 +26,7 @@ table {
 			alert("로그인후 이용하세요");
 		} else {
 			var params = "followStatus=" + encodeURIComponent(followStatus) + "&myid=" + encodeURIComponent(myid) + "&otherid=" + encodeURIComponent(otherid);
-			sendRequest("<%=request.getContextPath()%>
-	/view/main/followButton.jsp",
+			sendRequest("<%=request.getContextPath()%>/view/main/followButton.jsp",
 					params, followResult, 'POST');
 			if (userInput.follow.value == "follow") {
 				userInput.follow.value = "unfollow";
