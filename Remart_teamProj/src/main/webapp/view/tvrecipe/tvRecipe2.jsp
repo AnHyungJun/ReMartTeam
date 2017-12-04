@@ -110,6 +110,7 @@ for (Element src : media3) {
 					부탁해</a> <a class="w3-button w3-white w3-border w3-hover-white" href="<%=request.getContextPath() %>/tvrecipe/tvRecipe2">집밥
 					백선생</a> <a class="w3-button w3-white w3-border w3-hover-white" href="<%=request.getContextPath() %>/tvrecipe/tvRecipe3">삼시세끼</a>
 			</div>
+			<div style="margin-top:30px;"></div>
 			<%=line %>
 		</div>
 
