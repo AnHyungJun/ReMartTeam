@@ -183,7 +183,7 @@ public class ShoppingController {
    
 
    @RequestMapping(value="paymentInfo")
-   public ModelAndView paymentInfo(HttpSession session) throws Exception{   
+   public ModelAndView paymentInfo(HttpSession session, HttpServletRequest request) throws Exception{   
 	   String id = r_member.getId();
 	   String name = r_member.getName();
 	   String phone = r_member.getPhone();
@@ -192,6 +192,9 @@ public class ShoppingController {
 	   String zip1 = r_member.getZip1();
 	   String zip2 = r_member.getZip2();
 	   String email = r_member.getEmail();
+	   
+	   String checkpoint = request.getParameter("checkpoint");
+	   System.out.println("checkpoint:" + checkpoint);
 	   
 	   List articleBasketList = null;
 	   articleBasketList = dbPro.getBaskets(id);
@@ -206,6 +209,7 @@ public class ShoppingController {
 	   mv.addObject("zip1", zip1);
 	   mv.addObject("zip2", zip2);
 	   mv.addObject("email", email);
+	   mv.addObject("checkpoint", checkpoint);
 	   
 	   mv.setViewName("shopping/paymentInfo");
 	   return mv;

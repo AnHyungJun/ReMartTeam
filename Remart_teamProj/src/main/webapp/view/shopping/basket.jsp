@@ -347,9 +347,10 @@
 				<!-- paysum_wrap end -->
 				<form action="paymentInfo" method="post">
 				<div class="w3-center">
-					<input type="submit" value="결제하기" style="font-size: 13px;"
-						class="w3-button w3-black w3-hover-red"/>
+					<input type="button" value="결제하기" style="font-size: 13px;"
+						class="w3-button w3-black w3-hover-red" onclick="checkpoint(this.form)"/>
 				</div>
+				<input type="hidden" value="${memberInfo.point }" name="point">
 				</form>
 			</div>
 			<!-- basket_wrap end -->
@@ -360,7 +361,8 @@
 		</div>
 	</div>
 
-
+	<div style="margin-bottom: 50px"></div>
+	
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('.__count_range input[count_range]').click(function(e) {
@@ -378,6 +380,17 @@
 				}
 			});
 		});
+		
+		function checkpoint(thisform) {
+			var point = thisform.point.value;
+			var q = confirm(" 적립금 " + point + "원 사용가능합니다.\n 사용하시겠습니까?");
+         	if (q == true) {
+	            location.replace("paymentInfo?checkpoint="+point);
+	         } else {
+	        	 point = 0;
+	        	 location.replace("paymentInfo?checkpoint="+point);
+	         }
+		}
 	</script>
 
 
