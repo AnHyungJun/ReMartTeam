@@ -236,20 +236,13 @@ function myFunction() {
 											class="con_link w3-button w3-hover-white"
 											onmouseover="this.style.textDecoration='none';"
 											onmouseout="this.style.textDecoration='none';">TV RECIPE</a>
-										<c:if test="${!empty memberInfo }">
-											<a href="<%=request.getContextPath()%>/writepage/writeForm"
+										<a href="<%=request.getContextPath()%>/writepage/writeForm"
 												style="font-size: 12px; text-decoration: none;"
 												class="con_link w3-button w3-hover-white"
 												onmouseover="this.style.textDecoration='none';"
 												onmouseout="this.style.textDecoration='none';">WRITE</a>
-										</c:if>
-										<c:if test="${empty memberInfo }">
-											<a href="<%=request.getContextPath()%>/login/loginForm"
-												style="font-size: 12px; text-decoration: none;"
-												class="con_link w3-button w3-hover-white"
-												onmouseover="this.style.textDecoration='none';"
-												onmouseout="this.style.textDecoration='none';">WRITE</a>
-										</c:if>
+
+								
 										<a href="<%=request.getContextPath()%>/view/local/hashtag.jsp"
 												style="font-size: 12px; text-decoration: none;"
 												class="con_link w3-button w3-hover-white"

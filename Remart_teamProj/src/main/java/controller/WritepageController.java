@@ -47,11 +47,14 @@ public class WritepageController {
 	}
 
 	@RequestMapping(value = "writeForm")
-	public ModelAndView writeForm() {
+	public ModelAndView writeForm(HttpSession session,HttpServletRequest request) {
 
 		mv.clear();
-
-		mv.setViewName("writepage/writeForm");
+		if(session.getAttribute("memberInfo") == null){
+			mv.setViewName("login/loginForm");
+			request.getSession().setAttribute("prevPage", "http://localhost:8080/Remart_teamProj/writepage/writeForm");
+		}
+		else mv.setViewName("writepage/writeForm");
 		return mv;
 	}
 
@@ -70,7 +73,7 @@ public class WritepageController {
 		List<MultipartFile> multi = null;
 		String[] array;
 		multi = (List<MultipartFile>) multipart.getFiles("img_name");
-		
+
 		array=hashtag.split("\\#");
 		for (int i = multi.size() - 1; i > -1; i--) {
 			String filename = multi.get(i).getOriginalFilename();
@@ -80,7 +83,7 @@ public class WritepageController {
 				FileCopyUtils.copy(multi.get(i).getInputStream(),
 						new FileOutputStream(uploadPath + "/"
 								+ multi.get(i).getOriginalFilename()));
-			
+
 				feed.getImg_name().set(i, filename);
 			} else {
 				feed.getImg_name().remove(i);
@@ -94,13 +97,12 @@ public class WritepageController {
 			dbPro.insertEFeed(feed,feednum);
 		}
 		System.out.println("111111111111111111111111111111");
-		
+
 		mv.clear();
 		mv.setViewName("writepage/writePro");
-		
+
 		return mv;
 	}
 
 }
 
- 

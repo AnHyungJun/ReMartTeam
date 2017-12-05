@@ -35,8 +35,11 @@ public class LoginController {
 	   }
 	
 	@RequestMapping(value="loginForm")
-	public ModelAndView loginForm(){	
-		mv.clear();
+	public ModelAndView loginForm(HttpServletRequest request){
+		String referrer = request.getHeader("Referer");
+	    request.getSession().setAttribute("prevPage", referrer);
+	    
+	    mv.clear();
 		mv.setViewName("login/loginForm");
 		return mv;
 	}
@@ -93,7 +96,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="joinPro")
-	public ModelAndView joinPro(MultipartHttpServletRequest multipart, R_memberDataBean member) throws Exception{	
+	public ModelAndView joinPro(MultipartHttpServletRequest multipart, R_memberDataBean member,HttpServletRequest request) throws Exception{	
 		MultipartFile multi = multipart.getFile("uploadfile");
 		String filename = multi.getOriginalFilename();
 		if(filename != null && !filename.equals("")){
@@ -104,19 +107,23 @@ public class LoginController {
 		}else{
 			member.setProfileImg("");
 		}
-		
+		request.getSession().setAttribute("url1", "joinPro");
 		dbPro.insertMember(member);
 		
-		return loginForm();
+		return loginForm(request);
 	}
 	
 	@RequestMapping(value="loginPro")
-	public ModelAndView loginPro(String id, String passwd, HttpSession session){	
+	public ModelAndView loginPro(String id, String passwd, HttpSession session,HttpServletRequest request){	
 		int check = dbPro.loginCheck(id,passwd);
 		if(check == 1){
 			R_memberDataBean memberInfo = dbPro.getMemberInfo(id);
 			session.setAttribute("memberInfo", memberInfo);
 		}
+			
+		 String[] prevPageSplit = ((String)(session.getAttribute("prevPage"))).split("/");
+		 mv.addObject("url1",prevPageSplit[prevPageSplit.length-1]);
+			
 		mv.clear();
 		mv.addObject("check",check);
 		mv.setViewName("login/loginPro");

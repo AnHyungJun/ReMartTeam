@@ -114,17 +114,19 @@ public class ShoppingController {
 	   }
 	   else{
 		   mv.clear();
-		   return basket(session);
+		   return basket(session,request);
 	   }
    }
    
    
    @RequestMapping(value="basket")
-   public ModelAndView basket(HttpSession session) throws Exception {
+   public ModelAndView basket(HttpSession session,HttpServletRequest request) throws Exception {
 	   int count = 0;
 	   
-	   if(session.getAttribute("memberInfo") == null)
+	   if(session.getAttribute("memberInfo") == null){
 			mv.setViewName("login/loginForm");
+			request.getSession().setAttribute("prevPage", "http://localhost:8080/Remart_teamProj/shopping/basket");
+	   }
 	   
 	   else {
 		   String id = r_member.getId();
@@ -160,7 +162,7 @@ public class ShoppingController {
 	   System.out.println("deleteArticle");
 	   
       mv.clear();
-      return basket(session);
+      return basket(session,request);
    }
    
    @RequestMapping(value="updateNumPro")
@@ -175,7 +177,7 @@ public class ShoppingController {
 	   System.out.println("updateNumPro :");
 	   
 	   mv.clear();
-	   return basket(session);
+	   return basket(session,request);
 	  
    }
    

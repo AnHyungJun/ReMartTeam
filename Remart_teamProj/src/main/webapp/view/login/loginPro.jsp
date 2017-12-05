@@ -6,10 +6,18 @@
 
 <c:if test="${check==1}">
 	<c:if test="${memberInfo.id eq 'admin' }">
-	<meta http-equiv="Refresh" content="0;url=<%=request.getContextPath() %>/admin/main">
+		<meta http-equiv="Refresh"
+			content="0;url=<%=request.getContextPath()%>/admin/main">
 	</c:if>
 	<c:if test="${memberInfo.id ne 'admin' }">
-	<meta http-equiv="Refresh" content="0;url=<%=request.getContextPath() %>/main/main">
+		<c:if test="${url1 eq 'joinPro' }">
+			<meta http-equiv="Refresh"
+				content="0;url=<%=request.getContextPath()%>/main/main">
+		</c:if>
+		<c:if test="${url1 ne 'joinPro' }">
+			<meta http-equiv="Refresh" content="0;url=${prevPage }">
+		</c:if>
+
 	</c:if>
 
 	
