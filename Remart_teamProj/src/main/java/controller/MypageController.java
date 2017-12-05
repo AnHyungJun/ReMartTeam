@@ -27,16 +27,16 @@ public class MypageController {
 	ModelAndView mv = new ModelAndView();
 	String id;//�Ķ� ���ͷ� ���� ���̵� ���ǿ� �ö� ���̵�� ������ �� ���� �ƴϸ� �ٸ� ����
 	R_memberDataBean member;
-	
+
 	@Autowired
 	MybatisMypageDBBean dbPro;
-	
+
 	@ModelAttribute
-	   public void addAttributes(HttpServletRequest request, HttpSession session) {
-	      
-	      session.setAttribute("curPage", "n");
-	   }
-	
+	public void addAttributes(HttpServletRequest request, HttpSession session) {
+
+		session.setAttribute("curPage", "n");
+	}
+
 	@ModelAttribute
 	public void addAttributes(HttpServletRequest request) {
 		try {
@@ -47,12 +47,17 @@ public class MypageController {
 			mv.clear();
 			//������ ���Ⱑ ��� ���� �ҷ� ���°� �ϸ�Ʈ �ȷο� �̷��� �� �������� �ҷ� ���°� 
 			// ������ checkpage 0 �ٸ��� 1 
-			if(id.equals(member.getId())){
-				mv.addObject("checkpage",0);
-				member=dbPro.selectMember(member.getId());	
-			}else{
+			if( member == null){
 				mv.addObject("checkpage",1);
 				member=dbPro.selectMember(id);
+			}else{
+				if(id.equals(member.getId())){
+					mv.addObject("checkpage",0);
+					member=dbPro.selectMember(member.getId());	
+				}else{
+					mv.addObject("checkpage",1);
+					member=dbPro.selectMember(id);
+				}
 			}
 			mv.addObject("member",member);
 		} catch (UnsupportedEncodingException el) {
@@ -63,10 +68,10 @@ public class MypageController {
 	public ModelAndView myPageForm(HttpSession session){
 		List<FeedDataBean> feedlist=null;
 		feedlist=dbPro.getFeedList(member.getId());
-		
+
 		mv.addObject("feedlist",feedlist);
 		mv.setViewName("mypage/myPageForm");
-		
+
 		return mv;
 	}
 
@@ -74,32 +79,32 @@ public class MypageController {
 	public ModelAndView bookmarkForm(){
 		List<FeedDataBean> feedlist=null;
 		feedlist=dbPro.getBookmarkFeedList(member.getId());
-		
+
 		mv.addObject("feedlist",feedlist);
 		mv.setViewName("mypage/myPageForm");
-		
+
 		return mv;
 	}
-	
+
 	@RequestMapping(value="pwdcheck")
 	public ModelAndView pwdcheck() throws Exception{
-		
+
 		System.out.println("pwdcheck");
 		mv.clear();
 		mv.setViewName("mypage/pwdcheck");
 		return mv;
 	}
-	
+
 	@RequestMapping(value="updateForm")
 	public ModelAndView updateForm() throws Exception{
 		System.out.println("updateForm");
-		
+
 		mv.clear();
-		
+
 		mv.setViewName("mypage/updateForm");
 		return mv;
 	}
-	
+
 	@RequestMapping(value="updatePro")
 	public ModelAndView updatePro(MultipartHttpServletRequest multipart, R_memberDataBean member) throws Exception{
 		MultipartFile multi = multipart.getFile("uploadfile");
@@ -112,36 +117,36 @@ public class MypageController {
 		}else{
 			member.setProfileImg("");
 		}
-		
+
 		dbPro.updateMember(member);
-		
+
 		mv.clear();
 		mv.setViewName("main/main");
 		return mv;
 	}
-	
+
 	@RequestMapping(value="likeForm")
 	public ModelAndView likeForm(){
 		List<FeedDataBean> feedlist=null;
 		feedlist=dbPro.getLikeFeedList(member.getId());
-		
+
 		mv.addObject("feedlist",feedlist);
 		mv.setViewName("mypage/myPageForm");
-		
+
 		return mv;
 	}
-	
+
 	@RequestMapping(value="followForm")
 	public ModelAndView followForm(){
 		List<FeedDataBean> feedlist=null;
 		feedlist=dbPro.getFollowFeedList(member.getId());
-		
+
 		mv.addObject("feedlist",feedlist);
 		mv.setViewName("mypage/myPageForm");
-		
+
 		return mv;
 	}
-	
+
 	@RequestMapping(value="following")
 	public ModelAndView following(){
 		mv.clear();
@@ -152,7 +157,7 @@ public class MypageController {
 		mv.setViewName("main/userSearchForm");
 		return mv;
 	}
-	
+
 	@RequestMapping(value="follower")
 	public ModelAndView follower(){
 		mv.clear();
