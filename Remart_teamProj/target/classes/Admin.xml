@@ -5,5 +5,12 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="admin.mybatis">
    <cache />
-   
+   <select id="getMart_orders" resultType="mart_order">
+		select * from mart_order
+	</select>
+	
+	<update id="statuschange" parameterType="hashmap">
+		update mart_order set status=#{new_status} where
+		mart_order_id=#{mart_order_id}
+	</update>
 </mapper>

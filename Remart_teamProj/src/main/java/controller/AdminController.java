@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -44,6 +46,16 @@ ModelAndView mv = new ModelAndView();
 	}
 	@RequestMapping(value="orderStatusForm")
 	public ModelAndView orderStatusForm(){	
+		List orderList = null;
+		orderList=dbPro.getOrderList();
+		mv.clear();
+		mv.addObject("orderList",orderList);
+		mv.setViewName("admin/orderStatusForm");
+		return mv;
+	}
+	@RequestMapping(value="stchange")
+	public ModelAndView stchange(int mart_order_id,String status){
+		dbPro.change(mart_order_id,status);
 		mv.clear();
 		mv.setViewName("admin/orderStatusForm");
 		return mv;
