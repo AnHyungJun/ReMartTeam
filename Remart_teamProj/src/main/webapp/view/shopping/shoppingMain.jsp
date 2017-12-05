@@ -27,7 +27,6 @@ a {
 .dropdown_shopping ul li {
 	width: 25%;
 	float: left;
-	border-left: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
 	padding: 8px 16px;
 }
@@ -41,6 +40,7 @@ a {
 	display: none;
 	position: absolute;
 	margin-top: 8px;
+	margin-left:-16px;
 	background-color: #ffffff;
 }
 
@@ -51,7 +51,7 @@ a {
 
 .dropdown_shopping ul ul li {
 	float: none;
-	width: 200px;
+	width: 225px;
 }
 
 .shopping_list {
@@ -83,27 +83,27 @@ a {
 			<!-- dropdown_shopping -->
 			<div class="dropdown_shopping" style="width: 910px; font-size: 13px;">
 				<ul>
-					<li><a href="#">과일/견과/채소</a>
+					<li style="border-left: 1px solid #ddd;"><a href="#">과일/견과/채소</a>
 						<ul>
 							<li><a href="shoppingMain?category_id=1">과일</a></li>
 							<li><a href="shoppingMain?category_id=2">견과</a></li>
 							<li><a href="shoppingMain?category_id=3">채소</a></li>
 						</ul></li>
 
-					<li><a href="#">수산물/해산물/건어물</a>
+					<li style="border-left: 1px solid #ddd;"><a href="#">수산물/해산물/건어물</a>
 						<ul>
 							<li><a href="shoppingMain?category_id=4">수산물</a></li>
 							<li><a href="shoppingMain?category_id=5">해산물</a></li>
 							<li><a href="shoppingMain?category_id=6">건어물</a></li>
 						</ul></li>
-					<li><a href="#">과자/시리얼/빵</a>
+					<li style="border-left: 1px solid #ddd;"><a href="#">과자/시리얼/빵</a>
 						<ul>
 							<li><a href="shoppingMain?category_id=7">과자</a></li>
 							<li><a href="shoppingMain?category_id=8">시리얼</a></li>
 							<li><a href="shoppingMain?category_id=9">빵</a></li>
 						</ul></li>
 
-					<li style="border-right: 1px solid #ddd;"><a href="#">음료/주류/커피/분유</a>
+					<li style="border-right: 1px solid #ddd; border-left: 1px solid #ddd;"><a href="#">음료/주류/커피/분유</a>
 						<ul>
 							<li><a href="shoppingMain?category_id=10">음료</a></li>
 							<li><a href="shoppingMain?category_id=11">주류</a></li>
@@ -111,19 +111,19 @@ a {
 							<li><a href="shoppingMain?category_id=13">분유</a></li>
 						</ul></li>
 
-					<li><a href="#">쌀/잡곡</a>
+					<li style="border-left: 1px solid #ddd;"><a href="#">쌀/잡곡</a>
 						<ul>
 							<li><a href="shoppingMain?category_id=14">쌀</a></li>
 							<li><a href="shoppingMain?category_id=15">잡곡</a></li>
 						</ul></li>
 
-					<li><a href="#">정육/계란류</a>
+					<li style="border-left: 1px solid #ddd;"><a href="#">정육/계란류</a>
 						<ul>
 							<li><a href="shoppingMain?category_id=16">정육</a></li>
 							<li><a href="shoppingMain?category_id=17">계란류</a></li>
 						</ul></li>
 
-					<li><a href="#">라면/통조림/조미료/장류</a>
+					<li style="border-left: 1px solid #ddd;"><a href="#">라면/통조림/조미료/장류</a>
 						<ul>
 							<li><a href="shoppingMain?category_id=18">라면</a></li>
 							<li><a href="shoppingMain?category_id=19">통조림</a></li>
@@ -131,12 +131,12 @@ a {
 							<li><a href="shoppingMain?category_id=21">장류</a></li>
 						</ul></li>
 
-					<li style="border-right: 1px solid #ddd;"><a href="#">유제품/냉동식품/간편식/냉장식품</a>
+					<li style="border-right: 1px solid #ddd; border-left: 1px solid #ddd;"><a href="#">유제품/냉동·냉장식품/간편식</a>
 						<ul>
 							<li><a href="shoppingMain?category_id=22">유제품</a></li>
 							<li><a href="shoppingMain?category_id=23">냉동식품</a></li>
-							<li><a href="shoppingMain?category_id=24">간편식</a></li>
 							<li><a href="shoppingMain?category_id=25">냉장식품</a></li>
+							<li><a href="shoppingMain?category_id=24">간편식</a></li>
 						</ul></li>
 				</ul>
 			</div>
@@ -145,8 +145,8 @@ a {
 			<div class="shopping_list">
 
 				<c:forEach var="articleFood" items="${articleFoodList}">
-					<div class="w3-border"
-						style="width: 25%; height: 310px; float: left; border-collapse: collapse;">
+					<div class="w3-cell"
+						style="display: inline; width: 24.85%; height: 310px; float: left; border: 1px solid #ddd; margin-left: 1px; margin-bottom: 1px;">
 						<img alt="사진"
 							src="<%=request.getContextPath() %>/images/food/${articleFood.name }.jpg"
 							width="80%" style="margin-top: 8px;">
@@ -163,9 +163,6 @@ a {
 										type="button" value="+" class="count_btn w3-white"
 										count_range="p" style="width: 25px; font-size:9px;">
 								</div>
-								<!-- <input type="button" class="w3-white w3-border w3-border-black" 
-									style="font-size: 16px; width: 50%; margin-top: 8px;" value="장바" 
-									name="confirm_basket" onclick="inputbasket(this.form)"> -->
 								<input type="button" class="btn_basket w3-black w3-round w3-border w3-border-black" 
 									style="font-size: 16px; margin-top: 8px; width:40px; height:30px"
 									name="confirm_basket" onclick="inputbasket(this.form)">
