@@ -226,7 +226,7 @@ function myFunction() {
 									</div>
 									
 									<div class="w3-bar-item" style="height: 100px;">
-										<a href="#" style="font-size: 12px; text-decoration: none;"
+										<a href="<%=request.getContextPath()%>/main/editorRecommandForm" style="font-size: 12px; text-decoration: none;"
 											class="con_link w3-button w3-hover-white"
 											onmouseover="this.style.textDecoration='none';"
 											onmouseout="this.style.textDecoration='none';">EDITOR

@@ -142,4 +142,13 @@ public class MainController {
 		mv.addObject("searchList",searchList);
 		return mv;
 	}
+	@RequestMapping(value = "editorRecommandForm")
+	public ModelAndView editorRecommandForm() {
+		List<FeedDataBean> feedlist=null;
+		mv.clear();
+		feedlist = dbPro.getEditorFeed();
+		mv.addObject("feedlist",feedlist);
+		mv.setViewName("main/editorRecommandForm");
+		return mv;
+	}
 }
