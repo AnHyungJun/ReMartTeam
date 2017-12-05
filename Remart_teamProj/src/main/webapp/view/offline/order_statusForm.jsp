@@ -95,6 +95,7 @@ function detail(userinput) {
 							width="100px">
 					</div>
 
+
 				</div>
 				<div class="w3-col" style="width: 20%">
 					<p>&nbsp;</p>
