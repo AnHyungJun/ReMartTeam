@@ -122,7 +122,7 @@ function detail(userinput) {
 						-
 						<input type="text" id="testDatepicker2" name="date2" onchange="dataCheck(this.value)"> 
 						<input type="submit"
-							class="w3-button w3-white w3-hover-white" style="font-size: 13px; vertical-align: middle;"
+							class="w3-button w3-white w3-hover-white w3-padding-small" style="font-size: 13px; vertical-align: middle;"
 							name="search" value="검색">
 						
 						<br> <br>

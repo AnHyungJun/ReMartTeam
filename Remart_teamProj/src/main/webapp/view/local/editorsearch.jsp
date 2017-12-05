@@ -19,7 +19,7 @@
 		<div style="height: 50px;" align="center">
 			<input type="text" id="searchFood" name="searchFood"
 				onkeydown="startSuggest()" /> <input type="button"
-				class="w3-button w3-white w3-hover-white" style="font-size: 12px;"
+				class="w3-button w3-white w3-hover-white w3-padding-small" style="font-size: 12px;"
 				onclick="" value="찾기">
 		</div>
 		<div align="center" id="suggest" style="display:; margin-top: 20px;">

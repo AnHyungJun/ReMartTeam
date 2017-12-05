@@ -214,7 +214,7 @@
 					<br> <br> <input type="text" id="productCode"
 						placeholder="상품 코드 입력"
 						style="font-size: 13px; vertical-align: middle;"> <input
-						type="button" class="w3-button w3-white w3-hover-white"
+						type="button" class="w3-button w3-white w3-hover-white w3-padding-small"
 						style="font-size: 13px; vertical-align: middle;"
 						onclick="startSuggest2()" value="찾기">
 					<div style="margin-bottom: 50px;"></div>
@@ -242,12 +242,12 @@
 							고객명 : <input type="text" id="userName" placeholder="고객 전화번호 입력"
 								style="font-size: 13px;"><input type="button"
 								onclick="startSuggest()" value="조회"
-								class="w3-button w3-white w3-hover-white"
-								style="font-size: 13px;"> Point : <input type="text"
+								class="w3-button w3-white w3-hover-white w3-padding-small"
+								style="font-size: 13px; vertical-align: middle;"> Point : <input type="text"
 								id="userPoint" style="font-size: 13px;"><input
 								type="button" value="사용" onclick="usePoint()"
-								class="w3-button w3-white w3-hover-white"
-								style="font-size: 13px;">
+								class="w3-button w3-white w3-hover-white w3-padding-small"
+								style="font-size: 13px; vertical-align: middle;">
 						<input type="hidden" value="N" id="pointUse" name="pointUse">
 						<input type="hidden" value="N" id="userPhone" name="userPhone">
 						<div style="float:right">

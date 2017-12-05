@@ -172,7 +172,7 @@ $(function() {
 							id="testDatepicker" name="or_date_before"> <br> <br>
 						입고 장소 <input type="text" id="location"
 							value="${offlineInfo.location }"><input type="button"
-							class="w3-button w3-white w3-hover-white" style="font-size: 13px; vertical-align: middle;"
+							class="w3-button w3-white w3-hover-white w3-padding-small" style="font-size: 13px; vertical-align: middle;"
 							name="search" value="찾기" onclick="openOfflineSearch(this.form)">
 						<br> <br>
 						<table class="w3-table w3-bordered w3-centered"

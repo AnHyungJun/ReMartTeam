@@ -133,7 +133,7 @@
 		<form name="search">
 			<input type="text" name="keyword" id="keyword"
 				onkeydown="startSuggest()" /> <input type="button"
-				class="w3-button w3-white w3-hover-white" style="font-size: 12px;"
+				class="w3-button w3-white w3-hover-white w3-padding-small" style="font-size: 12px;"
 				value="확인" onclick="aaaaa()" />
 			<div id="suggest"
 				style="display:; position: absolute; left: 0px; top: 50px;">
