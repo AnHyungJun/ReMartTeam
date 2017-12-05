@@ -11,15 +11,13 @@
 .uploadimg {
 	font-size: 7px;
 	position: absolute;
-	height: 400px;
+	height: 370px;
 	width: 650px;
-	opacity: 0;
+  	opacity: 0;
 	filter: alpha(opacity = 0);
 	-ms-filter: alpha(opacity = 0);
 	cursor: pointer;
 }
-
-
 </style>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
@@ -27,28 +25,28 @@
 	<div style="margin-top: 200px"></div>
 
 	<center>
-	<form action="writePro" method="post" enctype="multipart/form-data">
-		<div class="w3-bar" style="width: 650px;">
-			<!-- 글쓰기 head -->
+		<form action="writePro" method="post" enctype="multipart/form-data">
+			<div class="w3-bar" style="width: 650px;">
+				<!-- 글쓰기 head -->
 
 
-			<div class="w3-row">
-				<div class="w3-center">
-					<b>WRITE</b>
+				<div class="w3-row">
+					<div class="w3-center">
+						<b>WRITE</b>
+					</div>
+
+					<button class="w3-button w3-hover-white w3-white" id="leftpage"
+						style="float: left; display: none; font-size: 12px;"
+						onclick="plusDivs(-1)">이전</button>
+					<button class="w3-button w3-hover-white w3-white" id="rightpage"
+						style="float: right; font-size: 12px;" type="button"
+						onclick="plusDivs(1)">다음</button>
 				</div>
+				<!-- 글쓰기 head 끝 -->
 
-				<button class="w3-button w3-hover-white w3-white" id="leftpage"
-					style="float: left; display: none; font-size: 12px;"
-					onclick="plusDivs(-1)">이전</button>
-				<button class="w3-button w3-hover-white w3-white" id="rightpage"
-					style="float: right; font-size: 12px;" type="button"
-					onclick="plusDivs(1)">다음</button>
-			</div>
-			<!-- 글쓰기 head 끝 -->
-	
-			<!-- 글쓰기 body -->
-			<div class="">
-				
+				<!-- 글쓰기 body -->
+				<div class="">
+
 					<div class="mySlides">
 						<div class="w3-col w3-center"
 							style="width: 650px; font-size: 12px;">
@@ -58,7 +56,8 @@
 						<br> <br> <img align="center" id="blah1"
 							src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 							alt="your image" width="650" height="365" /><br> <input
-							type="file" class="uploadimg" style="left: 350px; top: 300px; border: solid 5px;"
+							type="file" class="uploadimg"
+							style="left: 630px; top: 300px; border: solid 0px;"
 							onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
 
 						<br>
@@ -80,7 +79,8 @@
 						<br> <br> <img align="center" id="blah2"
 							src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 							alt="your image" width="650" height="365" /><br> <input
-							type="file" class="uploadimg" style="left: 350px; top: 300px;"
+							type="file" class="uploadimg"
+							style="left: 630px; top: 300px; border: solid 0px;"
 							onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
 						<br>
 						<div class="w3-left">
@@ -98,7 +98,8 @@
 						<br> <br> <img align="center" id="blah3"
 							src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
 							alt="your image" width="650" height="365" /><br> <input
-							type="file" class="uploadimg" style="left: 350px; top: 300px;"
+							type="file" class="uploadimg"
+							style="left: 630px; top: 300px; border: solid 0px;"
 							onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
 						<br>
 						<div class="w3-left">
@@ -108,138 +109,152 @@
 						</div>
 					</div>
 
-			<div class="mySlides">
-				<div class="w3-col w3-center" style="width: 650px; font-size: 12px;">
-					<p>&nbsp;</p>
-				</div>
-				<br> <br> <img align="center" id="blah4"
-					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
-					alt="your image" width="650" height="365" /><br> <input
-					type="file" class="uploadimg" style="left: 350px; top: 300px;"
-					onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
-				<br>
-				<div class="w3-left">
-							<div style="font-size: 13px;" align="left">설명</div>
-							<input type="text" size="80" height="20" class="w3-margin-bottom"
-								name="content" style="font-size: 13px;">
+					<div class="mySlides">
+						<div class="w3-col w3-center"
+							style="width: 650px; font-size: 12px;">
+							<p>&nbsp;</p>
 						</div>
-					</div>
-					
-
-			<div class="mySlides">
-				<div class="w3-col w3-center" style="width: 650px; font-size: 12px;">
-					<p>&nbsp;</p>
-				</div>
-				<br> <br> <img align="center" id="blah5"
-					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
-					alt="your image" width="650" height="365" /><br> <input
-					type="file" class="uploadimg" style="left: 350px; top: 300px;"
-					onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
-				<br>
-				<div class="w3-left">
+						<br> <br> <img align="center" id="blah4"
+							src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
+							alt="your image" width="650" height="365" /><br> <input
+							type="file" class="uploadimg"
+							style="left: 630px; top: 300px; border: solid 0px;"
+							onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
+						<br>
+						<div class="w3-left">
 							<div style="font-size: 13px;" align="left">설명</div>
 							<input type="text" size="80" height="20" class="w3-margin-bottom"
 								name="content" style="font-size: 13px;">
 						</div>
 					</div>
 
-			<div class="mySlides">
-				<div class="w3-col w3-center" style="width: 650px; font-size: 12px;">
-					<p>&nbsp;</p>
-				</div>
-				<br> <br> <img align="center" id="blah6"
-					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
-					alt="your image" width="650" height="365" /><br> <input
-					type="file" class="uploadimg" style="left: 350px; top: 300px;"
-					onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
-				<br>
-				<div class="w3-left">
+
+					<div class="mySlides">
+						<div class="w3-col w3-center"
+							style="width: 650px; font-size: 12px;">
+							<p>&nbsp;</p>
+						</div>
+						<br> <br> <img align="center" id="blah5"
+							src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
+							alt="your image" width="650" height="365" /><br> <input
+							type="file" class="uploadimg"
+							style="left: 630px; top: 300px; border: solid 0px;"
+							onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
+						<br>
+						<div class="w3-left">
 							<div style="font-size: 13px;" align="left">설명</div>
 							<input type="text" size="80" height="20" class="w3-margin-bottom"
 								name="content" style="font-size: 13px;">
 						</div>
 					</div>
 
-			<div class="mySlides">
-				<div class="w3-col w3-center" style="width: 650px; font-size: 12px;">
-					<p>&nbsp;</p>
-				</div>
-				<br> <br> <img align="center" id="blah7"
-					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
-					alt="your image" width="650" height="365" /><br> <input
-					type="file" class="uploadimg" style="left: 350px; top: 300px;"
-					onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
-					<br>
-				<div class="w3-left">
+					<div class="mySlides">
+						<div class="w3-col w3-center"
+							style="width: 650px; font-size: 12px;">
+							<p>&nbsp;</p>
+						</div>
+						<br> <br> <img align="center" id="blah6"
+							src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
+							alt="your image" width="650" height="365" /><br> <input
+							type="file" class="uploadimg"
+							style="left: 630px; top: 300px; border: solid 0px;"
+							onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
+						<br>
+						<div class="w3-left">
 							<div style="font-size: 13px;" align="left">설명</div>
 							<input type="text" size="80" height="20" class="w3-margin-bottom"
 								name="content" style="font-size: 13px;">
 						</div>
 					</div>
 
-			<div class="mySlides">
-				<div class="w3-col w3-center" style="width: 650px; font-size: 12px;">
-					<p>&nbsp;</p>
-				</div>
-				<br> <br> <img align="center" id="blah8"
-					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
-					alt="your image" width="650" height="365" /><br> <input
-					type="file" class="uploadimg" style="left: 350px; top: 300px;"
-					onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
-				<br>
-				<div class="w3-left">
+					<div class="mySlides">
+						<div class="w3-col w3-center"
+							style="width: 650px; font-size: 12px;">
+							<p>&nbsp;</p>
+						</div>
+						<br> <br> <img align="center" id="blah7"
+							src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
+							alt="your image" width="650" height="365" /><br> <input
+							type="file" class="uploadimg"
+							style="left: 630px; top: 300px; border: solid 0px;"
+							onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
+						<br>
+						<div class="w3-left">
 							<div style="font-size: 13px;" align="left">설명</div>
 							<input type="text" size="80" height="20" class="w3-margin-bottom"
 								name="content" style="font-size: 13px;">
 						</div>
 					</div>
 
-			<div class="mySlides">
-				<div class="w3-col w3-center" style="width: 650px; font-size: 12px;">
-					<p>&nbsp;</p>
-				</div>
-				<br> <br> <img align="center" id="blah9"
-					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
-					alt="your image" width="650" height="365" /><br> <input
-					type="file" class="uploadimg" style="left: 350px; top: 300px;"
-					onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
-				<br>
-				<div class="w3-left">
+					<div class="mySlides">
+						<div class="w3-col w3-center"
+							style="width: 650px; font-size: 12px;">
+							<p>&nbsp;</p>
+						</div>
+						<br> <br> <img align="center" id="blah8"
+							src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
+							alt="your image" width="650" height="365" /><br> <input
+							type="file" class="uploadimg"
+							style="left: 630px; top: 300px; border: solid 0px;"
+							onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
+						<br>
+						<div class="w3-left">
 							<div style="font-size: 13px;" align="left">설명</div>
 							<input type="text" size="80" height="20" class="w3-margin-bottom"
 								name="content" style="font-size: 13px;">
 						</div>
 					</div>
 
-			<div class="mySlides">
-				<div class="w3-col w3-center" style="width: 650px; font-size: 12px;">
-					<p>&nbsp;</p>
-				</div>
-				<br> <br> <img align="center" id="blah10"
-					src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
-					alt="your image" width="650" height="365" /><br> <input
-					type="file" class="uploadimg" style="left: 350px; top: 300px;"
-					onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
-				<br>
-				<div class="w3-left">
+					<div class="mySlides">
+						<div class="w3-col w3-center"
+							style="width: 650px; font-size: 12px;">
+							<p>&nbsp;</p>
+						</div>
+						<br> <br> <img align="center" id="blah9"
+							src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
+							alt="your image" width="650" height="365" /><br> <input
+							type="file" class="uploadimg"
+							style="left: 630px; top: 300px; border: solid 0px;"
+							onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
+						<br>
+						<div class="w3-left">
 							<div style="font-size: 13px;" align="left">설명</div>
 							<input type="text" size="80" height="20" class="w3-margin-bottom"
 								name="content" style="font-size: 13px;">
 						</div>
 					</div>
 
-			
-		</div>
-		</div>
-		<div style="width: 650px;">
-			<div style="width: 650px;" align="left">
-				<div style="font-size: 13px;">#HASHTAG</div>
-				<input type="text" name="hashtag" size="94" height="20"
-					style="font-size: 13px;" value="#" /> <br> <br>
+					<div class="mySlides">
+						<div class="w3-col w3-center"
+							style="width: 650px; font-size: 12px;">
+							<p>&nbsp;</p>
+						</div>
+						<br> <br> <img align="center" id="blah10"
+							src="<%=request.getContextPath()%>/images/icon/noimage.PNG"
+							alt="your image" width="650" height="365" /><br> <input
+							type="file" class="uploadimg"
+							style="left: 630px; top: 300px; border: solid 0px;"
+							onchange="statefile(this);" name="img_name" onfocus="this.blur()"><br>
+						<br>
+						<div class="w3-left">
+							<div style="font-size: 13px;" align="left">설명</div>
+							<input type="text" size="80" height="20" class="w3-margin-bottom"
+								name="content" style="font-size: 13px;">
+						</div>
+					</div>
+
+
+				</div>
 			</div>
-		</div>
-		
-		<c:if test="${memberInfo.grade eq 'editor'}">
+			<div style="width: 650px;">
+				<div style="width: 650px;" align="left">
+					<div style="font-size: 13px;">#HASHTAG</div>
+					<input type="text" name="hashtag" size="94" height="20"
+						style="font-size: 13px;" value="#" /> <br> <br>
+				</div>
+			</div>
+
+			<c:if test="${memberInfo.grade eq 'editor'}">
 				<div style="width: 610px; font-size: 13px;" align="center">
 					<!--밑에 등록 버튼-->
 					<br> 에디터 상품 등록 <br>
@@ -263,58 +278,58 @@
 				</div>
 
 			</c:if>
-			
-		<br>
-		<br>
-		<div style="width: 650px;" align="right">
-			<input type="submit" value="작성" style="font-size: 12px;"
-				class="w3-button w3-border w3-white w3-hover-black">
-		</div>
+
+			<br> <br>
+			<div style="width: 650px;" align="right">
+				<input type="submit" value="작성" style="font-size: 12px;"
+					class="w3-button w3-border w3-white w3-hover-black">
+			</div>
 		</form>
 		<br> <br>
 	</center>
 
 	<script>
 		var openWin;
-		var rowlen=1;
-		var hashinput=$('input:text[name=hashtag]');
+		var rowlen = 1;
+		var hashinput = $('input:text[name=hashtag]');
 		function foodimg(foodname) {
-			
-			
+
 			var table = document.getElementById("editorfood2");
 			var food = foodname.split('-');
-			
-			var row = "<tr height=\"140\"><input type=\"hidden\" name=\"food_id\" value=\""+food[0]+"\"/>"; 
-			row += "<td>"+rowlen+"</td>"; 
+
+			var row = "<tr height=\"140\"><input type=\"hidden\" name=\"food_id\" value=\""+food[0]+"\"/>";
+			row += "<td>" + rowlen + "</td>";
 			rowlen++;
-			row += "<td>"+"<img src=\"/Remart_teamProj/images/food/"+food[1]+".jpg\" width=110 height=110/>"+"</td>"; 
-			row += "<td>"+food[1]+"</td>"; 
-			row += "<td>"+food[2]+"</td>";
-			row += "<td><button name=\"delStaff\" type=\"button\">삭제</button></td>"; 
+			row += "<td>"
+					+ "<img src=\"/Remart_teamProj/images/food/"+food[1]+".jpg\" width=110 height=110/>"
+					+ "</td>";
+			row += "<td>" + food[1] + "</td>";
+			row += "<td>" + food[2] + "</td>";
+			row += "<td><button name=\"delStaff\" type=\"button\">삭제</button></td>";
 			row += "</tr>";
 			alert(row);
 			$("#editorfood2").append(row);
 		}
-		hashinput.keyup(function(event) { 
-			var tmp=hashinput.val();
+		hashinput.keyup(function(event) {
+			var tmp = hashinput.val();
 			if (event.keyCode == '32') {
-				
-				tmp=tmp.trim();
-				if(tmp.substr(-1,1)=="#"){
-					
-				}else{
-					tmp=tmp+"#";	
+
+				tmp = tmp.trim();
+				if (tmp.substr(-1, 1) == "#") {
+
+				} else {
+					tmp = tmp + "#";
 				}
 				hashinput.val(tmp);
 			}
-			if(tmp.substr(0,1)!="#"){
-				hashinput.val("#"+hashinput.val());
-			} 
-			if(tmp.substr(-2,2)=="##"){
-				
-				hashinput.val(tmp.substring(0,tmp.length-1));
+			if (tmp.substr(0, 1) != "#") {
+				hashinput.val("#" + hashinput.val());
 			}
-		}); 
+			if (tmp.substr(-2, 2) == "##") {
+
+				hashinput.val(tmp.substring(0, tmp.length - 1));
+			}
+		});
 		function findfood() {
 			// window.name = "부모창 이름"; 
 			window.name = "parentForm";
