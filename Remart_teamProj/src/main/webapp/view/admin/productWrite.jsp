@@ -8,6 +8,17 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <title>REMART ADMIN</title>
 <style>
+.uploadimg {
+	font-size: 7px;
+	position: absolute;
+	height: 380px;
+	width: 380px;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	-ms-filter: alpha(opacity = 0);
+	cursor: pointer;
+}
+
 .tiny {
 	font-size: 3px;
 }
@@ -25,33 +36,34 @@
 <body>
 	<div style="margin-top: 120px;"></div>
 	<center>
-		<div class="w3-container w3-border w3-center" style="width: 900px;">
-			<div style="margin-top: 17px;"></div>
+		<div class="w3-container w3-border w3-center" style="width: 800px;">
+			<div style="margin-top: 25px;"></div>
 			<div class="w3-row">
-				<div class="w3-col" style="width: 45%;">
-					<div class="" style="width: 389px; height: 389px;">
-						<tr>
-							<td></td>
-						</tr>
+				<div class="w3-col" style="width: 45%; margin-left: 10px;">
+					<div class="mySlides">
+						<div class="mySlides">
+							<img align="center" id="blah1"
+								src="<%=request.getContextPath()%>/images/icon/noProduct.png"
+								alt="" width="380" height="380" class="" /><br> <br>
+							<input type="file" class="uploadimg"
+								style="left: 570px; top: 250px; border: solid 4px;"
+								onchange="statefile(this);" name="uploadfile"
+								onfocus="this.blur()">
+						</div>
 					</div>
 					<div style="margin-top: 10px;"></div>
-
-					<tr>
-						<td width="330"><input type="file" size="40" maxlength="30"
-							name="uploadfile" style="width: 100%;"></td>
-					</tr>
 				</div>
 				<div class="w3-col" style="width: 10%;">&nbsp;</div>
 				<div class="w3-display-container w3-col w3-left-align"
-					style="width: 45%; font-size: 13px;">
-					<div style="margin-top: 30px;"></div>
+					style="width: 45%; font-size: 13px; margin-left: 60px;">
+					<div class="w3-margin-left" style="margin-top: 30px;">
 					코드 <br> <input type="text" size="10" height="20"
 						class="w3-margin-bottom w3-border w3-border-black" name=""
 						style="font-size: 13px;"><br> 이름<br> <input
-						type="text" size="20" height="20"
+						type="text" size="40" height="20"
 						class="w3-margin-bottom w3-border w3-border-black" name=""
 						style="font-size: 13px;"><br> 가격<br> <input
-						type="text" size="10" height="20"
+						type="text" size="20" height="20"
 						class="w3-margin-bottom w3-border w3-border-black" name=""
 						style="font-size: 13px;"><br> 수량<br>
 					<p class="tiny">
@@ -61,14 +73,19 @@
 							<input type="button" value="-" count_range="m"
 								class="count_btn w3-white" style="width: 20px; height: 20px;">
 							<input class="count w3-center" value="1" readonly=""
-								name="food_num" style="width: 40px; height: 20px;" id="food_qty">
-							<input type="button" value="+" class="count_btn w3-white"
-								count_range="p"
+								style="width: 40px; height: 20px;"> <input type="button"
+								value="+" class="count_btn w3-white" count_range="p"
 								style="width: 25px; height: 20px; font-size: 9px;">
 						</div>
 					</div>
 					<br> <br> 카테고리
 					<p class="tiny"></p>
+					<!-- <select id="selMainC" class="w3-border w3-border-black">
+						<option value="">main category</option>
+					</select>&nbsp;&nbsp;&nbsp;&nbsp;
+					<select id="selSubC" class="w3-border w3-border-black">
+						<option value="">sub category</option>
+					</select> <br> -->
 					<select id="selMainC" class="w3-border w3-border-black">
 						<option value="">선택</option>
 						<option value="1">과일</option>
@@ -96,18 +113,17 @@
 						<option value="23">냉동식품</option>
 						<option value="24">간편식</option>
 						<option value="25">냉장식품</option>
-					</select> <br>
-					<div style="margin-top: 125px;"></div>
-					<div class="w3-display-bottomright" style="font-size: 12px;">
-						<input type="submit"
-							class="w3-button w3-white w3-border w3-hover-black" value="상품 등록">
-						<input type="reset"
-							class="w3-button w3-white w3-border w3-hover-light-grey"
-							value="취소">
-					</div>
+					</select> <br> </div>
 				</div>
 			</div>
-			<div style="margin-top: 17px;"></div>
+		</div>
+		<div style="margin-top: 15px;"></div>
+		<div class="" style="width: 800px; font-size: 12px;">
+			<input type="reset"
+				class="w3-button w3-white w3-border w3-hover-light-grey w3-right"
+				value="취소"> <input type="submit"
+				class="w3-button w3-white w3-border w3-hover-black w3-right w3-margin-right"
+				value="상품 등록" >
 		</div>
 	</center>
 
@@ -128,6 +144,20 @@
 				}
 			});
 		});
+
+		var slideIndex = 1;
+
+		function statefile(input) {
+
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$('#blah' + slideIndex).attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+
+		}
 	</script>
 </body>
 </html>
