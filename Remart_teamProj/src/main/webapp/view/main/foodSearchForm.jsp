@@ -84,8 +84,8 @@ a {
 			<div class="shopping_list">
 
 				<c:forEach var="articleFood" items="${searchList}">
-					<div class="w3-border"
-						style="width: 25%; height: 310px; float: left; border-collapse: collapse;">
+					<div class="w3-cell"
+						style="display: inline; width: 24.85%; height: 310px; float: left; border: 1px solid #ddd; margin-left: 1px; margin-bottom: 1px;">
 						<img alt="사진"
 							src="<%=request.getContextPath() %>/images/food/${articleFood.name }.jpg"
 							width="80%" style="margin-top: 8px;">
