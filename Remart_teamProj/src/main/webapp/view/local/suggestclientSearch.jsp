@@ -127,6 +127,7 @@
 </style>
 </head>
 <body>
+<center>
 <div style="margin-top:10px;"></div>
 	<form name="search">
 		<input type="text" name="keyword" id="keyword"
@@ -138,5 +139,6 @@
 			<div id="suggestList"></div>
 		</div>
 	</form>
+	</center>
 </body>
 </html>
