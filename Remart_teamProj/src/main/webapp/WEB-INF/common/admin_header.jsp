@@ -23,7 +23,7 @@
 				<div class="w3-col" style="width: 85%;">
 					<div
 						class="w3-bar w3-border-bottom w3-border-white w3-black w3-right w3-margin-right"
-						style="font-size: 12px; width: 375px; margin-top: 48px;">
+						style="font-size: 12px; width: 361px; margin-top: 48px;">
 						<a href="<%=request.getContextPath() %>/admin/customForm"
 							class="w3-bar-item w3-button w3-border-right w3-hover-red">고객
 							관리</a> <a href="<%=request.getContextPath() %>/admin/productForm"
@@ -32,8 +32,7 @@
 							class="w3-bar-item w3-button w3-border-right w3-border-white w3-hover-red">주문현황
 							관리</a>
 							<a href="<%=request.getContextPath() %>/admin/salesStatusForm"
-							class="w3-bar-item w3-button w3-border-right w3-border-white w3-hover-red">매출현황
-							</a>
+							class="w3-bar-item w3-button w3-border-right w3-border-white w3-hover-red">매출현황</a>
 					</div>
 				</div>
 			</div>
