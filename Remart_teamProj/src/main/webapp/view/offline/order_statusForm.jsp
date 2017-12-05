@@ -136,32 +136,32 @@ function detail(userinput) {
 								<th style="width: 100px;">상세보기</th>
 							</tr>
 							<c:forEach  var="mart_order"  items="${mart_orderList}">  
-							<tr>
-								<td>${mart_order.mart_order_id}</td>
-								<td>${mart_order.re_date }</td>
-								<td>${mart_order.or_date }</td>
+							<tr style="vertical-align: middle;">
+								<td style="vertical-align: middle;">${mart_order.mart_order_id}</td>
+								<td style="vertical-align: middle;">${mart_order.re_date }</td>
+								<td style="vertical-align: middle;">${mart_order.or_date }</td>
 								<c:choose>
 									<c:when test="${mart_order.status == 'order'}">
-										<td>발주 완료</td>
+										<td style="vertical-align: middle;">발주 완료</td>
       								 </c:when>
       								 <c:when test="${mart_order.status == 'ready'}">
-										<td>배송 준비 중</td>
+										<td style="vertical-align: middle;">배송 준비 중</td>
       								 </c:when>
       								 <c:when test="${mart_order.status == 'ing'}">
-										<td>배송 중</td>
+										<td style="vertical-align: middle;">배송 중</td>
       								 </c:when>
       								 <c:when test="${mart_order.status == 'end'}">
-										<td>
+										<td style="vertical-align: middle;">
 										배송 완료
 										<a href="confirm?mart_order_id=${mart_order.mart_order_id }">확인</a>
 										</td>
       								 </c:when>
       								 <c:when test="${mart_order.status == 'finish'}">
-										<td>확인 완료</td>
+										<td style="vertical-align: middle;">확인 완료</td>
       								 </c:when>
 								</c:choose>
 								
-								<td>
+								<td style="vertical-align: middle;">
 								<input type="button"
 							class="w3-bar-item w3-button w3-white w3-hover-light-grey" style="font-size: 12px;"
 							name="order_status" value="상세보기" OnClick="detail(${mart_order.mart_order_id})">

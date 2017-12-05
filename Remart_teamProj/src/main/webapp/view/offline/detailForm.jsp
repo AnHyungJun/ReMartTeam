@@ -16,8 +16,6 @@
 <center>
 	<div class="w3-top w3-white">
 		<br><br>
-
-
 		<div class="w3-bar w3-border-bottom w3-center-align w3-large w3-center">
 			<div class="w3-row w3-center">
 				<table style="font-size:13px;">
@@ -34,10 +32,6 @@
 						</tr>
 					</c:forEach>
 				</table>
-
-				<div class="w3-col" style="width: 20%">
-					<p>&nbsp;</p>
-				</div>
 			</div>
 		</div>
 	</div>
