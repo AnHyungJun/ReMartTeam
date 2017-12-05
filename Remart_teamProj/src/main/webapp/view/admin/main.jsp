@@ -7,6 +7,7 @@
 <title>REMART ADMIN</title>
 </head>
 <body>
-admin계정
+	<div style="margin-top: 100px"></div>
+	<center>admin계정</center>
 </body>
 </html>
