@@ -10,7 +10,9 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
  	from r_member where id=#{id}
 	</select>
 	
-	
+	<select id="hashtaglist" parameterType="hashmap" resultType="String">
+		select (select hashtag_content from hashtag y where y.hashtag_id=h.hashtag_id)  hashtaglist from hash_feed h where feed_id=#{feed_id}
+	</select>
 	<select id="getfeedlist" parameterType="hashmap" resultType="feed">
 		select feed_id,id,like_num,reg_date,recipe_name,(select grade from r_member where id=f.id) feed_grade from feed f where id=#{id} order by reg_date desc
 	</select>

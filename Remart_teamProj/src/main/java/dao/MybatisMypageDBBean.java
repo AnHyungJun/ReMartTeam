@@ -52,7 +52,7 @@ public class MybatisMypageDBBean extends MybatisConnector {
 				feedlist.get(i).setContent(sqlSession.selectList(namespace + ".getContent", map));
 				feedlist.get(i).setReplelist(sqlSession.selectList(namespace + ".feedreple", map));
 				feedlist.get(i).setFood_id(sqlSession.selectList(namespace + ".editorfood", map));
-				System.out.println(feedlist.get(i).getFeed_grade());
+				feedlist.get(i).setHashtaglist(sqlSession.selectList(namespace + ".hashtaglist", map));
 			}
 			
 			

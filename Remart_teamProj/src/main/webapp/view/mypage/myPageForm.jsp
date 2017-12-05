@@ -155,17 +155,17 @@
 								<div class="w3-center">
 									<!-- 함수 실행해서 이미지 이름 ,사이즈 등등 넘겨주는 부ㅜ분 -->
 									<c:if test="${list.feed_grade eq 'editor'}">
-									<img id="${list.feed_id}" class="showMask"
+									에디터<br>									<img id="${list.feed_id}" class="showMask"
 										src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 										style="width: 300px; height: 300px"
-										onclick="editorfeed('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}','${list.food_id}');"><br>
+										onclick="editorfeed('${fn:length(list.img_name)}','${list.feed_id}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}','${list.food_id}','${list.hashtaglist}');"><br>
 									${list.recipe_name }////${list.food_id}
 									</c:if>
 									<c:if test="${list.feed_grade eq 'nomal'}">
 									<img id="${list.feed_id}" class="showMask"
 										src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 										style="width: 300px; height: 300px"
-										onclick="nomalfeed('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');"><br>
+										onclick="nomalfeed('${fn:length(list.img_name)}','${list.feed_id}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}','${list.hashtaglist}');"><br>
 									${list.recipe_name }
 									</c:if>
 								</div>
@@ -234,18 +234,16 @@
 		x[slideIndex - 1].style.display = "block";
 	}
 	
-   	function nomalfeed(imagenum,feeddate,imagename,contentname,repledata,replenum,feedid){
+   	function nomalfeed(imagenum,feedid,imagename,contentname,repledata,replenum,hashtag){
    		var myArray ;
-   		var feedid;
    		imagename=imagename.substring(1,imagename.length-1);
    		contentname=contentname.substring(1,contentname.length-1);
    		repledata=repledata.substring(1,repledata.length-1);
-   		<!-- feed_id,id,like_num,reg_date,recipe_name-->
+   		hashtag=hashtag.substring(1,hashtag.length-1);
    		imagename=imagename.split(', ');
-   		feeddate=feeddate.split(', ');
-   		alert(imagenum);
-   		feedid=feeddate[0].substring(22);
-   		contentname=contentname.split(',');
+   		hashtag=hashtag.split(', ');
+   		contentname=contentname.split(', ');
+   		
    		for(var i=0;i<imagenum;i++){   			
    			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 55%; height: 450px; margin-top: 10px;\">"+
     		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=350><br>"+
@@ -277,25 +275,44 @@
    	   		
    	   		$('.window').append(z); 
    		}
+   		var resulthashtag="";
+   		var size=0;
+		for(var i=0;i<hashtag.length;i++){
+			if(size<30){
+				resulthashtag+="<a href=\"Remart_teamProj/main/searchForm?autocompleteText="+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
+				size+=hashtag[i].length;
+			}else{
+				size=0;
+				resulthashtag+="<br><a href=\"Remart_teamProj/main/searchForm?autocompleteText="+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
+				size+=hashtag[i].length;
+			}
+			alert(size);
+			alert(resulthashtag);
+		}
+  		z="<div align=\"center\"  class=\"hash\"style=\"float: left; width: 45%; height: 50px; margin-top: 10px;\ border: solid 4px; \">"
+  	  		+resulthashtag+"</div>"
+  	  	$('.window').append(z); 
    		$('.window').show();
    		showDivs(1);//슬라이더 처음값
    	}
-	function editorfeed(imagenum,feeddate,imagename,contentname,repledata,replenum,foodname){
+	function editorfeed(imagenum,feedid,imagename,contentname,repledata,replenum,foodname,hashtag){
    		var myArray ;
-   		var feedid;
    		$('.window').css('width', 920);
    		imagename=imagename.substring(1,imagename.length-1);
    		foodname=foodname.substring(1,foodname.length-1);
    		contentname=contentname.substring(1,contentname.length-1);
    		repledata=repledata.substring(1,repledata.length-1);
-   		<!-- feed_id,id,like_num,reg_date,recipe_name-->
+   		hashtag=hashtag.substring(1,hashtag.length-1);
+   		hashtag=hashtag.split(', ');
    		imagename=imagename.split(', ');
-   		feeddate=feeddate.split(', ');
    		foodname=foodname.split(', ');
-   		feedid=feeddate[0].substring(22);
-   		contentname=contentname.split(',');
-   		for(var i=0;i<imagenum;i++){   			
-   			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 45%; height: 450px; margin-top: 10px;\">"+
+   		contentname=contentname.split(', ');
+   		var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 45%; height: 400px; margin-top: 10px;\">"+
+		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=350><br>"+
+		"<label>"+contentname[i]+"</label>"+"</div>";
+		$('.window').append(y); 
+   		for(var i=1;i<imagenum;i++){   			
+   			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 45%; height: 400px; margin-top: 10px;\">"+
     		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=350><br>"+
     		"<label>"+contentname[i]+"</label>"+"</div>";
     		$('.window').append(y); 
@@ -344,8 +361,9 @@
    		
    		
    		
-   		
-   		
+  		z="<div align=\"center\"  class=\"hash\"style=\"float: left; width: 45%; height: 50px; margin-top: 10px;\ border: solid 4px; \">"
+  	  		+"</div>"
+  	  	$('.window').append(z); 
    		
    		$('.window').show();
    		showDivs(1);//슬라이더 처음값
@@ -434,6 +452,7 @@
             e.preventDefault();
             slideIndex=1;
             $('.food').remove();
+            $('.hash').remove();
             $('.reples').remove();
             $('.mySlides').remove();
             $('.mask, .window').hide();
@@ -444,6 +463,7 @@
             $(this).hide();
             slideIndex=1;
             $('.food').remove();
+            $('.hash').remove();
             $('.reples').remove();
             $('.mySlides').remove();
             $('.window').hide();

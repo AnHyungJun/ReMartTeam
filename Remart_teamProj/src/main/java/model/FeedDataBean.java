@@ -15,10 +15,17 @@ public class FeedDataBean implements Serializable{
 	List<String> content;
 	List<RepleDataBean> replelist;
 	List<String> food_id;
+	List<String> hashtaglist;
 	int likestate;
 	int bookmarkstate;
 	String feed_grade;
-	
+
+	public List getHashtaglist() {
+		return hashtaglist;
+	}
+	public void setHashtaglist(List hashtaglist) {
+		this.hashtaglist = hashtaglist;
+	}
 	public String getFeed_grade() {
 		return feed_grade;
 	}
@@ -114,7 +121,8 @@ public class FeedDataBean implements Serializable{
 				+ ", like_num=" + like_num + ", preImg=" + preImg
 				+ ", reg_date=" + reg_date + ", recipe_name=" + recipe_name
 				+ ", img_name=" + img_name + ", content=" + content
-				+ ", replelist=" + replelist + ", food_id=" + food_id
+				+ ", replelist=" + replelist + ", food_id=" + food_id 
+				+", hashtaglist="+hashtaglist
 				+ ", likestate=" + likestate + ", bookmarkstate="
 				+ bookmarkstate + "]";
 	}
