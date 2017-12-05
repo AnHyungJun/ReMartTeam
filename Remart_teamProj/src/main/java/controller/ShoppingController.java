@@ -125,7 +125,7 @@ public class ShoppingController {
 	   
 	   if(session.getAttribute("memberInfo") == null){
 			mv.setViewName("login/loginForm");
-			request.getSession().setAttribute("prevPage", "http://localhost:8080/Remart_teamProj/shopping/basket");
+			request.getSession().setAttribute("prevPage", "/Remart_teamProj/shopping/basket");
 	   }
 	   
 	   else {

@@ -52,7 +52,7 @@ public class WritepageController {
 		mv.clear();
 		if(session.getAttribute("memberInfo") == null){
 			mv.setViewName("login/loginForm");
-			request.getSession().setAttribute("prevPage", "http://localhost:8080/Remart_teamProj/writepage/writeForm");
+			request.getSession().setAttribute("prevPage", "/Remart_teamProj/writepage/writeForm");
 		}
 		else mv.setViewName("writepage/writeForm");
 		return mv;
