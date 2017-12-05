@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +40,26 @@ public class MainController {
 
 	@RequestMapping(value = "main")
 	public ModelAndView main(HttpServletRequest request, HttpSession session) throws UnsupportedEncodingException {
-	
+		List<String> userHashList = new ArrayList<String>();
+		List<String> foodList = new ArrayList<String>();
+		
+		
+		List a = dbPro.selectUserIdDb();
+		List b = dbPro.selectHashDb();
+		List c = dbPro.selectFoodNameDb();
+		
+		for(int i=0; i<a.size(); i++)
+			userHashList.add((String) a.get(i));
+		for(int i=0; i<b.size(); i++)
+			userHashList.add("#"+(String) b.get(i));
+		for(int i=0; i<c.size(); i++)
+			foodList.add((String) c.get(i));
+		
+		session.setAttribute("userHashList", userHashList);
+		session.setAttribute("foodList", foodList);
+		
+		System.out.println(userHashList);
+		
 			request.setCharacterEncoding("utf-8");
 			R_memberDataBean r_member = (R_memberDataBean) request.getSession()
 					.getAttribute("memberInfo");

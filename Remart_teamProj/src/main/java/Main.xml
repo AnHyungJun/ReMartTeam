@@ -149,4 +149,18 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		select (select q.name from food q where q.food_id=t.food_id) food_id
 		from feed_food t where t.feed_id=#{feed_id}
 	</select>
+	
+	
+	<select id="selectUserIdDb" resultType="String">
+		select id from r_member
+	</select>
+
+	<select id="selectHashDb" resultType="String">
+		select hashtag_content from
+		hashtag
+	</select>
+
+	<select id="selectFoodNameDb" resultType="String">
+		select name from food
+	</select>
 </mapper>
