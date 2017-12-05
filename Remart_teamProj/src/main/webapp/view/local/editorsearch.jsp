@@ -4,31 +4,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
-<title>Insert title here</title>
+<title>REMART</title>
 </head>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/ajax/httpRequest.js">
 </script>
 <body>
-<BR>
 	<BR>
-	<form	name = "search">
-	<div style="height:50px;" align="center">
-	<input type="text" id="searchFood" name="searchFood"onkeydown = "startSuggest()"/>
-	<input type="button" onclick="" value="찾기">
-	</div>
-	<div align="center" id="suggest" style = "display:; margin-top:20px;">
-		<div id = "suggestList" align="center" style="width: 500px; height:100%;" >
-			
+	<BR>
+	<form name="search">
+		<div style="height: 50px;" align="center">
+			<input type="text" id="searchFood" name="searchFood"
+				onkeydown="startSuggest()" /> <input type="button"
+				class="w3-button w3-white w3-hover-white" style="font-size: 12px;"
+				onclick="" value="찾기">
 		</div>
-	</div>
-	<div align="center" style="margin-top:20px;">
-			<input type="button" onclick="end()" value="닫기">
-	</div>
-</form>
-<script>
+		<div align="center" id="suggest" style="display:; margin-top: 20px;">
+			<div id="suggestList" align="center"
+				style="width: 500px; height: 100%;"></div>
+		</div>
+		<div align="center" style="margin-top: 20px;">
+			<input type="button"
+				class="w3-button w3-white w3-hover-white w3-border w3-border-black"
+				style="font-size: 11px;" onclick="end()" value="닫기">
+		</div>
+	</form>
+	<script>
 	var checkFirst = false;
 	var lastKeyword = '';
 	var loopSendKeyword = false;
@@ -72,16 +76,16 @@
 					var keywordList = null;
 					if (count > 0) {
 						keywordList = res[1].split('=');
-						var html = "<table class=\"w3-table w3-bordered w3-centered\" width=100%><tr><th width=200;>상품</th><th width=150;>상품명</th><th>가격</th><th>상품 등록</th></tr>";
+						var html = "<table class=\"w3-table w3-bordered w3-centered\" style=\"font-size:13px;\" width=100%><tr><th width=200;>상품</th><th width=130;>상품명</th><th>가격</th><th>상품 등록</th></tr>";
 						for (var i = 0; i < keywordList.length; i++) {
 							
 							var keywordList2 = keywordList[i].split('-');
-							html += "<tr height=140px;><td align=\"center\">"
+							html += "<tr height=140px;><td align=\"center\" style=\"vertical-align: middle;\">"
 									+"<img src=\"/Remart_teamProj/images/food/"+keywordList2[1]+".jpg\" width=110 height=110><br>"
 									+"</td><td align=\"center\">"
 									+ keywordList2[1] + "</td><td align=\"center\">"
 									+ keywordList2[2] + "</td><td align=\"center\">"
-									+"<button type=\"button\" onclick=\"writefood('"+keywordList[i]+"')\">등록</button></td></tr>";
+									+"<input type=\"button\" class=\"w3-button w3-white w3-hover-white w3-border\" style=\"font-size:12px; vertical-align: middle;\" value=\"등록\" onclick=\"writefood('"+keywordList[i]+"')\"></td></tr>";
 							// alert(html); 
 						}
 						html += "</table>";
@@ -120,6 +124,6 @@
 
 			self.close();
 		}
-	</script> 
+	</script>
 </body>
 </html>

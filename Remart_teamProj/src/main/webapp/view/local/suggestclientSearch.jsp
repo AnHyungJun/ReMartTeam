@@ -5,7 +5,7 @@
 <head>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>REMART</title>
 </head>
 <script	type = "text/javascript" src = "<%=request.getContextPath() %>/ajax/httpRequest.js">
 
@@ -99,14 +99,14 @@
 		
 		var aa = document.getElementById('keyword').value.split('-');
 		
-		row.insertCell(0).innerHTML = "<input class='w3-input' type='text' name = 'no' value = '"+rowlen+"'>";
+		row.insertCell(0).innerHTML = "<input class='w3-input w3-center' type='text' name = 'no' value = '"+rowlen+"'>";
 		row.insertCell(1).innerHTML = "<input class='w3-input' type='text' name = 'food_id' value = '"+aa[0]+"'>";
 		row.insertCell(2).innerHTML = "<input class='w3-input' type='text' name = 'name' value = '"+aa[1]+"'>";
-		row.insertCell(3).innerHTML = "<input type='text' size='2' name = 'qty' value = '1' id='"+aa[0]+"q'>" 
-		+ "<button onclick=\"up("+aa[0]+")\" class=\"w3-button w3-white \" type=\"button\">▲</button>"
-		+ "<button onclick=\"down("+aa[0]+")\" class=\"w3-button w3-white \" type=\"button\">▼</button>";
+		row.insertCell(3).innerHTML = "<button onclick=\"up("+aa[0]+")\" class=\"w3-button w3-white w3-hover-white \" type=\"button\">▲</button>"
+		+ "<input type='text w3-center' size='2' style=\"height:30px;\" name = 'qty' value = '1' id='"+aa[0]+"q'>" 
+		+ "<button onclick=\"down("+aa[0]+")\" class=\"w3-button w3-white w3-hover-white\" type=\"button\">▼</button>";
 		row.insertCell(4).innerHTML = "<input class='w3-input' type='text' name = 'price' value = '"+aa[2]+"'  id='"+aa[0]+"p'>" ;
-		row.insertCell(5).innerHTML = "<button onclick=\"remove_this()\" class=\"w3-button w3-border w3-round-xlarge\" type=\"button\">삭제</button>";
+		row.insertCell(5).innerHTML = "<button onclick=\"remove_this()\" class=\"w3-button w3-border w3-round-xlarge\" style=\"font-size:12px;\" type=\"button\">삭제</button>";
 		
 		window.opener.sumsum();
 		
