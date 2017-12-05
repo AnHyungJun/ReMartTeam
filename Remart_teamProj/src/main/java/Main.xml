@@ -139,4 +139,14 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		r_member r, feed f where r.id = f.id and r.sex = 'M') group by
 		hashtag_id order by cnt desc
 	</select>
+	<select id="getEditorFeed" resultType="feed">
+		select f.feed_id, f.id,
+		f.like_num, f.reg_date, f.recipe_name,r.grade feed_grade from feed f, r_member r
+		where f.id = r.id and r.grade = 'editor' order by f.reg_date desc
+	</select>
+
+	<select id="editorfood" parameterType="hashmap" resultType="String">
+		select (select q.name from food q where q.food_id=t.food_id) food_id
+		from feed_food t where t.feed_id=#{feed_id}
+	</select>
 </mapper>

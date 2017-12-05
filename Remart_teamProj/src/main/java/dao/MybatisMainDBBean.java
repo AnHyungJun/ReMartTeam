@@ -256,4 +256,28 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+	public List getEditorFeed() {
+		List<FeedDataBean> feedlist=null;
+		sqlSession = sqlSession();
+		List<ImgDataBean> tmp=null;
+		try {
+			HashMap map = new HashMap();
+			feedlist=sqlSession.selectList(namespace + ".getEditorFeed", map);
+			
+			for(int i=0;i<feedlist.size();i++){
+				map.clear();
+				map.put("feed_id", feedlist.get(i).getFeed_id());
+				feedlist.get(i).setImg_name(sqlSession.selectList(namespace + ".getImg_name", map));
+				feedlist.get(i).setContent(sqlSession.selectList(namespace + ".getContent", map));
+				feedlist.get(i).setReplelist(sqlSession.selectList(namespace + ".feedreple", map));
+				feedlist.get(i).setFood_id(sqlSession.selectList(namespace + ".editorfood", map));
+			}
+			
+			return feedlist;
+
+		} finally {
+
+			sqlSession.close();
+		}
+	}
 }
