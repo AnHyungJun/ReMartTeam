@@ -11,7 +11,7 @@
 	position: absolute;
 	height: 150px;
 	width: 150px;
-	opacity: 0;
+ 	opacity: 0;
 	filter: alpha(opacity = 0);
 	-ms-filter: alpha(opacity = 0);
 	cursor: pointer;
@@ -107,7 +107,7 @@
 									src="<%=request.getContextPath()%>/images/icon/noProfile.png"
 									alt="" width="150" height="150" class="w3-circle" /><br>
 								<br> <input type="file" class="uploadimg"
-									style="left: 800px; top: 220px; border: solid 4px;" onchange="statefile(this);"
+									style="left: 843px; top: 218px; border: solid 0px;" onchange="statefile(this);"
 									name="uploadfile" onfocus="this.blur()">
 							</div>
 

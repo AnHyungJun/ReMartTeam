@@ -10,11 +10,11 @@
 .uploadimg {
 	font-size: 7px;
 	position: absolute;
-	height: 150px;
-	width: 150px;
-	opacity: 0;
+	height: 120px;
+	width: 120px;
+/* 	opacity: 0;
 	filter: alpha(opacity = 0);
-	-ms-filter: alpha(opacity = 0);
+	-ms-filter: alpha(opacity = 0); */
 	cursor: pointer;
 }
 </style>
@@ -84,7 +84,7 @@
 						<img src="<%=request.getContextPath()%>/fileSave/${memberInfo.profileImg}"
 					class="w3-circle" alt="" style="width: 200px; height: 100px">
 						<br> <input type="file" class="uploadimg"
-							style="left: 800px; top: 220px; border: solid 4px;" onchange="statefile(this);"
+							style="left: 850px; top: 220px; border: solid 0px;" onchange="statefile(this);"
 							name="uploadfile" onfocus="this.blur()" value=${memberInfo.profileImg }>
 					</div>
 				</td>
