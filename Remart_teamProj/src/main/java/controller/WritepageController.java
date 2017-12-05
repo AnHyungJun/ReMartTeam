@@ -93,8 +93,10 @@ public class WritepageController {
 			int feednum=dbPro.insertNFeed(feed, r_member.getId(),array);
 			dbPro.insertEFeed(feed,feednum);
 		}
+		System.out.println("111111111111111111111111111111");
+		
 		mv.clear();
-		mv.setViewName("main/main");
+		mv.setViewName("writepage/writePro");
 		
 		return mv;
 	}

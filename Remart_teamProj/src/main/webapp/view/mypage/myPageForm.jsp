@@ -32,7 +32,7 @@
 	display: none;
 	background-color: #ffffff;
 	width: 750px;
-	height: 500px;
+	height: 600px;
 	z-index: 99999;
 }
 </style>
@@ -218,7 +218,10 @@
 		for (i = 0; i < x.length; i++) {
 			x[i].style.display = "none";
 		}
-		if (slideIndex == 1) {
+		if (x.length == 1) {
+			document.getElementById("leftpage").style.display = 'none';
+			document.getElementById("rightpage").style.display = 'none';
+		} else if (slideIndex == 1) {
 			document.getElementById("leftpage").style.display = 'none';
 			document.getElementById("rightpage").style.display = 'block';
 		} else if (slideIndex == x.length) {
@@ -234,26 +237,18 @@
    	function nomalfeed(imagenum,feeddate,imagename,contentname,repledata,replenum,feedid){
    		var myArray ;
    		var feedid;
-   		var grade;
    		imagename=imagename.substring(1,imagename.length-1);
    		contentname=contentname.substring(1,contentname.length-1);
    		repledata=repledata.substring(1,repledata.length-1);
    		<!-- feed_id,id,like_num,reg_date,recipe_name-->
    		imagename=imagename.split(', ');
-   		feeddate=feeddate.split(',');
+   		feeddate=feeddate.split(', ');
+   		alert(imagenum);
    		feedid=feeddate[0].substring(22);
-   		grade=feeddate[12].substring(12);
    		contentname=contentname.split(',');
-   		if(imagenum>1){
-   			document.getElementById("rightpage").style.display = 'block';
-   			document.getElementById("leftpage").style.display = 'none';
-   		}else{
-   			document.getElementById("rightpage").style.display = 'none';
-   			document.getElementById("leftpage").style.display = 'block';
-   		}
    		for(var i=0;i<imagenum;i++){   			
-   			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 55%; height: 350px; margin-top: 10px;\">"+
-    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=100%><br>"+
+   			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 55%; height: 450px; margin-top: 10px;\">"+
+    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=350><br>"+
     		"<label>"+contentname[i]+"</label>"+"</div>";
     		$('.window').append(y); 
     		
@@ -270,9 +265,15 @@
    	   		for(var i=0;i<replenum;i++){
    	   			makereplelist+="<lable  class=\"commentreple\">"+myArray[i][2]+"님의 댓글 /"+myArray[i][3]+"</lable><br>";
    	   		}
-   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 350px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"replecontent\""
+   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 450px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"replecontent\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist+"</div>"
+   	   		
+   	   		$('.window').append(z); 
+   		}else{
+   			var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 450px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"replecontent\""
+   	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
+   	   		+"</div>"
    	   		
    	   		$('.window').append(z); 
    		}
@@ -282,9 +283,6 @@
 	function editorfeed(imagenum,feeddate,imagename,contentname,repledata,replenum,foodname){
    		var myArray ;
    		var feedid;
-   		var grade;
-   		
-   		
    		$('.window').css('width', 920);
    		imagename=imagename.substring(1,imagename.length-1);
    		foodname=foodname.substring(1,foodname.length-1);
@@ -292,22 +290,13 @@
    		repledata=repledata.substring(1,repledata.length-1);
    		<!-- feed_id,id,like_num,reg_date,recipe_name-->
    		imagename=imagename.split(', ');
-   		feeddate=feeddate.split(',');
+   		feeddate=feeddate.split(', ');
    		foodname=foodname.split(', ');
    		feedid=feeddate[0].substring(22);
-   		grade=feeddate[12].substring(12);
    		contentname=contentname.split(',');
-   		
-   		if(imagenum>1){
-   			document.getElementById("rightpage").style.display = 'block';
-   			document.getElementById("leftpage").style.display = 'none';
-   		}else{
-   			document.getElementById("rightpage").style.display = 'none';
-   			document.getElementById("leftpage").style.display = 'block';
-   		}
    		for(var i=0;i<imagenum;i++){   			
-   			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 45%; height: 350px; margin-top: 10px;\">"+
-    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=100%><br>"+
+   			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 45%; height: 450px; margin-top: 10px;\">"+
+    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=350><br>"+
     		"<label>"+contentname[i]+"</label>"+"</div>";
     		$('.window').append(y); 
     		
@@ -325,13 +314,13 @@
    	   		for(var i=0;i<replenum;i++){
    	   			makereplelist+="<lable class=\"commentreple\">"+myArray[i][2]+"님의 댓글 /"+myArray[i][3]+"</lable><br>";
    	   		}
-   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 36%; height: 350px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"replecontent\""
+   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 36%; height: 450px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"replecontent\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist+"</div>"
    	   		
    	   		$('.window').append(z); 
    		}else{
-   			var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 36%; height: 350px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"replecontent\""
+   			var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 36%; height: 450px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"replecontent\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+"</div>"
    	   		
@@ -346,9 +335,9 @@
   			
   			editorfood+="<input type=\"checkbox\" name=\"chk_info\" value=\""+foodname[i]+"\">"+"<img src=\"/Remart_teamProj/images/food/"+foodname[i]+".jpg\" width=100 height=70/><br>";
   		}
-  		var z="<div align=\"center\"  class=\"food\"style=\"float: left; width: 19%; height: 350px; margin-top: 10px;\ border: solid 4px; \">"
+  		var z="<div align=\"center\"  class=\"food\"style=\"float: left; width: 19%; height: 450px; margin-top: 10px;\ border: solid 4px; \">"
   		+"<form action=\"\" method=\"post\">"
-  		+editorfood+"</form></div>"
+  		+editorfood+"<input type=\"submit\" value\"장바구니\"></form></div>"
   		
   		$('.window').append(z); 
    		

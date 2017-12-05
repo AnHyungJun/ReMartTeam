@@ -86,7 +86,9 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 		select food_id, qty, order_id, (select a.name from food a where a.food_id = b.food_id) food_name from food_num b
 	</select>
   
-   
+   <update id="updateFoodQty" parameterType="hashmap" >
+   		update food set qty = #{qty}-1 where food_id = #{food_id}
+   </update>
  
 
    

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<% String path=request.getContextPath(); %>
+ <% response.sendRedirect(path+"/main/main"); %> 
 </body>
 </html>
