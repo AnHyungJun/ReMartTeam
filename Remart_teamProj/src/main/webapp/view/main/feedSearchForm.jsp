@@ -47,6 +47,7 @@
 			<div class="w3-container">
 				<div style="margin-top: 50px;"></div>
 				<div class="w3-center">
+					<h2>게시물 ${hashcnt }개</h2>
 					<c:if test="${fn:length(searchList) != 0}">
 						<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
 						<c:forEach var="list" items="${searchList}" varStatus="status">

@@ -148,6 +148,8 @@ public class MainController {
 				please = please.replace("#", "");
 				please = please.replace(" ", "");
 				searchList = dbPro.getFeedSearchList(please);
+				int hashcnt = dbPro.getHashtagKeyCount(please);
+				mv.addObject("hashcnt",hashcnt);
 				mv.setViewName("main/feedSearchForm");
 			}else{ 
 				please = please.replace(" ", "");

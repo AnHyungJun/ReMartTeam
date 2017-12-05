@@ -304,4 +304,14 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+	public int getHashtagKeyCount(String please) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("please", please);
+		try {
+			return sqlSession.selectOne(namespace + ".getHashtagKeyCount",map);
+		} finally {
+			sqlSession.close();
+		}
+	}
 }

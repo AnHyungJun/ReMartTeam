@@ -126,8 +126,10 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		select (select
 		hashtag_content from hashtag h where h.hashtag_id = hf.hashtag_id)
 		hashtag_content ,
-		count(*) cnt from hash_feed hf where hf.feed_id in (select f.feed_id from
-		r_member r, feed f where r.id = f.id and r.sex = 'F') group by
+		count(*) cnt from hash_feed hf where hf.feed_id in
+		(select f.feed_id from
+		r_member r, feed f where r.id = f.id and r.sex =
+		'F') group by
 		hashtag_id order by cnt desc
 	</select>
 
@@ -135,22 +137,26 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		select (select
 		hashtag_content from hashtag h where h.hashtag_id = hf.hashtag_id)
 		hashtag_content ,
-		count(*) cnt from hash_feed hf where hf.feed_id in (select f.feed_id from
-		r_member r, feed f where r.id = f.id and r.sex = 'M') group by
+		count(*) cnt from hash_feed hf where hf.feed_id in
+		(select f.feed_id from
+		r_member r, feed f where r.id = f.id and r.sex =
+		'M') group by
 		hashtag_id order by cnt desc
 	</select>
 	<select id="getEditorFeed" resultType="feed">
 		select f.feed_id, f.id,
-		f.like_num, f.reg_date, f.recipe_name,r.grade feed_grade from feed f, r_member r
-		where f.id = r.id and r.grade = 'editor' order by f.reg_date desc
+		f.like_num, f.reg_date, f.recipe_name,r.grade feed_grade from feed f,
+		r_member r
+		where f.id = r.id and r.grade = 'editor' order by f.reg_date
+		desc
 	</select>
 
 	<select id="editorfood" parameterType="hashmap" resultType="String">
 		select (select q.name from food q where q.food_id=t.food_id) food_id
 		from feed_food t where t.feed_id=#{feed_id}
 	</select>
-	
-	
+
+
 	<select id="selectUserIdDb" resultType="String">
 		select id from r_member
 	</select>
@@ -162,5 +168,12 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="selectFoodNameDb" resultType="String">
 		select name from food
+	</select>
+
+	<select id="getHashtagKeyCount" parameterType="hashmap"
+		resultType="int">
+		select count(*) cnt from hash_feed hf, hashtag h where
+		hf.hashtag_id = h.hashtag_id and h.hashtag_content = #{please} group by
+		h.hashtag_id
 	</select>
 </mapper>
