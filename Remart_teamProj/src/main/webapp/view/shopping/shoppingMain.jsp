@@ -202,23 +202,52 @@ a {
 		});
 		
 		function inputbasket(thisform){
-			   
-			   var food_id = thisform.food_id.value;
-			   var food_num = thisform.food_num.value;
-			   var id = thisform.id.value;
-			   
-			   var params = "food_id=" + encodeURIComponent(food_id) + "&food_num=" + encodeURIComponent(food_num)+ "&id=" + encodeURIComponent(id);
-			   sendRequest("<%=request.getContextPath()%>/common/suggestFileBasketSearch.jsp", params, displayResult, 'POST');
-			   var q = confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?");
-	         	if (q == true) {
-		            location.replace("basket");
+			var food_id = thisform.food_id.value;
+			var food_num = thisform.food_num.value;
+			var id = thisform.id.value;
+ 			
+		   var params = "food_id=" + encodeURIComponent(food_id) + "&food_num=" + encodeURIComponent(food_num) + "&id=" + encodeURIComponent(id);
+		   sendRequest("<%=request.getContextPath()%>/common/suggestConfirmBasket.jsp", params, displayResult, 'POST');
+		}
+		
+		function displayResult(){
+			if(httpRequest.readyState == 4) {
+		         if(httpRequest.status == 200) {
+	        	 	var resText = httpRequest.responseText;
+	        	 	var res =  resText.split(',');
+        	 		var food_id = res[1];
+		 			var food_num = res[2];
+		 			var id = res[3];
+		 			
+		        	 if(res[0] == 1) {
+		        		var q = confirm("동일한 상품이 이미 담겨있습니다. 추가하시겠습니까?");
+			         	if (q == true) {
+			         		var params = "food_id=" + encodeURIComponent(res[1]) + "&food_num=" + encodeURIComponent(food_num)+ "&id=" + encodeURIComponent(id);
+							   sendRequest("<%=request.getContextPath()%>/common/suggestUpdateFoodNumBasket.jsp", params, displayResult2, 'POST');
+							location.replace("basket");
+				         } else {
+				            location.replace("shoppingMain");
+				         }
+		        	 }else {
+		        		 var params = "food_id=" + encodeURIComponent(food_id) + "&food_num=" + encodeURIComponent(food_num)+ "&id=" + encodeURIComponent(id);
+						   sendRequest("<%=request.getContextPath()%>/common/suggestFileBasketSearch.jsp", params, displayResult1, 'POST');
+						var q = confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?");
+			         	if (q == true) {
+				            location.replace("basket");
 
-		         } else {
-		            location.replace("shoppingMain");
+				         } else {
+				            location.replace("shoppingMain");
+				         }
+		        		 
+		        	 }
+		         }else {
+			            alert("에러: " + httpRequest.status);
 		         }
 			}
+		}
 		
-		function displayResult(){ }
+		function displayResult1(){}
+		function displayResult2(){}
 	</script>
 
 

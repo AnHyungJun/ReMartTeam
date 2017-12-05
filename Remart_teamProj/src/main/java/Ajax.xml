@@ -75,4 +75,12 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="deleteFollow" parameterType="hashmap">
 		delete from follow where my_id = #{myid} and other_id = #{otherid}
 	</select>
+	
+	<select id="confirmBasket" parameterType="hashmap" resultType="basket">
+		select food_id from basket where id=#{id}
+	</select>
+	
+	<update id="updateFoodNum" parameterType="hashmap">
+		update basket set food_num = food_num + #{food_num} where id = #{id} and food_id = #{food_id}
+	</update>
 </mapper>

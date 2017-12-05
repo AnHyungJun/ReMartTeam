@@ -3,6 +3,7 @@ package dao;
 import java.util.HashMap;
 import java.util.List;
 
+import model.BasketDataBean;
 import model.Food_numDataBean;
 import model.Mart_orderDataBean;
 import model.Offline_martDataBean;
@@ -186,4 +187,48 @@ public class MybatisAjaxDBBean extends MybatisConnector{
 	         sqlSession.close();
 	      }
 	   }
+	
+	public int confirmBasket(int food_id, String id) {
+		System.out.println("confirmBasket : ");
+		System.out.println("food_id : " + food_id);
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("id", id);
+		int x = 0;
+		List<BasketDataBean> foodIdInBasket=null;
+		
+		try {
+			foodIdInBasket = sqlSession.selectList(namespace + ".confirmBasket", map);
+			for(int i=0; i<foodIdInBasket.size(); i++) {
+				System.out.println("food_ids:" + foodIdInBasket.get(i).getFood_id() );
+				if(foodIdInBasket.get(i).getFood_id() == food_id){
+					System.out.println("foodIdInBasket.get(i).getFood_id():" + foodIdInBasket.get(i).getFood_id());
+					x=1;
+					break;
+				}
+			}
+			System.out.println("x:" + x);
+		}finally {
+			sqlSession.close();
+		}
+		return x;
+	}
+	
+	public void updateFoodNum(int food_id, int food_num, String id) {
+		System.out.println("updateFoodNum : ");
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("food_id", food_id);
+		map.put("food_num", food_num);
+		map.put("id", id);
+		
+		try {
+			sqlSession.update(namespace + ".updateFoodNum", map);
+			System.out.println("food_num:" + food_num);
+			System.out.println("update ok:");
+		}finally {
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	}
 }
