@@ -41,7 +41,7 @@ public class MainController {
 	@RequestMapping(value = "main")
 	public ModelAndView main(HttpServletRequest request, HttpSession session) throws UnsupportedEncodingException {
 		List<String> userHashList = new ArrayList<String>();
-		List<String> foodList = new ArrayList<String>();
+		List<String> foodSearchList = new ArrayList<String>();
 		
 		
 		List a = dbPro.selectUserIdDb();
@@ -53,12 +53,10 @@ public class MainController {
 		for(int i=0; i<b.size(); i++)
 			userHashList.add("#"+(String) b.get(i));
 		for(int i=0; i<c.size(); i++)
-			foodList.add((String) c.get(i));
+			foodSearchList.add((String) c.get(i));
 		
 		session.setAttribute("userHashList", userHashList);
-		session.setAttribute("foodList", foodList);
-		
-		System.out.println(userHashList);
+		session.setAttribute("foodSearchList", foodSearchList);
 		
 			request.setCharacterEncoding("utf-8");
 			R_memberDataBean r_member = (R_memberDataBean) request.getSession()
@@ -136,25 +134,27 @@ public class MainController {
 		return mv;
 	}
 	@RequestMapping(value = "searchForm")
-	public ModelAndView searchForm(String autocompleteText, String autocompleteText2, HttpSession session) {
+	public ModelAndView searchForm(String please,String please2, String autocompleteText, String autocompleteText2, HttpSession session) {
 		mv.clear();
 		List searchList = null;
-		if(autocompleteText2 != null){ 
-			searchList = dbPro.getFoodSearchList(autocompleteText2);
+		if(please2 != ""){ 
+			please2 = please2.replace(" ", "");
+			searchList = dbPro.getFoodSearchList(please2);
 			session.setAttribute("curPage", "shopping");
 			mv.setViewName("main/foodSearchForm");
 		}else{
 			
-			if(autocompleteText.contains("#")){ 
-				autocompleteText = autocompleteText.replace("#", "");
-				searchList = dbPro.getFeedSearchList(autocompleteText);
+			if(please.contains("#")){ 
+				please = please.replace("#", "");
+				please = please.replace(" ", "");
+				searchList = dbPro.getFeedSearchList(please);
 				mv.setViewName("main/feedSearchForm");
 			}else{ 
-				
+				please = please.replace(" ", "");
 				if(memberInfo == null) 
-					searchList = dbPro.getUserSearchList(autocompleteText);
+					searchList = dbPro.getUserSearchList(please);
 				else 
-					searchList = dbPro.getUserSearchListWithFollow(autocompleteText,id );
+					searchList = dbPro.getUserSearchListWithFollow(please,id );
 				mv.setViewName("main/userSearchForm");
 			}
 		}
