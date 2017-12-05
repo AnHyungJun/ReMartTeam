@@ -44,109 +44,117 @@
 }
 
 .today:nth-child(2) {
-	float: left; 
-	width: 100px; 
-	height: 350px; 
+	float: left;
+	width: 100px;
+	height: 350px;
 	margin-top: 10px;
-	display:none;
+	display: none;
 }
 
 .today01 {
-	transform-origin:100% 100%;
-    transform:rotate(-20deg);
-    cursor: pointer;
+	transform-origin: 0% 0%;
+	transform: rotate(-10deg);
+	cursor: pointer;
 }
 
 .today02 {
-	transform-origin:0% 0%;
-    transform:rotate(-10deg);
-    cursor: pointer;
+	transform-origin: 5% 5%;
+	transform: rotate(-10deg);
+	cursor: pointer;
 }
 
 .today03 {
-	transform-origin:0% 0%;
-    transform:rotate(20deg);
-    cursor: pointer;
+	transform-origin: 0% 0%;
+	transform: rotate(20deg);
+	cursor: pointer;
 }
+
+.today {
+background-image: url("<%=request.getContextPath()%>/images/bg/main_bg.png");
+}
+
 </style>
 <head>
 
 <title>REMART</title>
 </head>
 <body>
-	<div style="margin-top: 100px"></div>
-<div class="w3-container">
-				<div style="margin-top: 50px;"></div>
-				<div class="w3-center">
-				<div style="height: 500px">
-				오늘의 추천<br>
+<center>
+	<div style="margin-top: 150px"></div>
+	<div class="w3-container">
+		<div style="margin-top: 50px;"></div>
+		<div class="w3-center-align">
+			<div class="today w3-center" style="width:900px; height: 493px">
 				<c:if test="${fn:length(todayRecomendFeed) != 0}">
 					<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
 					<!-- 리스트가 있으면 뿌려주는 FOREACH -->
-					
 					<div class="w3-container"
-							style="float: left; width: 100%; height: 200px; margin-top: 10px;">
-						<div class="w3-center" style="width:30%; float:left; margin-right: 50px;">
-						<img id="${todayRecomendFeed[0].feed_id}" class="showMask today01"
-									src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[0].img_name[0]}"
-									style="width: 150px; height: 150px;"
-									onclick="popup('${fn:length(todayRecomendFeed[0].img_name)}','${todayRecomendFeed[0]}','${todayRecomendFeed[0].img_name}','${todayRecomendFeed[0].content}','${todayRecomendFeed[0].replelist}','${fn:length(todayRecomendFeed[0].replelist)}');"><br>
-								<br><br><br>${todayRecomendFeed[0].recipe_name }
+						style="float: left; width: 100%; height: 200px; margin-top: 90px;">
+						<div class="w3-center"
+							style="width: 36%; float: left; margin-right: 40px;">
+							<img id="${todayRecomendFeed[0].feed_id}"
+								class="showMask today01"
+								src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[0].img_name[0]}"
+								style="width: 150px; height: 150px;"
+								onclick="popup('${fn:length(todayRecomendFeed[0].img_name)}','${todayRecomendFeed[0]}','${todayRecomendFeed[0].img_name}','${todayRecomendFeed[0].content}','${todayRecomendFeed[0].replelist}','${fn:length(todayRecomendFeed[0].replelist)}');"><br>
+							<p class="w3-text-white"><b>${todayRecomendFeed[0].recipe_name }</b></p>
 						</div>
-						<div class="w3-center" style="width:30%; float:left; margin-right: 50px; margin-top: 100px;">
-						<img id="${todayRecomendFeed[1].feed_id}" class="showMask today02"
-									src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[1].img_name[0]}"
-									style="width: 150px; height: 150px; "
-									onclick="popup('${fn:length(todayRecomendFeed[1].img_name)}','${todayRecomendFeed[1]}','${todayRecomendFeed[1].img_name}','${todayRecomendFeed[1].content}','${todayRecomendFeed[1].replelist}','${fn:length(todayRecomendFeed[1].replelist)}');"><br>
-								<br>${todayRecomendFeed[1].recipe_name }
-								</div>
-						<div class="w3-center" style="width:30%; float:left;">
-						<img id="${todayRecomendFeed[2].feed_id}" class="showMask today03"
-									src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[2].img_name[0]}"
-									style="width: 150px; height: 150px; "
-									onclick="popup('${fn:length(todayRecomendFeed[2].img_name)}','${todayRecomendFeed[2]}','${todayRecomendFeed[2].img_name}','${todayRecomendFeed[2].content}','${todayRecomendFeed[2].replelist}','${fn:length(todayRecomendFeed[2].replelist)}');"><br>
-								<br><br><br>${todayRecomendFeed[2].recipe_name }
+						<div class="w3-right"
+							style="width: 35%; float: left; margin-right: 50px; margin-top: 20px;">
+							<img id="${todayRecomendFeed[1].feed_id}"
+								class="showMask today02"
+								src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[1].img_name[0]}"
+								style="width: 150px; height: 150px;"
+								onclick="popup('${fn:length(todayRecomendFeed[1].img_name)}','${todayRecomendFeed[1]}','${todayRecomendFeed[1].img_name}','${todayRecomendFeed[1].content}','${todayRecomendFeed[1].replelist}','${fn:length(todayRecomendFeed[1].replelist)}');"><br>
+							<p class="w3-text-white"><b>${todayRecomendFeed[1].recipe_name }</b></p>
+						</div>
+						<div class="w3-center" style="width: 18%; float: left; margin-top: 120px;">
+							<img id="${todayRecomendFeed[2].feed_id}"
+								class="showMask today03"
+								src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[2].img_name[0]}"
+								style="width: 150px; height: 150px;"
+								onclick="popup('${fn:length(todayRecomendFeed[2].img_name)}','${todayRecomendFeed[2]}','${todayRecomendFeed[2].img_name}','${todayRecomendFeed[2].content}','${todayRecomendFeed[2].replelist}','${fn:length(todayRecomendFeed[2].replelist)}');"><br>
+							<br> <br><p class="w3-text-white"><b>${todayRecomendFeed[2].recipe_name }</b></p>
 						</div>
 					</div>
 				</c:if>
-			</div>
-			<c:if test="${fn:length(todayRecomendFeed) == 0}">
-				<div style="margin-top: 100px; font-size: 13px;">
-					<b> 추천없음 </b>
+				<c:if test="${fn:length(todayRecomendFeed) == 0}">
+				<div style="font-size: 13px;">
+					
 				</div>
 			</c:if>
-		</div>
-		--------------------------------------------------------------------------
-					<c:if test="${fn:length(Feeds) != 0}">
-						<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
-						<!-- 리스트가 있으면 뿌려주는 FOREACH -->
-						<c:forEach var="list" items="${Feeds}" varStatus="status">
-							
-							<div class="w3-container"
-								style="float: left; width: 33%; height: 350px; margin-top: 10px;">
-			<!-- FEED  이부분을 너가 꾸몄던걸로 바꾸면 됨-->
-								<div class="w3-center">
-									
-									<!-- 여기가 이미지 부분인데 SHOWMASK클래스를 클릭하면  READY 부분에 SHOWMASK 클릭이벤트 실행 그러면 레이어창이 올라옴-->
-									<img id="${list.feed_id}" class="showMask"
-										src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
-										style="width: 300px; height: 300px"
-										onclick="popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');"><br>
-									${list.recipe_name }
-									<!-- POPUP함수는 누르면 실행인데 %이미지 몇개인지 보내는거 ,FEED,이미지 이름 보내고,이미지에 달린 내용 보내고, 리플 리스트 통채로 보내고 , 리플리스트 사이즈 보내고%-->
-								</div>
-							</div>
-						</c:forEach>
-					</c:if>
-				</div>
-				<c:if test="${fn:length(Feeds) == 0}">
-					<div style="margin-top: 100px; font-size: 13px;">
-						<b> 아직 쓴 글이 없습니다. </b>
-					</div>
-				</c:if>
-
 			</div>
 		</div>
+		<div style="margin-top:100px;"></div>
+		<div style="width:900px">
+		<c:if test="${fn:length(Feeds) != 0}">
+			<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
+			<!-- 리스트가 있으면 뿌려주는 FOREACH -->
+			<c:forEach var="list" items="${Feeds}" varStatus="status">
+
+				<div class="w3-container"
+					style="float: left; width: 33%; height: 350px; margin-top: 10px;">
+					<!-- FEED  이부분을 너가 꾸몄던걸로 바꾸면 됨-->
+					<div class="w3-center">
+
+						<!-- 여기가 이미지 부분인데 SHOWMASK클래스를 클릭하면  READY 부분에 SHOWMASK 클릭이벤트 실행 그러면 레이어창이 올라옴-->
+						<img id="${list.feed_id}" class="showMask"
+							src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
+							style="width: 300px; height: 300px"
+							onclick="popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');"><br>
+						${list.recipe_name }
+						<!-- POPUP함수는 누르면 실행인데 %이미지 몇개인지 보내는거 ,FEED,이미지 이름 보내고,이미지에 달린 내용 보내고, 리플 리스트 통채로 보내고 , 리플리스트 사이즈 보내고%-->
+					</div>
+				</div>
+			</c:forEach>
+		</c:if>
+	</div>
+	<c:if test="${fn:length(Feeds) == 0}">
+		<div style="margin-top: 100px; font-size: 13px;">
+			<b> 아직 쓴 글이 없습니다. </b>
+		</div>
+	</c:if>
+	</div>
 	</center>
 
 	<!-- 레이어창 -->
@@ -154,14 +162,20 @@
 		<!--이부분 이해안되면 찾아오고 -->
 		<div class="mask"></div>
 		<div class="window w3-modal w3-modal-content w3-animate-opacity">
-			<button type="button" href="#" class="close w3-button w3-white w3-hover-white w3-right"> X </button>
-			<div style="margin-top:40px;"></div>
+			<button type="button" href="#"
+				class="close w3-button w3-white w3-hover-white w3-right">X
+			</button>
+			<div style="margin-top: 40px;"></div>
 			<div style="width: 100%; height: 50px;">
 				<!--글쓰는데 상단 고정바-->
 				<button id="leftpage" style="float: left;" onclick="plusDivs(-1)"
-				class="w3-button w3-white w3-hover-white"> <b>〈 </b> </button>
+					class="w3-button w3-white w3-hover-white">
+					<b>〈 </b>
+				</button>
 				<button id="rightpage" style="float: right" type="button"
-					class="w3-button w3-white w3-hover-white" onclick="plusDivs(1)"> <b> 〉 </b></button>
+					class="w3-button w3-white w3-hover-white" onclick="plusDivs(1)">
+					<b> 〉 </b>
+				</button>
 			</div>
 		</div>
 	</div>
