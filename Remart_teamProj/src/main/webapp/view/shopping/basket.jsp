@@ -330,7 +330,12 @@
 								<dl>
 									<dt style="font-size: 15px;">배송비</dt>
 									<br>
+									<c:if test="${articleBasketList != null }">
 									<dd style="font-size: 16px;">2500원</dd>
+									</c:if>
+									<c:if test="${articleBasketList == null }">
+									<dd style="font-size: 16px;">0원</dd>
+									</c:if>
 								</dl>
 							</li>
 							<li>
@@ -347,8 +352,14 @@
 				<!-- paysum_wrap end -->
 				<form action="paymentInfo" method="post">
 				<div class="w3-center">
+					<c:if test="${articleBasketList != null }">
 					<input type="button" value="결제하기" style="font-size: 13px;"
 						class="w3-button w3-black w3-hover-red" onclick="checkpoint(this.form)"/>
+					</c:if>
+					<c:if test="${articleBasketList == null }">
+					<input type="button" value="결제하기" style="font-size: 13px;"
+						class="w3-button w3-black w3-hover-red" onclick="checkbasket(this.form)"/>
+					</c:if>
 				</div>
 				<input type="hidden" value="${memberInfo.point }" name="point">
 				</form>
@@ -390,6 +401,10 @@
 	        	 point = 0;
 	        	 location.replace("paymentInfo?checkpoint="+point);
 	         }
+		}
+		
+		function checkbasket(thisform) {
+			alert("장바구니가 비어있습니다.");
 		}
 	</script>
 

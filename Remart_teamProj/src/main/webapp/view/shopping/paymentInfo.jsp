@@ -354,5 +354,20 @@
 		</div>
 	</div>
 	<div style="margin-bottom: 50px"></div>
+	
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js">	
+</script>
+<script>
+	function openDaumPostcode() {
+		new daum.Postcode({
+			oncomplete : function(data) {
+				document.getElementById('zip1').value = data.postcode1;
+				document.getElementById('zip2').value = data.postcode2;
+				document.getElementById('address1').value = data.address;
+				document.getElementById('address2').focus();
+			}
+		}).open();
+	}
+</script>
 </body>
 </html>
