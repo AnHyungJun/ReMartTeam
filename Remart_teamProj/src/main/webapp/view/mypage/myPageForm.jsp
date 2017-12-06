@@ -100,10 +100,10 @@
 					</div>
 				</c:if>
 				<c:if test="${checkpage==1}">
-					<div class="w3-display-right" style="margin-right: 10%;">
+					<div class="w3-display-right" style="margin-left:30px;">
 						<button
 							class="w3-button w3-white w3-hover-light-grey w3-border w3-round-xlarge"
-							style="width: 150px;">팔로우</button>
+							style="width: 130px; font-size: 12px;">팔로우</button>
 					</div>
 				</c:if>
 				<div class="w3-display-middle" style="margin-left:70px;">
