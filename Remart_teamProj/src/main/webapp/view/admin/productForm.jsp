@@ -47,6 +47,11 @@
 					class="w3-button w3-black w3-hover-red w3-center"
 					style="font-size: 12px; width: 90px;" value="상품 등록" onClick="openOfflineSearch(this.form)">
 			</div>
+			<div class="w3-right">
+			<form method="post" action="foodsearchPro">
+			<input type="text" name="foods" value=""> <button type="submit">검색</button>
+			</form>
+			</div>
 		</div>
 		<div style="margin-top: 10px;"></div>
 		<div class="w3-container w3-center" style="width: 900px;">
@@ -54,16 +59,25 @@
 					<table class="list_body_table" width="100%">
 						<tr
 							style="border-top: 1px solid #666; background-color: #f7f7f7; font-size: 13px;">
-							<th width="15%" class="w3-center">DATE</th>
-							<th width="70%" class="w3-center">PRODUCT INFO</th>
-							<th width="15%" class="w3-center">EDIT</th>
+							<th width="30%" class="w3-center">PRODUCT NAME</th>
+							<th width="30%" class="w3-center">PRODUCT PRICE</th>
+							<th width="30%" class="w3-center">PRODUCT QTY</th>
+							<th width="10%" class="w3-center">EDIT</th>
 						</tr>
-						<form method="post" action="">
-						<c:forEach var="product_list" items="">
 						
+						<c:forEach var="food" items="${foodlist}">
+						<form name="food">
+						<tr>
+							<th> ${food.name} </th>
+							<th> <input value="${food.price}" name="price"> </th>
+							<th> <input value="${food.qty}" name="qty"> </th>
+							<th> <button onClick="foodupdate(${food.food_id},this.form)">수정</button> <button onClick="fooddelete(${food.food_id})">삭제</button> </th>
+						</tr>
+						</form>
 						</c:forEach>
+						
 					</table>
-				</form>
+				
 			</div>
 		</div>
 
@@ -105,7 +119,19 @@
 
 		open(url, "productWrite",
 				"toolbar = no,location=no, status= no, menubar = no,"
-						+ "resizable=no, width = 1000, height = 1000");
+						+ "resizable=no, width = 1000, height = 670");
+	}
+	
+	function foodupdate(food_id, userinput) {
+		var price = userinput.price.value;
+		var qty = userinput.qty.value;
+		alert("df");
+		document.location.href = "<%=request.getContextPath()%>/admin/foodupdate?food_id="+food_id+"&price="+price+"&qty="+qty;
+		
+	}
+	
+	function fooddelete(food_id) {
+		document.location.href = "<%=request.getContextPath()%>/admin/fooddelete?food_id="+food_id;
 	}
 	</script>
 </body>

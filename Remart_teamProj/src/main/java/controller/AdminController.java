@@ -52,6 +52,32 @@ ModelAndView mv = new ModelAndView();
 		mv.setViewName("admin/productForm");
 		return mv;
 	}
+	
+	@RequestMapping(value="foodsearchPro")
+	public ModelAndView foodsearchPro(String foods) {
+		List foodlist = dbPro.foodlist(foods);
+		
+		mv.clear();
+		mv.addObject("foodlist", foodlist);
+		mv.setViewName("admin/productForm");
+		return mv;
+	}
+	
+	@RequestMapping(value="foodupdate")
+	public ModelAndView foodupdate(FoodDataBean foodDataBean) {
+		dbPro.foodupdate(foodDataBean);
+		mv.clear();
+		mv.setViewName("admin/productForm");
+		return mv;
+	}
+	
+	@RequestMapping(value="fooddelete")
+	public ModelAndView fooddelete(FoodDataBean foodDataBean) {
+		dbPro.fooddelete(foodDataBean);
+		mv.clear();
+		mv.setViewName("admin/productForm");
+		return mv;
+	}
 	@RequestMapping(value="productWrite")
 	public ModelAndView productWrite(){	
 		mv.clear();

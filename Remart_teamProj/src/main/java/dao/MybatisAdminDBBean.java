@@ -95,4 +95,41 @@ public class MybatisAdminDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+	
+	public List foodlist(String foods) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("foods", foods);
+		try {
+			return sqlSession.selectList(namespace + ".foodlist", map);
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	public void foodupdate(FoodDataBean foodDataBean) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("foodDataBean", foodDataBean);
+		try {
+			sqlSession.update(namespace + ".foodupdate", map);
+			System.out.println("update ok:");
+		} finally {
+			sqlSession.commit();
+			sqlSession.close();
+		}
+		
+	}
+
+	public void fooddelete(FoodDataBean foodDataBean) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("foodDataBean", foodDataBean);
+		 try {
+			   sqlSession.delete(namespace + ".fooddelete", map);
+		   } finally {
+			   sqlSession.commit();
+			   sqlSession.close();
+		   }   
+	}
 }

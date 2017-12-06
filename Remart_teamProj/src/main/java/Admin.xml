@@ -36,4 +36,16 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getFood_id" resultType="int">
 	select max(food_id) from food
 	</select>
+	
+	<select id="foodlist" parameterType="hashmap" resultType="food">
+	select * from food where name like '%${foods}%'
+	</select>
+	
+	<update id="foodupdate" parameterType="hashmap">
+	update food set price=#{foodDataBean.price}, qty=#{foodDataBean.qty} where food_id=#{foodDataBean.food_id}
+	</update>
+	
+	<delete id="fooddelete" parameterType="hashmap">
+	delete from food where food_id=#{foodDataBean.food_id}
+	</delete>
 </mapper>
