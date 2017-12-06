@@ -158,7 +158,6 @@ a {
 						<img alt="사진"
 							src="<%=request.getContextPath() %>/fileSave/${articleFood.type }"
 							width="80%" style="margin-top: 8px;">
-							
 						</c:if>	
 						<p style="font-size: 13px;">${articleFood.name }</p>
 						<p style="font-size: 13px;">${articleFood.price }원</p>
