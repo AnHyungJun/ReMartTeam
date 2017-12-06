@@ -34,8 +34,7 @@
 			lastKeyword = keyword;
 			if(keyword != ''){
 				var params = "keyword=" + encodeURIComponent(keyword);
-				sendRequest("<%=request.getContextPath()%>
-	/common/suggestFileSearch.jsp",
+				sendRequest("<%=request.getContextPath()%>/common/suggestFileSearch.jsp",
 						params, displayResult, 'POST');
 			} else {
 				hide('suggest');
