@@ -48,11 +48,12 @@ ModelAndView mv = new ModelAndView();
 	}
 	@RequestMapping(value="productForm")
 	public ModelAndView productForm(){	
+		List allfoodlist = dbPro.allfoodlist();
 		mv.clear();
+		mv.addObject("allfoodlist", allfoodlist);
 		mv.setViewName("admin/productForm");
 		return mv;
 	}
-	
 	@RequestMapping(value="foodsearchPro")
 	public ModelAndView foodsearchPro(String foods) {
 		List foodlist = dbPro.foodlist(foods);

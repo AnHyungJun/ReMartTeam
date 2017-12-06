@@ -64,7 +64,32 @@
 							<th width="30%" class="w3-center">PRODUCT QTY</th>
 							<th width="10%" class="w3-center">EDIT</th>
 						</tr>
-						
+						<c:if test="${foodlist == null }">
+						<c:forEach var="allfood" items="${allfoodlist}">
+						<form name="food">
+								<tr>
+									<th width="30%" class="w3-center"
+										style="vertical-align: middle;">${allfood.name}</th>
+									<th width="30%" class="w3-center"
+										style="vertical-align: middle;"><input
+										value="${allfood.price}" name="price"></th>
+									<th width="30%" class="w3-center"
+										style="vertical-align: middle;"><input
+										value="${allfood.qty}" name="qty"></th>
+									<th width="10%" class="w3-center"
+										style="vertical-align: middle;">
+										<button class="w3-button w3-black w3-hover-black"
+											style="font-size: 11px"
+											onClick="foodupdate(${food.food_id},this.form)">수정</button>
+										<p class="tiny"></p>
+										<button class="w3-button w3-black w3-hover-black"
+											style="font-size: 11px" onClick="fooddelete(${food.food_id})">삭제</button>
+									</th>
+								</tr>
+							</form>
+						</c:forEach>
+					</c:if>
+					<c:if test="${foodlist != null }">
 						<c:forEach var="food" items="${foodlist}">
 						<form name="food">
 						<tr>
@@ -75,41 +100,10 @@
 						</tr>
 						</form>
 						</c:forEach>
-						
+						</c:if>
 					</table>
 				
 			</div>
-		</div>
-
-		<div class="w3-container" style="width: 900px">
-			<c:if test="${count > 0 }">
-				<c:if test="${startPage > bottomLine }">
-					<a href="list?pageNum=${startPage - bottomLine }"
-						style="font-size: 12px; text-decoration: none;"
-						onMouseover="this.style.textDecoration='none';"
-						onMouseout="this.style.textDecoration='none';"><font
-						color='black'></font></a>
-				</c:if>
-				<c:forEach var="i" begin="${startPage}" end="${endPage}">
-					<a href="list?pageNum=${i} "
-						style="font-size: 12px; text-decoration: none;"
-						onMouseover="this.style.textDecoration='none';"
-						onMouseout="this.style.textDecoration='none';"> <c:if
-							test="${i != currentPage }">
-							<font color='black'>${i }</font>
-						</c:if> <c:if test="${i == currentPage }">
-							<font color='red'>${i }</font>
-						</c:if></a>
-				</c:forEach>
-				<c:if test="${endPage < pageCount }">
-					<a href="list?pageNum=${startPage + bottomLine }"
-						style="font-size: 12px; text-decoration: none;"
-						onMouseover="this.style.textDecoration='none';"
-						onMouseout="this.style.textDecoration='none';"><font
-						color='black'>다음</font></a>
-
-				</c:if>
-			</c:if>
 		</div>
 	</center>
 	

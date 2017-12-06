@@ -52,4 +52,9 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="fooddelete" parameterType="hashmap">
 	delete from food where food_id=#{foodDataBean.food_id}
 	</delete>
+	
+	<select id="allfoodlist" resultType="food">
+	select name, price, qty from food
+	</select>
+	
 </mapper>

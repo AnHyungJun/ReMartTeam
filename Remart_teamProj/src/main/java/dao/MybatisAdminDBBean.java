@@ -137,4 +137,13 @@ public class MybatisAdminDBBean extends MybatisConnector {
 			   sqlSession.close();
 		   }   
 	}
+	
+	public List allfoodlist() {
+		sqlSession = sqlSession();
+		try {
+			return sqlSession.selectList(namespace + ".allfoodlist");
+		} finally {
+			sqlSession.close();
+		}
+	}
 }
