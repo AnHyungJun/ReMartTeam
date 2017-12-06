@@ -297,7 +297,7 @@
 			var table = document.getElementById("editorfood2");
 			var food = foodname.split('-');
 
-			var row = "<tr height=\"140\"><input type=\"hidden\" name=\"food_id\" value=\""+food[0]+"\"/>";
+			var row = "<tr class=\"w3-center\" width=\"610\"height=\"140\"><input type=\"hidden\" name=\"food_id\" value=\""+food[0]+"\"/>";
 			row += "<td>" + rowlen + "</td>";
 			rowlen++;
 			row += "<td>"

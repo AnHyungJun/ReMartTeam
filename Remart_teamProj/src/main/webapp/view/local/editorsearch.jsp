@@ -28,7 +28,7 @@
 		</div>
 		<div align="center" style="margin-top: 20px;">
 			<input type="button"
-				class="w3-button w3-white w3-hover-white w3-border w3-border-black"
+				class="w3-button w3-white w3-hover-white w3-border"
 				style="font-size: 11px;" onclick="end()" value="닫기">
 		</div>
 	</form>
