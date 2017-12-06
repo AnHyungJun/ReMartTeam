@@ -108,7 +108,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td width="200">성별${memberInfo.sex }</td>
+				<td width="200">성별</td>
 				<c:if test="${memberInfo.sex == 'M'}">
 				<td width="400"><input type="radio" name="sex" value="M"
 					checked="checked" style="vertical-align: middle;"> 남성
