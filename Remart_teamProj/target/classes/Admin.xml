@@ -4,16 +4,21 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="admin.mybatis">
-   <cache />
-   <select id="getMart_orders" resultType="mart_order">
-		select * from mart_order
+	<cache />
+	<select id="getMart_orders" resultType="mart_order">
+		select mart_order_id
+		,re_date,or_date,offline_mart_id,status,(select location from
+		offline_mart o where o.offline_mart_id=m.offline_mart_id) location
+		from
+		mart_order m
 	</select>
 	<select id="getFood_payments" resultType="food_payment">
 		select * from
 		food_payment
 	</select>
 	<update id="statuschange" parameterType="hashmap">
-		update mart_order set status=#{new_status} where
+		update mart_order set
+		status=#{new_status} where
 		mart_order_id=#{mart_order_id}
 	</update>
 	<update id="paychange" parameterType="hashmap">

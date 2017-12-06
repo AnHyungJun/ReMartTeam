@@ -31,6 +31,7 @@
 	}
 </script>
 <body>
+
 	<table>
 		<tr>
 			<td width="300">location</td>
@@ -39,22 +40,27 @@
 			<td width="300">status</td>
 			<td width="300">상태변경</td>
 		</tr>
-		<c:forEach var="order" items="${orderList }">
-			<tr>
-				<td>${order.location}</td>
-				<td>${order.re_date }</td>
-				<td>${order.or_date }</td>
-				<td><c:if test="${order.status=='order'}">발주완료</c:if>
-				<c:if test="${order.status=='ready'}">배송준비중</c:if>
-				<c:if test="${order.status=='ing'}">배송중</c:if>
-				<c:if test="${order.status=='end'}">배송완료</c:if></td>
-				<td>
-					<button
-						onclick="stchange('${order.mart_order_id }','${order.status}','order')">확인</button>
-				</td>
-			</tr>
-		</c:forEach>
 	</table>
+	<div
+		style="overflow-x: hidden; overflow: auto; width: 100%; max-height: 200px;">
+		<table>
+			<c:forEach var="order" items="${orderList }">
+				<tr>
+					<td width="300">${order.location}</td>
+					<td width="300">${order.re_date }</td>
+					<td width="300">${order.or_date }</td>
+					<td width="300"><c:if test="${order.status=='order'}">발주완료</c:if>
+						<c:if test="${order.status=='ready'}">배송준비중</c:if> <c:if
+							test="${order.status=='ing'}">배송중</c:if> <c:if
+							test="${order.status=='end'}">배송완료</c:if></td>
+					<td width="300">
+						<button
+							onclick="stchange('${order.mart_order_id }','${order.status}','order')">확인</button>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 	<hr>
 	<table>
 		<tr>
@@ -64,22 +70,28 @@
 			<td width="300">order_date</td>
 			<td width="300">상태변경</td>
 		</tr>
-		<c:forEach var="pay" items="${payList }">
-			<tr>
-				<td>${pay.id }</td>
-				<td>${pay.order_date }</td>
-				<td>${pay.pro_name}</td>
-				<td><c:if test="${pay.order_state} ==order}">주문완료</c:if>
-				<c:if test="${pay.order_state=='pay'}">결제완료</c:if>
-				<c:if test="${pay.order_state=='ready'}">배송준비중</c:if>
-				<c:if test="${pay.order_state=='ing'}">배송중</c:if>
-				<c:if test="${pay.order_state=='end'}">배송완료</c:if></td>
-				<td>
-					<button
-						onclick="stchange('${pay.payment_id }','${pay.order_state}','pay')">확인</button>
-				</td>
-			</tr>
-		</c:forEach>
 	</table>
+	<div
+		style="overflow-x: hidden; overflow: auto; width: 100%; max-height: 200px;">
+		<table>
+
+			<c:forEach var="pay" items="${payList }">
+				<tr>
+					<td width="300">${pay.id }</td>
+					<td width="300">${pay.order_date }</td>
+					<td width="300">${pay.pro_name}</td>
+					<td width="300"><c:if test="${pay.order_state} ==order}">주문완료</c:if>
+						<c:if test="${pay.order_state=='pay'}">결제완료</c:if> <c:if
+							test="${pay.order_state=='ready'}">배송준비중</c:if> <c:if
+							test="${pay.order_state=='ing'}">배송중</c:if> <c:if
+							test="${pay.order_state=='end'}">배송완료</c:if></td>
+					<td width="300">
+						<button
+							onclick="stchange('${pay.payment_id }','${pay.order_state}','pay')">확인</button>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 </body>
 </html>
