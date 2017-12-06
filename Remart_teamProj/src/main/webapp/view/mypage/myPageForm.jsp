@@ -80,7 +80,7 @@
 					<div style="float: left; margin-left: 30%;">
 						<img
 							src="<%=request.getContextPath()%>/fileSave/${member.profileImg}"
-							class="w3-circle" alt="Norway"
+							class="w3-circle" alt=""
 							style="width: 200px; height: 200px">
 					</div>
 				</div>
