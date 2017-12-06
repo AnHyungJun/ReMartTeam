@@ -164,14 +164,14 @@
 									에디터<br>									<img id="${list.feed_id}" class="showMask"
 										src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 										style="width: 300px; height: 300px"
-										onclick="editorfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}','${list.food_id}','${list.hashtaglist}');"><br>
+										onclick="editorfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.makecontent}','${list.replelist}','${fn:length(list.replelist)}','${list.food_id}','${list.hashtaglist}');"><br>
 									${list.recipe_name }
 									</c:if>
 									<c:if test="${list.feed_grade eq 'nomal'}">
 									<img id="${list.feed_id}" class="showMask"
 										src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 										style="width: 300px; height: 300px"
-										onclick="nomalfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}','${list.hashtaglist}');"><br>
+										onclick="nomalfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.makecontent}','${list.replelist}','${fn:length(list.replelist)}','${list.hashtaglist}');"><br>
 									${list.recipe_name }
 									</c:if>
 								</div>
@@ -246,12 +246,11 @@
    		var id;
    		//넘겨준 데이터 쪼갬
    		imagename=imagename.substring(1,imagename.length-1);
-   		contentname=contentname.substring(1,contentname.length-1);
    		repledata=repledata.substring(1,repledata.length-1);
    		hashtag=hashtag.substring(1,hashtag.length-1);
    		imagename=imagename.split(', ');
    		hashtag=hashtag.split(', ');
-   		contentname=contentname.split(', ');
+   		contentname=contentname.split('@!');
    		feeddate=feeddate.split(', ');
    		id=feeddate[1].substring(3,feeddate[1].length);
    		title=feeddate[5].substring(12,feeddate[5].length);
@@ -274,11 +273,11 @@
    		var size=0;
 		for(var i=0;i<hashtag.length;i++){
 			if(size<30){
-				resulthashtag+="<a href=\"/Remart_teamProj/main/searchForm?autocompleteText=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
+				resulthashtag+="<a href=\"/Remart_teamProj/main/searchForm?please=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
 				size+=hashtag[i].length;
 			}else{
 				size=0;
-				resulthashtag+="<br><a href=\"/Remart_teamProj/main/searchForm?autocompleteText=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
+				resulthashtag+="<br><a href=\"/Remart_teamProj/main/searchForm?please=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
 				size+=hashtag[i].length;
 			}
 		}
@@ -286,7 +285,7 @@
   	  		+resulthashtag+"</div>";
   	  	y+="<div align=\"left\" style=\"width:100%; height:40px\"> <img src=\"/Remart_teamProj/images/icon/like_before.png\" style=\"width:40px; height:40px\"></div>";
   	  	y+="</div>";
-  	  alert(y);
+  	 
   	  	$('.window').append(y); 
    		
   	  

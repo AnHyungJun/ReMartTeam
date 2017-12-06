@@ -19,7 +19,14 @@ public class FeedDataBean implements Serializable{
 	int likestate;
 	int bookmarkstate;
 	String feed_grade;
-
+	String makecontent;
+	
+	public String getMakecontent() {
+		return makecontent;
+	}
+	public void setMakecontent(String makecontent) {
+		this.makecontent = makecontent;
+	}
 	public List getHashtaglist() {
 		return hashtaglist;
 	}

@@ -305,9 +305,9 @@
 					+ "</td>";
 			row += "<td>" + food[1] + "</td>";
 			row += "<td>" + food[2] + "</td>";
-			row += "<td><button name=\"delStaff\" class=\"w3-button w3-white w3-hover-white\" type=\"button\">삭제</button></td>";
+			row += "<td><button name=\"delStaff\" class=\"w3-button w3-white w3-hover-white\" type=\"button\" onclick=\"deleteLine(this);\">삭제</button></td>";
 			row += "</tr>";
-			alert(row);
+			
 			$("#editorfood2").append(row);
 		}
 		hashinput.keyup(function(event) {
@@ -353,6 +353,12 @@
 				showDivs(slideIndex += n);
 
 			}
+		}
+		function deleteLine(obj) {
+		    var tr = $(obj).parent().parent();
+		 
+		    //라인 삭제
+		    tr.remove();
 		}
 		function statefile(input) {
 			checkimage[slideIndex] = true;
