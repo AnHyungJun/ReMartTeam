@@ -41,6 +41,10 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from food where name like '%${foods}%'
 	</select>
 	
+	<select id="foodlistnull" resultType="food">
+	select * from food
+	</select>
+	
 	<update id="foodupdate" parameterType="hashmap">
 	update food set price=#{foodDataBean.price}, qty=#{foodDataBean.qty} where food_id=#{foodDataBean.food_id}
 	</update>

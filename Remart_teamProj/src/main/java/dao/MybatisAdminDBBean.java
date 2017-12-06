@@ -101,7 +101,10 @@ public class MybatisAdminDBBean extends MybatisConnector {
 		HashMap map = new HashMap();
 		map.put("foods", foods);
 		try {
-			return sqlSession.selectList(namespace + ".foodlist", map);
+			if(foods != null)
+				return sqlSession.selectList(namespace + ".foodlist", map);
+			else
+				return sqlSession.selectList(namespace + ".foodlistnull");
 		} finally {
 			sqlSession.close();
 		}
@@ -111,6 +114,7 @@ public class MybatisAdminDBBean extends MybatisConnector {
 		sqlSession = sqlSession();
 		HashMap map = new HashMap();
 		map.put("foodDataBean", foodDataBean);
+		System.out.println(foodDataBean.getFood_id()+":"+foodDataBean.getPrice()+ ":"+foodDataBean.getQty());
 		try {
 			sqlSession.update(namespace + ".foodupdate", map);
 			System.out.println("update ok:");
@@ -125,6 +129,7 @@ public class MybatisAdminDBBean extends MybatisConnector {
 		sqlSession = sqlSession();
 		HashMap map = new HashMap();
 		map.put("foodDataBean", foodDataBean);
+		System.out.println(foodDataBean.getFood_id());
 		 try {
 			   sqlSession.delete(namespace + ".fooddelete", map);
 		   } finally {
