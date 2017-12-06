@@ -178,7 +178,7 @@ function bb(){
 														<input onkeyup="bb()" id="autocomplete2" type="text" style="width: 300px; font-size: 14px; height: 30px;" name="autocomplete2"/>
 													</c:if>
 												
-										<div class="w3-bar-item" style="height: 100px;">
+										<div class="w3-center w3-bar-item" style="height: 100px;">
 											<a
 												href="<%=request.getContextPath()%>/main/editorRecommandForm"
 												style="font-size: 12px; text-decoration: none;"
