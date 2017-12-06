@@ -321,7 +321,7 @@
 							</li>
 							<li>
 								<dl>
-									<dt style="font-size: 15px;">할인금액</dt>
+									<dt style="font-size: 15px;">적립금</dt>
 									<br>
 									<dd style="font-size: 16px;">0원</dd>
 								</dl>
