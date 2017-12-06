@@ -50,8 +50,10 @@
 						<c:forEach var="articlefoodNum" items="${articleFoodNumList }">
 						<c:if test="${articlepayment.payment_id == articlefoodNum.order_id }">
 							<tr>
-								<td class="">${articlefoodNum.food_name }/${articlefoodNum.qty }개</td>
-							</tr>	
+								<td><img alt="사진" src="<%=request.getContextPath() %>/images/food/${articlefoodNum.food_name }.jpg"
+								width="100" height="100"></td>
+								<td>${articlefoodNum.food_name }/${articlefoodNum.qty }개</td>
+							</tr>		
 						</c:if>
 						</c:forEach>
 					</table>
