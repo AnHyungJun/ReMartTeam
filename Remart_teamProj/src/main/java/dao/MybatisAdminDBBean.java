@@ -111,36 +111,4 @@ public class MybatisAdminDBBean extends MybatisConnector {
 			return food;
 		}
 	}
-
-	public void foodupdate(FoodDataBean foodDataBean) {
-		sqlSession = sqlSession();
-		HashMap map = new HashMap();
-		map.put("foodDataBean", foodDataBean);
-		System.out.println(foodDataBean.getFood_id()+":"+foodDataBean.getPrice()+ ":"+foodDataBean.getQty());
-		try {
-			sqlSession.update(namespace + ".foodupdate", map);
-			System.out.println("update ok:");
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-		finally {
-			sqlSession.commit();
-			sqlSession.close();
-		}
-		
-	}
-
-	public void fooddelete(FoodDataBean foodDataBean) {
-		sqlSession = sqlSession();
-		HashMap map = new HashMap();
-		map.put("foodDataBean", foodDataBean);
-		System.out.println(foodDataBean.getFood_id());
-		 try {
-			   sqlSession.delete(namespace + ".fooddelete", map);
-		   } finally {
-			   sqlSession.commit();
-			   sqlSession.close();
-		   }   
-	}
 }

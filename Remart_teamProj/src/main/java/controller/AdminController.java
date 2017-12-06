@@ -63,21 +63,6 @@ ModelAndView mv = new ModelAndView();
 		return mv;
 	}
 	
-	@RequestMapping(value="foodupdate")
-	public ModelAndView foodupdate(FoodDataBean foodDataBean) {
-		dbPro.foodupdate(foodDataBean);
-		mv.clear();
-		mv.setViewName("admin/productForm");
-		return mv;
-	}
-	
-	@RequestMapping(value="fooddelete")
-	public ModelAndView fooddelete(FoodDataBean foodDataBean) {
-		dbPro.fooddelete(foodDataBean);
-		mv.clear();
-		mv.setViewName("admin/productForm");
-		return mv;
-	}
 	@RequestMapping(value="productWrite")
 	public ModelAndView productWrite(){	
 		mv.clear();

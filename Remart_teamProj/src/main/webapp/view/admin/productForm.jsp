@@ -121,18 +121,6 @@
 				"toolbar = no,location=no, status= no, menubar = no,"
 						+ "resizable=no, width = 1000, height = 670");
 	}
-	
-	function foodupdate(food_id, userinput) {
-		var price = userinput.price.value;
-		var qty = userinput.qty.value;
-		alert("df");
-		document.location.href = "<%=request.getContextPath()%>/admin/foodupdate?food_id="+food_id+"&price="+price+"&qty="+qty;
-		
-	}
-	
-	function fooddelete(food_id) {
-		document.location.href = "<%=request.getContextPath()%>/admin/fooddelete?food_id="+food_id;
-	}
 	</script>
 </body>
 </html>
