@@ -83,7 +83,7 @@ table {
 						<div style="float: left; margin: 30px;">
 							<img
 								src="<%=request.getContextPath()%>/fileSave/${search.profileImg}"
-								class="w3-circle" alt="Norway" style="width: 60px; height: 60px">
+								class="w3-circle" alt="" style="width: 60px; height: 60px">
 
 						</div>
 
