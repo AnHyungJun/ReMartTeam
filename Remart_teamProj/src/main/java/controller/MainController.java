@@ -63,7 +63,7 @@ public class MainController {
 					.getAttribute("memberInfo");
 			
 		List<FeedDataBean> feeds = dbPro.getFeeds(r_member);
-		//System.out.println(feeds.toString());
+		System.out.println(feeds.toString());
 		List<FeedDataBean> todayRecomendFeed = dbPro.getTodayRecomendFeed();
 		
 		List hashtagCnt = dbPro.getHashtagCnt();
