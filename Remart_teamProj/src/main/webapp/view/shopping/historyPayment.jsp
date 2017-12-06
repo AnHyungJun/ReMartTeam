@@ -20,7 +20,7 @@
 	<div class="delivery_list">
 		<div class="list_head">
 			<div class="list_head_title">
-				<p style=" vertical-align: middle; font-size:14px;">결제 내역</p>
+				<p style=" vertical-align: middle; font-size:20px;"><b>결제 내역</b></p>
 			</div>
 		</div>
 		
