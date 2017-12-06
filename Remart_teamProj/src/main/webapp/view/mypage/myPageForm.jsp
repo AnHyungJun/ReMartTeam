@@ -67,7 +67,7 @@
 							src="<%=request.getContextPath()%>/images/icon/bookmark.png"
 							style="width: 30px;"></a>
 						<a
-							href="<%=request.getContextPath() %>/mypage/historyPayment?id=${history.id}"><img
+							href="<%=request.getContextPath() %>/mypage/historyPayment?id=${memberInfo.id}"><img
 							class="w3-right-align"
 							src="<%=request.getContextPath()%>/images/icon/order.png"
 							style="width: 25px;"></a>
