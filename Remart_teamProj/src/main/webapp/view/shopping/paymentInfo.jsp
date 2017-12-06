@@ -253,6 +253,8 @@
 						
 						<c:set var="totalPrice" value="0"/>
 						<c:forEach var="articleBasket" items="${articleBasketList}">
+						<input type="hidden" name="food_id" value="${articleBasket.food_id }">
+						<input type="hidden" name="food_num" value="${articleBasket.food_num }">
 						<tr>
 							<td></td>
 							<td class="pro_info">
