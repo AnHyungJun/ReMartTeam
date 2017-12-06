@@ -18,11 +18,12 @@ public class MybatisMainDBBean extends MybatisConnector {
 	}
 
 	SqlSession sqlSession;
+
 	public FeedDataBean getFeed(int feed_id) {
 		sqlSession = sqlSession();
 		FeedDataBean feed = null;
 		try {
-			feed = sqlSession.selectOne(namespace + ".getfeednol",feed_id);
+			feed = sqlSession.selectOne(namespace + ".getfeednol", feed_id);
 			feed.setImg_name(sqlSession.selectList(namespace + ".getImg_name",
 					feed_id));
 			feed.setContent(sqlSession.selectList(namespace + ".getContent",
@@ -34,14 +35,15 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
-	public FeedDataBean getFeed(int feed_id,String id) {
+
+	public FeedDataBean getFeed(int feed_id, String id) {
 		sqlSession = sqlSession();
 		FeedDataBean feed = null;
 		HashMap map = new HashMap();
 		map.put("id", id);
 		map.put("feed_id", feed_id);
 		try {
-			feed = sqlSession.selectOne(namespace + ".getfeed",map);
+			feed = sqlSession.selectOne(namespace + ".getfeed", map);
 			feed.setImg_name(sqlSession.selectList(namespace + ".getImg_name",
 					feed_id));
 			feed.setContent(sqlSession.selectList(namespace + ".getContent",
@@ -53,6 +55,7 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+
 	public List getFeeds(String userid) {
 		sqlSession = sqlSession();
 
@@ -86,9 +89,10 @@ public class MybatisMainDBBean extends MybatisConnector {
 				feedlist.get(i).setHashtaglist(
 						sqlSession.selectList(namespace + ".hashtaglist",
 								feed_id));
-				id=feedlist.get(i).getId();
-				feedlist.get(i).setProfileImg((String)sqlSession.selectOne(namespace+".profileImg",id));
-
+				id = feedlist.get(i).getId();
+				feedlist.get(i).setProfileImg(
+						(String) sqlSession.selectOne(
+								namespace + ".profileImg", id));
 
 			}
 			return feedlist;
@@ -98,6 +102,7 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+
 	public List getFeeds(R_memberDataBean r_member) {
 		sqlSession = sqlSession();
 
@@ -130,8 +135,10 @@ public class MybatisMainDBBean extends MybatisConnector {
 				feedlist.get(i).setHashtaglist(
 						sqlSession.selectList(namespace + ".hashtaglist",
 								feed_id));
-				id=feedlist.get(i).getId();
-				feedlist.get(i).setProfileImg((String)sqlSession.selectOne(namespace+".profileImg",id));
+				id = feedlist.get(i).getId();
+				feedlist.get(i).setProfileImg(
+						(String) sqlSession.selectOne(
+								namespace + ".profileImg", id));
 
 			}
 			return feedlist;
@@ -153,27 +160,29 @@ public class MybatisMainDBBean extends MybatisConnector {
 					.selectOne(namespace + ".likeid");
 			map.put("likely_bookmark_id", likely_bookmark_id);
 			sqlSession.insert(namespace + ".like", map);
-			sqlSession.update(namespace + ".point", map);
+			if (type.equals("L"))
+				sqlSession.update(namespace + ".point", map);
 		} finally {
 			sqlSession.commit();
 			sqlSession.close();
 		}
 	}
-	
-	public void unlike(String id,int feed_id,String type){
-		 sqlSession = sqlSession();
-		 HashMap map = new HashMap();
-			map.put("id",id);
-			map.put("feed_id",feed_id);
-			map.put("type", type);
-		 try{
-			 sqlSession.delete(namespace+".unlike",map);
-		 }finally{
-			 sqlSession.commit();
-			 sqlSession.close();
-			 
-		 }
+
+	public void unlike(String id, int feed_id, String type) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("id", id);
+		map.put("feed_id", feed_id);
+		map.put("type", type);
+		try {
+			sqlSession.delete(namespace + ".unlike", map);
+		} finally {
+			sqlSession.commit();
+			sqlSession.close();
+
+		}
 	}
+
 	public List getUserSearchList(String autocompleteText) {
 		System.out.println("getUserSearchList:");
 		sqlSession = sqlSession();
@@ -188,21 +197,25 @@ public class MybatisMainDBBean extends MybatisConnector {
 
 	public List getFeedSearchList(String autocompleteText) {
 		System.out.println("getFeedSearchList:");
-		List<FeedDataBean> feedlist=null;
+		List<FeedDataBean> feedlist = null;
 		sqlSession = sqlSession();
-		List<ImgDataBean> tmp=null;
+		List<ImgDataBean> tmp = null;
 		HashMap map = new HashMap();
 		map.put("autocompleteText", autocompleteText);
 		try {
-			feedlist =  sqlSession.selectList(namespace + ".getFeedSearchList", map);
-			for(int i=0;i<feedlist.size();i++){
+			feedlist = sqlSession.selectList(namespace + ".getFeedSearchList",
+					map);
+			for (int i = 0; i < feedlist.size(); i++) {
 				map.clear();
 				map.put("feed_id", feedlist.get(i).getFeed_id());
-				feedlist.get(i).setImg_name(sqlSession.selectList(namespace + ".getImg_name", map));
-				feedlist.get(i).setContent(sqlSession.selectList(namespace + ".getContent", map));
-				feedlist.get(i).setReplelist(sqlSession.selectList(namespace + ".feedreple", map));
+				feedlist.get(i).setImg_name(
+						sqlSession.selectList(namespace + ".getImg_name", map));
+				feedlist.get(i).setContent(
+						sqlSession.selectList(namespace + ".getContent", map));
+				feedlist.get(i).setReplelist(
+						sqlSession.selectList(namespace + ".feedreple", map));
 			}
-			
+
 			return feedlist;
 		} finally {
 			sqlSession.close();
@@ -220,41 +233,46 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
-	
-	public List getUserSearchListWithFollow(String autocompleteText,String id) {
+
+	public List getUserSearchListWithFollow(String autocompleteText, String id) {
 		System.out.println("getUserSearchListWithFollow:");
 		sqlSession = sqlSession();
 		HashMap map = new HashMap();
 		map.put("autocompleteText", autocompleteText);
 		map.put("id", id);
 		try {
-			return sqlSession.selectList(namespace + ".getUserSearchListWithFollow", map);
+			return sqlSession.selectList(namespace
+					+ ".getUserSearchListWithFollow", map);
 		} finally {
 			sqlSession.close();
 		}
 	}
-	
+
 	public List<FeedDataBean> getTodayRecomendFeed() {
-		List<FeedDataBean> feedlist=null;
+		List<FeedDataBean> feedlist = null;
 		sqlSession = sqlSession();
-		List<ImgDataBean> tmp=null;
+		List<ImgDataBean> tmp = null;
 		HashMap map = new HashMap();
 		try {
-			feedlist =  sqlSession.selectList(namespace + ".getTodayRecomendFeed");
-			for(int i=0;i<feedlist.size();i++){
+			feedlist = sqlSession.selectList(namespace
+					+ ".getTodayRecomendFeed");
+			for (int i = 0; i < feedlist.size(); i++) {
 				map.clear();
 				map.put("feed_id", feedlist.get(i).getFeed_id());
-				feedlist.get(i).setImg_name(sqlSession.selectList(namespace + ".getImg_name", map));
-				feedlist.get(i).setContent(sqlSession.selectList(namespace + ".getContent", map));
-				feedlist.get(i).setReplelist(sqlSession.selectList(namespace + ".feedreple", map));
+				feedlist.get(i).setImg_name(
+						sqlSession.selectList(namespace + ".getImg_name", map));
+				feedlist.get(i).setContent(
+						sqlSession.selectList(namespace + ".getContent", map));
+				feedlist.get(i).setReplelist(
+						sqlSession.selectList(namespace + ".feedreple", map));
 			}
-			
+
 			return feedlist;
 		} finally {
 			sqlSession.close();
 		}
 	}
-	
+
 	public List getHashtagCnt() {
 		sqlSession = sqlSession();
 		try {
@@ -263,6 +281,7 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+
 	public List getHashtagCnt2() {
 		sqlSession = sqlSession();
 		try {
@@ -271,23 +290,28 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+
 	public List getEditorFeed() {
-		List<FeedDataBean> feedlist=null;
+		List<FeedDataBean> feedlist = null;
 		sqlSession = sqlSession();
-		List<ImgDataBean> tmp=null;
+		List<ImgDataBean> tmp = null;
 		try {
 			HashMap map = new HashMap();
-			feedlist=sqlSession.selectList(namespace + ".getEditorFeed", map);
-			
-			for(int i=0;i<feedlist.size();i++){
+			feedlist = sqlSession.selectList(namespace + ".getEditorFeed", map);
+
+			for (int i = 0; i < feedlist.size(); i++) {
 				map.clear();
 				map.put("feed_id", feedlist.get(i).getFeed_id());
-				feedlist.get(i).setImg_name(sqlSession.selectList(namespace + ".getImg_name", map));
-				feedlist.get(i).setContent(sqlSession.selectList(namespace + ".getContent", map));
-				feedlist.get(i).setReplelist(sqlSession.selectList(namespace + ".feedreple", map));
-				feedlist.get(i).setFood_id(sqlSession.selectList(namespace + ".editorfood", map));
+				feedlist.get(i).setImg_name(
+						sqlSession.selectList(namespace + ".getImg_name", map));
+				feedlist.get(i).setContent(
+						sqlSession.selectList(namespace + ".getContent", map));
+				feedlist.get(i).setReplelist(
+						sqlSession.selectList(namespace + ".feedreple", map));
+				feedlist.get(i).setFood_id(
+						sqlSession.selectList(namespace + ".editorfood", map));
 			}
-			
+
 			return feedlist;
 
 		} finally {
@@ -295,6 +319,7 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+
 	public List selectUserIdDb() {
 		sqlSession = sqlSession();
 		try {
@@ -303,6 +328,7 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+
 	public List selectHashDb() {
 		sqlSession = sqlSession();
 		try {
@@ -311,6 +337,7 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+
 	public List selectFoodNameDb() {
 		sqlSession = sqlSession();
 		try {
@@ -319,12 +346,13 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+
 	public int getHashtagKeyCount(String please) {
 		sqlSession = sqlSession();
 		HashMap map = new HashMap();
 		map.put("please", please);
 		try {
-			return sqlSession.selectOne(namespace + ".getHashtagKeyCount",map);
+			return sqlSession.selectOne(namespace + ".getHashtagKeyCount", map);
 		} finally {
 			sqlSession.close();
 		}
