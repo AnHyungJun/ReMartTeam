@@ -79,32 +79,29 @@ public class MainController {
 		return mv;
 	}
 
-	@RequestMapping(value = "like")
+		@RequestMapping(value = "like")
 	public ModelAndView like(HttpServletRequest request, int feed_id,
 			String action) throws UnsupportedEncodingException {
 		request.setCharacterEncoding("utf-8");
 		R_memberDataBean r_member = (R_memberDataBean) request.getSession()
 				.getAttribute("memberInfo");
 		String id = r_member.getId();
-		System.out.println("====");
-		System.out.println(action);
 		if (action.equals("like"))
-			dbPro.like(id, feed_id,"LIKE");
+			dbPro.like(id, feed_id,"L");
 		if (action.equals("bookmark"))
-			dbPro.like(id, feed_id,"BOOKMARK");
+			dbPro.like(id, feed_id,"B");
 		if (action.equals("unlike"))
 			dbPro.unlike(id, feed_id,"LIKE");
 		if (action.equals("unbookmark"))
 			dbPro.unlike(id, feed_id,"BOOKMARK");
 
 		mv.clear();
-		mv.addObject("action",action);
-		mv.addObject("feed_id", feed_id);
+		//mv.addObject("action",action);
+		//mv.addObject("feed_id", feed_id);
 		// mv.addObject(attributeValue)
 		mv.setViewName("local/like");
 		return mv;
 	}
-
 	@RequestMapping(value = "getFeed")
 	public ModelAndView getFeed(int index,String id) throws UnsupportedEncodingException {
 		System.out.println(index);

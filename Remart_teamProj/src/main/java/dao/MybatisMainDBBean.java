@@ -53,18 +53,43 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
-	public List getFeeds() {
+	public List getFeeds(String userid) {
 		sqlSession = sqlSession();
-	
+
 		List<FeedDataBean> feedlist = null;
 		try {
-			feedlist = sqlSession.selectList(namespace + ".getfeeds");
+			String id;
+			if (userid == null || userid.equals("")) {
+				id = "idnotexist";
+				feedlist = sqlSession
+						.selectList(namespace + ".getfeedsNologin");
+			} else {
+				id = userid;
+				feedlist = sqlSession.selectList(namespace + ".getfeeds", id);
+			}
+
 			for (int i = 0; i < feedlist.size(); i++) {
-				int feed_id= feedlist.get(i).getFeed_id();
+				int feed_id = feedlist.get(i).getFeed_id();
 				feedlist.get(i).setImg_name(
-						sqlSession.selectList(namespace + ".getImg_name", feed_id));
+						sqlSession.selectList(namespace + ".getImg_name",
+								feed_id));
 				feedlist.get(i).setContent(
-						sqlSession.selectList(namespace + ".getContent", feed_id));
+						sqlSession.selectList(namespace + ".getContent",
+								feed_id));
+
+				feedlist.get(i).setReplelist(
+						sqlSession.selectList(namespace + ".feedrepletwo",
+								feed_id));
+				feedlist.get(i).setFood_id(
+						sqlSession.selectList(namespace + ".editorfoodtwo",
+								feed_id));
+				feedlist.get(i).setHashtaglist(
+						sqlSession.selectList(namespace + ".hashtaglist",
+								feed_id));
+				id=feedlist.get(i).getId();
+				feedlist.get(i).setProfileImg((String)sqlSession.selectOne(namespace+".profileImg",id));
+
+
 			}
 			return feedlist;
 
@@ -73,78 +98,68 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
-	public List getFeeds(String userid) {
-	      sqlSession = sqlSession();
-	   
-	      List<FeedDataBean> feedlist = null;
-	      try {
-	         String id;
-	         if(userid == null||userid.equals("")){
-	            id="idnotexist";
-	            feedlist = sqlSession.selectList(namespace + ".getfeedsNologin");
-	         }
-	         else{
-	        	 id=userid;
-	        	 feedlist = sqlSession.selectList(namespace + ".getfeeds",id);
-	         }
-	         
-	         for (int i = 0; i < feedlist.size(); i++) {
-	            int feed_id= feedlist.get(i).getFeed_id();
-	            feedlist.get(i).setImg_name(
-	                  sqlSession.selectList(namespace + ".getImg_name", feed_id));
-	            feedlist.get(i).setContent(
-	                  sqlSession.selectList(namespace + ".getContent", feed_id));
-	         }
-	         return feedlist;
-
-	      } finally {
-
-	         sqlSession.close();
-	      }
-	   }
 	public List getFeeds(R_memberDataBean r_member) {
-	      sqlSession = sqlSession();
-	   
-	      List<FeedDataBean> feedlist = null;
-	      try {
-	         String id;
-	         if(r_member == null){
-	            id="idnotexist";
-	            feedlist = sqlSession.selectList(namespace + ".getfeedsNologin");
-	         }
-	         else{
-	        	 id=r_member.getId();
-	        	 feedlist = sqlSession.selectList(namespace + ".getfeeds",id);
-	         }
-	         
-	         for (int i = 0; i < feedlist.size(); i++) {
-	            int feed_id= feedlist.get(i).getFeed_id();
-	            feedlist.get(i).setImg_name(
-	                  sqlSession.selectList(namespace + ".getImg_name", feed_id));
-	            feedlist.get(i).setContent(
-	                  sqlSession.selectList(namespace + ".getContent", feed_id));
-	         }
-	         return feedlist;
+		sqlSession = sqlSession();
 
-	      } finally {
+		List<FeedDataBean> feedlist = null;
+		try {
+			String id;
+			if (r_member == null) {
+				id = "idnotexist";
+				feedlist = sqlSession
+						.selectList(namespace + ".getfeedsNologin");
+			} else {
+				id = r_member.getId();
+				feedlist = sqlSession.selectList(namespace + ".getfeeds", id);
+			}
 
-	         sqlSession.close();
-	      }
-	   }
-	
-	public void like(String id,int feed_id,String type){
-		 sqlSession = sqlSession();
-		 HashMap map = new HashMap();
-			map.put("id",id);
-			map.put("feed_id",feed_id);
-			map.put("type", type);
-		 try{
-			 sqlSession.insert(namespace+".like",map);
-		 }finally{
-			 sqlSession.commit();
-			 sqlSession.close();
-		 }
+			for (int i = 0; i < feedlist.size(); i++) {
+				int feed_id = feedlist.get(i).getFeed_id();
+				feedlist.get(i).setImg_name(
+						sqlSession.selectList(namespace + ".getImg_name",
+								feed_id));
+				feedlist.get(i).setContent(
+						sqlSession.selectList(namespace + ".getContent",
+								feed_id));
+				feedlist.get(i).setReplelist(
+						sqlSession.selectList(namespace + ".feedrepletwo",
+								feed_id));
+				feedlist.get(i).setFood_id(
+						sqlSession.selectList(namespace + ".editorfoodtwo",
+								feed_id));
+				feedlist.get(i).setHashtaglist(
+						sqlSession.selectList(namespace + ".hashtaglist",
+								feed_id));
+				id=feedlist.get(i).getId();
+				feedlist.get(i).setProfileImg((String)sqlSession.selectOne(namespace+".profileImg",id));
+
+			}
+			return feedlist;
+
+		} finally {
+
+			sqlSession.close();
+		}
 	}
+
+	public void like(String id, int feed_id, String type) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("id", id);
+		map.put("feed_id", feed_id);
+		map.put("type", type);
+		try {
+			int likely_bookmark_id = sqlSession
+					.selectOne(namespace + ".likeid");
+			map.put("likely_bookmark_id", likely_bookmark_id);
+			sqlSession.insert(namespace + ".like", map);
+			sqlSession.update(namespace + ".point", map);
+		} finally {
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	}
+	
 	public void unlike(String id,int feed_id,String type){
 		 sqlSession = sqlSession();
 		 HashMap map = new HashMap();

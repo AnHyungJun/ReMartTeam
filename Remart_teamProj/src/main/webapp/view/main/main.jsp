@@ -70,91 +70,157 @@
 }
 
 .today {
-background-image: url("<%=request.getContextPath()%>/images/bg/main_bg.png");
+	background-image:
+		url("<%=request.getContextPath()%>/images/bg/main_bg.png");
 }
-
 </style>
 <head>
 
 <title>REMART</title>
 </head>
 <body>
-<center>
-	<div style="margin-top: 150px"></div>
-	<div class="w3-container">
-		<div style="margin-top: 50px;"></div>
-		<div class="w3-center-align">
-			<div class="today w3-center" style="width:900px; height: 493px">
-				<c:if test="${fn:length(todayRecomendFeed) != 0}">
+	<center>
+		<div style="margin-top: 150px"></div>
+		<div class="w3-container">
+			<div style="margin-top: 50px;"></div>
+			<div class="w3-center-align">
+				<div class="today w3-center" style="width: 900px; height: 493px">
+					<c:if test="${fn:length(todayRecomendFeed) != 0}">
+						<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
+						<!-- 리스트가 있으면 뿌려주는 FOREACH -->
+						<div class="w3-container"
+							style="float: left; width: 100%; height: 200px; margin-top: 90px;">
+							<div class="w3-center"
+								style="width: 36%; float: left; margin-right: 40px;">
+								<img id="${todayRecomendFeed[0].feed_id}"
+									class="showMask today01"
+									src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[0].img_name[0]}"
+									style="width: 150px; height: 150px;"
+									onclick="popup('${fn:length(todayRecomendFeed[0].img_name)}','${todayRecomendFeed[0]}','${todayRecomendFeed[0].img_name}','${todayRecomendFeed[0].content}','${todayRecomendFeed[0].replelist}','${fn:length(todayRecomendFeed[0].replelist)}');"><br>
+								<p class="w3-text-white">
+									<b>${todayRecomendFeed[0].recipe_name }</b>
+								</p>
+							</div>
+							<div class="w3-right"
+								style="width: 35%; float: left; margin-right: 50px; margin-top: 20px;">
+								<img id="${todayRecomendFeed[1].feed_id}"
+									class="showMask today02"
+									src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[1].img_name[0]}"
+									style="width: 150px; height: 150px;"
+									onclick="popup('${fn:length(todayRecomendFeed[1].img_name)}','${todayRecomendFeed[1]}','${todayRecomendFeed[1].img_name}','${todayRecomendFeed[1].content}','${todayRecomendFeed[1].replelist}','${fn:length(todayRecomendFeed[1].replelist)}');"><br>
+								<p class="w3-text-white">
+									<b>${todayRecomendFeed[1].recipe_name }</b>
+								</p>
+							</div>
+							<div class="w3-center"
+								style="width: 18%; float: left; margin-top: 120px;">
+								<img id="${todayRecomendFeed[2].feed_id}"
+									class="showMask today03"
+									src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[2].img_name[0]}"
+									style="width: 150px; height: 150px;"
+									onclick="popup('${fn:length(todayRecomendFeed[2].img_name)}','${todayRecomendFeed[2]}','${todayRecomendFeed[2].img_name}','${todayRecomendFeed[2].content}','${todayRecomendFeed[2].replelist}','${fn:length(todayRecomendFeed[2].replelist)}');"><br>
+								<br> <br>
+								<p class="w3-text-white">
+									<b>${todayRecomendFeed[2].recipe_name }</b>
+								</p>
+							</div>
+						</div>
+					</c:if>
+					<c:if test="${fn:length(todayRecomendFeed) == 0}">
+						<div style="font-size: 13px;"></div>
+					</c:if>
+				</div>
+			</div>
+			<div style="margin-top: 100px;"></div>
+			<div style="max-width: 900px">
+				<c:if test="${fn:length(Feeds) != 0}">
 					<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
 					<!-- 리스트가 있으면 뿌려주는 FOREACH -->
-					<div class="w3-container"
-						style="float: left; width: 100%; height: 200px; margin-top: 90px;">
-						<div class="w3-center"
-							style="width: 36%; float: left; margin-right: 40px;">
-							<img id="${todayRecomendFeed[0].feed_id}"
-								class="showMask today01"
-								src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[0].img_name[0]}"
-								style="width: 150px; height: 150px;"
-								onclick="popup('${fn:length(todayRecomendFeed[0].img_name)}','${todayRecomendFeed[0]}','${todayRecomendFeed[0].img_name}','${todayRecomendFeed[0].content}','${todayRecomendFeed[0].replelist}','${fn:length(todayRecomendFeed[0].replelist)}');"><br>
-							<p class="w3-text-white"><b>${todayRecomendFeed[0].recipe_name }</b></p>
+					<c:forEach var="list" items="${Feeds}" varStatus="status">
+
+						<div class="w3-container"
+							style="float: left; width: 300px; height: 350px; margin-top: 10px;">
+							<div class="w3-card-4" style="position: relative; height: 350px;">
+								<!-- FEED  이부분을 너가 꾸몄던걸로 바꾸면 됨-->
+								<div id="userInfo">
+									<c:if test="${list.profileImg==null}">
+										<img
+											src="<%=request.getContextPath()%>/images/icon/noProfile.png"
+											class="w3-circle" alt="" style="width: 20px; height: 20px"></c:if>
+									<c:if test="${list.profileImg!=null}">
+										<img
+											src="<%=request.getContextPath()%>/fileSave/${list.profileImg}"
+											class="w3-circle" alt="" style="width: 20px; height: 20px">
+									</c:if>${list.id }</div>
+								<div class="w3-center">
+									<!-- 여기가 이미지 부분인데 SHOWMASK클래스를 클릭하면  READY 부분에 SHOWMASK 클릭이벤트 실행 그러면 레이어창이 올라옴-->
+									<img id="${list.feed_id}" class="showMask"
+										src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
+										style="width: 100%; height: 200px"
+										onclick="popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');">
+									<!-- POPUP함수는 누르면 실행인데 %이미지 몇개인지 보내는거 ,FEED,이미지 이름 보내고,이미지에 달린 내용 보내고, 리플 리스트 통채로 보내고 , 리플리스트 사이즈 보내고%-->
+								</div>
+								<div id="like_bookmark" style="margin-top: 10px;">
+									<!-- 로그인 안했을 때 -->
+									<c:if test="${empty memberInfo }">
+										<img onclick="needlogin()"
+											src="<%=request.getContextPath()%>/images/icon/like_before.png"
+											style="height: 20px; cursor: pointer;">
+										<img
+											src="<%=request.getContextPath()%>/images/icon/comment.png"
+											style="height: 20px;">
+										<img onclick="needlogin()"
+											src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+											style="height: 20px; cursor: pointer;">
+									</c:if>
+									<!-- 로그인 했을 때 -->
+									<c:if test="${!empty memberInfo }">
+										<c:if test="${list.likestate==0 }">
+											<label id="like${list.feed_id }"> <img
+												onclick="like(${list.feed_id},'like');"
+												src="<%=request.getContextPath()%>/images/icon/like_before.png"
+												style="height: 20px; cursor: pointer;">
+											</label>
+										</c:if>
+										<c:if test="${list.likestate>=1 }">
+											<label id="like${list.feed_id }"> <img
+												src="<%=request.getContextPath()%>/images/icon/like_after.png"
+												style="height: 20px;"></label>
+										</c:if>
+										<img
+											src="<%=request.getContextPath()%>/images/icon/comment.png"
+											style="height: 20px;">
+										<c:if test="${list.bookmarkstate==0 }">
+											<img onclick="like(${list.feed_id},'bookmark')"
+												src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+												style="height: 20px; cursor: pointer;">
+										</c:if>
+										<c:if test="${list.bookmarkstate>=1 }">
+											<img
+												src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+												style="height: 20px; cursor: pointer;">
+										</c:if>
+									</c:if>
+								</div>
+
+								<div id="innercontent">
+									${list.recipe_name }<br>
+									<c:forEach var="hash" items="${list.hashtaglist}"
+										varStatus="status">
+									 #${hash }
+									</c:forEach>
+								</div>
+							</div>
 						</div>
-						<div class="w3-right"
-							style="width: 35%; float: left; margin-right: 50px; margin-top: 20px;">
-							<img id="${todayRecomendFeed[1].feed_id}"
-								class="showMask today02"
-								src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[1].img_name[0]}"
-								style="width: 150px; height: 150px;"
-								onclick="popup('${fn:length(todayRecomendFeed[1].img_name)}','${todayRecomendFeed[1]}','${todayRecomendFeed[1].img_name}','${todayRecomendFeed[1].content}','${todayRecomendFeed[1].replelist}','${fn:length(todayRecomendFeed[1].replelist)}');"><br>
-							<p class="w3-text-white"><b>${todayRecomendFeed[1].recipe_name }</b></p>
-						</div>
-						<div class="w3-center" style="width: 18%; float: left; margin-top: 120px;">
-							<img id="${todayRecomendFeed[2].feed_id}"
-								class="showMask today03"
-								src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[2].img_name[0]}"
-								style="width: 150px; height: 150px;"
-								onclick="popup('${fn:length(todayRecomendFeed[2].img_name)}','${todayRecomendFeed[2]}','${todayRecomendFeed[2].img_name}','${todayRecomendFeed[2].content}','${todayRecomendFeed[2].replelist}','${fn:length(todayRecomendFeed[2].replelist)}');"><br>
-							<br> <br><p class="w3-text-white"><b>${todayRecomendFeed[2].recipe_name }</b></p>
-						</div>
-					</div>
+					</c:forEach>
 				</c:if>
-				<c:if test="${fn:length(todayRecomendFeed) == 0}">
-				<div style="font-size: 13px;">
-					
+			</div>
+			<c:if test="${fn:length(Feeds) == 0}">
+				<div style="margin-top: 100px; font-size: 13px;">
+					<b> 아직 쓴 글이 없습니다. </b>
 				</div>
 			</c:if>
-			</div>
 		</div>
-		<div style="margin-top:100px;"></div>
-		<div style="width:900px">
-		<c:if test="${fn:length(Feeds) != 0}">
-			<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
-			<!-- 리스트가 있으면 뿌려주는 FOREACH -->
-			<c:forEach var="list" items="${Feeds}" varStatus="status">
-
-				<div class="w3-container"
-					style="float: left; width: 33%; height: 350px; margin-top: 10px;">
-					<!-- FEED  이부분을 너가 꾸몄던걸로 바꾸면 됨-->
-					<div class="w3-center">
-
-						<!-- 여기가 이미지 부분인데 SHOWMASK클래스를 클릭하면  READY 부분에 SHOWMASK 클릭이벤트 실행 그러면 레이어창이 올라옴-->
-						<img id="${list.feed_id}" class="showMask"
-							src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
-							style="width: 300px; height: 300px"
-							onclick="popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');"><br>
-						${list.recipe_name }
-						<!-- POPUP함수는 누르면 실행인데 %이미지 몇개인지 보내는거 ,FEED,이미지 이름 보내고,이미지에 달린 내용 보내고, 리플 리스트 통채로 보내고 , 리플리스트 사이즈 보내고%-->
-					</div>
-				</div>
-			</c:forEach>
-		</c:if>
-	</div>
-	<c:if test="${fn:length(Feeds) == 0}">
-		<div style="margin-top: 100px; font-size: 13px;">
-			<b> 아직 쓴 글이 없습니다. </b>
-		</div>
-	</c:if>
-	</div>
 	</center>
 
 	<!-- 레이어창 -->
@@ -180,6 +246,34 @@ background-image: url("<%=request.getContextPath()%>/images/bg/main_bg.png");
 		</div>
 	</div>
 	<script type="text/javascript">
+	var num;
+	function like(feed_id,action) {
+		num=feed_id;
+		var params = "feed_id=" + encodeURIComponent(feed_id)+"&action="+ encodeURIComponent(action);
+		sendRequest("/Remart_teamProj/main/like", params, return_like, "GET");
+	}
+	function return_like() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				document.getElementById("like"+num).innerHTML = httpRequest.responseText;
+			}
+		}
+	}
+	function popup2(feed_id,id){
+		 var params = "feed_id=" + encodeURIComponent(feed_id)+"&id="+ encodeURIComponent(id);
+		sendRequest("/Remart_teamProj/main/popup2", params, return_popup2, "GET");
+	 
+	}
+	function return_popup2(){
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				document.getElementById("popup2").innerHTML = httpRequest.responseText;
+			}
+		}
+	}
+	function needlogin(){
+		alert("로그인하세요");
+	} 
 	//여기부터 피드에 사진 여러개 슬라이드로
 	var slideIndex = 1;//슬라이드 변수
 

@@ -20,7 +20,14 @@ public class FeedDataBean implements Serializable{
 	int bookmarkstate;
 	String feed_grade;
 	String makecontent;
+	String profileImg;
 	
+	public String getProfileImg() {
+		return profileImg;
+	}
+	public void setProfileImg(String profileImg) {
+		this.profileImg = profileImg;
+	}
 	public String getMakecontent() {
 		return makecontent;
 	}

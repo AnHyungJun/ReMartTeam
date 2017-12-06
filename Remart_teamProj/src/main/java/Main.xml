@@ -5,16 +5,46 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="main.mybatis">
 	<cache />
+	<select id="likeid" resultType="int">
+		select
+		nvl(max(likely_bookmark_id),0)+1 likely_bookmark_id from
+		likely_bookmark
+	</select>
+	<select id="profileImg" parameterType="String" resultType="String">
+	select profileimg from r_member where id=#{id}
+	</select>
+	<select id="hashtaglist" parameterType="int" resultType="String">
+		select
+		(select hashtag_content from hashtag y where
+		y.hashtag_id=h.hashtag_id) hashtaglist from hash_feed h where
+		feed_id=#{feed_id}
+	</select>
+	<select id="editorfoodtwo" parameterType="int" resultType="String">
+		select
+		(select q.name from food q where q.food_id=t.food_id) food_id from
+		feed_food t where t.feed_id=#{feed_id}
+	</select>
+	<select id="feedrepletwo" parameterType="int" resultType="reple">
+		select *
+		from reple where feed_id=#{feed_id} order by reple_id desc
+	</select>
+
+	<update id="point" parameterType="hashmap">
+		update r_member set
+		point=point+1 where
+		id=(select id from feed where
+		feed_id=#{feed_id})
+	</update>
 	<select id="getfeed" resultType="feed" parameterType="hashmap">
 		select
 		feed_id,id,like_num,reg_date,recipe_name,
 		(select nvl(count(*),0) from
 		likely_bookmark l
-		where l.feed_id=f.feed_id and l.type='LIKE' and
+		where l.feed_id=f.feed_id and l.type='L' and
 		l.id=#{id})
 		likestate,
 		(select nvl(count(*),0)from likely_bookmark l
-		where l.feed_id=f.feed_id and l.type='BOOKMARK'and l.id=#{id})
+		where l.feed_id=f.feed_id and l.type='B'and l.id=#{id})
 		bookmarkstate
 		from feed f where f.feed_id=#{feed_id}
 		order by reg_date
@@ -47,23 +77,21 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		feed_id,id,like_num,reg_date,recipe_name,
 		(select nvl(count(*),0) from
 		likely_bookmark l
-		where l.feed_id=f.feed_id and l.type='LIKE' and
+		where l.feed_id=f.feed_id and l.type='L' and
 		l.id=#{id})
 		likestate,
 		(select nvl(count(*),0)from likely_bookmark l
-		where l.feed_id=f.feed_id and l.type='BOOKMARK'and l.id=#{id})
+		where l.feed_id=f.feed_id and l.type='B'and l.id=#{id})
 		bookmarkstate
 		from feed f
 		order by reg_date desc
 	</select>
 
 
-	<insert id="like" parameterType="hashmap">
+<insert id="like" parameterType="hashmap">
 		INSERT INTO likely_bookmark
 		(likely_bookmark_id, id,feed_id, type)
-		VALUES(((select
-		nvl(max(likely_bookmark_id),0) from
-		likely_bookmark)+1),#{id},#{feed_id},#{type})
+		VALUES(#{likely_bookmark_id},#{id},#{feed_id},#{type})
 	</insert>
 
 	<delete id="unlike" parameterType="hashmap">

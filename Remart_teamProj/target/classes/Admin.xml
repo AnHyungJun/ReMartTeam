@@ -26,4 +26,35 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 		order_state=#{new_status} where
 		payment_id =#{payment_id}
 	</update>
+	
+	<insert id="insertFood" parameterType="hashmap">
+		insert into food(food_id, category_id, name, price, qty, type)
+		values (#{food_id}, #{foodDataBean.category_id}, #{foodDataBean.name},
+		#{foodDataBean.price}, #{foodDataBean.qty}, #{foodDataBean.type})
+	</insert>
+	
+	<select id="getFood_id" resultType="int">
+	select max(food_id) from food
+	</select>
+	
+	<select id="foodlist" parameterType="hashmap" resultType="food">
+	select * from food where name like '%${foods}%'
+	</select>
+	
+	<select id="foodlistnull" resultType="food">
+	select * from food
+	</select>
+	
+	<update id="updateFood" parameterType="hashmap">
+	update food set price=#{food.price}, qty=#{food.qty} where food_id=#{food.food_id}
+	</update>
+	
+	<delete id="fooddelete" parameterType="hashmap">
+	delete from food where food_id=#{foodDataBean.food_id}
+	</delete>
+	
+	<select id="allfoodlist" resultType="food">
+	select name, price, qty from food
+	</select>
+	
 </mapper>
