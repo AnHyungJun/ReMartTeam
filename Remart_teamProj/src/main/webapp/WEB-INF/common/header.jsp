@@ -65,169 +65,183 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 </STYLE>
 <script>
-function myFunction() {
-	var x = document.getElementById("navDemo");
-	if (x.className.indexOf("w3-show") == -1) {
-		x.className += " w3-show";
-	} else {
-		x.className = x.className.replace(" w3-show", "");
+	function myFunction() {
+		var x = document.getElementById("navDemo");
+		if (x.className.indexOf("w3-show") == -1) {
+			x.className += " w3-show";
+		} else {
+			x.className = x.className.replace(" w3-show", "");
+		}
 	}
-}
 
-$(function(){
-    var a = "${userHashList}";
-    var b = a.replace("[", "");
-    b = b.replace("]", "");
-    var c = b.split(",");
-    
-         $("#autocomplete").autocomplete({
-            source: c,
-            minLength : 2,
-            select : function(event, ui) {
-            	document.getElementById('please').value = document.getElementById('autocomplete').value;
-			}
-         });
-})
+	$(function() {
+		var a = "${userHashList}";
+		var b = a.replace("[", "");
+		b = b.replace("]", "");
+		var c = b.split(",");
 
-function aa(){
-	document.getElementById('please').value = document.getElementById('autocomplete').value;
-	document.getElementById('please2').value = null;
-}
-$(function(){
-    var a = "${foodSearchList}";
-    var b = a.replace("[", "");
-    b = b.replace("]", "");
-    var c = b.split(",");
-    
-         $("#autocomplete2").autocomplete({
-            source: c,
-            minLength : 2,
-            select : function(event, ui) {
-            	document.getElementById('please2').value = document.getElementById('autocomplete2').value;
-			}
-         });
-})
+		$("#autocomplete").autocomplete(
+				{
+					source : c,
+					minLength : 2,
+					select : function(event, ui) {
+						document.getElementById('please').value = document
+								.getElementById('autocomplete').value;
+					}
+				});
+	})
 
-function bb(){
-	document.getElementById('please2').value = document.getElementById('autocomplete2').value;
-}
+	function aa() {
+		document.getElementById('please').value = document
+				.getElementById('autocomplete').value;
+		document.getElementById('please2').value = null;
+	}
+	$(function() {
+		var a = "${foodSearchList}";
+		var b = a.replace("[", "");
+		b = b.replace("]", "");
+		var c = b.split(",");
+
+		$("#autocomplete2").autocomplete(
+				{
+					source : c,
+					minLength : 2,
+					select : function(event, ui) {
+						document.getElementById('please2').value = document
+								.getElementById('autocomplete2').value;
+					}
+				});
+	})
+
+	function bb() {
+		document.getElementById('please2').value = document
+				.getElementById('autocomplete2').value;
+	}
 </script>
 <body>
-<form action="<%=request.getContextPath()%>/main/searchForm" method="POST" name="header">
+	<form action="<%=request.getContextPath()%>/main/searchForm"
+		method="POST" name="header">
 
-	<div class="w3-top w3-white">
-		<div class="w3-bar w3-border-bottom w3-center-align w3-large"
-			style="height: 135px;">
-			<div class="w3-row">
-				<div class="w3-col" style="width: 20%">
-					<p>&nbsp;</p>
-				</div>
-				<input type="hidden"  id="please" name="please">
-				<input type="hidden"  id="please2" name="please2">
-				<div class="w3-col" style="width: 60%">
-					<div class="w3-bar-block" style="height: 135px">
-						<div class="w3-bar-item w3-right-align" style="height: 10px">
-							<c:if test="${empty memberInfo }">
-								<a href="<%=request.getContextPath()%>/login/loginForm"
-									style="font-size: 12px; text-decoration: none;"
-									class="con_link"
-									onmouseover="this.style.textDecoration='none';"
-									onmouseout="this.style.textDecoration='none';">로그인</a>
+		<div class="w3-top w3-white">
+			<div class="w3-bar w3-border-bottom w3-center-align w3-large"
+				style="height: 135px;">
+				<div class="w3-row">
+					<div class="w3-col" style="width: 20%">
+						<p>&nbsp;</p>
+					</div>
+					<input type="hidden" id="please" name="please"> <input
+						type="hidden" id="please2" name="please2">
+					<div class="w3-col" style="width: 60%">
+						<div class="w3-bar-block" style="height: 135px">
+							<div class="w3-bar-item w3-right-align" style="height: 10px">
+								<c:if test="${empty memberInfo }">
+									<a href="<%=request.getContextPath()%>/login/loginForm"
+										style="font-size: 12px; text-decoration: none;"
+										class="con_link"
+										onmouseover="this.style.textDecoration='none';"
+										onmouseout="this.style.textDecoration='none';">로그인</a>
 								| <a href="<%=request.getContextPath()%>/login/joinForm"
-									style="font-size: 12px; text-decoration: none;"
-									class="con_link"
-									onmouseover="this.style.textDecoration='none';"
-									onmouseout="this.style.textDecoration='none';">회원가입</a>
-							</c:if>
-							<c:if test="${!empty memberInfo }">
-								<a href="<%=request.getContextPath()%>/login/loginOut"
-									style="font-size: 12px; text-decoration: none;"
-									class="con_link"
-									onmouseover="this.style.textDecoration='none';"
-									onmouseout="this.style.textDecoration='none';">로그아웃</a>
+										style="font-size: 12px; text-decoration: none;"
+										class="con_link"
+										onmouseover="this.style.textDecoration='none';"
+										onmouseout="this.style.textDecoration='none';">회원가입</a>
+								</c:if>
+								<c:if test="${!empty memberInfo }">
+									<a href="<%=request.getContextPath()%>/login/loginOut"
+										style="font-size: 12px; text-decoration: none;"
+										class="con_link"
+										onmouseover="this.style.textDecoration='none';"
+										onmouseout="this.style.textDecoration='none';">로그아웃</a>
 								| <a
-									href="<%=request.getContextPath()%>/mypage/myPageForm?id=${memberInfo.id}"
+										href="<%=request.getContextPath()%>/mypage/myPageForm?id=${memberInfo.id}"
+										style="font-size: 12px; text-decoration: none;"
+										class="con_link"
+										onmouseover="this.style.textDecoration='none';"
+										onmouseout="this.style.textDecoration='none';">마이페이지</a>
+								</c:if>
+								| <a href="<%=request.getContextPath()%>/shopping/basket"
 									style="font-size: 12px; text-decoration: none;"
 									class="con_link"
 									onmouseover="this.style.textDecoration='none';"
-									onmouseout="this.style.textDecoration='none';">마이페이지</a>
-							</c:if>
-							| <a href="<%=request.getContextPath()%>/shopping/basket"
-								style="font-size: 12px; text-decoration: none;" class="con_link"
-								onmouseover="this.style.textDecoration='none';"
-								onmouseout="this.style.textDecoration='none';">장바구니</a>
-						</div>
+									onmouseout="this.style.textDecoration='none';">장바구니</a>
+							</div>
 
-						<div class="w3-bar-item" style="height: 135px">
-							<div class="w3-row">
-								<div class="w3-col w3-left" style="width: 20%">
-									<a href="<%=request.getContextPath()%>/main/main"><img
-										alt="로고"
-										src="<%=request.getContextPath()%>/images/icon/logo.png"
-										width="100px"></a>
-								</div>
-								<div class="w3-col" style="width: 50%">
-									<div class="w3-center w3-margin-top">
-										
-										
-										<c:if test="${curPage != 'shopping' }">
-											<input onkeyup="aa()" id="autocomplete" type="text" style="width: 300px; font-size: 14px; height: 30px;" name="autocomplete"/>
-										</c:if>
+							<div class="w3-bar-item" style="height: 135px">
+								<div class="w3-row">
+									<div class="w3-col w3-left" style="width: 20%">
+										<a href="<%=request.getContextPath()%>/main/main"><img
+											alt="로고"
+											src="<%=request.getContextPath()%>/images/icon/logo.png"
+											width="100px"></a>
+									</div>
+									<div class="w3-col" style="width: 50%">
+										<div class="w3-center" style="margin-top:30px;">
 
-													<c:if test="${curPage == 'shopping' }">
-														<input onkeyup="bb()" id="autocomplete2" type="text" style="width: 300px; font-size: 14px; height: 30px;" name="autocomplete2"/>
-													</c:if>
-												
-										<div class="w3-center w3-bar-item" style="height: 100px;">
-											<a
-												href="<%=request.getContextPath()%>/main/editorRecommandForm"
-												style="font-size: 12px; text-decoration: none;"
-												class="con_link w3-button w3-hover-white"
-												onmouseover="this.style.textDecoration='none';"
-												onmouseout="this.style.textDecoration='none';">EDITOR
-												RECOMMAND</a> <a
-												href="<%=request.getContextPath()%>/tvrecipe/tvRecipe1"
-												style="font-size: 12px; text-decoration: none;"
-												class="con_link w3-button w3-hover-white"
-												onmouseover="this.style.textDecoration='none';"
-												onmouseout="this.style.textDecoration='none';">TV RECIPE</a>
-											<a href="<%=request.getContextPath()%>/writepage/writeForm"
-												style="font-size: 12px; text-decoration: none;"
-												class="con_link w3-button w3-hover-white"
-												onmouseover="this.style.textDecoration='none';"
-												onmouseout="this.style.textDecoration='none';">WRITE</a> <a
-												href="<%=request.getContextPath()%>/view/local/hashtag.jsp"
-												style="font-size: 12px; text-decoration: none;"
-												class="con_link w3-button w3-hover-white"
-												onmouseover="this.style.textDecoration='none';"
-												onmouseout="this.style.textDecoration='none';">#</a>
+
+											<c:if test="${curPage != 'shopping' }">
+												<input onkeyup="aa()" id="autocomplete" type="text"
+													style="width: 300px; font-size: 14px; height: 30px;"
+													name="autocomplete" />
+											</c:if>
+
+											<c:if test="${curPage == 'shopping' }">
+												<input onkeyup="bb()" id="autocomplete2" type="text"
+													style="width: 300px; font-size: 14px; height: 30px;"
+													name="autocomplete2" />
+											</c:if>
+
+											<div class="w3-center w3-bar-item" style="height: 100px;">
+												<a
+													href="<%=request.getContextPath()%>/main/editorRecommandForm"
+													style="font-size: 12px; text-decoration: none;"
+													class="con_link w3-button w3-hover-white"
+													onmouseover="this.style.textDecoration='none';"
+													onmouseout="this.style.textDecoration='none';">EDITOR
+													RECOMMAND</a> <a
+													href="<%=request.getContextPath()%>/tvrecipe/tvRecipe1"
+													style="font-size: 12px; text-decoration: none;"
+													class="con_link w3-button w3-hover-white"
+													onmouseover="this.style.textDecoration='none';"
+													onmouseout="this.style.textDecoration='none';">TV
+													RECIPE</a> <a
+													href="<%=request.getContextPath()%>/writepage/writeForm"
+													style="font-size: 12px; text-decoration: none;"
+													class="con_link w3-button w3-hover-white"
+													onmouseover="this.style.textDecoration='none';"
+													onmouseout="this.style.textDecoration='none';">WRITE</a> <a
+													href="<%=request.getContextPath()%>/view/local/hashtag.jsp"
+													style="font-size: 12px; text-decoration: none;"
+													class="con_link w3-button w3-hover-white"
+													onmouseover="this.style.textDecoration='none';"
+													onmouseout="this.style.textDecoration='none';">#</a>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="w3-col" style="width: 30%;">
-									<div class="w3-bar-block">
-										<div class="w3-bar-item" style="height: 30px;">&nbsp;</div>
-										<div class="w3-bar-item" style="height: 50px;">
-											<a href="<%=request.getContextPath()%>/shopping/shoppingMain"><img
-												alt="로고"
-												src="<%=request.getContextPath()%>/images/icon/foodmall.png"
-												width="130px" align="right"></a>
+									<div class="w3-col" style="width: 30%;">
+										<div class="w3-bar-block">
+											<div class="w3-bar-item" style="height: 30px;">&nbsp;</div>
+											<div class="w3-bar-item" style="height: 50px;">
+												<a
+													href="<%=request.getContextPath()%>/shopping/shoppingMain"><img
+													alt="로고"
+													src="<%=request.getContextPath()%>/images/icon/foodmall.png"
+													width="130px" align="right"></a>
+											</div>
+											<div class="w3-bar-item" style="height: 20px;">&nbsp;</div>
 										</div>
-										<div class="w3-bar-item" style="height: 20px;">&nbsp;</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="w3-col" style="width: 20%">
-					<p>&nbsp;</p>
+					<div class="w3-col" style="width: 20%">
+						<p>&nbsp;</p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</form>
+	</form>
 
 </body>
 </html>
