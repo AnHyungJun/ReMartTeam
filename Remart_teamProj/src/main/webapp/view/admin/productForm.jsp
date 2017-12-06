@@ -56,7 +56,7 @@
 		<div style="margin-top: 10px;"></div>
 		<div class="w3-container w3-center" style="width: 900px;">
 			<div class="list_body">
-					<table class="list_body_table w3-table" width="100%">
+					<table class="list_body_table w3-table " width="100%">
 						<tr
 							style="border-top: 1px solid #666; background-color: #f7f7f7; font-size: 13px;">
 							<th width="30%" class="w3-center">PRODUCT NAME</th>
