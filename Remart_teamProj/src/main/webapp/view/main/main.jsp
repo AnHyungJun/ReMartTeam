@@ -142,7 +142,16 @@
 							style="float: left; width: 300px; height: 350px; margin-top: 10px;">
 							<div class="w3-card-4" style="position: relative; height: 350px;">
 								<!-- FEED  이부분을 너가 꾸몄던걸로 바꾸면 됨-->
-								<div id="userInfo">${list.id }</div>
+								<div id="userInfo">
+									<c:if test="${list.profileImg==null}">
+										<img
+											src="<%=request.getContextPath()%>/images/icon/noProfile.png"
+											class="w3-circle" alt="" style="width: 20px; height: 20px"></c:if>
+									<c:if test="${list.profileImg!=null}">
+										<img
+											src="<%=request.getContextPath()%>/fileSave/${list.profileImg}"
+											class="w3-circle" alt="" style="width: 20px; height: 20px">
+									</c:if>${list.id }</div>
 								<div class="w3-center">
 									<!-- 여기가 이미지 부분인데 SHOWMASK클래스를 클릭하면  READY 부분에 SHOWMASK 클릭이벤트 실행 그러면 레이어창이 올라옴-->
 									<img id="${list.feed_id}" class="showMask"

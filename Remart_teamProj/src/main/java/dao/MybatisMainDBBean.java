@@ -86,6 +86,9 @@ public class MybatisMainDBBean extends MybatisConnector {
 				feedlist.get(i).setHashtaglist(
 						sqlSession.selectList(namespace + ".hashtaglist",
 								feed_id));
+				id=feedlist.get(i).getId();
+				feedlist.get(i).setProfileImg((String)sqlSession.selectOne(namespace+".profileImg",id));
+
 
 			}
 			return feedlist;
@@ -127,6 +130,9 @@ public class MybatisMainDBBean extends MybatisConnector {
 				feedlist.get(i).setHashtaglist(
 						sqlSession.selectList(namespace + ".hashtaglist",
 								feed_id));
+				id=feedlist.get(i).getId();
+				feedlist.get(i).setProfileImg((String)sqlSession.selectOne(namespace+".profileImg",id));
+
 			}
 			return feedlist;
 

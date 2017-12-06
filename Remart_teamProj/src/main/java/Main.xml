@@ -5,6 +5,14 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="main.mybatis">
 	<cache />
+	<select id="likeid" resultType="int">
+		select
+		nvl(max(likely_bookmark_id),0)+1 likely_bookmark_id from
+		likely_bookmark
+	</select>
+	<select id="profileImg" parameterType="String" resultType="String">
+	select profileimg from r_member where id=#{id}
+	</select>
 	<select id="hashtaglist" parameterType="int" resultType="String">
 		select
 		(select hashtag_content from hashtag y where
@@ -80,12 +88,10 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
-	<insert id="like" parameterType="hashmap">
+<insert id="like" parameterType="hashmap">
 		INSERT INTO likely_bookmark
 		(likely_bookmark_id, id,feed_id, type)
-		VALUES(((select
-		nvl(max(likely_bookmark_id),0) from
-		likely_bookmark)+1),#{id},#{feed_id},#{type})
+		VALUES(#{likely_bookmark_id},#{id},#{feed_id},#{type})
 	</insert>
 
 	<delete id="unlike" parameterType="hashmap">
