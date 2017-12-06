@@ -136,4 +136,60 @@ public class MybatisAdminDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+	
+	public List findMember(String searchOption, String searchWord) {
+		System.out.println("findMember start");
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("searchOption", searchOption);
+		map.put("searchWord", searchWord);
+		System.out.println(searchOption + "/" + searchWord);
+		
+		try {
+			return sqlSession.selectList(namespace + ".findMember", map);
+			
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
+	public List getMember() {
+		System.out.println("getMember start");
+		sqlSession = sqlSession();
+		
+		try {
+			return sqlSession.selectList(namespace + ".getMember");
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
+	public void chageGrade(String grade, String id) {
+		System.out.println("chageGrade : ");
+		sqlSession = sqlSession();
+		System.out.println(grade);
+		HashMap map = new HashMap();
+		map.put("grade", grade);
+		map.put("id", id);
+		
+		try {
+			sqlSession.update(namespace + ".updateGrade", map);
+			System.out.println("updateGrade ok");
+		}finally {
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	}
+	
+	public List getCustomInfo(String id) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("id", id);
+		
+		try {
+			return sqlSession.selectList(namespace + ".getCustomInfo", map);
+		}finally {
+			sqlSession.close();
+		}
+	}
 }

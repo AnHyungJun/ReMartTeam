@@ -41,9 +41,61 @@ ModelAndView mv = new ModelAndView();
 		return mv;
 	}
 	@RequestMapping(value="customForm")
-	public ModelAndView customForm(){	
+	public ModelAndView customForm(HttpServletRequest request) throws Exception{	
+		String searchOption = request.getParameter("searchOption");
+		String searchWord = request.getParameter("searchWord");
+		System.out.println("searchOption : " + searchOption);
+		System.out.println("searchWord : " + searchWord);
+		
+		List articleMember = null;
+		articleMember = dbPro.getMember();
+		
+		List articleFindMember = null;
+		if(searchWord != null) {
+			articleFindMember = dbPro.findMember(searchOption, searchWord);
+			System.out.println("*articleFindMember : " + articleFindMember);
+		}
+		
 		mv.clear();
+		mv.addObject("articleMember", articleMember);
+		mv.addObject("articleFindMember", articleFindMember);
 		mv.setViewName("admin/customForm");
+		return mv;
+	}
+	
+	@RequestMapping(value="customPro")
+	public ModelAndView customPro(HttpServletRequest request) throws Exception{	
+		System.out.println("aaa");
+		String id = request.getParameter("id");
+		String grade = request.getParameter("grade");
+		System.out.println(grade);
+		String chagnegrade = "";
+		if(grade.equals("nomal")) {
+			System.out.println("bbb");
+			chagnegrade = "editor";
+			dbPro.chageGrade(chagnegrade, id);
+		}else if(grade.equals("editor")) {
+			System.out.println("bbb");
+			chagnegrade = "nomal";
+			dbPro.chageGrade(chagnegrade, id);
+		}
+	
+		mv.clear();
+		return customForm(request);
+	}
+	
+	@RequestMapping(value="customInfo")
+	public ModelAndView customInfo(String id){	
+		System.out.println("customInfo start");
+		System.out.println("id : " + id);
+		
+		List articleCustomInfo = null;
+		articleCustomInfo = dbPro.getCustomInfo(id);
+		System.out.println("articleCustomInfo : " + articleCustomInfo);
+		
+		mv.clear();
+		mv.addObject("articleCustomInfo", articleCustomInfo);
+		mv.setViewName("local/customInfo");
 		return mv;
 	}
 	@RequestMapping(value="productForm")
