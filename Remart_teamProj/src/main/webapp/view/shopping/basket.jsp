@@ -405,6 +405,7 @@
 		
 		function checkbasket(thisform) {
 			alert("장바구니가 비어있습니다.");
+			document.location.href="shoppingMain";
 		}
 	</script>
 
