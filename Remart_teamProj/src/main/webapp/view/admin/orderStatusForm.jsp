@@ -13,9 +13,10 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/ajax/httpRequest.js"></script>
 <script type="text/javascript">
-
-	function stchange(mart_order_id, status) {
-		var params = "mart_order_id=" + encodeURIComponent(mart_order_id)+ "&status=" + encodeURIComponent(status);
+	function stchange(id, status, type) {
+		var params = "id=" + encodeURIComponent(id) + "&status="
+				+ encodeURIComponent(status) + "&type="
+				+ encodeURIComponent(type);
 		sendRequest("/Remart_teamProj/admin/stchange", params, return_stchange,
 				"GET");
 	}
@@ -30,25 +31,53 @@
 	}
 </script>
 <body>
-
-	주문현황
 	<table>
 		<tr>
+			<td width="300">location</td>
 			<td width="300">re_date</td>
 			<td width="300">or_date</td>
-			<td width="300">offline_mart_id</td>
 			<td width="300">status</td>
 			<td width="300">상태변경</td>
 		</tr>
 		<c:forEach var="order" items="${orderList }">
 			<tr>
+				<td>${order.location}</td>
 				<td>${order.re_date }</td>
 				<td>${order.or_date }</td>
-				<td>${order.offline_mart_id}</td>
-				<td><label id="status${order.mart_order_id }">${order.status}</label></td>
+				<td><c:if test="${order.status=='order'}">발주완료</c:if>
+				<c:if test="${order.status=='ready'}">배송준비중</c:if>
+				<c:if test="${order.status=='ing'}">배송중</c:if>
+				<c:if test="${order.status=='end'}">배송완료</c:if></td>
 				<td>
-				<button
-						onclick="stchange('${order.mart_order_id }','${order.status}')">확인</button></td>
+					<button
+						onclick="stchange('${order.mart_order_id }','${order.status}','order')">확인</button>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
+	<hr>
+	<table>
+		<tr>
+			<td width="300">id</td>
+			<td width="300">order_date</td>
+			<td width="300">pro_name</td>
+			<td width="300">order_date</td>
+			<td width="300">상태변경</td>
+		</tr>
+		<c:forEach var="pay" items="${payList }">
+			<tr>
+				<td>${pay.id }</td>
+				<td>${pay.order_date }</td>
+				<td>${pay.pro_name}</td>
+				<td><c:if test="${pay.order_state} ==order}">주문완료</c:if>
+				<c:if test="${pay.order_state=='pay'}">결제완료</c:if>
+				<c:if test="${pay.order_state=='ready'}">배송준비중</c:if>
+				<c:if test="${pay.order_state=='ing'}">배송중</c:if>
+				<c:if test="${pay.order_state=='end'}">배송완료</c:if></td>
+				<td>
+					<button
+						onclick="stchange('${pay.payment_id }','${pay.order_state}','pay')">확인</button>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>

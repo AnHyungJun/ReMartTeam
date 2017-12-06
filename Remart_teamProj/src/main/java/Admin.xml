@@ -8,9 +8,17 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="getMart_orders" resultType="mart_order">
 		select * from mart_order
 	</select>
-	
+	<select id="getFood_payments" resultType="food_payment">
+		select * from
+		food_payment
+	</select>
 	<update id="statuschange" parameterType="hashmap">
 		update mart_order set status=#{new_status} where
 		mart_order_id=#{mart_order_id}
+	</update>
+	<update id="paychange" parameterType="hashmap">
+		update food_payment set
+		order_state=#{new_status} where
+		payment_id =#{payment_id}
 	</update>
 </mapper>

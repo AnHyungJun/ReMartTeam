@@ -26,6 +26,14 @@ public class MybatisAdminDBBean extends MybatisConnector {
 		}
 	}
 
+	public List getPayList() {
+		sqlSession = sqlSession();
+		try {
+			return sqlSession.selectList(namespace + ".getFood_payments");
+		} finally {
+			sqlSession.close();
+		}
+	}
 	public void change(int mart_order_id, String status) {
 		sqlSession = sqlSession();
 		HashMap map = new HashMap();
@@ -43,6 +51,28 @@ public class MybatisAdminDBBean extends MybatisConnector {
 		map.put("new_status", new_status);
 		try {
 			sqlSession.update(namespace + ".statuschange",map);
+		} finally {
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	}
+	public void change2(int payment_id, String status) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("payment_id", payment_id);
+		//map.put("status", status);
+		String new_status = "";
+		if (status.equals("pay"))
+			new_status = "ready";
+		else if (status.equals("ready"))
+			new_status = "ing";
+		else if (status.equals("ing"))
+			new_status = "end";
+		else
+			return;
+		map.put("new_status", new_status);
+		try {
+			sqlSession.update(namespace + ".paychange",map);
 		} finally {
 			sqlSession.commit();
 			sqlSession.close();

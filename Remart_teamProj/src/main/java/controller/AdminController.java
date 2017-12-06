@@ -44,18 +44,25 @@ ModelAndView mv = new ModelAndView();
 		mv.setViewName("admin/productForm");
 		return mv;
 	}
-	@RequestMapping(value="orderStatusForm")
-	public ModelAndView orderStatusForm(){	
+	@RequestMapping(value = "orderStatusForm")
+	public ModelAndView orderStatusForm() {
 		List orderList = null;
-		orderList=dbPro.getOrderList();
+		List payList = null;
+		orderList = dbPro.getOrderList();
+		payList = dbPro.getPayList();
 		mv.clear();
-		mv.addObject("orderList",orderList);
+		mv.addObject("orderList", orderList);
+		mv.addObject("payList", payList);
 		mv.setViewName("admin/orderStatusForm");
 		return mv;
 	}
-	@RequestMapping(value="stchange")
-	public ModelAndView stchange(int mart_order_id,String status){
-		dbPro.change(mart_order_id,status);
+
+	@RequestMapping(value = "stchange")
+	public ModelAndView stchange(int id, String status, String type) {
+		if (type.equals("order"))
+			dbPro.change(id, status);
+		else if(type.equals("pay"))
+			dbPro.change2(id, status);
 		mv.clear();
 		mv.setViewName("admin/orderStatusForm");
 		return mv;

@@ -9,6 +9,14 @@ public class Mart_orderDataBean implements Serializable{
 	Timestamp or_date;
 	String offline_mart_id;
 	String status;
+	String location;
+	
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
 	public int getMart_order_id() {
 		return mart_order_id;
 	}
@@ -43,10 +51,11 @@ public class Mart_orderDataBean implements Serializable{
 	@Override
 	public String toString() {
 		return "Mart_orderDataBean [mart_order_id=" + mart_order_id
-				+ ", re_date="
-				+ re_date + ", or_date=" + or_date + ", offline_mart_id="
-				+ offline_mart_id + ", status=" + status + "]";
+				+ ", re_date=" + re_date + ", or_date=" + or_date
+				+ ", offline_mart_id=" + offline_mart_id + ", status=" + status
+				+ ", location=" + location + "]";
 	}
+
 	
 	
 }
