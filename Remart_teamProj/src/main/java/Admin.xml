@@ -26,4 +26,14 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 		order_state=#{new_status} where
 		payment_id =#{payment_id}
 	</update>
+	
+	<insert id="insertFood" parameterType="hashmap">
+		insert into food(food_id, category_id, name, price, qty, type)
+		values (#{food_id}, #{foodDataBean.category_id}, #{foodDataBean.name},
+		#{foodDataBean.price}, #{foodDataBean.qty}, #{foodDataBean.type})
+	</insert>
+	
+	<select id="getFood_id" resultType="int">
+	select max(food_id) from food
+	</select>
 </mapper>

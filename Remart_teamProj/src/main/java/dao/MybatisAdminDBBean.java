@@ -3,6 +3,7 @@ package dao;
 import java.util.HashMap;
 import java.util.List;
 
+import model.FoodDataBean;
 import model.Mart_orderDataBean;
 
 import org.apache.ibatis.session.SqlSession;
@@ -74,6 +75,22 @@ public class MybatisAdminDBBean extends MybatisConnector {
 		try {
 			sqlSession.update(namespace + ".paychange",map);
 		} finally {
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	}
+	
+	public void insertFood(FoodDataBean foodDataBean) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("foodDataBean", foodDataBean);
+		try{
+			int food_id = sqlSession.selectOne(namespace+".getFood_id");
+			food_id++;
+			map.put("food_id", food_id);
+			int result = sqlSession.insert(namespace + ".insertFood",map);
+			System.out.println("insert Ok:"+result);
+		}finally{
 			sqlSession.commit();
 			sqlSession.close();
 		}
