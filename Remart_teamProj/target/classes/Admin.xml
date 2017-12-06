@@ -57,4 +57,20 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 	select name, price, qty from food
 	</select>
 	
+	<select id="findMember" parameterType="hashmap" resultType="r_member">
+		select * from r_member where id like '%${searchWord}%' or name like '%${searchWord}%'
+	</select>
+	
+	<select id="getMember" resultType="r_member">
+		select * from r_member order by name
+	</select>
+	
+	<update id="updateGrade" parameterType="hashmap">
+		update r_member set grade = #{grade} where id= #{id}
+	</update>
+	
+	<select id="getCustomInfo" resultType="r_member" parameterType="hashmap">
+		select * from r_member where id = #{id}
+	</select>
+	
 </mapper>
