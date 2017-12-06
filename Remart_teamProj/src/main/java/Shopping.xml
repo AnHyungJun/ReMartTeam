@@ -70,7 +70,7 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
    </update>
    
    <select id="getPayment" parameterType="hashmap" resultType="food_payment">
-		select payment_id, order_date, order_state, all_price, pro_name from food_payment b where id = #{id}
+		select payment_id, order_date, order_state, all_price, pro_name from food_payment b where id = #{id} order by payment_id desc
    </select>
    
    <select id="insertFood_num_new" resultType="int">

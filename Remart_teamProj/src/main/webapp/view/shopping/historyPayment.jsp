@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,7 +41,7 @@
 				<tr>
 					<td></td>
 					<td class="w3-center"
-						style="font-size: 14px; vertical-align: middle;">${articlepayment.order_date }</td>
+						style="font-size: 14px; vertical-align: middle;"><fmt:formatDate value="${articlepayment.order_date }" pattern="yyyy-MM-dd"/></td>
 					
 					<%-- <td class="w3-center"
 						style="font-size: 14px; vertical-align: middle;">${articlepayment.pro_name }</td> --%>
