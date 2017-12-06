@@ -137,7 +137,8 @@ public class MainController {
 	public ModelAndView searchForm(String please,String please2, String autocompleteText, String autocompleteText2, HttpSession session) {
 		mv.clear();
 		List searchList = null;
-		if(please2 != ""){ 
+		if(please2==null) please2="";
+		if(please2 != "" ){ 
 			please2 = please2.replace(" ", "");
 			searchList = dbPro.getFoodSearchList(please2);
 			session.setAttribute("curPage", "shopping");

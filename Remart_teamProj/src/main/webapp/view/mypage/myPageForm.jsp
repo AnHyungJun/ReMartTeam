@@ -324,13 +324,12 @@
    		$('.window').css('width', 920);
    		imagename=imagename.substring(1,imagename.length-1);
    		foodname=foodname.substring(1,foodname.length-1);
-   		contentname=contentname.substring(1,contentname.length-1);
    		repledata=repledata.substring(1,repledata.length-1);
    		hashtag=hashtag.substring(1,hashtag.length-1);
    		hashtag=hashtag.split(', ');
    		imagename=imagename.split(', ');
    		foodname=foodname.split(', ');
-   		contentname=contentname.split(', ');
+   		contentname=contentname.split('@!');
    		feeddate=feeddate.split(', ');
    		id=feeddate[1].substring(3,feeddate[1].length);
    		title=feeddate[5].substring(12,feeddate[5].length);
@@ -352,11 +351,11 @@
    		var size=0;
 		for(var i=0;i<hashtag.length;i++){
 			if(size<30){
-				resulthashtag+="<a href=\"/Remart_teamProj/main/searchForm?autocompleteText=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
+				resulthashtag+="<a href=\"/Remart_teamProj/main/searchForm?please=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
 				size+=hashtag[i].length;
 			}else{
 				size=0;
-				resulthashtag+="<br><a href=\"/Remart_teamProj/main/searchForm?autocompleteText=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
+				resulthashtag+="<br><a href=\"/Remart_teamProj/main/searchForm?please=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
 				size+=hashtag[i].length;
 			}
 		}
