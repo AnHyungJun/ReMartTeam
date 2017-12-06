@@ -11,8 +11,19 @@ public class FoodDataBean implements Serializable{
    private int qty;
    private String category_name;
    private String category_group;
+   private String type;
    
-   public int getFood_id() {
+   
+   
+   public String getType() {
+	return type;
+}
+
+public void setType(String type) {
+	this.type = type;
+}
+
+public int getFood_id() {
       return food_id;
    }
    

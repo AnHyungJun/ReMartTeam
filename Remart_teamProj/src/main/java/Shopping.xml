@@ -15,7 +15,7 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
    
    <select id="getFoods" parameterType="hashmap" resultType="food">
       select * from (select rownum rnum, a.* from(
-      select food_id, name, price, qty from food where category_id = #{category_id})
+      select food_id, name, price, qty, type from food where category_id = #{category_id})
       a) where rnum between #{start} and #{end}
    </select>
    
