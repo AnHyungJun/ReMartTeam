@@ -156,7 +156,7 @@ a {
 						</c:if>	
 						<c:if test="${articleFood.type ne '0' }">
 						<img alt="사진"
-							src="<%=request.getContextPath() %>/images/food/${articleFood.type }"
+							src="<%=request.getContextPath() %>/fileSave/${articleFood.type }"
 							width="80%" style="margin-top: 8px;">
 							
 						</c:if>	
