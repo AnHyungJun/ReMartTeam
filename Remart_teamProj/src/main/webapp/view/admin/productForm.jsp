@@ -45,28 +45,30 @@
 			<div class="w3-left" style="width: 15%">
 				<input type="button"
 					class="w3-button w3-black w3-hover-red w3-center"
-					style="font-size: 12px; width: 90px;" value="상품 등록" onClick="openOfflineSearch(this.form)">
+					style="font-size: 12px; width: 90px;" value="상품 등록"
+					onClick="openOfflineSearch(this.form)">
 			</div>
 			<div class="w3-right">
-			<form method="post" action="foodsearchPro">
-			<input type="text" name="foods" value=""> <button type="submit">검색</button>
-			</form>
+				<form method="post" action="foodsearchPro">
+					<input type="text" name="foods" value="">
+					<button type="submit">검색</button>
+				</form>
 			</div>
 		</div>
 		<div style="margin-top: 10px;"></div>
 		<div class="w3-container w3-center" style="width: 900px;">
 			<div class="list_body">
-					<table class="list_body_table w3-table " width="100%">
-						<tr
-							style="border-top: 1px solid #666; background-color: #f7f7f7; font-size: 13px;">
-							<th width="30%" class="w3-center">PRODUCT NAME</th>
-							<th width="30%" class="w3-center">PRODUCT PRICE</th>
-							<th width="30%" class="w3-center">PRODUCT QTY</th>
-							<th width="10%" class="w3-center">EDIT</th>
-						</tr>
-						<c:if test="${foodlist == null }">
+				<table class="list_body_table w3-table w3-center" width="100%">
+					<tr
+						style="border-top: 1px solid #666; background-color: #f7f7f7; font-size: 13px;">
+						<th width="30%" class="w3-center">PRODUCT NAME</th>
+						<th width="30%" class="w3-center">PRODUCT PRICE</th>
+						<th width="30%" class="w3-center">PRODUCT QTY</th>
+						<th width="10%" class="w3-center">EDIT</th>
+					</tr>
+					<c:if test="${foodlist == null }">
 						<c:forEach var="allfood" items="${allfoodlist}">
-						<form name="food">
+							<form name="food">
 								<tr>
 									<th width="30%" class="w3-center"
 										style="vertical-align: middle;">${allfood.name}</th>
@@ -81,9 +83,6 @@
 										<button class="w3-button w3-black w3-hover-black"
 											style="font-size: 11px"
 											onClick="foodupdate(${food.food_id},this.form)">수정</button>
-										<p class="tiny"></p>
-										<button class="w3-button w3-black w3-hover-black"
-											style="font-size: 11px" onClick="fooddelete(${food.food_id})">삭제</button>
 									</th>
 								</tr>
 							</form>
@@ -91,24 +90,33 @@
 					</c:if>
 					<c:if test="${foodlist != null }">
 						<c:forEach var="food" items="${foodlist}">
-						<form name="food" method="post" action="foodUpdatePro">
-						<tr>
-							<th> ${food.name} </th>
-							<th> <input value="${food.price}" name="price"> </th>
-							<th> <input value="${food.qty}" name="qty"> </th>
-						 	<th> <button type="submit">수정</button> </th>
+							<form name="food" method="post" action="foodUpdatePro">
+								<tr>
+									<th width="30%" class="w3-center"
+										style="vertical-align: middle;">${food.name}</th>
+									<th width="30%" class="w3-center"
+										style="vertical-align: middle;"><input
+										value="${food.price}" name="price"></th>
+									<th width="30%" class="w3-center"
+										style="vertical-align: middle;"><input
+										value="${food.qty}" name="qty"></th>
+									<th width="30%" class="w3-center"
+										style="vertical-align: middle;">
+										<button class="w3-button w3-black w3-hover-black"
+											style="font-size: 11px" type="submit">수정</button>
+									</th>
 
-						</tr>
-						<input type="hidden" value="${food.food_id }" name="food_id">
-						</form>
+								</tr>
+								<input type="hidden" value="${food.food_id }" name="food_id">
+							</form>
 						</c:forEach>
-						</c:if>
-					</table>
-				
+					</c:if>
+				</table>
+
 			</div>
 		</div>
 	</center>
-	
+
 	<script>
 	function openOfflineSearch(userinput) {
 		url = "productWrite";
