@@ -55,7 +55,7 @@
 							href="<%=request.getContextPath() %>/mypage/followForm?id=${member.id}"><img
 							class="w3-right-align"
 							src="<%=request.getContextPath()%>/images/icon/follow.png"
-							style="width: 17px;"></a>
+							style="width: 27px;"></a>
 						<a
 							href="<%=request.getContextPath() %>/mypage/likeForm?id=${member.id}"><img
 							class="w3-right-align"
@@ -66,6 +66,11 @@
 							class="w3-right-align"
 							src="<%=request.getContextPath()%>/images/icon/bookmark.png"
 							style="width: 30px;"></a>
+							<a
+							href="<%=request.getContextPath() %>/shopping/historyPayment?id=${memberInfo.id}"><img
+							class="w3-right-align"
+							src="<%=request.getContextPath()%>/images/icon/order.png"
+							style="width: 24px;"></a>
 					</c:if>
 				</div>
 			</div>
