@@ -83,12 +83,22 @@ a {
 
 			<div class="shopping_list">
 
-				<c:forEach var="articleFood" items="${articleFoodList}">
+				<c:forEach var="articleFood" items="${searchList}">
 					<div class="w3-cell"
 						style="display: inline; width: 24.85%; height: 310px; float: left; border: 1px solid #ddd; margin-left: 1px; margin-bottom: 1px;">
+						
+						<c:if test="${articleFood.type eq '0' }">
 						<img alt="사진"
 							src="<%=request.getContextPath() %>/images/food/${articleFood.name }.jpg"
 							width="80%" style="margin-top: 8px;">
+							
+						</c:if>	
+						<c:if test="${articleFood.type ne '0' }">
+						<img alt="사진"
+							src="<%=request.getContextPath() %>/fileSave/${articleFood.type }"
+							width="80%" style="margin-top: 8px;">
+							
+						</c:if>	
 						<p style="font-size: 13px;">${articleFood.name }</p>
 						<p style="font-size: 13px;">${articleFood.price }원</p>
 						<form method="post" name="food_form" action="shoppingPro">
