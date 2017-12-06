@@ -111,4 +111,20 @@ public class MybatisAdminDBBean extends MybatisConnector {
 			return food;
 		}
 	}
+
+
+
+	public void updateFood(FoodDataBean food) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("food", food);
+		try{
+			
+			int result = sqlSession.update(namespace + ".updateFood",map);
+			System.out.println("update :"+result);
+		}finally{
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	}
 }

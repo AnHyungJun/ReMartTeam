@@ -66,13 +66,15 @@
 						</tr>
 						
 						<c:forEach var="food" items="${foodlist}">
-						<form name="food">
+						<form name="food" method="post" action="foodUpdatePro">
 						<tr>
 							<th> ${food.name} </th>
 							<th> <input value="${food.price}" name="price"> </th>
 							<th> <input value="${food.qty}" name="qty"> </th>
-							<th> <button onClick="foodupdate(${food.food_id},this.form)">수정</button> <button onClick="fooddelete(${food.food_id})">삭제</button> </th>
+						 	<th> <button type="submit">수정</button> </th>
+
 						</tr>
+						<input type="hidden" value="${food.food_id }" name="food_id">
 						</form>
 						</c:forEach>
 						

@@ -45,11 +45,8 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from food
 	</select>
 	
-	<update id="foodupdate" parameterType="hashmap">
-	update food set price=#{foodDataBean.price}, qty=#{foodDataBean.qty} where food_id=#{foodDataBean.food_id}
+	<update id="updateFood" parameterType="hashmap">
+	update food set price=#{food.price}, qty=#{food.qty} where food_id=#{food.food_id}
 	</update>
-	
-	<delete id="fooddelete" parameterType="hashmap">
-	delete from food where food_id=#{foodDataBean.food_id}
-	</delete>
+
 </mapper>

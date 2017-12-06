@@ -48,7 +48,10 @@ ModelAndView mv = new ModelAndView();
 	}
 	@RequestMapping(value="productForm")
 	public ModelAndView productForm(){	
+		String foods = null;
+		List foodlist = dbPro.foodlist(foods);
 		mv.clear();
+		mv.addObject("foodlist", foodlist);
 		mv.setViewName("admin/productForm");
 		return mv;
 	}
@@ -87,6 +90,17 @@ ModelAndView mv = new ModelAndView();
 		mv.clear();
 		mv.setViewName("local/productWrite");
 		return mv;
+	}
+	@RequestMapping(value="foodUpdatePro")
+	public ModelAndView foodUpdatePro(int food_id, int qty, int price){	
+		FoodDataBean food = new FoodDataBean();
+		food.setFood_id(food_id);
+		food.setQty(qty);
+		food.setPrice(price);
+		
+		dbPro.updateFood(food);
+		
+		return productForm();
 	}
 	@RequestMapping(value = "orderStatusForm")
 	public ModelAndView orderStatusForm() {
