@@ -8,66 +8,6 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <title>REMART ADMIN</title>
 <style>
-.order {
-	display: table;
-	width: 100%;
-	list-style: none;
-	padding: 0px;
-	margin: 0px;
-}
-
-.order li.active {
-	background: #24221f;
-	color: #fff;
-}
-
-.order li {
-	display: table-cell;
-	position: relative;
-	padding: 14px 25px;
-	background: #fff;
-	font-size: 22px;
-	color: #999;
-	border-left: 1px solid #bbb;
-	vertical-align: middle;
-}
-
-.process .order li em {
-	font-family: 'Gotham Book';
-	font-size: 26px;
-	font-weight: 400;
-	vertical-align: -2px;
-}
-
-.list_head {
-	position: relative;
-	min-height: 60px;
-	border-top: 1px solid #24221f;
-	background: #f7f7f7;
-	font-size: 16px;
-}
-
-.list_head_title p {
-	display: inline-block;
-	font-weight: 700;
-	font-size: 18px;
-	text-align: center;
-	margin-left: 20px;
-}
-
-.item_count {
-	display: inline-block;
-	padding: 1px 7px 0 7px;
-	background: #ed1b24;
-	border-radius: 3px;
-	color: #fff;
-	font-size: 14px;
-	font-weight: 700;
-	vertical-align: 2px;
-	margin-left: 7px;
-	vertical-align: middle;
-}
-
 .list_body {
 	table-layout: fixed; /* 셀안의 데이터가 길어서 지정한 너비 이상으로 셀을 밀어버리는 것을 방지 */
 	word-break: break-all; /* 테이블 고정 줄바꿈 일어남 */
@@ -92,41 +32,6 @@
 	padding-left: 20px;
 }
 
-.pro_info {
-	text-align: left;
-	float: left;
-	max-width: 278px;
-	color: #666;
-}
-
-.pro_img {
-	position: relative;
-	float: left;
-	width: 80px;
-	height: 80px;
-}
-
-.pro_name {
-	float: left;
-	max-width: 278px;
-	margin-left: 20px;
-	color: #666;
-	font-size: 13px;
-	margin-left: 30px;
-}
-
-.pro_name a {
-	overflow: hidden;
-	max-height: 37px;
-	margin: -2px 0 0 0;
-	color: #111;
-	font-size: 14px;
-	font-weight: 700;
-	line-height: 7;
-	letter-spacing: 0; /*글자 사이 간격 */
-	text-decoration: none;
-}
-
 .tiny {
 	font-size: 2px;
 }
@@ -140,7 +45,7 @@
 			<div class="w3-left" style="width: 15%">
 				<input type="button"
 					class="w3-button w3-black w3-hover-red w3-center"
-					style="font-size: 12px; width: 90px;" value="상품 등록">
+					style="font-size: 12px; width: 90px;" value="상품 등록" onClick="openOfflineSearch(this.form)">
 			</div>
 		</div>
 		<div style="margin-top: 10px;"></div>
@@ -193,5 +98,15 @@
 			</c:if>
 		</div>
 	</center>
+	
+	<script>
+	function openOfflineSearch(userinput) {
+		url = "productWrite";
+
+		open(url, "productWrite",
+				"toolbar = no,location=no, status= no, menubar = no,"
+						+ "resizable=no, width = 1000, height = 1000");
+	}
+	</script>
 </body>
 </html>
