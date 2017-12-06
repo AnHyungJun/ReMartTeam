@@ -20,6 +20,8 @@ public class R_memberDataBean implements Serializable{
 	private String sex;
 	private String email;
 	private String jumin1;
+	private String info;
+	private String profileImg;
 	private int follow_status;
 	public int getFollowernum() {
 		return followernum;
@@ -51,10 +53,6 @@ public class R_memberDataBean implements Serializable{
 	public void setWritenum(int writenum) {
 		this.writenum = writenum;
 	}
-
-	private String info;
-	private String profileImg;
-	
 	public String getId() {
 		return id;
 	}

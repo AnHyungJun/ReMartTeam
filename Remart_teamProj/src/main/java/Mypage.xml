@@ -5,7 +5,7 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="mypage.mybatis">
 	<cache />
 	<select id="pagea" parameterType="hashmap" resultType="R_member">
-	select id,name,phone,grade,point,use_like,sex,profileimg,(select count(*) from feed e where e.id=#{id}) writenum, 
+	select id,name,phone,grade,point,use_like,info,sex,profileimg,(select count(*) from feed e where e.id=#{id}) writenum, 
 	(select count(*) from follow z where z.my_id=#{id}) follownum ,(select count(*) from follow z where z.other_id=#{id}) followernum 
  	from r_member where id=#{id}
 	</select>
