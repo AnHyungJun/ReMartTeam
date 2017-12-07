@@ -203,11 +203,18 @@
 									</c:if>
 								</div>
 
-								<div id="innercontent">
+									<div id="innercontent">
 									${list.recipe_name }<br>
+									<c:set var="doneLoop" value="false" />
 									<c:forEach var="hash" items="${list.hashtaglist}"
 										varStatus="status">
-									 #${hash }
+										<c:if test="${not doneLoop}">
+										#${hash }
+											<c:if test="${status.count == 15}">
+												<c:set var="doneLoop" value="true" />
+												...
+											</c:if>
+										</c:if>
 									</c:forEach>
 								</div>
 							</div>
