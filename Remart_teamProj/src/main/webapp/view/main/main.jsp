@@ -151,7 +151,7 @@
 										<img
 											src="<%=request.getContextPath()%>/fileSave/${list.profileImg}"
 											class="w3-circle" alt="" style="width: 20px; height: 20px">
-									</c:if>${list.id }</div>
+									</c:if>${list.id }</div> 
 								<div class="w3-center">
 									<!-- 여기가 이미지 부분인데 SHOWMASK클래스를 클릭하면  READY 부분에 SHOWMASK 클릭이벤트 실행 그러면 레이어창이 올라옴-->
 									<img id="${list.feed_id}" class="showMask"
