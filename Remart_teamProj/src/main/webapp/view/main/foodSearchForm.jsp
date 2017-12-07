@@ -101,7 +101,7 @@ a {
 						</c:if>	
 						<p style="font-size: 13px;">${articleFood.name }</p>
 						<p style="font-size: 13px;">${articleFood.price }원</p>
-						<form method="post" name="<%=request.getContextPath() %>/main/food_form" action="shoppingPro">
+						<form method="post" name="<%=request.getContextPath() %>/shopping/food_form" action="shoppingPro">
 							<div class="__count_range">
 								<div class="w3-row w3-border w3-left"
 									style="width: 100px; margin-left: 20px;">
