@@ -203,19 +203,33 @@
 									</c:if>
 								</div>
 
-									<div id="innercontent">
+							<div id="innercontent">
 									${list.recipe_name }<br>
-									<c:set var="doneLoop" value="false" />
-									<c:forEach var="hash" items="${list.hashtaglist}"
-										varStatus="status">
-										<c:if test="${not doneLoop}">
-										#${hash }
-											<c:if test="${status.count == 15}">
-												<c:set var="doneLoop" value="true" />
-												...
-											</c:if>
-										</c:if>
-									</c:forEach>
+									<table>
+										<tr>
+											<c:set var="doneLoop" value="false" />
+											<c:forEach var="hash" items="${list.hashtaglist}"
+												varStatus="status">
+												<c:if test="${not doneLoop}">
+													<td>
+														<form
+															action="<%=request.getContextPath()%>/main/searchForm"
+															method="POST" id="${list.feed_id}${hash}">
+															<input type="hidden" value="#${hash }" name="please">
+														</form> <a
+														onclick="document.getElementById('${list.feed_id }${hash}').submit();"
+														style="cursor: pointer; text-decoration: underline;">
+															#${hash }</a>
+													</td>
+													<c:if test="${status.count == 8}"></tr><tr></c:if>
+													<c:if test="${status.count == 15}">
+														<c:set var="doneLoop" value="true" />
+														...
+													</c:if>
+												</c:if>
+											</c:forEach>
+										</tr>
+									</table>
 								</div>
 							</div>
 						</div>
