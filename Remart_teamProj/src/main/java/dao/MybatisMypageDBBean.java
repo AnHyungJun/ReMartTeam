@@ -165,6 +165,7 @@ public class MybatisMypageDBBean extends MybatisConnector {
 			HashMap map = new HashMap();
 			map.put("id", id);
 			feedlist=sqlSession.selectList(namespace + ".getFollowFeedList", map);
+			
 			for(int i=0;i<feedlist.size();i++){
 				map.clear();
 				map.put("feed_id", feedlist.get(i).getFeed_id());
@@ -179,6 +180,9 @@ public class MybatisMypageDBBean extends MybatisConnector {
 				feedlist.get(i).setMakecontent(tmps);
 				feedlist.get(i).setHashtaglist(sqlSession.selectList(namespace + ".hashtaglist", map));
 			}
+			
+			
+
 			
 			return feedlist;
 

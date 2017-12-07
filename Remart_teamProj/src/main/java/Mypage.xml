@@ -48,7 +48,7 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="getFollowFeedList" parameterType="hashmap" resultType="feed">
-		select * from feed f where id in (select id from r_member where id in (select other_id from follow where my_id=#{id})) order by reg_date desc
+		select feed_id,id,like_num,reg_date,recipe_name,(select grade from r_member where id=f.id) feed_grade from feed f where id in (select id from r_member where id in (select other_id from follow where my_id=#{id})) order by reg_date desc
 	</select>
 	
 	<select id="getFollowingList" parameterType="hashmap" resultType="r_member">
