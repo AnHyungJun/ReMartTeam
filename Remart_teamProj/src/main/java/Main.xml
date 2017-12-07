@@ -201,7 +201,6 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getHashtagKeyCount" parameterType="hashmap"
 		resultType="int">
 		select count(*) cnt from hash_feed hf, hashtag h where
-		hf.hashtag_id = h.hashtag_id and h.hashtag_content = #{please} group by
-		h.hashtag_id
+		hf.hashtag_id = h.hashtag_id and h.hashtag_content = #{please}
 	</select>
 </mapper>
