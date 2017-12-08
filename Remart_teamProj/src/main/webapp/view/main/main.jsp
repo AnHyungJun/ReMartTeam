@@ -6,7 +6,6 @@
 <html>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/ajax/httpRequest.js"></script>
-
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
 .display-none {
@@ -163,7 +162,8 @@
 												<img id="${list.feed_id}" class="showMask"
 													src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 													style="width: 100%; height: 200px"
-													onclick="editorfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.makecontent}','${list.replelist}','${fn:length(list.replelist)}','${list.food_id}','${list.hashtaglist}');">
+													onclick="document.getElementById('popup').style.display='block';
+													 editorfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.makecontent}','${list.replelist}','${fn:length(list.replelist)}','${list.food_id}','${list.hashtaglist}');">
 												<br>
 									${list.recipe_name }
 									</c:if>
@@ -171,7 +171,8 @@
 												<img id="${list.feed_id}" class="showMask"
 													src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 													style="width: 100%; height: 200px"
-													onclick="nomalfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.makecontent}','${list.replelist}','${fn:length(list.replelist)}','${list.hashtaglist}');">
+													onclick="document.getElementById('popup').style.display='block';
+													nomalfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.makecontent}','${list.replelist}','${fn:length(list.replelist)}','${list.hashtaglist}');">
 												<br>
 									${list.recipe_name }
 									</c:if>
@@ -259,12 +260,40 @@
 		<img src="<%=request.getContextPath()%>/images/icon/lo3.gif"
 			style="margin-left: 45%">
 	</div>
+	<!-- 모달팝업 -->
+	<div id="popup" class="w3-modal">
+		<div class="w3-modal-content" style="width: 900px; height: 600px;">
+			<div class="w3-center">
+				<br> <span
+					onclick="document.getElementById('popup').style.display='none'"
+					class="w3-button w3-xlarge w3-transparent w3-display-topright"
+					title="Close Modal">×</span> <br>
+			</div>
+			<div style="width: 100%; height: 50px;">
+				<!--글쓰는데 상단 고정바-->
+				<button id="leftpage" style="float: left;" onclick="plusDivs(-1)"
+					class="w3-button w3-white w3-hover-white">
+					<b>〈 </b>
+				</button>
+				<button id="rightpage" style="float: right" type="button"
+					class="w3-button w3-white w3-hover-white" onclick="plusDivs(1)">
+					<b> 〉 </b>
+				</button>
+			</div>
+			<div id="popupcontent"></div>
+			<div id="popupcontent2"></div>
+			<div id="popupcontent3"></div>
+			<div id="popupcontent4"></div>
+
+		</div>
+	</div>
 	<!-- 레이어창 -->
 	<div class="setDiv">
 		<!--이부분 이해안되면 찾아오고 -->
-		<div class="mask"></div>
-		<div class="window w3-modal w3-modal-content w3-animate-opacity">
-			<button type="button" href="#"
+		<div class="mask" onclick="clickClose();"></div>
+		<div class="window w3-modal w3-modal-content w3-animate-opacity"
+			onclick="clickWindow()">
+			<button type="button" href="#" onclick="clickClose();"
 				class="close w3-button w3-white w3-hover-white w3-right">X
 			</button>
 			<div style="margin-top: 40px;"></div>
@@ -314,12 +343,26 @@
 		alert("로그인하세요");
 	} 
 	//무한스크롤
+	var index = 1;
+var rindex = 1;
+$(document).ready(function() {
+	$(document).scroll(function() {
+		var maxHeight = $(document).height();
+		var currentScroll = $(window).scrollTop() + $(window).height();
+		if (maxHeight <= currentScroll + 100) {
+			$('.loading').removeClass('display-none');
+			feedLoading(rindex);
+			setTimeout(function() {
+				index++;
+			}, 2000);
+		}
+	});
+});
 		function feedLoading(index){
 			 var id='<c:out value="${memberInfo.id}"/>'; 
 			var params = "index=" + encodeURIComponent(index)+"&id="+id;
 			sendRequest("/Remart_teamProj/main/getFeed", params, return_feedLoading,
 			"GET"); 
-	 
 	}
 	function return_feedLoading(){
 		if (httpRequest.readyState == 4) {
@@ -331,319 +374,300 @@
 		}
 	}
 	//피드팝업
-	var slideIndex = 1;//슬라이드 변수
 
-	
-
-	function plusDivs(n) {
-		
-		showDivs(slideIndex += n);
-
+var slideIndex = 1;//슬라이드 변수
+function plusDivs(n) {
+	showDivs(slideIndex += n);
+}
+//버튼 하고 슬라이드 처리 해주는 함수
+function showDivs(n) {
+	var i;
+	var x = document.getElementsByClassName("mySlides");
+	for (i = 0; i < x.length; i++) {
+		x[i].style.display = "none";
 	}
-	//버튼 하고 슬라이드 처리 해주는 함수
-	function showDivs(n) {
-		
-		var i;
-		var x = document.getElementsByClassName("mySlides");
-		for (i = 0; i < x.length; i++) {
-			x[i].style.display = "none";
-		}
-		if (x.length == 1) {
-			document.getElementById("leftpage").style.display = 'none';
-			document.getElementById("rightpage").style.display = 'none';
-		} else if (slideIndex == 1) {
-			document.getElementById("leftpage").style.display = 'none';
-			document.getElementById("rightpage").style.display = 'block';
-		} else if (slideIndex == x.length) {
-			document.getElementById("leftpage").style.display = 'block';
-			document.getElementById("rightpage").style.display = 'none';
+	if (x.length == 1) {
+		document.getElementById("leftpage").style.display = 'none';
+		document.getElementById("rightpage").style.display = 'none';
+	} else if (slideIndex == 1) {
+		document.getElementById("leftpage").style.display = 'none';
+		document.getElementById("rightpage").style.display = 'block';
+	} else if (slideIndex == x.length) {
+		document.getElementById("leftpage").style.display = 'block';
+		document.getElementById("rightpage").style.display = 'none';
+	} else {
+		document.getElementById("leftpage").style.display = 'block';
+		document.getElementById("rightpage").style.display = 'block';
+	}
+	x[slideIndex - 1].style.display = "block";
+}
+function nomalfeed(imagenum, feeddate, feedid, imagename, contentname,
+		repledata, replenum, hashtag) {
+	var myArray;
+	var title;
+	var id;
+	//넘겨준 데이터 쪼갬
+	imagename = imagename.substring(1, imagename.length - 1);
+	repledata = repledata.substring(1, repledata.length - 1);
+	hashtag = hashtag.substring(1, hashtag.length - 1);
+	imagename = imagename.split(', ');
+	hashtag = hashtag.split(', ');
+	contentname = contentname.split('@!');
+	feeddate = feeddate.split(', ');
+	id = feeddate[1].substring(3, feeddate[1].length);
+	title = feeddate[5].substring(12, feeddate[5].length);
+	//이미지와 제목 해쉬테그 좋아요
+	var y = "<div class=\"leftdiv\" style=\"float: left; width: 55%; height: 550px; margin-top: 10px;\">"
+	//피드 상단 프로필사진
+	y += "<div align=\"left\" style=\"width:100%; height:70px\"> <img	src=\"/Remart_teamProj/fileSave/${member.profileImg}\"class=\"w3-circle\" alt=\"Norway\"style=\"width:70px; height:70px\"></div>";
+	//이미지
+	y += "<div align=\"center\" class=\"mySlides\"  style=\"width: 100%;height: 400px; \">"
+			+ "<img src='"
+			+ "/Remart_teamProj/fileSave/"
+			+ imagename[0]
+			+ "' width=100% height=350><br>"
+			+ "<label> 음식 이름 : "
+			+ title
+			+ "</label><br>"
+			+ "<label>재료 : "
+			+ contentname[0]
+			+ "</label><br>"
+			+ "</div>";
+
+	for (var i = 1; i < imagenum; i++) {
+		y += "<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 100%; height: 400px;\">"
+				+ "<img src='"
+				+ "/Remart_teamProj/fileSave/"
+				+ imagename[i]
+				+ "' width=100% height=350><br>"
+				+ "<label>"
+				+ contentname[i]
+				+ "</label>" + "</div>";
+	}
+	var resulthashtag = "";
+	var size = 0;
+	for (var i = 0; i < hashtag.length; i++) {
+		if (size < 30) {
+			resulthashtag += "<a href=\"/Remart_teamProj/main/searchForm?please=#"
+					+ hashtag[i] + "\"> #" + hashtag[i] + "</a>";
+			size += hashtag[i].length;
 		} else {
-			document.getElementById("leftpage").style.display = 'block';
-			document.getElementById("rightpage").style.display = 'block';
-		}
-		x[slideIndex - 1].style.display = "block";
-	}
-	
-   	function nomalfeed(imagenum,feeddate,feedid,imagename,contentname,repledata,replenum,hashtag){
-   		var myArray ;
-   		var title ;
-   		var id;
-   		//넘겨준 데이터 쪼갬
-   		imagename=imagename.substring(1,imagename.length-1);
-   		repledata=repledata.substring(1,repledata.length-1);
-   		hashtag=hashtag.substring(1,hashtag.length-1);
-   		imagename=imagename.split(', ');
-   		hashtag=hashtag.split(', ');
-   		contentname=contentname.split('@!');
-   		feeddate=feeddate.split(', ');
-   		id=feeddate[1].substring(3,feeddate[1].length);
-   		title=feeddate[5].substring(12,feeddate[5].length);
-   		//이미지와 제목 해쉬테그 좋아요
-   		var y="<div class=\"leftdiv\" style=\"float: left; width: 55%; height: 550px; margin-top: 10px;\">"
-   		//피드 상단 프로필사진
-   		y+="<div align=\"left\" style=\"width:100%; height:70px\"> <img	src=\"/Remart_teamProj/fileSave/${member.profileImg}\"class=\"w3-circle\" alt=\"Norway\"style=\"width:70px; height:70px\"></div>";
-   		//이미지
-   		y+="<div align=\"center\" class=\"mySlides\"  style=\"width: 100%;height: 400px; \">"+
-		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[0]+"' width=100% height=350><br>"
-		+"<label> 음식 이름 : "+title+"</label><br>"
-		+"<label>재료 : "+contentname[0]+"</label><br>"+"</div>";
-		
-   		for(var i=1;i<imagenum;i++){   			
-   			y+="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 100%; height: 400px;\">"+
-    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=350><br>"
-    		+"<label>"+contentname[i]+"</label>"+"</div>";
-   		}
-   		var resulthashtag="";
-   		var size=0;
-		for(var i=0;i<hashtag.length;i++){
-			if(size<30){
-				resulthashtag+="<a href=\"/Remart_teamProj/main/searchForm?please=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
-				size+=hashtag[i].length;
-			}else{
-				size=0;
-				resulthashtag+="<br><a href=\"/Remart_teamProj/main/searchForm?please=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
-				size+=hashtag[i].length;
-			}
-		}
-  		y+="<div align=\"left\"  class=\"hash\"style=\" width: 100%; height: 50px;\">"
-  	  		+resulthashtag+"</div>";
-  	  	y+="<div align=\"left\" style=\"width:100%; height:40px\"> <img src=\"/Remart_teamProj/images/icon/like_before.png\" style=\"width:40px; height:40px\"></div>";
-  	  	y+="</div>";
-  	 
-  	  	$('.window').append(y); 
-   		
-  	  
-   		/*리플 */
-   		if(replenum!=0){
-   			myArray = new Array( new Array(replenum), new Array(5) );
-   			repledata=repledata.split(', ');
-   			for(var i=0;i<replenum;i++){
-   					var tmp=repledata[i].split(',');
-   					myArray[i]=tmp;
-   			}
-   	   		var makereplelist="";
-   	   		for(var i=0;i<replenum;i++){
-   	   			makereplelist+="<lable  class=\"commentreple\">"+myArray[i][2]+"님의 댓글 /"+myArray[i][3]+"</lable><br>";
-   	   		}
-   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"replecontent\""
-   	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
-   	   		+makereplelist+"</div>"
-   	   		
-   	   		$('.window').append(z); 
-   		}else{
-   			var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"replecontent\""
-   	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
-   	   		+"</div>"
-   	   		
-   	   		$('.window').append(z); 
-   		}
-   		
-   		$('.window').show();
-   		showDivs(1);//슬라이더 처음값
-   	}
-	function editorfeed(imagenum,feeddate,feedid,imagename,contentname,repledata,replenum,foodname,hashtag){
-   		var myArray ;
-   		var title ;
-   		var id;
-   		$('.window').css('width', 920);
-   		imagename=imagename.substring(1,imagename.length-1);
-   		foodname=foodname.substring(1,foodname.length-1);
-   		repledata=repledata.substring(1,repledata.length-1);
-   		hashtag=hashtag.substring(1,hashtag.length-1);
-   		hashtag=hashtag.split(', ');
-   		imagename=imagename.split(', ');
-   		foodname=foodname.split(', ');
-   		contentname=contentname.split('@!');
-   		feeddate=feeddate.split(', ');
-   		id=feeddate[1].substring(3,feeddate[1].length);
-   		title=feeddate[5].substring(12,feeddate[5].length);
-   		//이미지와 제목 해쉬테그 좋아요
-   		var y="<div class=\"leftdiv\" style=\"float: left; width: 45%; height: 550px; margin-top: 10px;\">"
-   		y+="<div align=\"left\" style=\"width:100%; height:70px\"> <img	src=\"/Remart_teamProj/fileSave/${member.profileImg}\"class=\"w3-circle\" alt=\"Norway\"style=\"width:70px; height:70px\"></div>";
-   		y+="<div align=\"center\" class=\"mySlides\"  style=\"width: 100%;height: 400px; \">"+
-		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[0]+"' width=100% height=350><br>"
-		+"<label> 음식 이름 : "+title+"</label><br>"
-		+"<label>재료 : "+contentname[0]+"</label><br>"+"</div>";
-		
-   		for(var i=1;i<imagenum;i++){   			
-   			y+="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 100%; height: 400px;\">"
-   			+"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=350><br>"
-   			+"<label>"+contentname[i]+"</label>"+"</div>";
-   		}
-   		
-   		var resulthashtag="";
-   		var size=0;
-		for(var i=0;i<hashtag.length;i++){
-			if(size<30){
-				resulthashtag+="<a href=\"/Remart_teamProj/main/searchForm?please=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
-				size+=hashtag[i].length;
-			}else{
-				size=0;
-				resulthashtag+="<br><a href=\"/Remart_teamProj/main/searchForm?please=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
-				size+=hashtag[i].length;
-			}
-		}
-  		y+="<div align=\"left\"  class=\"hash\"style=\" width: 100%; height: 50px;\">"
-  	  		+resulthashtag+"</div>";
-  	  	y+="<div align=\"left\" style=\"width:100%; height:40px\"> <img src=\"/Remart_teamProj/images/icon/like_before.png\"style=\"width:40px; height:40px\"></div>";
-		y+="</div>";
-		
-  	  	$('.window').append(y); 
-   		/*리플 */
-   		
-   		if(replenum!=0){
-   			myArray = new Array( new Array(replenum), new Array(5) );
-   			repledata=repledata.split(', ');
-   			for(var i=0;i<replenum;i++){
-   					var tmp=repledata[i].split(',');
-   					myArray[i]=tmp;
-   			}
-   	   		var makereplelist="";
-   	   		for(var i=0;i<replenum;i++){
-   	   			makereplelist+="<lable class=\"commentreple\">"+myArray[i][2]+"님의 댓글 /"+myArray[i][3]+"</lable><br>";
-   	   		}
-   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 36%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"replecontent\""
-   	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
-   	   		+makereplelist+"</div>"
-   	   		
-   	   		$('.window').append(z); 
-   		}else{
-   			var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 36%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"replecontent\""
-   	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
-   	   		+"</div>"
-   	   		
-   	   		$('.window').append(z); 
-   		}
-   		
-   		
-   		
-   		
-  		var editorfood="";
-  		for(var i=0;i<foodname.length;i++){
-  			
-  			editorfood+="<input type=\"checkbox\" name=\"chk_info\" value=\""+foodname[i]+"\">"+"<img src=\"/Remart_teamProj/images/food/"+foodname[i]+".jpg\" width=100 height=70/><br>";
-  		}
-  		var z="<div align=\"center\"  class=\"food\"style=\"float: left; width: 19%; height: 550px; margin-top: 10px;\ border: solid 4px; \">"
-  		+"<form action=\"\" method=\"post\">"
-  		+editorfood+"<input type=\"submit\" value\"장바구니\"></form></div>"
-  		
-  		$('.window').append(z); 
-  		
-   		$('.window').show();
-   		showDivs(1);//슬라이더 처음값
-   	}
-   	function replecommit(feed_id,m_id) {
-		
-		var txtval=$('input:text[name="'+feed_id+'"]');
-		
-		if(txtval.val()=='') alert("입력하신 댓글이 없습니다");
-		else{
-			var params =  "feed_id="+feed_id+"&id="+m_id+"&content="+encodeURIComponent(txtval.val());
-			
-			sendRequest("<%=request.getContextPath()%>/common/repleInsert.jsp",
-			params, displayResult, 'GET');
-		}
-		txtval.val("");
-   	}
-   	
-   	function displayResult() {
-		if (httpRequest.readyState == 4) {
-			if (httpRequest.status == 200) {
-				var resText = httpRequest.responseText;
-				//사이즈 , 코드 , 이름=사진 ,가격 
-				var res = resText.split('|');
-				var count = parseInt(res[0]);
-				
-				myArray = new Array( new Array(count), new Array(5) );
-				
-				var repledata=res[1].split('=');
-	   			for(var i=0;i<count;i++){
-	   					var tmp=repledata[i].split(',');
-	   					myArray[i]=tmp;
-	   			}
-	   			
-	   	   		var makereplelist="";
-	   	   		for(var i=0;i<count;i++){
-	   	   			makereplelist+="<lable  class=\"commentreple\">"+myArray[i][2]+"님의 댓글 /"+myArray[i][3]+"</lable><br>";
-	   	   		}
-	   	   
-	   	   	var z="<input type=\"text\" name=\""+myArray[0][1]+"\"/><input type=\"button\" value=\"replecontent\""
-   	   		+"  onclick=\"replecommit('"+myArray[0][1]+"','${memberInfo.id}')\"/><br>"
-   	   		+makereplelist;
-   	  
-   	   		$('.reples').empty();
-	   	   		$('.reples').append(z); 
-	   	 
-			} else {
-				alert("에러: " + httpRequest.status);
-			} 
+			size = 0;
+			resulthashtag += "<br><a href=\"/Remart_teamProj/main/searchForm?please=#"
+					+ hashtag[i] + "\"> #" + hashtag[i] + "</a>";
+			size += hashtag[i].length;
 		}
 	}
-   	
-	function wrapWindowByMask(){
-       
-        var maskHeight = $(document).height();
-        var maskWidth = $(window).width();
- 
-       
-        $('.mask').css({'width':maskWidth,'height':maskHeight});
- 
-       
-        $('.mask').fadeIn(1000);
-        $('.mask').fadeTo("slow",0.8);
- 
-       
-        var left = ( $(window).scrollLeft() + ( $(window).width() - $('.window').width()) / 2 );
-        var top = ( $(window).scrollTop() + ( $(window).height() - $('.window').height()) / 3 );
- 
-      
-        $('.window').css({'left':left,'top':top, 'position':'absolute'});
- 
-        
-       	$('.window').show();
-    }
- 
-	 var index=1;
-	var rindex=1;
-    $(document).ready(function(){
-    	$(document).scroll(function() {
-    		var maxHeight = $(document).height();
-    		var currentScroll = $(window).scrollTop() + $(window).height();
-    		if (maxHeight <= currentScroll + 100) {
-    			$('.loading').removeClass('display-none');
-    			feedLoading(rindex);
-    			 setTimeout(function() {
-    				 index++;
-    				}, 2000);
-    		}
-    	});
-    	
-        $('.showMask').click(function(e){
-            
-            e.preventDefault();
-            wrapWindowByMask();
-        });
- 
-       
-        $('.window .close').click(function (e) {
-            e.preventDefault();
-            slideIndex=1;
-            $('.food').remove();
-            $('.reples').remove();
-            $('.leftdiv').remove();
-            $('.mask, .window').hide();
-        });
- 
-       
-        $('.mask').click(function () {
-            $(this).hide();
-            slideIndex=1;
-            $('.food').remove();
-            $('.reples').remove();
-            $('.leftdiv').remove();
-            $('.window').hide();
-        });
-    });
+	y += "<div align=\"left\"  class=\"hash\"style=\" width: 100%; height: 50px;\">"
+			+ resulthashtag + "</div>";
+	y += "<div align=\"left\" style=\"width:100%; height:40px\"> <img src=\"/Remart_teamProj/images/icon/like_before.png\" style=\"width:40px; height:40px\"></div>";
+	y += "</div>";
+
+	document.getElementById("popupcontent").innerHTML = y;
+	//$('.window').append(y);
+
+	/*리플 */
+	if (replenum != 0) {
+		myArray = new Array(new Array(replenum), new Array(5));
+		repledata = repledata.split(', ');
+		for (var i = 0; i < replenum; i++) {
+			var tmp = repledata[i].split(',');
+			myArray[i] = tmp;
+		}
+		var makereplelist = "";
+		for (var i = 0; i < replenum; i++) {
+			makereplelist += "<lable  class=\"commentreple\">" + myArray[i][2]
+					+ "님의 댓글 /" + myArray[i][3] + "</lable><br>";
+		}
+		var z = "<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""
+				+ feedid
+				+ "\"/><input type=\"button\" value=\"replecontent\""
+				+ "  onclick=\"replecommit('"
+				+ feedid
+				+ "','${memberInfo.id}')\"/><br>" + makereplelist + "</div>"
+				document.getElementById("popupcontent2").innerHTML = z;
+		//$('.window').append(z);
+	} else {
+		var z = "<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""
+				+ feedid
+				+ "\"/><input type=\"button\" value=\"replecontent\""
+				+ "  onclick=\"replecommit('"
+				+ feedid
+				+ "','${memberInfo.id}')\"/><br>" + "</div>"
+				document.getElementById("popupcontent2").innerHTML = z;
+		//$('.window').append(z);
+	}
+
+	//$('.window').show();
+	showDivs(1);//슬라이더 처음값
+}
+function editorfeed(imagenum, feeddate, feedid, imagename, contentname,
+		repledata, replenum, foodname, hashtag) {
+	var myArray;
+	var title;
+	var id;
+	$('.window').css('width', 920);
+	imagename = imagename.substring(1, imagename.length - 1);
+	foodname = foodname.substring(1, foodname.length - 1);
+	repledata = repledata.substring(1, repledata.length - 1);
+	hashtag = hashtag.substring(1, hashtag.length - 1);
+	hashtag = hashtag.split(', ');
+	imagename = imagename.split(', ');
+	foodname = foodname.split(', ');
+	contentname = contentname.split('@!');
+	feeddate = feeddate.split(', ');
+	id = feeddate[1].substring(3, feeddate[1].length);
+	title = feeddate[5].substring(12, feeddate[5].length);
+	//이미지와 제목 해쉬테그 좋아요
+	var y = "<div class=\"leftdiv\" style=\"float: left; width: 45%; height: 550px; margin-top: 10px;\">"
+	y += "<div align=\"left\" style=\"width:100%; height:70px\"> <img	src=\"/Remart_teamProj/fileSave/${member.profileImg}\"class=\"w3-circle\" alt=\"Norway\"style=\"width:70px; height:70px\"></div>";
+	y += "<div align=\"center\" class=\"mySlides\"  style=\"width: 100%;height: 400px; \">"
+			+ "<img src='"
+			+ "/Remart_teamProj/fileSave/"
+			+ imagename[0]
+			+ "' width=100% height=350><br>"
+			+ "<label> 음식 이름 : "
+			+ title
+			+ "</label><br>"
+			+ "<label>재료 : "
+			+ contentname[0]
+			+ "</label><br>"
+			+ "</div>";
+
+	for (var i = 1; i < imagenum; i++) {
+		y += "<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 100%; height: 400px;\">"
+				+ "<img src='"
+				+ "/Remart_teamProj/fileSave/"
+				+ imagename[i]
+				+ "' width=100% height=350><br>"
+				+ "<label>"
+				+ contentname[i]
+				+ "</label>" + "</div>";
+	}
+
+	var resulthashtag = "";
+	var size = 0;
+	for (var i = 0; i < hashtag.length; i++) {
+		if (size < 30) {
+			resulthashtag += "<a href=\"/Remart_teamProj/main/searchForm?please=#"
+					+ hashtag[i] + "\"> #" + hashtag[i] + "</a>";
+			size += hashtag[i].length;
+		} else {
+			size = 0;
+			resulthashtag += "<br><a href=\"/Remart_teamProj/main/searchForm?please=#"
+					+ hashtag[i] + "\"> #" + hashtag[i] + "</a>";
+			size += hashtag[i].length;
+		}
+	}
+	y += "<div align=\"left\"  class=\"hash\"style=\" width: 100%; height: 50px;\">"
+			+ resulthashtag + "</div>";
+	y += "<div align=\"left\" style=\"width:100%; height:40px\"> <img src=\"/Remart_teamProj/images/icon/like_before.png\"style=\"width:40px; height:40px\"></div>";
+	y += "</div>";
+	document.getElementById("popupcontent").innerHTML = y;
+	//$('.window').append(y);
+	/*리플 */
+
+	if (replenum != 0) {
+		myArray = new Array(new Array(replenum), new Array(5));
+		repledata = repledata.split(', ');
+		for (var i = 0; i < replenum; i++) {
+			var tmp = repledata[i].split(',');
+			myArray[i] = tmp;
+		}
+		var makereplelist = "";
+		for (var i = 0; i < replenum; i++) {
+			makereplelist += "<lable class=\"commentreple\">" + myArray[i][2]
+					+ "님의 댓글 /" + myArray[i][3] + "</lable><br>";
+		}
+		var z = "<div align=\"center\"  class=\"reples\"style=\"float: left; width: 36%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""
+				+ feedid
+				+ "\"/><input type=\"button\" value=\"replecontent\""
+				+ "  onclick=\"replecommit('"
+				+ feedid
+				+ "','${memberInfo.id}')\"/><br>" + makereplelist + "</div>"
+				document.getElementById("popupcontent2").innerHTML = z;
+		//$('.window').append(z);
+	} else {
+		var z = "<div align=\"center\"  class=\"reples\"style=\"float: left; width: 36%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""
+				+ feedid
+				+ "\"/><input type=\"button\" value=\"replecontent\""
+				+ "  onclick=\"replecommit('"
+				+ feedid
+				+ "','${memberInfo.id}')\"/><br>" + "</div>"
+				document.getElementById("popupcontent2").innerHTML = z;
+		//$('.window').append(z);
+	}
+
+	var editorfood = "";
+	for (var i = 0; i < foodname.length; i++) {
+
+		editorfood += "<input type=\"checkbox\" name=\"chk_info\" value=\""
+				+ foodname[i] + "\">"
+				+ "<img src=\"/Remart_teamProj/images/food/" + foodname[i]
+				+ ".jpg\" width=100 height=70/><br>";
+	}
+	var z = "<div align=\"center\"  class=\"food\"style=\"float: left; width: 19%; height: 550px; margin-top: 10px;\ border: solid 4px; \">"
+			+ "<form action=\"\" method=\"post\">"
+			+ editorfood
+			+ "<input type=\"submit\" value\"장바구니\"></form></div>"
+			document.getElementById("popupcontent2").innerHTML = z;
+	//$('.window').append(z);
+
+	//$('.window').show();
+	showDivs(1);//슬라이더 처음값
+}
+function replecommit(feed_id, m_id) {
+
+	var txtval = $('input:text[name="' + feed_id + '"]');
+
+	if (txtval.val() == '')
+		alert("입력하신 댓글이 없습니다");
+	else {
+		var params = "feed_id=" + feed_id + "&id=" + m_id + "&content="
+				+ encodeURIComponent(txtval.val());
+
+		sendRequest("<%=request.getContextPath()%>/common/repleInsert.jsp",
+				params, displayResult, 'GET');
+	}
+	txtval.val("");
+}
+
+function displayResult() {
+	if (httpRequest.readyState == 4) {
+		if (httpRequest.status == 200) {
+			var resText = httpRequest.responseText;
+			//사이즈 , 코드 , 이름=사진 ,가격 
+			var res = resText.split('|');
+			var count = parseInt(res[0]);
+
+			myArray = new Array(new Array(count), new Array(5));
+
+			var repledata = res[1].split('=');
+			for (var i = 0; i < count; i++) {
+				var tmp = repledata[i].split(',');
+				myArray[i] = tmp;
+			}
+
+			var makereplelist = "";
+			for (var i = 0; i < count; i++) {
+				makereplelist += "<lable  class=\"commentreple\">"
+						+ myArray[i][2] + "님의 댓글 /" + myArray[i][3]
+						+ "</lable><br>";
+			}
+
+			var z = "<input type=\"text\" name=\"" + myArray[0][1]
+					+ "\"/><input type=\"button\" value=\"replecontent\""
+					+ "  onclick=\"replecommit('" + myArray[0][1]
+					+ "','${memberInfo.id}')\"/><br>" + makereplelist;
+					document.getElementById("popupcontent3").innerHTML = z;
+			//$('.reples').empty();
+			//$('.reples').append(z);
+
+		} else {
+			alert("에러: " + httpRequest.status);
+		}
+	}
+}
 </script>
 </body>
 </html>
