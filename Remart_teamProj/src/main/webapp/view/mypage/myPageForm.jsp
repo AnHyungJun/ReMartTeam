@@ -393,21 +393,50 @@
    		
    		
    		
-   		
-  		var editorfood="";
+   		var editorfood="";
   		for(var i=0;i<foodname.length;i++){
   			
   			editorfood+="<input type=\"checkbox\" name=\"chk_info\" value=\""+foodname[i]+"\">"+"<img src=\"/Remart_teamProj/images/food/"+foodname[i]+".jpg\" width=100 height=70/><br>";
   		}
   		var z="<div align=\"center\"  class=\"food\"style=\"float: left; width: 19%; height: 550px; margin-top: 10px;\ border: solid 4px; \">"
-  		+"<form action=\"\" method=\"post\">"
-  		+editorfood+"<input type=\"submit\" value\"장바구니\"></form></div>"
+  		+editorfood+"<input type=\"button\" value\"장바구니\" onclick=\"editorbasket();\"></div>"
   		
   		$('.window').append(z); 
   		
    		$('.window').show();
    		showDivs(1);//슬라이더 처음값
    	}
+	function editorbasket(){
+		var params="";
+		var checklist="";
+		var a=${memberInfo.id};
+		$("input[name=chk_info]:checked").each(function() {
+			checklist += $(this).val()+",";
+				
+		});
+		
+		checklist=checklist.substring(0,checklist.length-1);
+		params="food_name="+encodeURIComponent(checklist)+"&"+"id="+encodeURIComponent(a);
+		alert(params);
+		sendRequest("<%=request.getContextPath()%>/common/addBasketlist.jsp",
+				params, addbasket, 'GET');
+		
+		
+		
+	}
+	function addbasket(){
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				var q = confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?");
+		     	if (q == true) {
+		            location.replace("../shopping/basket");
+
+		         } else {
+		            
+		         }
+			}
+		}
+	}
    	function replecommit(feed_id,m_id) {
 		
 		var txtval=$('input:text[name="'+feed_id+'"]');

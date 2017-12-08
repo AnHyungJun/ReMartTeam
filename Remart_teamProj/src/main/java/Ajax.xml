@@ -9,7 +9,9 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="R_member">
 		select * from r_member where phone = #{keyword}
 	</select>
-
+<select id="selectfoodidm" parameterType="hashmap" resultType="int">
+		   select food_id from food where name=#{food_name}
+	</select>
 	<select id="selectProductDb" parameterType="hashmap" resultType="product">
 		select product_id,
 		(select name from food where p.food_id = food_id)name,

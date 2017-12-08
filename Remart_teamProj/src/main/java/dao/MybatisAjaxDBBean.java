@@ -38,7 +38,20 @@ public class MybatisAjaxDBBean extends MybatisConnector{
 		}
 
 	}
-	
+	public int selectfoodId(String food_name){
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("food_name", food_name);
+		int id=0;
+		try {
+			id=sqlSession.selectOne(namespace + ".selectfoodidm", map);
+		
+		}finally {
+			
+			sqlSession.close();
+		}
+		return id;
+	}
 	public String selectProductDb(String keyword) {
 		System.out.println("selectProductDb:");
 		sqlSession = sqlSession();
