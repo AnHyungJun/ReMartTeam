@@ -16,7 +16,7 @@
 .loading {
 	position: fixed;
 	left: 0px;
-	bottom: 0px;
+	bottom: 50px;
 	height: 60px;
 	width: 100%;
 }
@@ -136,100 +136,129 @@
 				<c:if test="${fn:length(Feeds) != 0}">
 					<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
 					<!-- 리스트가 있으면 뿌려주는 FOREACH -->
-					<c:forEach var="list" items="${Feeds}" varStatus="status">
-
-						<div class="w3-container"
-							style="float: left; width: 300px; height: 350px; margin-top: 10px;">
-							<div class="w3-card-4" style="position: relative; height: 350px;">
-								<!-- FEED  이부분을 너가 꾸몄던걸로 바꾸면 됨-->
-								<div id="userInfo">
-									<c:if test="${list.profileImg==null}">
-										<img
-											src="<%=request.getContextPath()%>/images/icon/noProfile.png"
-											class="w3-circle" alt="" style="width: 20px; height: 20px"></c:if>
-									<c:if test="${list.profileImg!=null}">
-										<img
-											src="<%=request.getContextPath()%>/fileSave/${list.profileImg}"
-											class="w3-circle" alt="" style="width: 20px; height: 20px">
-									</c:if>${list.id }</div> 
-								<div class="w3-center">
-									<!-- 여기가 이미지 부분인데 SHOWMASK클래스를 클릭하면  READY 부분에 SHOWMASK 클릭이벤트 실행 그러면 레이어창이 올라옴-->
-									<img id="${list.feed_id}" class="showMask"
-										src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
-										style="width: 100%; height: 200px"
-										onclick="popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');">
-									<!-- POPUP함수는 누르면 실행인데 %이미지 몇개인지 보내는거 ,FEED,이미지 이름 보내고,이미지에 달린 내용 보내고, 리플 리스트 통채로 보내고 , 리플리스트 사이즈 보내고%-->
-								</div>
-								<div id="like_bookmark" style="margin-top: 10px;">
-									<!-- 로그인 안했을 때 -->
-									<c:if test="${empty memberInfo }">
-										<img onclick="needlogin()"
-											src="<%=request.getContextPath()%>/images/icon/like_before.png"
-											style="height: 20px; cursor: pointer;">
-										<img
-											src="<%=request.getContextPath()%>/images/icon/comment.png"
-											style="height: 20px;">
-										<img onclick="needlogin()"
-											src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-											style="height: 20px; cursor: pointer;">
+					<div id="aditionalfeed">
+						<c:set var="mainLoop" value="false" />
+						<c:forEach var="list" items="${Feeds}" varStatus="mainstatus">
+							<c:if test="${not mainLoop}">
+								<div class="w3-container"
+									style="float: left; width: 300px; height: 350px; margin-top: 10px;">
+									<div class="w3-card-4"
+										style="position: relative; height: 350px;">
+										<div id="userInfo" style="text-align: left;">
+											<c:if test="${list.profileImg==null}">
+												<img
+													src="<%=request.getContextPath()%>/images/icon/noProfile.png"
+													class="w3-circle" alt="" style="width: 20px; height: 20px">
+											</c:if>
+											<c:if test="${list.profileImg!=null}">
+												<img
+													src="<%=request.getContextPath()%>/fileSave/${list.profileImg}"
+													class="w3-circle" alt="" style="width: 20px; height: 20px">
+											</c:if>${list.id }
+										</div>
+										<div class="w3-center">
+											<!-- 함수 실행해서 이미지 이름 ,사이즈 등등 넘겨주는 부ㅜ분 -->
+											<c:if test="${list.feed_grade eq 'editor'}">
+									에디터<br>
+												<img id="${list.feed_id}" class="showMask"
+													src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
+													style="width: 100%; height: 200px"
+													onclick="editorfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.makecontent}','${list.replelist}','${fn:length(list.replelist)}','${list.food_id}','${list.hashtaglist}');">
+												<br>
+									${list.recipe_name }
 									</c:if>
-									<!-- 로그인 했을 때 -->
-									<c:if test="${!empty memberInfo }">
-										<c:if test="${list.likestate==0 }">
-											<label id="like${list.feed_id }"> <img
-												onclick="like(${list.feed_id},'like');"
-												src="<%=request.getContextPath()%>/images/icon/like_before.png"
-												style="height: 20px; cursor: pointer;">
-											</label>
-										</c:if>
-										<c:if test="${list.likestate>=1 }">
-											<label id="like${list.feed_id }"> <img
-												src="<%=request.getContextPath()%>/images/icon/like_after.png"
-												style="height: 20px;"></label>
-										</c:if>
-										<img
-											src="<%=request.getContextPath()%>/images/icon/comment.png"
-											style="height: 20px;">
-										<c:if test="${list.bookmarkstate==0 }">
-											<img onclick="like(${list.feed_id},'bookmark')"
-												src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-												style="height: 20px; cursor: pointer;">
-										</c:if>
-										<c:if test="${list.bookmarkstate>=1 }">
-											<img
-												src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-												style="height: 20px; cursor: pointer;">
-										</c:if>
+											<c:if test="${list.feed_grade eq 'nomal'}">
+												<img id="${list.feed_id}" class="showMask"
+													src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
+													style="width: 100%; height: 200px"
+													onclick="nomalfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.makecontent}','${list.replelist}','${fn:length(list.replelist)}','${list.hashtaglist}');">
+												<br>
+									${list.recipe_name }
 									</c:if>
-								</div>
+										</div>
+										<div id="like_bookmark" style="margin-top: 10px;">
+											<!-- 로그인 안했을 때 -->
+											<c:if test="${empty memberInfo }">
+												<img onclick="needlogin()"
+													src="<%=request.getContextPath()%>/images/icon/like_before.png"
+													style="height: 20px; cursor: pointer;">
+												<img
+													src="<%=request.getContextPath()%>/images/icon/comment.png"
+													style="height: 20px;">
+												<img onclick="needlogin()"
+													src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+													style="height: 20px; cursor: pointer;">
+											</c:if>
+											<!-- 로그인 했을 때 -->
+											<c:if test="${!empty memberInfo }">
+												<c:if test="${list.likestate==0 }">
+													<label id="like${list.feed_id }"> <img
+														onclick="like(${list.feed_id},'like');"
+														src="<%=request.getContextPath()%>/images/icon/like_before.png"
+														style="height: 20px; cursor: pointer;">
+													</label>
+												</c:if>
+												<c:if test="${list.likestate>=1 }">
+													<label id="like${list.feed_id }"> <img
+														src="<%=request.getContextPath()%>/images/icon/like_after.png"
+														style="height: 20px;"></label>
+												</c:if>
+												<img
+													src="<%=request.getContextPath()%>/images/icon/comment.png"
+													style="height: 20px;">
+												<c:if test="${list.bookmarkstate==0 }">
+													<img onclick="like(${list.feed_id},'bookmark')"
+														src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+														style="height: 20px; cursor: pointer;">
+												</c:if>
+												<c:if test="${list.bookmarkstate>=1 }">
+													<img
+														src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+														style="height: 20px; cursor: pointer;">
+												</c:if>
+											</c:if>
+											<br>${list.recipe_name }
+										</div>
 
-							<div id="innercontent">
-									${list.recipe_name }<br>
+										<div id="hashtag"
+											style="text-align: left; position: absolute; width: 100%; height: 75px">
+
 											<c:set var="doneLoop" value="false" />
 											<c:forEach var="hash" items="${list.hashtaglist}"
 												varStatus="status">
 												<c:if test="${not doneLoop}">
-															<a href="#" onclick = "search000('${hash}')">#${hash}</a>
+													<a href="#" onclick="search000('${hash}')">#${hash}</a>
 													<c:if test="${status.count == 15}">
 														<c:set var="doneLoop" value="true" />
 														...
 													</c:if>
 												</c:if>
 											</c:forEach>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
-					</c:forEach>
+								<c:if test="${mainstatus.count == 12}">
+									<c:set var="mainLoop" value="true" />
+								</c:if>
+							</c:if>
+						</c:forEach>
+					</div>
 				</c:if>
 			</div>
-			<c:if test="${fn:length(Feeds) == 0}">
-				<div style="margin-top: 100px; font-size: 13px;">
-					<b> 아직 쓴 글이 없습니다. </b>
-				</div>
-			</c:if>
-		</div>
-	</center>
 
+		</div>
+		<c:if test="${fn:length(Feeds) == 0}">
+			<div style="margin-top: 100px; font-size: 13px;">
+				<b> 아직 쓴 글이 없습니다. </b>
+			</div>
+		</c:if>
+
+	</center>
+	<!-- 로딩 -->
+	<div id="loading" class="loading display-none">
+		<img src="<%=request.getContextPath()%>/images/icon/lo3.gif"
+			style="margin-left: 45%">
+	</div>
 	<!-- 레이어창 -->
 	<div class="setDiv">
 		<!--이부분 이해안되면 찾아오고 -->
@@ -256,8 +285,6 @@
 	function search000(hash){
 		location.href="<%=request.getContextPath()%>/main/searchForm?please="+encodeURIComponent("#"+hash);
 	}
-	
-	
 	var num;
 	function like(feed_id,action) {
 		num=feed_id;
@@ -286,7 +313,24 @@
 	function needlogin(){
 		alert("로그인하세요");
 	} 
-	//여기부터 피드에 사진 여러개 슬라이드로
+	//무한스크롤
+		function feedLoading(index){
+			 var id='<c:out value="${memberInfo.id}"/>'; 
+			var params = "index=" + encodeURIComponent(index)+"&id="+id;
+			sendRequest("/Remart_teamProj/main/getFeed", params, return_feedLoading,
+			"GET"); 
+	 
+	}
+	function return_feedLoading(){
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				$('.loading').addClass('display-none');
+				document.getElementById("aditionalfeed").innerHTML += httpRequest.responseText;
+				rindex++;
+			}
+		}
+	}
+	//피드팝업
 	var slideIndex = 1;//슬라이드 변수
 
 	
@@ -304,7 +348,10 @@
 		for (i = 0; i < x.length; i++) {
 			x[i].style.display = "none";
 		}
-		if (slideIndex == 1) {
+		if (x.length == 1) {
+			document.getElementById("leftpage").style.display = 'none';
+			document.getElementById("rightpage").style.display = 'none';
+		} else if (slideIndex == 1) {
 			document.getElementById("leftpage").style.display = 'none';
 			document.getElementById("rightpage").style.display = 'block';
 		} else if (slideIndex == x.length) {
@@ -316,36 +363,57 @@
 		}
 		x[slideIndex - 1].style.display = "block";
 	}
-	//여기까지
-   	function popup(imagenum,feeddate,imagename,contentname,repledata,replenum){
+	
+   	function nomalfeed(imagenum,feeddate,feedid,imagename,contentname,repledata,replenum,hashtag){
    		var myArray ;
-		//리스트 받은거 문자 쪼개는거
+   		var title ;
+   		var id;
+   		//넘겨준 데이터 쪼갬
    		imagename=imagename.substring(1,imagename.length-1);
-   		contentname=contentname.substring(1,contentname.length-1);
    		repledata=repledata.substring(1,repledata.length-1);
-   		//매개 변수로 받은거 ALERT찍어보면 다 ,로 구분하는데 그걸 쪼개서 배열에 담기
+   		hashtag=hashtag.substring(1,hashtag.length-1);
    		imagename=imagename.split(', ');
-   		feeddate=feeddate.split(',');
-   		feeddate=feeddate[0].substring(22);
-   		contentname=contentname.split(',');
-   		if(imagenum>1){
-   			document.getElementById("rightpage").style.display = 'block';
-   			document.getElementById("leftpage").style.display = 'none';
-   		}else{
-   			document.getElementById("rightpage").style.display = 'none';
-   			document.getElementById("leftpage").style.display = 'block';
+   		hashtag=hashtag.split(', ');
+   		contentname=contentname.split('@!');
+   		feeddate=feeddate.split(', ');
+   		id=feeddate[1].substring(3,feeddate[1].length);
+   		title=feeddate[5].substring(12,feeddate[5].length);
+   		//이미지와 제목 해쉬테그 좋아요
+   		var y="<div class=\"leftdiv\" style=\"float: left; width: 55%; height: 550px; margin-top: 10px;\">"
+   		//피드 상단 프로필사진
+   		y+="<div align=\"left\" style=\"width:100%; height:70px\"> <img	src=\"/Remart_teamProj/fileSave/${member.profileImg}\"class=\"w3-circle\" alt=\"Norway\"style=\"width:70px; height:70px\"></div>";
+   		//이미지
+   		y+="<div align=\"center\" class=\"mySlides\"  style=\"width: 100%;height: 400px; \">"+
+		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[0]+"' width=100% height=350><br>"
+		+"<label> 음식 이름 : "+title+"</label><br>"
+		+"<label>재료 : "+contentname[0]+"</label><br>"+"</div>";
+		
+   		for(var i=1;i<imagenum;i++){   			
+   			y+="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 100%; height: 400px;\">"+
+    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=350><br>"
+    		+"<label>"+contentname[i]+"</label>"+"</div>";
    		}
+   		var resulthashtag="";
+   		var size=0;
+		for(var i=0;i<hashtag.length;i++){
+			if(size<30){
+				resulthashtag+="<a href=\"/Remart_teamProj/main/searchForm?please=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
+				size+=hashtag[i].length;
+			}else{
+				size=0;
+				resulthashtag+="<br><a href=\"/Remart_teamProj/main/searchForm?please=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
+				size+=hashtag[i].length;
+			}
+		}
+  		y+="<div align=\"left\"  class=\"hash\"style=\" width: 100%; height: 50px;\">"
+  	  		+resulthashtag+"</div>";
+  	  	y+="<div align=\"left\" style=\"width:100%; height:40px\"> <img src=\"/Remart_teamProj/images/icon/like_before.png\" style=\"width:40px; height:40px\"></div>";
+  	  	y+="</div>";
+  	 
+  	  	$('.window').append(y); 
    		
-   		//이미지 하고 컨텐츠 추가 class=\"mySlides\" 가 슬라이더 하나
-   		for(var i=0;i<imagenum;i++){   			
-   			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 55%; height: 350px; margin-top: 10px;\">"+
-    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=100%><br>"+
-    		"<label>"+contentname[i]+"</label>"+"</div>";
-    		$('.window').append(y); 
-    		
-   		}
-   		//여기부턴 리플추가 DIV100%라 치면 이미지,내용 부분이 55% 댓글보이는게 45%
-   		/*reple_id,feed_id,id,content,reg_date  */
+  	  
+   		/*리플 */
    		if(replenum!=0){
    			myArray = new Array( new Array(replenum), new Array(5) );
    			repledata=repledata.split(', ');
@@ -355,20 +423,115 @@
    			}
    	   		var makereplelist="";
    	   		for(var i=0;i<replenum;i++){
-   	   			makereplelist+="<lable>"+myArray[i][2]+"님의 댓글 /"+myArray[i][3]+"</lable><br>";
+   	   			makereplelist+="<lable  class=\"commentreple\">"+myArray[i][2]+"님의 댓글 /"+myArray[i][3]+"</lable><br>";
    	   		}
-   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 350px; margin-top: 10px;\"><input type=\"text\" name=\""+feeddate+"\"/><input type=\"button\" value=\"replecontent\""
-   	   		+"  onclick=\"replecommit('"+feeddate+"','${memberInfo.id}')\"/><br>"
+   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"replecontent\""
+   	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist+"</div>"
+   	   		
+   	   		$('.window').append(z); 
+   		}else{
+   			var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"replecontent\""
+   	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
+   	   		+"</div>"
+   	   		
+   	   		$('.window').append(z); 
+   		}
+   		
+   		$('.window').show();
+   		showDivs(1);//슬라이더 처음값
+   	}
+	function editorfeed(imagenum,feeddate,feedid,imagename,contentname,repledata,replenum,foodname,hashtag){
+   		var myArray ;
+   		var title ;
+   		var id;
+   		$('.window').css('width', 920);
+   		imagename=imagename.substring(1,imagename.length-1);
+   		foodname=foodname.substring(1,foodname.length-1);
+   		repledata=repledata.substring(1,repledata.length-1);
+   		hashtag=hashtag.substring(1,hashtag.length-1);
+   		hashtag=hashtag.split(', ');
+   		imagename=imagename.split(', ');
+   		foodname=foodname.split(', ');
+   		contentname=contentname.split('@!');
+   		feeddate=feeddate.split(', ');
+   		id=feeddate[1].substring(3,feeddate[1].length);
+   		title=feeddate[5].substring(12,feeddate[5].length);
+   		//이미지와 제목 해쉬테그 좋아요
+   		var y="<div class=\"leftdiv\" style=\"float: left; width: 45%; height: 550px; margin-top: 10px;\">"
+   		y+="<div align=\"left\" style=\"width:100%; height:70px\"> <img	src=\"/Remart_teamProj/fileSave/${member.profileImg}\"class=\"w3-circle\" alt=\"Norway\"style=\"width:70px; height:70px\"></div>";
+   		y+="<div align=\"center\" class=\"mySlides\"  style=\"width: 100%;height: 400px; \">"+
+		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[0]+"' width=100% height=350><br>"
+		+"<label> 음식 이름 : "+title+"</label><br>"
+		+"<label>재료 : "+contentname[0]+"</label><br>"+"</div>";
+		
+   		for(var i=1;i<imagenum;i++){   			
+   			y+="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 100%; height: 400px;\">"
+   			+"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=350><br>"
+   			+"<label>"+contentname[i]+"</label>"+"</div>";
+   		}
+   		
+   		var resulthashtag="";
+   		var size=0;
+		for(var i=0;i<hashtag.length;i++){
+			if(size<30){
+				resulthashtag+="<a href=\"/Remart_teamProj/main/searchForm?please=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
+				size+=hashtag[i].length;
+			}else{
+				size=0;
+				resulthashtag+="<br><a href=\"/Remart_teamProj/main/searchForm?please=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
+				size+=hashtag[i].length;
+			}
+		}
+  		y+="<div align=\"left\"  class=\"hash\"style=\" width: 100%; height: 50px;\">"
+  	  		+resulthashtag+"</div>";
+  	  	y+="<div align=\"left\" style=\"width:100%; height:40px\"> <img src=\"/Remart_teamProj/images/icon/like_before.png\"style=\"width:40px; height:40px\"></div>";
+		y+="</div>";
+		
+  	  	$('.window').append(y); 
+   		/*리플 */
+   		
+   		if(replenum!=0){
+   			myArray = new Array( new Array(replenum), new Array(5) );
+   			repledata=repledata.split(', ');
+   			for(var i=0;i<replenum;i++){
+   					var tmp=repledata[i].split(',');
+   					myArray[i]=tmp;
+   			}
+   	   		var makereplelist="";
+   	   		for(var i=0;i<replenum;i++){
+   	   			makereplelist+="<lable class=\"commentreple\">"+myArray[i][2]+"님의 댓글 /"+myArray[i][3]+"</lable><br>";
+   	   		}
+   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 36%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"replecontent\""
+   	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
+   	   		+makereplelist+"</div>"
+   	   		
+   	   		$('.window').append(z); 
+   		}else{
+   			var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 36%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"replecontent\""
+   	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
+   	   		+"</div>"
    	   		
    	   		$('.window').append(z); 
    		}
    		
    		
-   		showDivs(1);//슬라이더 처음값
    		
+   		
+  		var editorfood="";
+  		for(var i=0;i<foodname.length;i++){
+  			
+  			editorfood+="<input type=\"checkbox\" name=\"chk_info\" value=\""+foodname[i]+"\">"+"<img src=\"/Remart_teamProj/images/food/"+foodname[i]+".jpg\" width=100 height=70/><br>";
+  		}
+  		var z="<div align=\"center\"  class=\"food\"style=\"float: left; width: 19%; height: 550px; margin-top: 10px;\ border: solid 4px; \">"
+  		+"<form action=\"\" method=\"post\">"
+  		+editorfood+"<input type=\"submit\" value\"장바구니\"></form></div>"
+  		
+  		$('.window').append(z); 
+  		
+   		$('.window').show();
+   		showDivs(1);//슬라이더 처음값
    	}
-	//여기는 댓글에서 등록 누르면 되는곳 아직 고칠때 있어서 지워도 괜춘
    	function replecommit(feed_id,m_id) {
 		
 		var txtval=$('input:text[name="'+feed_id+'"]');
@@ -376,48 +539,47 @@
 		if(txtval.val()=='') alert("입력하신 댓글이 없습니다");
 		else{
 			var params =  "feed_id="+feed_id+"&id="+m_id+"&content="+encodeURIComponent(txtval.val());
+			
 			sendRequest("<%=request.getContextPath()%>/common/repleInsert.jsp",
 			params, displayResult, 'GET');
 		}
 		txtval.val("");
    	}
-   	//마찬가지
+   	
    	function displayResult() {
 		if (httpRequest.readyState == 4) {
 			if (httpRequest.status == 200) {
 				var resText = httpRequest.responseText;
 				//사이즈 , 코드 , 이름=사진 ,가격 
 				var res = resText.split('|');
-				
 				var count = parseInt(res[0]);
-				var keywordList = null;
-				alert(res);
-				/* if (count > 0) {
-					keywordList = res[1].split('=');
-					var html = "<table class=\"w3-table w3-bordered w3-centered\" width=100%><tr><th width=200;>상품</th><th width=150;>상품명</th><th>가격</th><th>상품 등록</th></tr>";
-					for (var i = 0; i < keywordList.length; i++) {
-						
-						var keywordList2 = keywordList[i].split('-');
-						html += "<tr height=140px;><td align=\"center\">"
-								+"<img src=\"/Remart_teamProj/images/food/"+keywordList2[1]+".jpg\" width=110 height=110><br>"
-								+"</td><td align=\"center\">"
-								+ keywordList2[1] + "</td><td align=\"center\">"
-								+ keywordList2[2] + "</td><td align=\"center\">"
-								+"<button type=\"button\" onclick=\"writefood('"+keywordList[i]+"')\">등록</button></td></tr>";
-						// alert(html); 
-					}
-					html += "</table>";
-					var listView = document.getElementById('suggestList');
-					listView.innerHTML = html;
-					show('suggest');
-					reload();
-				}*/
+				
+				myArray = new Array( new Array(count), new Array(5) );
+				
+				var repledata=res[1].split('=');
+	   			for(var i=0;i<count;i++){
+	   					var tmp=repledata[i].split(',');
+	   					myArray[i]=tmp;
+	   			}
+	   			
+	   	   		var makereplelist="";
+	   	   		for(var i=0;i<count;i++){
+	   	   			makereplelist+="<lable  class=\"commentreple\">"+myArray[i][2]+"님의 댓글 /"+myArray[i][3]+"</lable><br>";
+	   	   		}
+	   	   
+	   	   	var z="<input type=\"text\" name=\""+myArray[0][1]+"\"/><input type=\"button\" value=\"replecontent\""
+   	   		+"  onclick=\"replecommit('"+myArray[0][1]+"','${memberInfo.id}')\"/><br>"
+   	   		+makereplelist;
+   	  
+   	   		$('.reples').empty();
+	   	   		$('.reples').append(z); 
+	   	 
 			} else {
 				alert("에러: " + httpRequest.status);
 			} 
 		}
 	}
-   	//여기는 FEED눌렀을때 창 띄우는거 조절하는부분
+   	
 	function wrapWindowByMask(){
        
         var maskHeight = $(document).height();
@@ -438,34 +600,47 @@
         $('.window').css({'left':left,'top':top, 'position':'absolute'});
  
         
-       	$('.window').show();//WINDOW클래스 보여짐 
+       	$('.window').show();
     }
  
+	 var index=1;
+	var rindex=1;
     $(document).ready(function(){
-       //SHOWMASK클릭할때 시작
+    	$(document).scroll(function() {
+    		var maxHeight = $(document).height();
+    		var currentScroll = $(window).scrollTop() + $(window).height();
+    		if (maxHeight <= currentScroll + 100) {
+    			$('.loading').removeClass('display-none');
+    			feedLoading(rindex);
+    			 setTimeout(function() {
+    				 index++;
+    				}, 2000);
+    		}
+    	});
+    	
         $('.showMask').click(function(e){
             
             e.preventDefault();
             wrapWindowByMask();
         });
  
-       // FEED이외 부분 클릭했을시
+       
         $('.window .close').click(function (e) {
             e.preventDefault();
             slideIndex=1;
-            //WINDOW DIV에 추가했던 댓글 사진 다지우고 안보이게
+            $('.food').remove();
             $('.reples').remove();
-            $('.mySlides').remove();
+            $('.leftdiv').remove();
             $('.mask, .window').hide();
         });
  
-       //위와 동일
+       
         $('.mask').click(function () {
             $(this).hide();
             slideIndex=1;
-            
+            $('.food').remove();
             $('.reples').remove();
-            $('.mySlides').remove();
+            $('.leftdiv').remove();
             $('.window').hide();
         });
     });
