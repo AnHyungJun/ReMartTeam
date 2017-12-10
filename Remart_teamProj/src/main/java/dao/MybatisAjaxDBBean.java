@@ -38,6 +38,40 @@ public class MybatisAjaxDBBean extends MybatisConnector{
 		}
 
 	}
+	public void like(String id, String feed_id, String type) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("id", id);
+		map.put("feed_id", feed_id);
+		map.put("type", type);
+		try {
+			int likely_bookmark_id = sqlSession
+					.selectOne(namespace + ".likeid");
+			map.put("likely_bookmark_id", likely_bookmark_id);
+			sqlSession.insert(namespace + ".like", map);
+			if (type.equals("L"))
+				sqlSession.update(namespace + ".point", map);
+		} finally {
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	}
+
+	public void unlike(String id, String feed_id, String type) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("id", id);
+		map.put("feed_id", feed_id);
+		map.put("type", type);
+		
+		try {
+			sqlSession.delete(namespace + ".unlike", map);
+		} finally {
+			sqlSession.commit();
+			sqlSession.close();
+
+		}
+	}
 	public int selectfoodId(String food_name){
 		sqlSession = sqlSession();
 		HashMap map = new HashMap();

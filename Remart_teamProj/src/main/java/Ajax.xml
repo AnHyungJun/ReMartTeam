@@ -9,7 +9,7 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="R_member">
 		select * from r_member where phone = #{keyword}
 	</select>
-<select id="selectfoodidm" parameterType="hashmap" resultType="int">
+	<select id="selectfoodidm" parameterType="hashmap" resultType="int">
 		   select food_id from food where name=#{food_name}
 	</select>
 	<select id="selectProductDb" parameterType="hashmap" resultType="product">
@@ -84,5 +84,26 @@ PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="updateFoodNum" parameterType="hashmap">
 		update basket set food_num = food_num + #{food_num} where id = #{id} and food_id = #{food_id}
+	</update>
+	<insert id="like" parameterType="hashmap">
+		INSERT INTO likely_bookmark
+		(likely_bookmark_id, id,feed_id, type)
+		VALUES(#{likely_bookmark_id},#{id},#{feed_id},#{type})
+	</insert>
+	<select id="likeid" resultType="int">
+		select
+		nvl(max(likely_bookmark_id),0)+1 likely_bookmark_id from
+		likely_bookmark
+	</select>
+	<delete id="unlike" parameterType="hashmap">
+		delete from likely_bookmark
+		where id=#{id} and feed_id=#{feed_id} and
+		type=#{type}
+	</delete>
+	<update id="point" parameterType="hashmap">
+		update r_member set
+		point=point+1 where
+		id=(select id from feed where
+		feed_id=#{feed_id})
 	</update>
 </mapper>

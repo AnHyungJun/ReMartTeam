@@ -6,7 +6,8 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 	<cache />
 	<select id="pagea" parameterType="hashmap" resultType="R_member">
 	select id,name,phone,grade,point,use_like,info,sex,profileimg,(select count(*) from feed e where e.id=#{id}) writenum, 
-	(select count(*) from follow z where z.my_id=#{id}) follownum ,(select count(*) from follow z where z.other_id=#{id}) followernum 
+	(select count(*) from follow z where z.my_id=#{id}) follownum ,(select count(*) from follow z where z.other_id=#{id}) followernum,
+	(select count(*) from follow f where my_id = #{myid} and other_id =#{id}) follow_status
  	from r_member where id=#{id}
 	</select>
 	
@@ -14,7 +15,13 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		select (select hashtag_content from hashtag y where y.hashtag_id=h.hashtag_id)  hashtaglist from hash_feed h where feed_id=#{feed_id}
 	</select>
 	<select id="getfeedlist" parameterType="hashmap" resultType="feed">
-		select feed_id,id,like_num,reg_date,recipe_name,(select grade from r_member where id=f.id) feed_grade from feed f where id=#{id} order by reg_date desc
+		select feed_id,id,like_num,reg_date,recipe_name,(select grade from r_member where id=f.id) feed_grade 
+		,(select nvl(count(*),0) from likely_bookmark l
+		where l.feed_id=f.feed_id and l.type='L' and l.id=#{id}) likestate
+		,(select nvl(count(*),0)from likely_bookmark l
+		where l.feed_id=f.feed_id and l.type='B'and l.id=#{id})	bookmarkstate
+		from feed f where id=#{id}
+		order by reg_date desc
 	</select>
 	<select id="getImg_name" parameterType="hashmap" resultType="String">
 		select image_name from img where feed_id=#{feed_id} order by img_id 

@@ -100,11 +100,22 @@
 					</div>
 				</c:if>
 				<c:if test="${checkpage==1}">
-					<div class="w3-display-right" style="margin-left:30px;">
-						<button
-							class="w3-button w3-white w3-hover-light-grey w3-border w3-round-xlarge"
-							style="width: 130px; font-size: 12px;" >팔로우</button>
-					</div>
+				
+					<c:if test="${member.follow_status == 0}">
+						<div class="w3-display-right" style="margin-left:30px;">
+							<input
+								class="w3-button w3-white w3-hover-light-grey w3-border w3-round-xlarge"
+								style="width: 130px; font-size: 12px;" value="follow" id="follow"
+								type="button" onclick="followPush('${member.id}','${memberInfo.id}')" />
+						</div>
+					</c:if>
+					<c:if test="${member.follow_status == 1}">
+						
+						<input
+								class="w3-button w3-white w3-hover-light-grey w3-border w3-round-xlarge"
+								style="width: 130px; font-size: 12px;" value="unfollow" id="follow"
+								type="button" onclick="followPush('${member.id}','${memberInfo.id}')" />
+					</c:if>
 				</c:if>
 				<div class="w3-display-middle" style="margin-left:70px;">
 
@@ -161,17 +172,17 @@
 								<div class="w3-center">
 									<!-- 함수 실행해서 이미지 이름 ,사이즈 등등 넘겨주는 부ㅜ분 -->
 									<c:if test="${list.feed_grade eq 'editor'}">
-									에디터<br>									<img id="${list.feed_id}" class="showMask"
+									<c:if test="${member.id ne memberInfo.id}">에디터<br></c:if><img id="${list.feed_id}" class="showMask"
 										src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 										style="width: 300px; height: 300px"
-										onclick="editorfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.makecontent}','${list.replelist}','${fn:length(list.replelist)}','${list.food_id}','${list.hashtaglist}');"><br>
+										onclick="editorfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.makecontent}','${list.replelist}','${fn:length(list.replelist)}','${list.food_id}','${list.hashtaglist}','${list.likestate}','${list.bookmarkstate}');"><br>
 									${list.recipe_name }
 									</c:if>
 									<c:if test="${list.feed_grade eq 'nomal'}">
 									<img id="${list.feed_id}" class="showMask"
 										src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 										style="width: 300px; height: 300px"
-										onclick="nomalfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.makecontent}','${list.replelist}','${fn:length(list.replelist)}','${list.hashtaglist}');"><br>
+										onclick="nomalfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.makecontent}','${list.replelist}','${fn:length(list.replelist)}','${list.hashtaglist}','${list.likestate}','${list.bookmarkstate}');"><br>
 									${list.recipe_name }
 									</c:if>
 								</div>
@@ -242,8 +253,7 @@
 		x[slideIndex - 1].style.display = "block";
 		z[slideIndex - 1].style.display = "block";
 	}
-	
-   	function nomalfeed(imagenum,feeddate,feedid,imagename,contentname,repledata,replenum,hashtag){
+	function nomalfeed(imagenum,feeddate,feedid,imagename,contentname,repledata,replenum,hashtag,like,book){
    		var myArray ;
    		var title ;
    		var id;
@@ -260,15 +270,27 @@
    		//이미지와 제목 해쉬테그 좋아요
    		var y="<div class=\"leftdiv\" style=\"float: left; width: 55%; height: 550px; margin-top: 10px;\">"
    		//피드 상단 프로필사진
-   		y+="<div align=\"left\" style=\"width:100%; height:70px\"> <img	src=\"/Remart_teamProj/fileSave/${member.profileImg}\"class=\"w3-circle\" alt=\"Norway\"style=\"width:70px; height:70px\"></div>";
+   		y+="<div align=\"left\" style=\"width:100%; height:70px\">"+
+   		"<a href=\"myPageForm?id=${memberInfo.id}\" ><img	src=\"/Remart_teamProj/fileSave/${member.profileImg}\"class=\"w3-circle\" alt=\"Norway\"style=\"width:70px; height:70px\"></a></div>";
+   		
    		//이미지
    		for(var i=0;i<imagenum;i++){   			
    			y+="<div align=\"center\" class=\"mySlides\" style=\"width: 100%; height: 350px; border: solid 1px;\">"+
     		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=350></div>";
     		//+"<label>"+contentname[i]+"</label>"+"</div>";
    		}
-   		y+="<div align=\"left\" style=\"width:100%; height:40px;\"> <img src=\"/Remart_teamProj/images/icon/like_before.png\" style=\"width:40px; height:40px;\"></div>";
-  	  	
+   		y+="<div align=\"left\" style=\"width:100%; height:40px;\">";
+		if(like==0){
+			y+="<img src=\"/Remart_teamProj/images/icon/like_before.png\" class=\"like\" onclick=\"like('"+feedid+"','like','"+${memberInfo.id}+"');\" style=\"width:40px; height:40px;\">";
+		}else{
+			y+="<img src=\"/Remart_teamProj/images/icon/like_after.png\"  class=\"like\" style=\"width:40px; height:40px;\">";
+		}
+		if(book==0){
+			y+="<img src=\"/Remart_teamProj/images/icon/bookmark.png\" class=\"book\" onclick=\"like('"+feedid+"','bookmark','"+${memberInfo.id}+"');\" style=\"width:40px; height:40px;\">";
+		}else{
+			y+="<img src=\"/Remart_teamProj/images/icon/bookmark.png\" class=\"book\" onclick=\"like('"+feedid+"','unbookmark','"+${memberInfo.id}+"');\" style=\"width:40px; height:40px;\">";
+		}
+		y+="</div>";
    		var resulthashtag="";
    		var size=0;
 		for(var i=0;i<hashtag.length;i++){
@@ -323,7 +345,7 @@
    		$('.window').show();
    		showDivs(1);//슬라이더 처음값
    	}
-   	function editorfeed(imagenum,feeddate,feedid,imagename,contentname,repledata,replenum,foodname,hashtag){
+   	function editorfeed(imagenum,feeddate,feedid,imagename,contentname,repledata,replenum,foodname,hashtag,like,book){
    		var myArray ;
    		var title ;
    		var id;
@@ -342,15 +364,25 @@
    		//이미지와 제목 해쉬테그 좋아요
    		var y="<div class=\"leftdiv\" style=\"float: left; width: 45%; height: 550px; margin-top: 10px;\">"
    	   		//피드 상단 프로필사진
-   	   		y+="<div align=\"left\" style=\"width:100%; height:70px\"> <img	src=\"/Remart_teamProj/fileSave/${member.profileImg}\"class=\"w3-circle\" alt=\"Norway\"style=\"width:70px; height:70px\"></div>";
-   	   		//이미지
+   	   		y+="<div align=\"left\" style=\"width:100%; height:70px\">"+
+   	    		"<a href=\"myPageForm?id=${memberInfo.id}\" ><img	src=\"/Remart_teamProj/fileSave/${member.profileImg}\"class=\"w3-circle\" alt=\"Norway\"style=\"width:70px; height:70px\"></a></div>";//이미지
    	   		for(var i=0;i<imagenum;i++){   			
    	   			y+="<div align=\"center\" class=\"mySlides\" style=\"width: 100%; height: 350px; border: solid 1px;\">"+
    	    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=350></div>";
    	    		//+"<label>"+contentname[i]+"</label>"+"</div>";
    	   		}
-   	   		y+="<div align=\"left\" style=\"width:100%; height:40px;\"> <img src=\"/Remart_teamProj/images/icon/like_before.png\" style=\"width:40px; height:40px;\"></div>";
-   	  	  	
+   	   		y+="<div align=\"left\" style=\"width:100%; height:40px;\">";
+   			if(like==0){
+   				y+="<img src=\"/Remart_teamProj/images/icon/like_before.png\" class=\"like\" onclick=\"like('"+feedid+"','like','"+${memberInfo.id}+"');\" style=\"width:40px; height:40px;\">";
+   			}else{
+   				y+="<img src=\"/Remart_teamProj/images/icon/like_after.png\"  class=\"like\" style=\"width:40px; height:40px;\">";
+   			}
+   			if(book==0){
+   				y+="<img src=\"/Remart_teamProj/images/icon/bookmark.png\" class=\"book\" onclick=\"like('"+feedid+"','bookmark','"+${memberInfo.id}+"');\" style=\"width:40px; height:40px;\">";
+   			}else{
+   				y+="<img src=\"/Remart_teamProj/images/icon/bookmark.png\" class=\"book\" onclick=\"like('"+feedid+"','unbookmark','"+${memberInfo.id}+"');\" style=\"width:40px; height:40px;\">";
+   			}
+   			y+="</div>";
    	   		var resulthashtag="";
    	   		var size=0;
    			for(var i=0;i<hashtag.length;i++){
@@ -434,6 +466,45 @@
 		
 		
 		
+	}
+	function like(feed_id,action,id) {
+		num=feed_id;
+		var params = "feed_id=" + encodeURIComponent(feed_id)+"&action="+ encodeURIComponent(action)+"&id="+encodeURIComponent(id);
+		sendRequest("<%=request.getContextPath()%>/common/likeaction.jsp",
+				params, return_like, 'GET');
+	}
+	function return_like() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				var resText = httpRequest.responseText;
+				resText=resText.trim();
+				var arry=resText.split("|");
+				if(arry[1]=='L'){
+					var likeimg=$('.like');
+					likeimg.removeAttr('onclick');
+					likeimg.attr('src','/Remart_teamProj/images/icon/like_after.png');
+					
+				}else if(arry[1]=='B'){
+					
+					var bookimg=$('.book');
+					bookimg.onclick="";
+				/* 	bookimg.onclick=function() {
+						like(arry[0],'unbookmark','${memberInfo.id}');
+					}; */
+					bookimg.attr('onclick','like(\''+arry[0]+'\',\'unbookmark\',\'${memberInfo.id}\')');
+					alert("북마크 되었습니다.");
+				}else{
+					
+					var bookimg=$('.book');
+					bookimg.onclick="";
+					/* bookimg.onclick=function() {
+						like(arry[0],'bookmark','${memberInfo.id}');
+					}; */
+					bookimg.attr('onclick','like(\''+arry[0]+'\',\'bookmark\',\'${memberInfo.id}\')');
+					alert("북마크 취소되었습니다.");
+				}
+			}
+		}
 	}
 	function addbasket(){
 		if (httpRequest.readyState == 4) {
@@ -547,6 +618,32 @@
             $('.window').hide();
         });
     });
+    
+    function followPush(otherid,myid) {
+		var follow=$('#follow');
+		var followStatus=follow.val();
+		
+		var params = "followStatus=" + encodeURIComponent(followStatus) + "&myid=" + encodeURIComponent(myid) + "&otherid=" + encodeURIComponent(otherid);
+		sendRequest("<%=request.getContextPath()%>/view/main/followButton.jsp",
+				params, followResult, 'POST');
+		if (follow.val() == "follow") {
+			follow.val("unfollow");
+			
+		} else {
+			follow.val("follow");
+			
+		}
+		
+	}
+	function followResult() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+
+			} else {
+				alert("에러: " + httpRequest.status);
+			}
+		}
+	}
 </script>
 </body>
 </html>

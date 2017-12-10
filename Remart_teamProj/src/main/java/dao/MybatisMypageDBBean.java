@@ -20,13 +20,14 @@ public class MybatisMypageDBBean extends MybatisConnector {
 
 	SqlSession sqlSession;
 
-	public R_memberDataBean selectMember(String id) {
+	public R_memberDataBean selectMember(String id,String myid) {
 
 		sqlSession = sqlSession();
 		R_memberDataBean member;
 		try {
 			HashMap map = new HashMap();
 			map.put("id", id);
+			map.put("myid", myid);
 			member = sqlSession.selectOne(namespace + ".pagea", map);
 
 		} finally {

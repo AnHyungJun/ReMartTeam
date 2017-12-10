@@ -49,14 +49,14 @@ public class MypageController {
 			// ������ checkpage 0 �ٸ��� 1 
 			if( member == null){
 				mv.addObject("checkpage",1);
-				member=dbPro.selectMember(id);
+				member=dbPro.selectMember(id,"");
 			}else{
 				if(id.equals(member.getId())){
 					mv.addObject("checkpage",0);
-					member=dbPro.selectMember(member.getId());	
+					member=dbPro.selectMember(member.getId(),id);	
 				}else{
 					mv.addObject("checkpage",1);
-					member=dbPro.selectMember(id);
+					member=dbPro.selectMember(id,"");
 				}
 			}
 			mv.addObject("member",member);
