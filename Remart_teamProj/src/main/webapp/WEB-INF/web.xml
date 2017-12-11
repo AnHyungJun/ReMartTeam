@@ -49,6 +49,7 @@
 		<url-pattern>*.swf</url-pattern>
 		<url-pattern>*.JPG</url-pattern>
 		<url-pattern>*.PNG</url-pattern>
+		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
 	
 	<filter>

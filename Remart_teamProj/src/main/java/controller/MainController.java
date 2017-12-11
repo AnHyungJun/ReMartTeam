@@ -1,8 +1,13 @@
 package controller;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,8 +18,11 @@ import model.R_memberDataBean;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.MybatisMainDBBean;
@@ -202,5 +210,47 @@ public class MainController {
 		mv.addObject("feedlist",feedlist);
 		mv.setViewName("main/editorRecommandForm");
 		return mv;
+	}
+	
+	@RequestMapping(value = "coding")
+	public String coding(Model model) {
+		mv.clear();
+		mv.setViewName("coding");
+		return "coding";
+	}
+
+	@RequestMapping(value = "insertBoard", method = RequestMethod.POST)
+	public String insertBoard(String editor) {
+		return "redirect:coding";
+	}
+	
+	
+	@RequestMapping(value = "file_uploader_html5", method = RequestMethod.POST)
+	@ResponseBody
+	public String multiplePhotoUpload(HttpServletRequest request) {
+		StringBuffer sb = new StringBuffer();
+		try {
+			String oldName = request.getHeader("file-name");
+			String filePath = "C:/Users/USER/git/last/ReMartTeam/Remart_teamProj/src/main/webapp/resources/photoUpload/";
+			String saveName = sb.append(new SimpleDateFormat("yyyyMMddHHmmss").format(System.currentTimeMillis()))
+								.append(UUID.randomUUID().toString())
+								.append(oldName.substring(oldName.lastIndexOf("."))).toString();
+			InputStream is = request.getInputStream();
+			OutputStream os = new FileOutputStream(filePath + saveName);
+			int numRead;
+			byte b[] = new byte[Integer.parseInt(request.getHeader("file-size"))];
+			while ((numRead = is.read(b, 0, b.length)) != -1) {
+				os.write(b, 0, numRead);
+			}
+			os.flush();
+			os.close();
+			sb = new StringBuffer();
+			sb.append("&bNewLine=true")
+			  .append("&sFileName=").append(oldName)
+			  .append("&sFileURL=").append("http://localhost:8080/Remart_teamProj/resources/photoUpload/").append(saveName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return sb.toString();
 	}
 }
