@@ -35,7 +35,7 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		id=(select id from feed where
 		feed_id=#{feed_id})
 	</update>
-	<select id="getfeed" resultType="feed" parameterType="hashmap">
+		<select id="getfeed" resultType="feed" parameterType="hashmap">
 		select
 		feed_id,id,like_num,reg_date,recipe_name,
 		(select nvl(count(*),0) from
@@ -45,7 +45,7 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		likestate,
 		(select nvl(count(*),0)from likely_bookmark l
 		where l.feed_id=f.feed_id and l.type='B'and l.id=#{id})
-		bookmarkstate
+		bookmarkstate,(select grade from r_member where id=f.id) feed_grade
 		from feed f where f.feed_id=#{feed_id}
 		order by reg_date
 		desc
@@ -82,7 +82,7 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		likestate,
 		(select nvl(count(*),0)from likely_bookmark l
 		where l.feed_id=f.feed_id and l.type='B'and l.id=#{id})
-		bookmarkstate
+		bookmarkstate,(select grade from r_member where id=f.id) feed_grade
 		from feed f
 		order by reg_date desc
 	</select>
@@ -101,8 +101,8 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 
 	<select id="getfeedsNologin" resultType="feed">
-		select * from
-		feed order
+		select feed_id,id,like_num,reg_date,recipe_name,(select grade from r_member where id=f.id) feed_grade from
+		feed f order
 		by
 		reg_date desc
 	</select>
@@ -201,7 +201,6 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getHashtagKeyCount" parameterType="hashmap"
 		resultType="int">
 		select count(*) cnt from hash_feed hf, hashtag h where
-		hf.hashtag_id = h.hashtag_id and h.hashtag_content = #{please} group by
-		h.hashtag_id
+		hf.hashtag_id = h.hashtag_id and h.hashtag_content = #{please}
 	</select>
 </mapper>
