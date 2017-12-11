@@ -164,6 +164,11 @@ body, h1, h2, h3, h4, h5, h6 {
 									class="con_link"
 									onmouseover="this.style.textDecoration='none';"
 									onmouseout="this.style.textDecoration='none';">장바구니</a>
+								| <a href="<%=request.getContextPath()%>/chatting/chat"
+								style="font-size: 12px; text-decoration: none;"
+								class="con_link"
+								onmouseover="this.style.textDecoration='none';"
+								onmouseout="this.style.textDecoration='none';">채팅</a>
 							</div>
 
 							<div class="w3-bar-item" style="height: 135px">
