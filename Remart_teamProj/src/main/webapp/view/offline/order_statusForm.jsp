@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -129,17 +129,17 @@ function detail(userinput) {
 						<table class="w3-table w3-bordered w3-centered"
 							id="offlineSearchTable">
 							<tr>
-								<th style="width: 100px;">주문 번호</th>
-								<th style="width: 100px;">주문 날짜</th>
-								<th style="width: 150px;">입고 예상 날짜</th>
-								<th style="width: 100px;">상태</th>
-								<th style="width: 100px;">상세보기</th>
+								<th class="w3-center" style="width: 100px;">주문 번호</th>
+								<th class="w3-center" style="width: 150px;">주문 날짜</th>
+								<th class="w3-center" style="width: 150px;">입고 예상 날짜</th>
+								<th class="w3-center" style="width: 100px;">상태</th>
+								<th class="w3-center" style="width: 100px;">상세보기</th>
 							</tr>
 							<c:forEach  var="mart_order"  items="${mart_orderList}">  
-							<tr style="vertical-align: middle;">
+							<tr style="vertical-align: middle; font-size:13px;">
 								<td style="vertical-align: middle;">${mart_order.mart_order_id}</td>
-								<td style="vertical-align: middle;">${mart_order.re_date }</td>
-								<td style="vertical-align: middle;">${mart_order.or_date }</td>
+								<td style="vertical-align: middle;"><fmt:formatDate value="${mart_order.re_date }" pattern="yyyy-MM-dd HH:mm"/></td>
+								<td style="vertical-align: middle;"><fmt:formatDate value="${mart_order.or_date }" pattern="yyyy-MM-dd HH:mm"/></td>
 								<c:choose>
 									<c:when test="${mart_order.status == 'order'}">
 										<td style="vertical-align: middle;">발주 완료</td>
