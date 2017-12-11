@@ -222,9 +222,9 @@
 						<div style="height: 400px;">
 							<table style="float: left; font-size: 13px;" id="posTable">
 								<tr>
-									<th style="width: 150px">바코드</th>
+									<th style="width: 50px">바코드</th>
 									<th style="width: 150px">상품명</th>
-									<th style="width: 50px">수량</th>
+									<th style="width: 150px">수량</th>
 									<th style="width: 150px">단가</th>
 									<th style="width: 150px">금액</th>
 									<th style="width: 50px">재고</th>
