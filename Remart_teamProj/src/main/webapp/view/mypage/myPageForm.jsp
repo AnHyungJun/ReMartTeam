@@ -224,6 +224,8 @@
 
 	function plusDivs(n) {
 		
+		
+		
 		showDivs(slideIndex += n);
 
 	}
