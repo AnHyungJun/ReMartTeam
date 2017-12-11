@@ -130,7 +130,7 @@
 		<div style="margin-top: 10px;"></div>
 
 		<form name="search">
-			<input type="text" name="keyword" id="keyword"
+			<input type="text" name="keyword" id="keyword" style="height:26px;"
 				onkeydown="startSuggest()" /> <input type="button"
 				class="w3-button w3-white w3-hover-white w3-padding-small" style="font-size: 12px;"
 				value="확인" onclick="aaaaa()" />

@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<title>Insert title here</title>
+<title>REMART ADMIN</title>
 </head>
 <body>
 <table class="w3-table w3-bordered w3-center" style="width: 700px; font-size: 12px;">
@@ -13,7 +13,7 @@
 		<td align="center"><br>프로필 사진</td>
 		<td width="330">
 			<img src="<%=request.getContextPath()%>/fileSave/${articleCustomInfo[0].profileImg}"
-			class="w3-circle" alt="" style="width: 200px; height: 100px">
+			class="w3-circle" alt="" style="width: 100px; height: 100px">
 		</td>
 	</tr>
 	<tr>
