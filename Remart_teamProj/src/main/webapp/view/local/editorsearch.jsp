@@ -18,7 +18,7 @@
 	<form name="search">
 		<div style="height: 50px;" align="center">
 			<input type="text" id="searchFood" name="searchFood"
-				onkeydown="startSuggest()" /> <input type="button"
+				onkeydown="startSuggest()" style="height:26px;"/> <input type="button"
 				class="w3-button w3-white w3-hover-white w3-padding-small" style="font-size: 12px;"
 				onclick="" value="찾기">
 		</div>
