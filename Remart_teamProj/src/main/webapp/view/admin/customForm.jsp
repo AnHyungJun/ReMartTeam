@@ -45,15 +45,15 @@
 				<form id="searchForm" action="customForm" method="post"
 					name="searchForm">
 					<p>
-						<select name="searchOption" style="font-size: 13px;">
+						<select name="searchOption" style="font-size: 13px; height: 26px;">
 							<option value="id">ID</option>
 							<option value="name">NAME</option>
 							<option value="">PROFILE</option>
 							<option value="">GRADE</option>
-						</select> <input style="height: 23px;" type="text" name="searchWord"
+						</select> <input style="height: 26px;" type="text" name="searchWord"
 							size="30" maxlength="50" /> <input
 							class="w3-button w3-white w3-hover-white w3-padding-small"
-							style="font-size: 12px;" type="submit" value="검색" />
+							style="font-size: 12px; height: 26px;" type="submit" value="검색" />
 					</p>
 				</form>
 			</div>
