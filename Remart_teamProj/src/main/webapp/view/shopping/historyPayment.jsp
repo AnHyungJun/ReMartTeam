@@ -7,6 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>REMART</title>
+<style type="text/css">
+	.list_table tr:last-child{
+		border-bottom: 0px solid #ddd;
+	}
+
+</style>
 </head>
 <body>
 <div style="margin-top: 200px"></div>
@@ -46,7 +52,7 @@
 					<%-- <td class="w3-center"
 						style="font-size: 14px; vertical-align: middle;">${articlepayment.pro_name }</td> --%>
 					<td class="w3-center" style="font-size: 14px; vertical-align: middle;">
-					<table class="list_body_table w3-table w3-bordered" width="100%">
+					<table class="list_table w3-table w3-bordered" width="100%">
 						<c:forEach var="articlefoodNum" items="${articleFoodNumList }">
 						<c:if test="${articlepayment.payment_id == articlefoodNum.order_id }">
 							<tr>
