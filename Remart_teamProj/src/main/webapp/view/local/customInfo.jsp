@@ -13,7 +13,7 @@
 		<td align="center"><br>프로필 사진</td>
 		<td width="330">
 			<img src="<%=request.getContextPath()%>/fileSave/${articleCustomInfo[0].profileImg}"
-			class="w3-circle" alt="" style="width: 100px; height: 100px">
+			class="w3-circle" alt="" style="width: 100px; height: 100px; margin-bottom:3px;">
 		</td>
 	</tr>
 	<tr>
