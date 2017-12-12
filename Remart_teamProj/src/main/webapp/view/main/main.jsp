@@ -8,8 +8,12 @@
 	src="<%=request.getContextPath()%>/ajax/httpRequest.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+	href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 <style>
+a {
+	text-decoration: none;
+}
+
 .display-none {
 	display: none;
 }
@@ -137,49 +141,55 @@
 				<c:if test="${fn:length(Feeds) != 0}">
 					<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
 					<!-- 리스트가 있으면 뿌려주는 FOREACH -->
-					<div id="aditionalfeed">
+					<div id="aditionalfeed" style="font-size:14px;">
 						<c:set var="mainLoop" value="false" />
 						<c:forEach var="list" items="${Feeds}" varStatus="mainstatus">
 							<c:if test="${not mainLoop}">
 								<div class="w3-container"
-									style="float: left; width: 300px; height: 350px; margin-top: 10px;">
-									<div class="w3-card-4"
-										style="position: relative; height: 350px;">
+									style="float: left; width: 300px; height: 320px; margin-top: 30px;">
+									<div class="w3-border"
+										style="position: relative; height: 320px;">
 										<div id="userInfo" style="text-align: left;">
+										<div style="margin-top:3px"></div>
 											<c:if test="${list.profileImg==null}">
 												<img
 													src="<%=request.getContextPath()%>/images/icon/noProfile.png"
-													class="w3-circle" alt="" style="width: 20px; height: 20px">
+													class="w3-circle" alt=""
+													style="width: 20px; height: 20px; margin-left: 5px;">
 											</c:if>
 											<c:if test="${list.profileImg!=null}">
 												<img
 													src="<%=request.getContextPath()%>/fileSave/${list.profileImg}"
-													class="w3-circle" alt="" style="width: 20px; height: 20px">
-											</c:if>${list.id }
+													class="w3-circle" alt=""
+													style="width: 20px; height: 20px; margin-left: 5px;">
+											</c:if>
+											${list.id }
+											<div style="margin-top:5px"></div>
+											<div class="w3-border-bottom"></div>
 										</div>
 										<div class="w3-center">
 											<!-- 함수 실행해서 이미지 이름 ,사이즈 등등 넘겨주는 부ㅜ분 -->
 											<c:if test="${list.feed_grade eq 'editor'}">
-									에디터<br>
+									<!-- 에디터<br> -->
 												<img id="${list.feed_id}" class="showMask"
 													src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 													style="width: 100%; height: 200px"
 													onclick="document.getElementById('popup').style.display='block';
 													 editorfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.makecontent}','${list.replelist}','${fn:length(list.replelist)}','${list.food_id}','${list.hashtaglist}');">
-												<br>
-									${list.recipe_name }
+												<%-- 
+									${list.recipe_name } --%>
 									</c:if>
 											<c:if test="${list.feed_grade eq 'nomal'}">
 												<img id="${list.feed_id}" class="showMask"
 													src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 													style="width: 100%; height: 200px"
 													onclick="document.getElementById('popup').style.display='block';popup2('${list.feed_id}','${list.id }');">
-										
-												<br>
-									${list.recipe_name }
+
+												<%-- <div style="margin-top:10px;"></div>
+									${list.recipe_name} --%>
 									</c:if>
 										</div>
-										<div id="like_bookmark" style="margin-top: 10px;">
+										<div id="like_bookmark" style="text-align: left; margin-top: 15px; margin-left:5px;">
 											<!-- 로그인 안했을 때 -->
 											<c:if test="${empty memberInfo }">
 												<img onclick="needlogin()"
@@ -191,6 +201,7 @@
 												<img onclick="needlogin()"
 													src="<%=request.getContextPath()%>/images/icon/bookmark.png"
 													style="height: 20px; cursor: pointer;">
+													<div style="margin-top:8px"></div>
 											</c:if>
 											<!-- 로그인 했을 때 -->
 											<c:if test="${!empty memberInfo }">
@@ -219,21 +230,24 @@
 														src="<%=request.getContextPath()%>/images/icon/bookmark.png"
 														style="height: 20px; cursor: pointer;">
 												</c:if>
+												<div style="margin-top:8px"></div>
+												<div class="w3-border-bottom"></div>
 											</c:if>
-											<br>${list.recipe_name }
+											<div style="margin-top:10px;"></div>
+											${list.recipe_name }
 										</div>
 
 										<div id="hashtag"
-											style="text-align: left; position: absolute; width: 100%; height: 75px">
+											style="text-align: left; position: absolute; width: 100%; height: 75px; margin-left: 5px;">
 
 											<c:set var="doneLoop" value="false" />
 											<c:forEach var="hash" items="${list.hashtaglist}"
 												varStatus="status">
 												<c:if test="${not doneLoop}">
 													<a href="#" onclick="search000('${hash}')">#${hash}</a>
-													<c:if test="${status.count == 15}">
+													<c:if test="${status.count == 4}">
 														<c:set var="doneLoop" value="true" />
-														...
+														&nbsp;
 													</c:if>
 												</c:if>
 											</c:forEach>
