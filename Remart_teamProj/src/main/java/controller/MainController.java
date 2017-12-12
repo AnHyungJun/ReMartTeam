@@ -119,7 +119,7 @@ public class MainController {
 			mv.clear();
 			if (feeds.size() < start) {
 				// System.out.println("feeds.size() < start");
-				// System.out.println("µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.");
+				// System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 				mv.addObject("dataEmpty", true);
 			} else if (feeds.size() > start && feeds.size() < end) {
 				// System.out.println("feeds.size() > start && feeds.size() < end");
@@ -197,15 +197,17 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "coding")
-	public String coding(Model model) {
+	public ModelAndView coding(Model model) {
 		mv.clear();
-		mv.setViewName("coding");
-		return "coding";
+		mv.setViewName("main/coding");
+		return mv;
 	}
 
 	@RequestMapping(value = "insertBoard", method = RequestMethod.POST)
-	public String insertBoard(String editor) {
-		return "redirect:coding";
+	public ModelAndView insertBoard(String editor) {
+		mv.clear();
+		mv.setViewName("main/coding");
+		return mv;
 	}
 	
 	
@@ -215,7 +217,7 @@ public class MainController {
 		StringBuffer sb = new StringBuffer();
 		try {
 			String oldName = request.getHeader("file-name");
-			String filePath = "C:/Users/USER/git/last/ReMartTeam/Remart_teamProj/src/main/webapp/resources/photoUpload/";
+			String filePath = request.getRealPath("/") + "resources/photoUpload/";
 			String saveName = sb.append(new SimpleDateFormat("yyyyMMddHHmmss").format(System.currentTimeMillis()))
 								.append(UUID.randomUUID().toString())
 								.append(oldName.substring(oldName.lastIndexOf("."))).toString();
@@ -231,7 +233,7 @@ public class MainController {
 			sb = new StringBuffer();
 			sb.append("&bNewLine=true")
 			  .append("&sFileName=").append(oldName)
-			  .append("&sFileURL=").append("http://localhost:8080/Remart_teamProj/resources/photoUpload/").append(saveName);
+			  .append("&sFileURL=").append(request.getContextPath()+"/resources/photoUpload/").append(saveName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
