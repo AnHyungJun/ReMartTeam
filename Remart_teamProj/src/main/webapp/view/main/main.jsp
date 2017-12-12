@@ -146,9 +146,9 @@ a {
 						<c:forEach var="list" items="${Feeds}" varStatus="mainstatus">
 							<c:if test="${not mainLoop}">
 								<div class="w3-container"
-									style="float: left; width: 300px; height: 325px; margin-top: 30px;">
+									style="float: left; width: 300px; height: 350px; margin-top: 30px;">
 									<div class="w3-border"
-										style="position: relative; height: 325px;">
+										style="position: relative; height: 350px;">
 										<div id="userInfo" style="text-align: left;">
 										<div style="margin-top:3px"></div>
 											<c:if test="${list.profileImg==null}">
@@ -170,7 +170,7 @@ a {
 										<div class="w3-center">
 											<!-- 함수 실행해서 이미지 이름 ,사이즈 등등 넘겨주는 부ㅜ분 -->
 											<c:if test="${list.feed_grade eq 'editor'}">
-									<!-- 에디터<br> -->
+									<img src="<%=request.getContextPath()%>/images/icon/editor.png" style="margin-top:5px; margin-bottom:0px;">
 												<img id="${list.feed_id}" class="showMask"
 													src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 													style="width: 100%; height: 200px"
@@ -180,6 +180,7 @@ a {
 									${list.recipe_name } --%>
 									</c:if>
 											<c:if test="${list.feed_grade eq 'nomal'}">
+											<img src="<%=request.getContextPath()%>/images/icon/normal.png" style="margin-top:5px; margin-bottom:0px;">
 												<img id="${list.feed_id}" class="showMask"
 													src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 													style="width: 100%; height: 200px"
