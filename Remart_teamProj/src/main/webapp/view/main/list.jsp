@@ -21,7 +21,7 @@ a {
 
 			<table class="w3-table w3-bordered" width="900" style="font-size:12px">
 				<tr class="w3-white">
-					<td align="center">저장된 글이 없습니다.</td>
+					<td class="w3-center" align="center">저장된 글이 없습니다.</td>
 			</table>
 		</c:if>
 		<c:if test="${count != 0}">
@@ -34,12 +34,12 @@ a {
 				</tr>
 				<c:forEach var="article" items="${articleList}">
 					<tr>
-						<td>${article.restaurant_recommand_id }</td>
-						<td><a
+						<td class="w3-center">${article.restaurant_recommand_id }</td>
+						<td class="w3-center"><a
 							href="content?num=${article.restaurant_recommand_id}&pageNum=${currentPage}">
 								${article.subject}</a></td>
-						<td>${article.id }</td>
-						<td><fmt:formatDate value="${article.reg_date }" pattern="yyyy-MM-dd HH:mm"/></td>
+						<td class="w3-center">${article.id }</td>
+						<td class="w3-center"><fmt:formatDate value="${article.reg_date }" pattern="yyyy-MM-dd HH:mm"/></td>
 					</tr>
 				</c:forEach>
 
@@ -51,16 +51,16 @@ a {
 			<c:if test="${count > 0 }">
 
 				<c:if test="${startPage > bottomLine }">
-					<a href="list?pageNum=${startPage - bottomLine}">[이전]</a>
+					<a href="list?pageNum=${startPage - bottomLine}" style="font-size:12px;">이전</a>
 				</c:if>
 				<c:forEach var="i" begin="${startPage}" end="${endPage}">
-					<a href="list?pageNum=${i}"> <c:if test="${i != currentPage}">[${i}]</c:if>
+					<a href="list?pageNum=${i}" style="font-size:12px;"> <c:if test="${i != currentPage}"><font color='black'>${i}</c:if>
 						<c:if test="${i == currentPage}">
-							<font color='red'>[${i}]</font>
+							<font color='red'>${i}</font>
 						</c:if></a>
 				</c:forEach>
 				<c:if test="${endPage < pageCount}">
-					<a href="list?pageNum=${startPage+bottomLine}">[다음]</a>
+					<a href="list?pageNum=${startPage+bottomLine}" style="font-size:12px;">다음</a>
 				</c:if>
 
 			</c:if>

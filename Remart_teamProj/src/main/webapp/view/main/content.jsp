@@ -27,8 +27,8 @@
 					<td align="center" width="375" colspan="3">
 					${article.subject}</td>
 				</tr><tr height="30">
-					<td align="center" width="125">글내용</td>
-					<td align="left" width="375" colspan="3"><pre>
+					<td align="center" width="125" style="vertical-align: middle;">글내용</td>
+					<td align="left" width="375" style="vertical-align: middle;" colspan="3"><pre>
          ${article.content}</pre>
          
          
