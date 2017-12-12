@@ -6,10 +6,11 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
+
+	<div style="margin-top:200px;"></div>
 	<center>
-	<br><br><br><br><br><br><br>
 		<div class="w3-container">
-			<table class="w3-table-all" style="width: 80%;">
+			<table class="w3-table w3-bordered" style="width: 900px; font-size:12px;">
 				<tr height="30">
 					<td width="125" align="center">글번호</td>
 					<td width="125" align="center">${article.restaurant_recommand_id}</td>
@@ -40,8 +41,8 @@
 				<tr height="30">
 			<td colspan="4" class="w3-center">
 			
-			 <input type="button" value="글목록"
-		onclick="document.location.href='list?pageNum=${pageNum}'">
-					</td></tr></table>
+			 <input type="button" style="font-size:11px;"
+						class="w3-button w3-light-grey w3-hover-light-grey" value="글목록"
+						onclick="document.location.href='list?pageNum=${pageNum}'"></td></tr></table>
 		</div></center></body></html>
 
