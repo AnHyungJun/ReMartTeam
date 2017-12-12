@@ -142,7 +142,7 @@ a {
 			<div id="suggest"
 				style="display:; position: absolute; left: 0px; top: 50px;">
 				<div id="suggestList"></div>
-			</div>
+			</div> 
 		</form>
 	</center>
 </body>
