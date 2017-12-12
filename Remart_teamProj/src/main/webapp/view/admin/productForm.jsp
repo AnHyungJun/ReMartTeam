@@ -40,7 +40,7 @@
 	<div style="margin-top: 120px;"></div>
 
 	<center>
-		<div class="w3-row w3-container" style="width: 850px">
+		<div class="w3-row w3-container" style="width: 840px">
 			<div class="w3-left w3-third" style="width: 15%;">
 				<input type="button"
 					class="w3-button w3-black w3-hover-red w3-center"
@@ -52,7 +52,7 @@
 
 					<div class="w3-half w3-right"
 						style="vertical-align: middle; width: 10px;">
-						<button class="w3-button w3-white w3-hover-white w3-padding-small"
+						<button class="w3-button w3-black w3-hover-black w3-padding-small"
 							style="font-size: 12px;" type="submit">°Ë»ö</button>
 					</div>
 					<div class="w3-half w3-right"
