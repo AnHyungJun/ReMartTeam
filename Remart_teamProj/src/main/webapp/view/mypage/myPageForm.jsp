@@ -259,6 +259,7 @@
    		var myArray ;
    		var title ;
    		var id;
+   		var myid='${memberInfo.id}';
    		//넘겨준 데이터 쪼갬
    		imagename=imagename.substring(1,imagename.length-1);
    		repledata=repledata.substring(1,repledata.length-1);
@@ -267,7 +268,9 @@
    		hashtag=hashtag.split(', ');
    		contentname=contentname.split('@!');
    		feeddate=feeddate.split(', ');
+   		
    		id=feeddate[1].substring(3,feeddate[1].length);
+   		
    		title=feeddate[5].substring(12,feeddate[5].length);
    		//이미지와 제목 해쉬테그 좋아요
    		var y="<div class=\"leftdiv\" style=\"float: left; width: 55%; height: 550px; margin-top: 10px;\">"
@@ -283,17 +286,19 @@
    		}
    		y+="<div align=\"left\" style=\"width:100%; height:40px;\">";
 		if(like==0){
-			y+="<img src=\"/Remart_teamProj/images/icon/like_before.png\" class=\"like\" onclick=\"like('"+feedid+"','like','"+${memberInfo.id}+"');\" style=\"width:40px; height:40px;\">";
+			y+="<img src=\"/Remart_teamProj/images/icon/like_before.png\" class=\"like\" onclick=\"like('"+feedid+"','like','"+myid+"');\" style=\"width:40px; height:40px;\">";
 		}else{
 			y+="<img src=\"/Remart_teamProj/images/icon/like_after.png\"  class=\"like\" style=\"width:40px; height:40px;\">";
 		}
 		if(book==0){
-			y+="<img src=\"/Remart_teamProj/images/icon/bookmark.png\" class=\"book\" onclick=\"like('"+feedid+"','bookmark','"+${memberInfo.id}+"');\" style=\"width:40px; height:40px;\">";
+			y+="<img src=\"/Remart_teamProj/images/icon/bookmark.png\" class=\"book\" onclick=\"like('"+feedid+"','bookmark','"+myid+"');\" style=\"width:40px; height:40px;\">";
 		}else{
-			y+="<img src=\"/Remart_teamProj/images/icon/bookmark.png\" class=\"book\" onclick=\"like('"+feedid+"','unbookmark','"+${memberInfo.id}+"');\" style=\"width:40px; height:40px;\">";
+			y+="<img src=\"/Remart_teamProj/images/icon/bookmark.png\" class=\"book\" onclick=\"like('"+feedid+"','unbookmark','"+myid+"');\" style=\"width:40px; height:40px;\">";
 		}
 		y+="</div>";
-   		var resulthashtag="";
+   		
+		
+		var resulthashtag="";
    		var size=0;
 		for(var i=0;i<hashtag.length;i++){
 			if(size<30){
@@ -305,6 +310,8 @@
 				size+=hashtag[i].length;
 			}
 		}
+		
+		
 		y+="<div class=\"mySlide\" style=\"width:100%; height:50px;\">"
 		+"<label> 음식 이름 : "+title+"</label><br>"
 		+"<label>재료 : "+contentname[0]+"</label><br>"+"</div>";
@@ -351,6 +358,7 @@
    		var myArray ;
    		var title ;
    		var id;
+   		var myid='${memberInfo.id}';
    		$('.window').css('width', 920);
    		imagename=imagename.substring(1,imagename.length-1);
    		foodname=foodname.substring(1,foodname.length-1);
@@ -375,14 +383,14 @@
    	   		}
    	   		y+="<div align=\"left\" style=\"width:100%; height:40px;\">";
    			if(like==0){
-   				y+="<img src=\"/Remart_teamProj/images/icon/like_before.png\" class=\"like\" onclick=\"like('"+feedid+"','like','"+${memberInfo.id}+"');\" style=\"width:40px; height:40px;\">";
+   				y+="<img src=\"/Remart_teamProj/images/icon/like_before.png\" class=\"like\" onclick=\"like('"+feedid+"','like','"+myid+"');\" style=\"width:40px; height:40px;\">";
    			}else{
    				y+="<img src=\"/Remart_teamProj/images/icon/like_after.png\"  class=\"like\" style=\"width:40px; height:40px;\">";
    			}
    			if(book==0){
-   				y+="<img src=\"/Remart_teamProj/images/icon/bookmark.png\" class=\"book\" onclick=\"like('"+feedid+"','bookmark','"+${memberInfo.id}+"');\" style=\"width:40px; height:40px;\">";
+   				y+="<img src=\"/Remart_teamProj/images/icon/bookmark.png\" class=\"book\" onclick=\"like('"+feedid+"','bookmark','"+myid+"');\" style=\"width:40px; height:40px;\">";
    			}else{
-   				y+="<img src=\"/Remart_teamProj/images/icon/bookmark.png\" class=\"book\" onclick=\"like('"+feedid+"','unbookmark','"+${memberInfo.id}+"');\" style=\"width:40px; height:40px;\">";
+   				y+="<img src=\"/Remart_teamProj/images/icon/bookmark.png\" class=\"book\" onclick=\"like('"+feedid+"','unbookmark','"+myid+"');\" style=\"width:40px; height:40px;\">";
    			}
    			y+="</div>";
    	   		var resulthashtag="";
@@ -527,7 +535,7 @@
 		
 		if(txtval.val()=='') alert("입력하신 댓글이 없습니다");
 		else{
-			var params =  "feed_id="+feed_id+"&id="+m_id+"&content="+encodeURIComponent(txtval.val());
+			var params =  "feed_id="+feed_id+"&id="+encodeURIComponent(m_id)+"&content="+encodeURIComponent(txtval.val());
 			
 			sendRequest("<%=request.getContextPath()%>/common/repleInsert.jsp",
 			params, displayResult, 'GET');
