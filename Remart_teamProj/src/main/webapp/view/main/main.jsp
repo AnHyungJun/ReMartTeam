@@ -94,7 +94,7 @@
 							<div class="w3-center"
 								style="width: 36%; float: left; margin-right: 40px;">
 								<img id="${todayRecomendFeed[0].feed_id}"
-									class="showMask today01 animated infinite bounce"
+									class="showMask today01 animated infinite wobble"
 									src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[0].img_name[0]}"
 									style="width: 150px; height: 150px;"
 									onclick="popup('${fn:length(todayRecomendFeed[0].img_name)}','${todayRecomendFeed[0]}','${todayRecomendFeed[0].img_name}','${todayRecomendFeed[0].content}','${todayRecomendFeed[0].replelist}','${fn:length(todayRecomendFeed[0].replelist)}');"><br>
@@ -104,8 +104,8 @@
 							</div>
 							<div class="w3-right"
 								style="width: 35%; float: left; margin-right: 50px; margin-top: 20px;">
-								<img id="${todayRecomendFeed[1].feed_id}"
-									class="showMask today02 animated infinite swing"
+								<img id="${todhayRecomendFeed[1].feed_id}"
+									class="showMask today02 animated infinite wobble"
 									src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[1].img_name[0]}"
 									style="width: 150px; height: 150px;"
 									onclick="popup('${fn:length(todayRecomendFeed[1].img_name)}','${todayRecomendFeed[1]}','${todayRecomendFeed[1].img_name}','${todayRecomendFeed[1].content}','${todayRecomendFeed[1].replelist}','${fn:length(todayRecomendFeed[1].replelist)}');"><br>
