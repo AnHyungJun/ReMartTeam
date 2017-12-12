@@ -169,7 +169,7 @@ body, h1, h2, h3, h4, h5, h6 {
 								class="con_link"
 								onmouseover="this.style.textDecoration='none';"
 								onmouseout="this.style.textDecoration='none';">채팅</a>
-								|<a href="<%=request.getContextPath()%>/main/coding"
+								| <a href="<%=request.getContextPath()%>/main/coding"
 								style="font-size: 12px; text-decoration: none;"
 								class="con_link"
 								onmouseover="this.style.textDecoration='none';"
