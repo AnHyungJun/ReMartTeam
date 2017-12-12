@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>에디터</title>
+<title>REMART</title>
 
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
@@ -38,13 +38,13 @@
 	});
 </script>
 <body>
-<br><br><br><br><br><br><br>
-	
-	<form action="<%=request.getContextPath() %>/main/insertBoard" method="post" id="insertBoardFrm" enctype="multipart/form-data">
-		제목: <input name="subject" type="text">
-		<textarea name="content" id="editor" style="width: 700px; height: 400px;"></textarea>
-		<input type="button" id="insertBoard" value="등록" />
-	</form>
+<div style="margin-top:200px;"></div>
+<center>
+	<form class="w3-center" action="<%=request.getContextPath() %>/main/insertBoard" method="post" id="insertBoardFrm" enctype="multipart/form-data">
+		<textarea name="editor" id="editor" style="width: 700px; height: 400px;"></textarea>
+		<div style="margin-top:20px;"></div>
+		<input type="button" class="w3-button w3-black w3-hover-black" style="font-size:12px;" id="insertBoard" value="등록" />
+	</form> </center>
 
 </body>
 </html>
