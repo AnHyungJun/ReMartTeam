@@ -6,6 +6,7 @@ import java.util.List;
 import model.FeedDataBean;
 import model.ImgDataBean;
 import model.R_memberDataBean;
+import model.Restaurant_recommandDataBean;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -367,6 +368,24 @@ public class MybatisMainDBBean extends MybatisConnector {
 		try {
 			return sqlSession.selectOne(namespace + ".getHashtagKeyCount", map);
 		} finally {
+			sqlSession.close();
+		}
+	}
+
+	public void insertRestaurant_recommand(
+			Restaurant_recommandDataBean restaurant_recommand) {
+		System.out.println("insertRestaurant_recommand:");
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("restaurant_recommand", restaurant_recommand);
+		try{
+			int restaurant_recommand_id = sqlSession.selectOne(namespace+".getRestaurant_recommand_id");
+			restaurant_recommand_id++;
+			map.put("restaurant_recommand_id", restaurant_recommand_id);
+			int result = sqlSession.insert(namespace + ".restaurant_recommand",map);
+			System.out.println("insert Ok:"+result);
+		}finally{
+			sqlSession.commit();
 			sqlSession.close();
 		}
 	}

@@ -203,4 +203,17 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) cnt from hash_feed hf, hashtag h where
 		hf.hashtag_id = h.hashtag_id and h.hashtag_content = #{please}
 	</select>
+	
+	<select id="getRestaurant_recommand_id" resultType="int">
+		select nvl(max(restaurant_recommand_id),0) from restaurant_recommand
+	</select>
+	
+	<insert id="restaurant_recommand"  parameterType="hashmap">
+		insert into restaurant_recommand
+		(restaurant_recommand_id, subject, content,reg_date, id)
+		values
+		(#{restaurant_recommand_id}, #{restaurant_recommand.subject},
+		#{restaurant_recommand.content}, sysdate, #{restaurant_recommand.id})
+	</insert>
+	
 </mapper>

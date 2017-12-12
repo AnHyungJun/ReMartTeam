@@ -22,6 +22,7 @@
 		<typeAlias type="model.Likely_bookmarkDataBean" alias="likely_bookmark" />
 		<typeAlias type="model.Food_numDataBean" alias="food_num" />
 		<typeAlias type="model.Food_paymentDataBean" alias="food_payment" />
+		<typeAlias type="model.Restaurant_recommandDataBean" alias="restaurant_recommand" />
 	</typeAliases>
 
 

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import model.FeedDataBean;
 import model.Likely_bookmarkDataBean;
 import model.R_memberDataBean;
+import model.Restaurant_recommandDataBean;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -204,7 +205,10 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "insertBoard", method = RequestMethod.POST)
-	public ModelAndView insertBoard(String editor) {
+	public ModelAndView insertBoard(Restaurant_recommandDataBean restaurant_recommand) {
+		restaurant_recommand.setId(id);
+		dbPro.insertRestaurant_recommand(restaurant_recommand);
+		
 		mv.clear();
 		mv.setViewName("main/coding");
 		return mv;

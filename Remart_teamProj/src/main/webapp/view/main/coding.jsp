@@ -39,8 +39,10 @@
 </script>
 <body>
 <br><br><br><br><br><br><br>
+	
 	<form action="<%=request.getContextPath() %>/main/insertBoard" method="post" id="insertBoardFrm" enctype="multipart/form-data">
-		<textarea name="editor" id="editor" style="width: 700px; height: 400px;"></textarea>
+		제목: <input name="subject" type="text">
+		<textarea name="content" id="editor" style="width: 700px; height: 400px;"></textarea>
 		<input type="button" id="insertBoard" value="등록" />
 	</form>
 
