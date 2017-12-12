@@ -2,7 +2,7 @@
 	pageEncoding="utf-8"%>
 <html>
 <head>
-<title>게시판</title>
+<title>REMART</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
