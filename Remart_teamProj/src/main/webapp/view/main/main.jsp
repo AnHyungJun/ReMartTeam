@@ -271,7 +271,7 @@ a {
 
 		<!-- 로딩 -->
 		<div id="loading" class="loading display-none w3-center">
-			<img src="<%=request.getContextPath()%>/images/icon/lo3.gif"
+			<img src="<%=request.getContextPath()%>/images/icon/loading.gif"
 				style="width: 100px;">
 		</div>
 	</center>
