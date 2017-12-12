@@ -283,7 +283,7 @@
 			<div id="popupcontent"></div>
 			<div id="popupcontent2"></div>
 			<div id="popupcontent3"></div>
-			<div id="popupcontent4"></div>
+			<div id="popup2"></div>
 		</div>
 	</div>
 	<!-- 레이어창 -->
