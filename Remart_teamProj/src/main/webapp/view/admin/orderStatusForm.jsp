@@ -75,7 +75,7 @@
 					</tr>
 				</table>
 				<div
-					style="overflow-x: hidden; overflow: auto; width: 100%; max-height: 200px;">
+					style="overflow-x: hidden; overflow: auto; width: 100%; max-height: 255px;">
 					<table style="width: 880px; font-size: 12px;">
 						<c:forEach var="order" items="${orderList }">
 							<tr>
@@ -118,7 +118,7 @@
 			</div>
 		</div>
 		<div
-			style="overflow-x: hidden; overflow: auto; width: 100%; max-height: 300px;">
+			style="overflow-x: hidden; overflow: auto; width: 100%; max-height: 255px;">
 			<table style="width: 910px; font-size: 12px;">
 
 				<c:forEach var="pay" items="${payList }">
