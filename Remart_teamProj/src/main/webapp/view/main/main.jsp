@@ -146,9 +146,9 @@ a {
 						<c:forEach var="list" items="${Feeds}" varStatus="mainstatus">
 							<c:if test="${not mainLoop}">
 								<div class="w3-container"
-									style="float: left; width: 300px; height: 320px; margin-top: 30px;">
+									style="float: left; width: 300px; height: 325px; margin-top: 30px;">
 									<div class="w3-border"
-										style="position: relative; height: 320px;">
+										style="position: relative; height: 325px;">
 										<div id="userInfo" style="text-align: left;">
 										<div style="margin-top:3px"></div>
 											<c:if test="${list.profileImg==null}">
@@ -231,7 +231,6 @@ a {
 														style="height: 20px; cursor: pointer;">
 												</c:if>
 												<div style="margin-top:8px"></div>
-												<div class="w3-border-bottom"></div>
 											</c:if>
 											<div style="margin-top:10px;"></div>
 											${list.recipe_name }
