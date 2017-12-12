@@ -29,7 +29,7 @@
 				style="width: 500px; height: 100%;"></div>
 		</div>
 		<div class="w3-row">
-		<div class="w3-col w3-center" style="width:50px; margin-left:865px; margin-top: 30px;">
+		<div class="w3-col w3-center" style="width:50px; margin-left:35%; margin-top: 30px;">
 			<input type="button"
 				class="w3-button w3-white w3-hover-white w3-border"
 				style="font-size: 11px;" onclick="end()" value="닫기">
