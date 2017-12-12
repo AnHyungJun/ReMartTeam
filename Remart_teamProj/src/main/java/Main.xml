@@ -228,4 +228,9 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
       order by reg_date desc) a ) 
       where rnum  between #{start} and #{end}
 </select>
+
+	<select id="getRestaurant_recommand"  parameterType="hashmap"   resultType="restaurant_recommand">
+		select * from restaurant_recommand 	where restaurant_recommand_id = #{num}
+	</select>
+
 </mapper>

@@ -286,4 +286,16 @@ public class MainController {
 		mv.setViewName("main/list");
 		return mv;
 	}
+	
+	@RequestMapping(value="content")
+	public ModelAndView content(int num) throws Exception{	
+		Restaurant_recommandDataBean article = dbPro.getRestaurant_recommand(num);
+
+		mv.clear();
+		mv.addObject("pageNum", pageNum);
+		mv.addObject("article", article); 
+
+		mv.setViewName("main/content");
+		return mv;
+	}
 }

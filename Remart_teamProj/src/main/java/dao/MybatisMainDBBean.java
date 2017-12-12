@@ -411,4 +411,15 @@ return sqlSession.selectList(namespace + ".getArticles", map);
 			sqlSession.close();
 		}
 	}
+
+	public Restaurant_recommandDataBean getRestaurant_recommand(int num) {
+		sqlSession = sqlSession();
+		try {
+			HashMap map = new HashMap();
+			map.put("num", num);
+	return sqlSession.selectOne(namespace + ".getRestaurant_recommand", map);
+		} finally {
+			sqlSession.close();
+		}
+	}
 }
