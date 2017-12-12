@@ -112,47 +112,31 @@ public class MainController {
 	}
 		@RequestMapping(value = "getFeed")
 		public ModelAndView getFeed(int index,String id) throws UnsupportedEncodingException {
-			System.out.println(index);
-			System.out.println(id);
+			int start = 6 + (6 * index);
+			int end = 11 + (6 * index);
+			System.out.println(start + "/" + end);
 			List<FeedDataBean> feeds = dbPro.getFeeds(id);
-			System.out.println(feeds.toString());
 			mv.clear();
-			mv.addObject("index",index);
-			mv.addObject("Feeds",feeds);
+			if (feeds.size() < start) {
+				// System.out.println("feeds.size() < start");
+				// System.out.println("데이터가 없습니다.");
+				mv.addObject("dataEmpty", true);
+			} else if (feeds.size() > start && feeds.size() < end) {
+				// System.out.println("feeds.size() > start && feeds.size() < end");
+				// System.out.println("start=" + start + ",end=" + feeds.size());
+				mv.addObject("start", start);
+				mv.addObject("end", feeds.size());
+			} else {
+				// System.out.println("else");
+				// System.out.println("start=" + start + ",end=" + end);
+				mv.addObject("start", start);
+				mv.addObject("end", end);
+
+			}
+			mv.addObject("Feeds", feeds);
 			mv.setViewName("local/feed");
 			return mv;
-			/*
-			List<FeedDataBean> oldFeeds = dbPro.getFeeds(id);
-			List<FeedDataBean> feeds=null;
-			System.out.println("call");
-			int start=7+(6*index);
-			int end=12+(6*index);
-			System.out.println(start+"/"+end);
-			
-			System.out.println(oldFeeds.size());
-			if(oldFeeds.size()<start){
-				
-				mv.clear();
-				mv.addObject("Feeds",feeds);
-				mv.setViewName("local/feed");
-				return mv;
-			}else if(oldFeeds.size()>start &&oldFeeds.size()<end){
-				
-			}else{
-				for(int i=start;i<end;i++){
-					feeds.add(oldFeeds.get(i));
-				}
-			}
-			
-			for(int i=start;i<end;i++){
-				newFeeds.add(feeds.get(i));
-			}
-			System.out.println(newFeeds.size());
-			System.out.println(newFeeds.toString());
-			mv.clear();
-			mv.addObject("Feeds",feeds);
-			mv.setViewName("local/feed");
-			return mv;*/
+		
 		}
 	@RequestMapping(value = "popup2")
 	public ModelAndView popup2(int feed_id, String id)
