@@ -43,7 +43,7 @@
 	<form class="w3-center" action="<%=request.getContextPath() %>/main/insertBoard" method="post" id="insertBoardFrm" enctype="multipart/form-data">
 		<textarea name="editor" id="editor" style="width: 700px; height: 400px;"></textarea>
 		<div style="margin-top:20px;"></div>
-		<input type="button" class="w3-button w3-black w3-hover-black" style="font-size:12px;" id="insertBoard" value="등록" />
+		<input type="button" class="w3-button w3-light-grey w3-hover-light-grey" style="font-size:12px;" id="insertBoard" value="등록" />
 	</form> </center>
 
 </body>
