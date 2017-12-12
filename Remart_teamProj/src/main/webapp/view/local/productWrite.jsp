@@ -13,7 +13,7 @@
 	position: absolute;
 	height: 380px;
 	width: 380px;
-	opacity: 0;
+ 	opacity: 0;
 	filter: alpha(opacity = 0);
 	-ms-filter: alpha(opacity = 0);
 	cursor: pointer;
@@ -47,7 +47,7 @@
 								src="<%=request.getContextPath()%>/images/icon/noProduct.png"
 								alt="" width="380" height="380" class="" /><br> <br>
 							<input type="file" class="uploadimg"
-								style="left: 570px; top: 250px; border: solid 4px;"
+								style="left: 100px; top: 140px; border: solid 4px;"
 								onchange="statefile(this);" name="uploadfile"
 								onfocus="this.blur()">
 						</div>
