@@ -7,6 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>REMART</title>
 </head>
+<style>
+a {
+	text-decoration: none;
+}
+</style>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/ajax/httpRequest.js">
 
