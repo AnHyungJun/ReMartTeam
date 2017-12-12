@@ -89,8 +89,8 @@
 		<div class="mask"></div>
 		<div class="window w3-modal w3-modal-content w3-animate-opacity">
 			<button type="button" href="#" class="close w3-button w3-white w3-hover-white w3-right"> X </button>
-			<div style="margin-top:40px;"></div>
-			<div style="width: 100%; height: 50px;">
+			<div style="margin-top:0px;"></div>
+			<div style="width: 45%; height: 40px;">
 				<!--글쓰는데 상단 고정바-->
 				<button id="leftpage" style="float: left;" onclick="plusDivs(-1)"
 				class="w3-button w3-white w3-hover-white"> <b>〈 </b> </button>
@@ -150,7 +150,7 @@
    		contentname=contentname.split(',');
    		title = feeddate[5].substring(12, feeddate[5].length);
    		for(var i=0;i<imagenum;i++){   			
-   			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 45%; height: 450px; margin-top: 10px;\">"+
+   			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 45%; height: 450px;\">"+
     		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=94% height=350>"+"<div style=\"margin-top:10px;\"></div>"+
     		"<label style=\"font-size:13px;\">"+"<b>"+title+"</b>"+"<br>"+contentname[i]+"</label>"+"</div>";
     		$('.window').append(y); 
@@ -169,13 +169,13 @@
    	   		for(var i=0;i<replenum;i++){
    	   			makereplelist+="<lable class=\"commentreple\" style=\"font-size:12px;\">"+myArray[i][2]+"&nbsp;"+myArray[i][3]+"</lable><br>";
    	   		}
-   	   		var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 27%; margin-top: 10px; marign-left:2px;\"><input type=\"text\" name=\""+feedid+"\"/><input class=\"w3-button w3-black w3-hover-black w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
+   	   		var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 26%; margin-top: 10px; marign-left:2px;\"><input type=\"text\" name=\""+feedid+"\"/><input class=\"w3-button w3-black w3-hover-black w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist+"</div>"
    	   		
    	   		$('.window').append(z); 
    		}else{
-   			var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 27%; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input class=\"w3-button w3-black w3-hover-black w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
+   			var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 26%; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input class=\"w3-button w3-black w3-hover-black w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+"</div>"
    	   		
@@ -190,9 +190,9 @@
   			
   			editorfood+="<input type=\"checkbox\" name=\"chk_info\" value=\""+foodname[i]+"\">"+"<img src=\"/Remart_teamProj/images/food/"+foodname[i]+".jpg\" width=100 height=100/><br>";
   		}
-  		var z="<div align=\"center\"  class=\"food\"style=\"float: left; width: 19%; margin-top: 10px;\">"
+  		var z="<div align=\"left\"  class=\"food\"style=\"float: left; width: 13%; margin-top: 10px;\">"
   		+"<form action=\"\" method=\"post\">"
-  		+editorfood+"<div style=\"margin-top:50px;\"></div>"+"<input class=\"w3-button w3-border w3-white w3-hover-white w3-padding-small\" style=\"font-size:11px;\" type=\"submit\" value=\"장바구니\"></form></div>"
+  		+editorfood+"<div style=\"margin-top:50px;\"></div>"+"<input class=\"w3-button w3-border w3-white w3-hover-white w3-padding-small\" style=\"font-size:11px; margin-left:30px;\" type=\"submit\" value=\"장바구니\"></form></div>"
   		
   		$('.window').append(z); 
    		
@@ -240,7 +240,7 @@
 	   	   			makereplelist+="<lable  class=\"commentreple\" style=\"font-size:12px; marign-left:2px;\">"+myArray[i][2]+"&nbsp;"+myArray[i][3]+"</lable><br>";
 	   	   		}
 	   	   
-	   	   	var z="<input type=\"text\" name=\""+myArray[0][1]+"\"/><input type=\"button\" value=\"reple\""
+	   	   	var z="<input type=\"text\" name=\""+myArray[0][1]+"\"/><input class=\"w3-button w3-black w3-hover-black w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+myArray[0][1]+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist;
    	  
