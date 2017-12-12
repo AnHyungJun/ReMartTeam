@@ -169,13 +169,13 @@
    	   		for(var i=0;i<replenum;i++){
    	   			makereplelist+="<lable class=\"commentreple\" style=\"font-size:12px;\">"+myArray[i][2]+"&nbsp;"+myArray[i][3]+"</lable><br>";
    	   		}
-   	   		var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 26%; margin-top: 10px; marign-left:2px;\"><input type=\"text\" name=\""+feedid+"\"/><input class=\"w3-button w3-black w3-hover-black w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
+   	   		var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 26%; margin-top: 10px; marign-left:2px;\"><input type=\"text\" name=\""+feedid+"\"/><input class=\"w3-button w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist+"</div>"
    	   		
    	   		$('.window').append(z); 
    		}else{
-   			var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 26%; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input class=\"w3-button w3-black w3-hover-black w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
+   			var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 26%; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input class=\"w3-button w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+"</div>"
    	   		
