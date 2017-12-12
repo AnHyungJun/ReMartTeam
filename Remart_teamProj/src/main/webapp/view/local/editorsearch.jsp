@@ -18,9 +18,9 @@
 	<form name="search">
 	<div class="w3-row">
 		<div style="height: 50px;" align="center">
-			<div class="w3-half w3-red" style="width:50%;" ><input class="w3-right" type="text" id="searchFood" name="searchFood"
+			<div class="w3-half" style="width:50%;" ><input class="w3-right" type="text" id="searchFood" name="searchFood"
 				onkeydown="startSuggest()" style="height:26px; margin-right:1px;"/></div>
-				<div class="w3-half w3-blue" style="width:50%;"><input type="button"
+				<div class="w3-half" style="width:50%;"><input type="button"
 				class="w3-left w3-button w3-black w3-hover-black w3-padding-small" style="font-size: 12px;"
 				onclick="" value="찾기"></div>
 		</div> </div>
@@ -29,7 +29,7 @@
 				style="width: 500px; height: 100%;"></div>
 		</div>
 		<div class="w3-row">
-		<div class="w3-col w3-green w3-center" style="width:50px; margin-left:865px; margin-top: 30px;">
+		<div class="w3-col w3-center" style="width:50px; margin-left:865px; margin-top: 30px;">
 			<input type="button"
 				class="w3-button w3-white w3-hover-white w3-border"
 				style="font-size: 11px;" onclick="end()" value="닫기">
