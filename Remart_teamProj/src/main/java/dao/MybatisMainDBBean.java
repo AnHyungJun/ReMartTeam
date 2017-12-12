@@ -389,4 +389,26 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+
+	public int getArticleCount() {
+		sqlSession = sqlSession();
+		try {
+			
+	return sqlSession.selectOne(namespace + ".getArticleCount");
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	public List getArticles(int startRow, int endRow) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("start", startRow);
+		map.put("end", endRow);
+		try {
+return sqlSession.selectList(namespace + ".getArticles", map);
+		} finally {
+			sqlSession.close();
+		}
+	}
 }

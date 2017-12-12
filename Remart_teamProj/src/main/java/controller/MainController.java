@@ -38,6 +38,8 @@ public class MainController {
 	R_memberDataBean memberInfo;
 	String id;
 	
+	int pageNum = 1;
+	
 	@ModelAttribute
 	   public void addAttributes(HttpServletRequest request, HttpSession session) {
 	      
@@ -242,5 +244,46 @@ public class MainController {
 			e.printStackTrace();
 		}
 		return sb.toString();
+	}
+	
+	@RequestMapping(value="list")
+	public ModelAndView list() throws Exception{	
+		
+		int pageSize = 10;
+		int currentPage = pageNum;
+		int startRow = (currentPage - 1) * pageSize + 1;
+		int endRow = currentPage * pageSize;
+		int count = 0;
+		int number = 0;
+		List articleList = null;
+
+		count = dbPro.getArticleCount();
+		if (count > 0) {
+			articleList = dbPro.getArticles(startRow, endRow);
+		}
+		number = count - (currentPage - 1) * pageSize;
+		//==================================page	
+		int bottomLine = 3;
+
+		int pageCount = count / pageSize
+				+ (count % pageSize == 0 ? 0 : 1);
+		int startPage = 1 +(currentPage - 1)/bottomLine *bottomLine;
+		int endPage = startPage + bottomLine - 1;
+		if (endPage > pageCount) endPage = pageCount;
+
+		mv.clear();
+		mv.addObject("startPage", startPage);
+		mv.addObject("endPage", endPage);
+		mv.addObject("pageCount", pageCount);
+		mv.addObject("bottomLine", bottomLine);
+		//============================		
+		mv.addObject("count", count);
+		mv.addObject("currentPage", currentPage);
+		mv.addObject("pageSize", pageSize);
+		mv.addObject("number", number);
+		mv.addObject("articleList", articleList);
+
+		mv.setViewName("main/list");
+		return mv;
 	}
 }

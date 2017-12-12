@@ -1,13 +1,23 @@
 package model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Restaurant_recommandDataBean {
+public class Restaurant_recommandDataBean implements Serializable{
 	int restaurant_recommand_id;
 	String subject;
 	String content;
 	Timestamp reg_date;
 	String id;
+	int rnum;
+	
+	
+	public int getRnum() {
+		return rnum;
+	}
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
 	public int getRestaurant_recommand_id() {
 		return restaurant_recommand_id;
 	}

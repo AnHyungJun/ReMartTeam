@@ -216,4 +216,16 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		#{restaurant_recommand.content}, sysdate, #{restaurant_recommand.id})
 	</insert>
 	
+	<select id="getArticleCount"  resultType="int">
+		select count(*) from restaurant_recommand 	
+	</select>
+	
+	 <select id="getArticles"  parameterType="hashmap" 
+	 resultType="restaurant_recommand">
+		select * from 
+     (select rownum rnum ,a.* 
+      from (select restaurant_recommand_id,subject,content,reg_date,id  from restaurant_recommand 
+      order by reg_date desc) a ) 
+      where rnum  between #{start} and #{end}
+</select>
 </mapper>
