@@ -130,7 +130,7 @@
 					</c:if>
 				</div>
 			</div>
-			<div style="margin-top: 100px;"></div>
+			<div style="margin-top: 50px;"></div>
 			<div style="max-width: 900px">
 				<c:if test="${fn:length(Feeds) != 0}">
 					<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
@@ -254,12 +254,10 @@
 			</div>
 		</c:if>
 
-	</center>
 	<!-- 로딩 -->
-	<div id="loading" class="loading display-none">
+	<div id="loading" class="loading w3-center">
 		<img src="<%=request.getContextPath()%>/images/icon/lo3.gif"
-			style="margin-left: 45%">
-	</div>
+			style="width:100px;"> </div> </center>
 	<!-- 모달팝업 -->
 	<div id="popup" class="w3-modal">
 		<div class="w3-modal-content" style="width: 900px; height: 600px;">
