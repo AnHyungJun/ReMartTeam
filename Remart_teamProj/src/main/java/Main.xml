@@ -225,12 +225,19 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from 
      (select rownum rnum ,a.* 
       from (select restaurant_recommand_id,subject,content,reg_date,id  from restaurant_recommand 
+      where id=#{editorid} 
       order by reg_date desc) a ) 
       where rnum  between #{start} and #{end}
 </select>
 
 	<select id="getRestaurant_recommand"  parameterType="hashmap"   resultType="restaurant_recommand">
 		select * from restaurant_recommand 	where restaurant_recommand_id = #{num}
+	</select>
+	
+	<select id="getEditorList"  resultType="R_member">
+		select *
+		from
+		r_member where grade = 'editor'
 	</select>
 
 </mapper>

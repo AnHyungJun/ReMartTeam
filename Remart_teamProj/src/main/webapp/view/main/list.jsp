@@ -14,9 +14,7 @@ a {
 	<div style="margin-top: 200px;"></div>
 	<center>
 	<div style="width: 900px;">
-		<p class="w3-right w3-padding-right-large" style="font-size:12px">
-			<a href="coding">글쓰기</a>
-		</p>
+		
 		<c:if test="${count == 0}">
 
 			<table class="w3-table w3-bordered" width="900" style="font-size:12px">

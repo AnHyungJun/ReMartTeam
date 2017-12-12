@@ -393,20 +393,21 @@ public class MybatisMainDBBean extends MybatisConnector {
 	public int getArticleCount() {
 		sqlSession = sqlSession();
 		try {
-			
-	return sqlSession.selectOne(namespace + ".getArticleCount");
+
+			return sqlSession.selectOne(namespace + ".getArticleCount");
 		} finally {
 			sqlSession.close();
 		}
 	}
 
-	public List getArticles(int startRow, int endRow) {
+	public List getArticles(int startRow, int endRow, String editorid) {
 		sqlSession = sqlSession();
 		HashMap map = new HashMap();
 		map.put("start", startRow);
 		map.put("end", endRow);
+		map.put("editorid", editorid);
 		try {
-return sqlSession.selectList(namespace + ".getArticles", map);
+			return sqlSession.selectList(namespace + ".getArticles", map);
 		} finally {
 			sqlSession.close();
 		}
@@ -417,7 +418,16 @@ return sqlSession.selectList(namespace + ".getArticles", map);
 		try {
 			HashMap map = new HashMap();
 			map.put("num", num);
-	return sqlSession.selectOne(namespace + ".getRestaurant_recommand", map);
+			return sqlSession.selectOne(namespace + ".getRestaurant_recommand", map);
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	public List getEditorList() {
+		sqlSession = sqlSession();
+		try {
+			return sqlSession.selectList(namespace + ".getEditorList");
 		} finally {
 			sqlSession.close();
 		}

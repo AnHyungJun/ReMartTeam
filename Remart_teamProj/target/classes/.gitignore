@@ -1,2 +1,13 @@
+/Admin.xml
+/Ajax.xml
+/Login.xml
+/Main.xml
+/Mypage.xml
+/Offline.xml
+/Shopping.xml
+/Writepage.xml
 /controller/
 /dao/
+/model/
+/mybatis-config.xml
+/websocket/

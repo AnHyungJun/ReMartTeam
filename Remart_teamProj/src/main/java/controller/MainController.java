@@ -247,7 +247,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="list")
-	public ModelAndView list() throws Exception{	
+	public ModelAndView list(String editorid) throws Exception{	
 		
 		int pageSize = 10;
 		int currentPage = pageNum;
@@ -259,7 +259,7 @@ public class MainController {
 
 		count = dbPro.getArticleCount();
 		if (count > 0) {
-			articleList = dbPro.getArticles(startRow, endRow);
+			articleList = dbPro.getArticles(startRow, endRow,editorid);
 		}
 		number = count - (currentPage - 1) * pageSize;
 		//==================================page	
@@ -296,6 +296,16 @@ public class MainController {
 		mv.addObject("article", article); 
 
 		mv.setViewName("main/content");
+		return mv;
+	}
+	
+	@RequestMapping(value="restaurant_recommandForm")
+	public ModelAndView restaurant_recommandForm() throws Exception{	
+		List editorList = dbPro.getEditorList();
+		System.out.println(editorList);
+		mv.clear();
+		mv.addObject("editorList", editorList);
+		mv.setViewName("main/restaurant_recommandForm");
 		return mv;
 	}
 }

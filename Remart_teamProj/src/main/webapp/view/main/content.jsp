@@ -27,7 +27,7 @@
 					<td align="center" width="375" colspan="3">
 					${article.subject}</td>
 				</tr><tr height="30">
-					<td align="center" width="125" style="vertical-align: middle;">글내용</td>
+					
 					<td align="left" width="375" style="vertical-align: middle;" colspan="3"><pre>
          ${article.content}</pre>
          
@@ -43,6 +43,6 @@
 			
 			 <input type="button" style="font-size:11px;"
 						class="w3-button w3-light-grey w3-hover-light-grey" value="글목록"
-						onclick="document.location.href='list?pageNum=${pageNum}'"></td></tr></table>
+						onclick="document.location.href='list?pageNum=${pageNum}&editorid=${article.id }'"></td></tr></table>
 		</div></center></body></html>
 
