@@ -41,7 +41,7 @@
 			<div class="w3-container w3-border w3-center" style="width: 800px;">
 				<div style="margin-top: 17px;"></div>
 				<div class="w3-row">
-					<div class="w3-col" style="width: 45%; margin-left: 10px;">
+					<div class="w3-col" style="width: 45%;">
 						<div class="mySlides">
 							<img align="center" id="blah1"
 								src="<%=request.getContextPath()%>/images/icon/noProduct.png"
@@ -51,7 +51,6 @@
 								onchange="statefile(this);" name="uploadfile"
 								onfocus="this.blur()">
 						</div>
-						<div style="margin-top: 10px;"></div>
 					</div>
 					<div class="w3-col" style="width: 10%;">&nbsp;</div>
 					<div class="w3-display-container w3-col w3-left-align"
@@ -139,8 +138,7 @@
 							<option value="23">냉동식품</option>
 							<option value="24">간편식</option>
 							<option value="25">냉장식품</option>
-						</select> <br>
-						<div style="margin-top: 125px;"></div>
+						</select>
 					</div>
 				</div>
 				

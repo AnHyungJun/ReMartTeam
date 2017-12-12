@@ -215,16 +215,16 @@
 						placeholder="상품 코드 입력"
 						style="font-size: 13px; vertical-align: middle;"> <input
 						type="button" class="w3-button w3-white w3-hover-white w3-padding-small"
-						style="font-size: 13px; vertical-align: middle;"
+						style="font-size: 12px; vertical-align: middle;"
 						onclick="startSuggest2()" value="찾기">
 					<div style="margin-bottom: 50px;"></div>
 					<form action="salePro" method="post">
 						<div style="height: 400px;">
 							<table style="float: left; font-size: 13px;" id="posTable">
 								<tr>
-									<th style="width: 50px">바코드</th>
+									<th style="width: 150px">바코드</th>
 									<th style="width: 150px">상품명</th>
-									<th style="width: 150px">수량</th>
+									<th style="width: 50px">수량</th>
 									<th style="width: 150px">단가</th>
 									<th style="width: 150px">금액</th>
 									<th style="width: 50px">재고</th>

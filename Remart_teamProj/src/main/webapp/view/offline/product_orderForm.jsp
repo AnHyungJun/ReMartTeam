@@ -168,12 +168,16 @@ $(function() {
 					<div class="w3-col" style="width: 60%; font-size: 13px;">
 						<br>
 						<h6><b>발주계획 입력</b></h6>
-						<br>입고 일자 <input type="text"
-							id="testDatepicker" name="or_date_before"> <br> <br>
-						입고 장소 <input type="text" id="location"
-							value="${offlineInfo.location }"><input type="button"
-							class="w3-button w3-white w3-hover-white w3-padding-small" style="font-size: 13px; vertical-align: middle;"
-							name="search" value="찾기" onclick="openOfflineSearch(this.form)">
+						<br>입고 일자 <br><input type="text"
+							id="testDatepicker" name="or_date_before" style=""> <br> <br>
+						입고 장소 <div class="w3-row">
+						<div class="w3-half" style="width:160px;">
+						<input type="text" id="location"
+							value="${offlineInfo.location }" style=""></div>
+							<div class="w3-half" style="width:50px;">
+							<input type="button"
+							class="w3-button w3-white w3-hover-white w3-padding-small" style="font-size: 11px; height:22px; vertical-align: middle;"
+							name="search" value="찾기" onclick="openOfflineSearch(this.form)"></div></div>
 						<br> <br>
 						<table class="w3-table w3-bordered w3-centered"
 							id="offlineSearchTable">
@@ -186,13 +190,13 @@ $(function() {
 								<th style="width: 100px;">삭제</th>
 							</tr>
 						</table>
-						<br> <br> <br> <br> <br>
+						<div style="margin-top:100px;"></div>
 						<div style="float: right">
 							수량 <input type="text" id="qtySum" value="0" name="qtySum"> <br> <br>
 							가격 <input type="text" id="priceSum" value="0" name="priceSum">
 						</div>
-						<br> <br> <br> <br> <br> <br> <br>
-						<button style="float: right; font-size: 13px;"
+						<div style="margin-top:200px;"></div>
+						<button style="float: right; font-size: 12px;"
 							class="w3-button w3-black w3-hover-red">주문하기</button>
 						<br> <br> <br> <br>
 					</div>
