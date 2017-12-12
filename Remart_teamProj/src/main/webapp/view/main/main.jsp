@@ -171,8 +171,8 @@
 												<img id="${list.feed_id}" class="showMask"
 													src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 													style="width: 100%; height: 200px"
-													onclick="document.getElementById('popup').style.display='block';
-													nomalfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.makecontent}','${list.replelist}','${fn:length(list.replelist)}','${list.hashtaglist}');">
+													onclick="document.getElementById('popup').style.display='block';popup2('${list.feed_id}','${list.id }');">
+										
 												<br>
 									${list.recipe_name }
 									</c:if>
