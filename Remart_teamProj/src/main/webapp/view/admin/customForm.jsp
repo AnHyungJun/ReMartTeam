@@ -41,20 +41,23 @@
 	<div style="margin-top: 120px"></div>
 	<center>
 		<div id="search" style="text-align: center; width: 900px;">
-			<div class="w3-right">
+			<div class="">
 				<form id="searchForm" action="customForm" method="post"
 					name="searchForm">
-					<p>
+					<div class="w3-row">
+					<div class="w3-half w3-margin-left" style="width:90px;">
 						<select name="searchOption" style="font-size: 13px; height: 26px;">
 							<option value="id">ID</option>
 							<option value="name">NAME</option>
 							<option value="">PROFILE</option>
 							<option value="">GRADE</option>
-						</select> <input style="height: 26px;" type="text" name="searchWord"
-							size="30" maxlength="50" /> <input
-							class="w3-button w3-white w3-hover-white w3-padding-small"
-							style="font-size: 12px; height: 26px;" type="submit" value="검색" />
-					</p>
+						</select> </div> 
+						<div class="w3-half" style="width:260px;"> <input style="height: 26px;" type="text" name="searchWord"
+							size="30" maxlength="50" /> </div>
+							<div class="w3-half" style="width:43px;"><input
+							class="w3-button w3-black w3-hover-black w3-padding-small"
+							style="font-size: 12px; height: 26px;" type="submit" value="검색" /></div></div>
+				
 				</form>
 			</div>
 		</div>
