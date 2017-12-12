@@ -7,6 +7,8 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/ajax/httpRequest.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 <style>
 .display-none {
 	display: none;
@@ -92,7 +94,7 @@
 							<div class="w3-center"
 								style="width: 36%; float: left; margin-right: 40px;">
 								<img id="${todayRecomendFeed[0].feed_id}"
-									class="showMask today01"
+									class="showMask today01 animated infinite bounce"
 									src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[0].img_name[0]}"
 									style="width: 150px; height: 150px;"
 									onclick="popup('${fn:length(todayRecomendFeed[0].img_name)}','${todayRecomendFeed[0]}','${todayRecomendFeed[0].img_name}','${todayRecomendFeed[0].content}','${todayRecomendFeed[0].replelist}','${fn:length(todayRecomendFeed[0].replelist)}');"><br>
@@ -103,7 +105,7 @@
 							<div class="w3-right"
 								style="width: 35%; float: left; margin-right: 50px; margin-top: 20px;">
 								<img id="${todayRecomendFeed[1].feed_id}"
-									class="showMask today02"
+									class="showMask today02 animated infinite swing"
 									src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[1].img_name[0]}"
 									style="width: 150px; height: 150px;"
 									onclick="popup('${fn:length(todayRecomendFeed[1].img_name)}','${todayRecomendFeed[1]}','${todayRecomendFeed[1].img_name}','${todayRecomendFeed[1].content}','${todayRecomendFeed[1].replelist}','${fn:length(todayRecomendFeed[1].replelist)}');"><br>
@@ -114,7 +116,7 @@
 							<div class="w3-center"
 								style="width: 18%; float: left; margin-top: 120px;">
 								<img id="${todayRecomendFeed[2].feed_id}"
-									class="showMask today03"
+									class="showMask today03 animated infinite wobble"
 									src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[2].img_name[0]}"
 									style="width: 150px; height: 150px;"
 									onclick="popup('${fn:length(todayRecomendFeed[2].img_name)}','${todayRecomendFeed[2]}','${todayRecomendFeed[2].img_name}','${todayRecomendFeed[2].content}','${todayRecomendFeed[2].replelist}','${fn:length(todayRecomendFeed[2].replelist)}');"><br>
