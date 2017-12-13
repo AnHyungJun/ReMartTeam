@@ -103,9 +103,9 @@ public class MainController {
 		if (action.equals("bookmark"))
 			dbPro.like(id, feed_id,"B");
 		if (action.equals("unlike"))
-			dbPro.unlike(id, feed_id,"LIKE");
+			dbPro.unlike(id, feed_id,"L");
 		if (action.equals("unbookmark"))
-			dbPro.unlike(id, feed_id,"BOOKMARK");
+			dbPro.unlike(id, feed_id,"B");
 
 		mv.clear();
 		//mv.addObject("action",action);
@@ -148,10 +148,11 @@ public class MainController {
 		mv.clear();
 		FeedDataBean feed = null;
 		
-		if (id.equals(""))
+		if (id.equals("id_not_exist"))
 			feed = dbPro.getFeed(feed_id);
 		else
 			feed = dbPro.getFeed(feed_id, id);
+		System.out.println(feed.toString());
 		mv.addObject("feed", feed);
 		mv.addObject("id", id);
 		mv.setViewName("local/popup2");

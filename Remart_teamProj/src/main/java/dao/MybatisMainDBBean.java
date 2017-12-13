@@ -30,6 +30,15 @@ public class MybatisMainDBBean extends MybatisConnector {
 					feed_id));
 			feed.setContent(sqlSession.selectList(namespace + ".getContent",
 					feed_id));
+			feed.setReplelist(
+					sqlSession.selectList(namespace + ".feedrepletwo",
+							feed_id));
+			feed.setFood_id(
+					sqlSession.selectList(namespace + ".editorfoodtwo",
+							feed_id));
+			feed.setHashtaglist(
+					sqlSession.selectList(namespace + ".hashtaglist",
+							feed_id));
 			return feed;
 
 		} finally {
@@ -59,10 +68,6 @@ public class MybatisMainDBBean extends MybatisConnector {
 			feed.setHashtaglist(
 					sqlSession.selectList(namespace + ".hashtaglist",
 							feed_id));
-			id = feed.getId();
-			feed.setProfileImg(
-					(String) sqlSession.selectOne(
-							namespace + ".profileImg", id));
 			return feed;
 
 		} finally {

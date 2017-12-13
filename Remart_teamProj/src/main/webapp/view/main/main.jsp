@@ -9,6 +9,12 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+<c:if test="${empty memberInfo }">
+	<c:set var="id_popup" value="id_not_exist" />
+</c:if>
+<c:if test="${!empty memberInfo }">
+	<c:set var="id_popup" value="${memberInfo.id }" />
+</c:if>
 <style>
 a {
 	text-decoration: none;
@@ -178,8 +184,6 @@ a {
 													style="width: 100%; height: 200px"
 													onclick="document.getElementById('popup').style.display='block';
 													 editorfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.makecontent}','${list.replelist}','${fn:length(list.replelist)}','${list.food_id}','${list.hashtaglist}');">
-												<%-- 
-									${list.recipe_name } --%>
 											</c:if>
 											<c:if test="${list.feed_grade eq 'nomal'}">
 												<img
@@ -188,10 +192,7 @@ a {
 												<img id="${list.feed_id}" class="showMask"
 													src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 													style="width: 100%; height: 200px"
-													onclick="document.getElementById('popup').style.display='block';popup2('${list.feed_id}','${list.id }');">
-
-												<%-- <div style="margin-top:10px;"></div>
-									${list.recipe_name} --%>
+													onclick="document.getElementById('popup').style.display='block';popup2('${list.feed_id}','${id_popup}');">
 											</c:if>
 										</div>
 										<div id="like_bookmark"
@@ -234,7 +235,7 @@ a {
 												<c:if test="${list.bookmarkstate>=1 }">
 													<img
 														src="<%=request.getContextPath()%>/images/icon/bookmark.png"
-														style="height: 20px; cursor: pointer;">
+														style="height: 20px;">
 												</c:if>
 												<div style="margin-top: 8px"></div>
 											</c:if>
@@ -300,6 +301,11 @@ a {
 	var num;
 	function like(feed_id,action) {
 		num=feed_id;
+		if(action=="bookmark"){
+			alert("북마크 되었습니다.");
+		}else if(action=="unbookmark"){
+			alert("북마크가 취소 되었습니다.");
+		}
 		var params = "feed_id=" + encodeURIComponent(feed_id)+"&action="+ encodeURIComponent(action);
 		sendRequest("/Remart_teamProj/main/like", params, return_like, "GET");
 	}
@@ -307,6 +313,8 @@ a {
 		if (httpRequest.readyState == 4) {
 			if (httpRequest.status == 200) {
 				document.getElementById("like"+num).innerHTML = httpRequest.responseText;
+				document.getElementById("poplike"+num).innerHTML = httpRequest.responseText;
+
 			}
 		}
 	}
@@ -364,19 +372,17 @@ function changediv(mydiv, nextdiv){
 	setblock.style.display='block';	
 }
 function replecommit(feed_id, m_id) {
-
-	var txtval = $('input:text[name="' + feed_id + '"]');
-
-	if (txtval.val() == '')
-		alert("입력하신 댓글이 없습니다");
-	else {
-		var params = "feed_id=" + feed_id + "&id=" + m_id + "&content="
-				+ encodeURIComponent(txtval.val());
-
-		sendRequest("<%=request.getContextPath()%>/common/repleInsert.jsp",
-				params, displayResult, 'GET');
-	}
-	txtval.val("");
+	 var id=<c:out value="${id_popup}"/>;
+		var content=form.reple.value;
+		
+		if(content=='')
+			alert("입력하신 댓글이 없습니다.");
+		else {
+			var params = "feed_id=" + encodeURIComponent(feed_id)+ "&id=" + encodeURIComponent(id) + "&content="
+					+ encodeURIComponent(content);
+			sendRequest("<%=request.getContextPath()%>/common/repleInsert.jsp",
+					params, displayResult, 'GET');
+		}
 }
 
 function displayResult() {
@@ -401,12 +407,7 @@ function displayResult() {
 						+ myArray[i][2] + "님의 댓글 /" + myArray[i][3]
 						+ "</lable><br>";
 			}
-
-			var z = "<input type=\"text\" name=\"" + myArray[0][1]
-					+ "\"/><input type=\"button\" value=\"replecontent\""
-					+ "  onclick=\"replecommit('" + myArray[0][1]
-					+ "','${memberInfo.id}')\"/><br>" + makereplelist;
-					document.getElementById("popupcontent3").innerHTML = z;
+			document.getElementById("showreple").innerHTML = makereplelist;
 			//$('.reples').empty();
 			//$('.reples').append(z);
 
