@@ -1,15 +1,22 @@
 package controller;
 
+import hadoop1207.WebViewer;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.FoodDataBean;
 
+import org.rosuda.REngine.REngineException;
+import org.rosuda.REngine.Rserve.RConnection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
@@ -27,7 +34,7 @@ ModelAndView mv = new ModelAndView();
 	
 	@Autowired
 	MybatisAdminDBBean dbPro;
-	
+	WebViewer wv =new WebViewer();
 	@ModelAttribute
 	   public void addAttributes(HttpServletRequest request, HttpSession session) {
 	      
@@ -181,7 +188,99 @@ ModelAndView mv = new ModelAndView();
 		return mv;
 	}
 	@RequestMapping(value="salesStatusForm")
-	public ModelAndView salesStatusForm(){	
+	public ModelAndView salesStatusForm(HttpServletRequest request,
+			HttpServletResponse response) throws Throwable{	
+	/*	RConnection c = new RConnection();
+		String head = "건수";
+		head = new String(head.getBytes("8859_1"), "utf-8");
+		String img = "cloud1.png";
+		String path = request.getRealPath("/")+ "viewImg\\";
+		System.out.println(path);
+		List<String> li = wv.toList("/ch01/Arr01/part-r-00000");
+		PrintStream ps = null;
+		FileOutputStream fos = null;
+		fos = new FileOutputStream("C:/r_temp/airlog.csv");
+		ps = new PrintStream(fos);
+		li.sort(new Comparator<String>() {
+
+			
+			public int compare(String o1, String o2) {
+				// TODO Auto-generated method stub
+				String t1 = o1.substring(o1.indexOf(",") + 1, o1.indexOf("\t"));
+				String t2 = o2.substring(o2.indexOf(",") + 1, o2.indexOf("\t"));
+				if (t1.length() == 1)
+					t1 = "0" + t1;
+				if (t2.length() == 1)
+					t2 = "0" + t2;
+				return t1.compareTo(t2);
+			}
+		});
+		Iterator it = li.iterator();
+	      while(it.hasNext()) {
+	         String line = (String) it.next();
+	         line = line.replace(",", "-");
+	         line = line.replace("\t", "aa,");
+	         System.out.println(line);
+	         
+	         ps.print(line + "\r\n");
+	      }
+	      ps.flush();
+	      ps.close();
+	      
+	      System.out.println(path);
+	      path = path.replace("\\", "/");
+	      System.out.println("setwd('c:/r_temp')");
+	      c.parseAndEval("setwd('c:/r_temp')");
+	      c.parseAndEval("library(KoNLP)");
+	      c.parseAndEval("data2 = read.csv('airlog.csv', header=F)");
+	      c.parseAndEval("barplot(data2[,2], names=data2[,1], col=rainbow(8), las=2, main='한글')");
+	      c.parseAndEval("savePlot('" + path + "cloud1.png', type='png')");
+	      c.parseAndEval("dev.off()");
+	      c.close();*/
+		RConnection c = new RConnection();
+		String head = "건수";
+		head = new String(head.getBytes("8859_1"), "utf-8");
+		String img = "cloud1.png";
+		String path = request.getRealPath("/")+ "viewImg\\";
+		System.out.println(path);
+		List<String> li = wv.toList("/ch01/Arr/part-r-00000");
+		PrintStream ps = null;
+		FileOutputStream fos = null;
+		fos = new FileOutputStream("C:/r_temp/tmp.csv");
+		ps = new PrintStream(fos);
+		
+		Iterator it = li.iterator();
+	      while(it.hasNext()) {
+	         String line = (String) it.next();
+	         line = line.replace(",", "-");
+	         line = line.replace("\t", ",");
+	         System.out.println(line);
+	         
+	         ps.print(line + "\r\n");
+	      }
+	      ps.flush();
+	      ps.close();
+	      
+	      System.out.println(path);
+	      path = path.replace("\\", "/");
+	      System.out.println("setwd('c:/r_temp')");
+	      c.parseAndEval("setwd('c:/r_temp')");
+	      c.parseAndEval("library(KoNLP)");
+	      c.parseAndEval("library(Rserve)");
+	      c.parseAndEval("data2 = read.csv('tmp.csv', header=F)");
+	      //ggplot(data2, aes(x=data2[,1], y=data2[,2],group =1, color=c("red")))+geom_line(lwd=1)+geom_point()
+
+	     // c.parseAndEval("ggplot(data2, aes(x=data2[,1], y=data2[,2],group =1))+geom_line(lwd=1)");
+	      c.parseAndEval("barplot(data2[,2], names=data2[,1], col=c(5), las=2, main='매출현황')");
+	    	
+	      c.parseAndEval("savePlot('" + path + "cloud1.png', type='png')");
+	    	 
+	      c.parseAndEval("dev.off()");
+	      
+	   
+	     
+	      
+	      c.close();
 		mv.clear();
 		mv.setViewName("admin/salesStatusForm");
 		return mv;

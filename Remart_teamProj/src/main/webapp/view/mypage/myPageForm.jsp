@@ -458,13 +458,15 @@ a {
 	function editorbasket(){
 		var params="";
 		var checklist="";
-		var a=${memberInfo.id};
+		var a='${memberInfo.id}';
+		
 		$("input[name=chk_info]:checked").each(function() {
-			checklist += $(this).val()+",";
+			checklist += $(this).val()+"!!";
 				
 		});
 		
-		checklist=checklist.substring(0,checklist.length-1);
+		checklist=checklist.substring(0,checklist.length-2);
+		
 		params="food_name="+encodeURIComponent(checklist)+"&"+"id="+encodeURIComponent(a);
 		
 		sendRequest("<%=request.getContextPath()%>/common/addBasketlist.jsp",

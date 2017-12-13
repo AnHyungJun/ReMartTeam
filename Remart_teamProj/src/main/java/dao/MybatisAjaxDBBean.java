@@ -76,6 +76,7 @@ public class MybatisAjaxDBBean extends MybatisConnector{
 		sqlSession = sqlSession();
 		HashMap map = new HashMap();
 		map.put("food_name", food_name);
+		
 		int id=0;
 		try {
 			id=sqlSession.selectOne(namespace + ".selectfoodidm", map);
