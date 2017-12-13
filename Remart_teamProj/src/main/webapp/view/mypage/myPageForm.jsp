@@ -267,6 +267,7 @@ a {
    		hashtag=hashtag.substring(1,hashtag.length-1);
    		imagename=imagename.split(', ');
    		hashtag=hashtag.split(', ');
+   		
    		contentname=contentname.split('@!');
    		feeddate=feeddate.split(', ');
    		
@@ -309,7 +310,7 @@ a {
    			}
    			y+="<div align=\"left\" class=\"mySlide\" style=\"width:100%; height:50px; margin-left:50px; font-size:13px;\">"
    			+"<label> 음식 이름 : "+"<b>"+title+"</b>"+"</label><br>"
-   			+"<label> 재료 : "+contentname[0]+"</label><br>"+"</div>";
+   			+"<label> 재료 : "+contentname[i]+"</label><br>"+"</div>";
    			for(var i=1;i<imagenum;i++){ 
    				y+="<div align=\"left\" class=\"mySlide\" style=\"width:100%; height:50px; margin-left:50px; font-size:13px;\">"
    				+"<br><label style=\"font-size:13px;\">"+contentname[0]+"</label>"+"</div>";
@@ -361,6 +362,7 @@ a {
    		hashtag=hashtag.split(', ');
    		imagename=imagename.split(', ');
    		foodname=foodname.split(', ');
+   		
    		contentname=contentname.split('@!');
    		feeddate=feeddate.split(', ');
    		id=feeddate[1].substring(3,feeddate[1].length);
@@ -404,7 +406,7 @@ a {
    			+"<label> 재료 : "+contentname[0]+"</label><br>"+"</div>";
    			for(var i=1;i<imagenum;i++){ 
    				y+="<div align=\"left\" class=\"mySlide\" style=\"width:100%; height:50px; margin-left:20px; font-size:13px;\">"
-   				+"<br><label style=\"font-size:13px;\">"+contentname[0]+"</label>"+"</div>";
+   				+"<br><label style=\"font-size:13px;\">"+contentname[i]+"</label>"+"</div>";
    			}
    	  		y+="<div align=\"left\"  class=\"hash\"style=\"margin-left:20px; width: 100%; height: 50px; font-size:13px;\">"
    	  	  		+resulthashtag+"</div>";
@@ -446,8 +448,7 @@ a {
   			editorfood+="<input type=\"checkbox\" name=\"chk_info\" value=\""+foodname[i]+"\">"+"<img src=\"/Remart_teamProj/images/food/"+foodname[i]+".jpg\" width=100 height=100/><br>";
   		}
   		var z="<div align=\"left\"  class=\"food \"style=\"float: left; width: 13%; margin-top: 65px; margin-left:30px;\">"
-  		+"<form action=\"\" method=\"post\">"
-  		+editorfood+"<div style=\"margin-top:50px;\"></div>"+"<input class=\"w3-button w3-border w3-white w3-hover-white w3-padding-small\" style=\"font-size:11px; margin-left:30px;\" type=\"submit\" value=\"장바구니\"></form></div>"
+  		+editorfood+"<div style=\"margin-top:50px;\"></div>"+"<input class=\"w3-button w3-border w3-white w3-hover-white w3-padding-small\" style=\"font-size:11px; margin-left:30px;\" type=\"button\" value=\"장바구니\" onclick=\"editorbasket();\" ></div>"
   		
   		$('.window').append(z); 
   		
