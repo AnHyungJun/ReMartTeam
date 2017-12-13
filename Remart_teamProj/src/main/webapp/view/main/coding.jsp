@@ -142,15 +142,15 @@
 <body>
 <div style="margin-top:200px;"></div>
 <center>
-<div align="center" style="width: 40%">
+<div align="center" style="width: 40%; font-size:12px;">
 	<form class="w3-center" action="<%=request.getContextPath() %>/main/insertBoard" method="post" id="insertBoardFrm" enctype="multipart/form-data">
-		제목: <input type="text" name="subject">
+		제목
+		<input type="text" name="subject" style="width:200px;">
 		<div style="margin-top:20px;">
 		<textarea name="content" id="editor" style="width: 750px; height: 400px;"></textarea>
 		<div style="margin-top:20px;">
-		한줄평: <input type="text" name="starcontent">
 		<span class="star">
-  <span class="input">
+  <span class="input" style="margin-left:40px;">
     <input type="radio" name="star" id="p1" value="1"><label for="p1">1</label>
     <input type="radio" name="star" id="p2" value="2"><label for="p2">2</label>
     <input type="radio" name="star" id="p3" value="3"><label for="p3">3</label>
@@ -162,8 +162,13 @@
     <input type="radio" name="star" id="p9" value="9"><label for="p9">9</label>
     <input type="radio" name="star" id="p10" value="10"><label for="p10">10</label>
   </span>
-  <output for="star"><b>0</b>점</output>
-</span></div>
+  <output for="star"><b>0</b> 점</output>
+</span>
+<div style="margin-top:5px;"></div>
+		한줄평
+		<input type="text" name="starcontent" style="width:200px;">
+		<div style="margin-top:30px;"></div>
+		</div>
 		<input type="button" class="w3-button w3-light-grey w3-hover-light-grey" style="font-size:12px;" id="insertBoard" value="등록" />
 	</form> 
 </div>
