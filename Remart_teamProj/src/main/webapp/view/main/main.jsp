@@ -90,8 +90,7 @@ a {
 <title>REMART</title>
 </head>
 <body>
-<center>
-<div style="position: relative;">
+	<center>
 		<div style="margin-top: 150px"></div>
 		<div class="w3-container">
 			<div style="margin-top: 50px;"></div>
@@ -183,8 +182,7 @@ a {
 												<img id="${list.feed_id}" class="showMask"
 													src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 													style="width: 100%; height: 200px"
-													onclick="document.getElementById('popup').style.display='block';
-													 editorfeed('${fn:length(list.img_name)}','${list}','${list.feed_id}','${list.img_name}','${list.makecontent}','${list.replelist}','${fn:length(list.replelist)}','${list.food_id}','${list.hashtaglist}');">
+													onclick="document.getElementById('popup').style.display='block';popup2('${list.feed_id}','${id_popup}');">
 											</c:if>
 											<c:if test="${list.feed_grade eq 'nomal'}">
 												<img
@@ -278,12 +276,11 @@ a {
 		</c:if>
 
 		<!-- 로딩 -->
-		<div id="loading" class="loading display-none w3-center" style="position:absolute; bottom:0px; margin-top: 100px;">
+		<div id="loading" class="loading display-none w3-center">
 			<img src="<%=request.getContextPath()%>/images/icon/loading.gif"
-				style="width: 100px; margin-top: 100px; margin-bottom: 100px;">
+				style="width: 100px;">
 		</div>
-</div>
-</center>
+	</center>
 	<!-- 모달팝업 -->
 	<div id="popup" class="w3-modal">
 		<div class="w3-modal-content" style="width: 900px; height: 600px;">

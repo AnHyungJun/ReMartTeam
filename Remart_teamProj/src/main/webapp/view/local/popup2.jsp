@@ -2,10 +2,6 @@
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<div id="contentslide" style="width: 100%; height: 50px;">
-	<!--글쓰는데 상단 고정바-->
-
-</div>
 <div id="recipe_name">음식이름:${feed.recipe_name }</div>
 <div id="changecontent0">
 	<c:if test="${feed.imgSize>1 }">
@@ -81,7 +77,6 @@
 		</c:if>
 	</c:if>
 </div>
-
 <div id="hashtag">
 	<c:forEach var="hash" items="${feed.hashtaglist }">
 #${hash },
@@ -103,4 +98,16 @@ ${reple.id }님의 댓글:${reple.content }<br>
 </c:if>
 	</div>
 </div>
+<c:if test="${feed.feed_grade eq 'editor'}">
+<div id="basket">
+<form action="" method="post">
+<c:forEach var="food" items="${feed.food_id }">
+<input type="checkbox" name="chk_info" value="${food }">
+<img src="<%=request.getContextPath()%>/images/food/${food }.jpg" width="100" height="100/"><br>
+</c:forEach>
+<div style="margin-top:50px;"></div>
+<input class="w3-button w3-border w3-white w3-hover-white w3-padding-small" style="font-size:11px; margin-left:30px;" type="submit" value="장바구니"></form>
+</div>
+</c:if>
+
 
