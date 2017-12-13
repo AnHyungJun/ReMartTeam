@@ -10,8 +10,15 @@ public class Restaurant_recommandDataBean implements Serializable{
 	Timestamp reg_date;
 	String id;
 	int rnum;
+	int avgstar;
 	
 	
+	public int getAvgstar() {
+		return avgstar;
+	}
+	public void setAvgstar(int avgstar) {
+		this.avgstar = avgstar;
+	}
 	public int getRnum() {
 		return rnum;
 	}

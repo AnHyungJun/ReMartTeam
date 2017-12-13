@@ -27,6 +27,7 @@ a {
 				<tr class="w3-white">
 					<td class="w3-center" align="center" width="50">번호</td>
 					<td class="w3-center" align="center" width="250">제 목</td>
+					<td class="w3-center" align="center" width="250">별 점</td>
 					<td class="w3-center" align="center" width="100">작성자</td>
 					<td class="w3-center" align="center" width="150">작성일</td>
 				</tr>
@@ -36,6 +37,7 @@ a {
 						<td class="w3-center"><a
 							href="content?num=${article.restaurant_recommand_id}&pageNum=${currentPage}">
 								${article.subject}</a></td>
+						<td class="w3-center">${article.avgstar }</td>
 						<td class="w3-center">${article.id }</td>
 						<td class="w3-center"><fmt:formatDate value="${article.reg_date }" pattern="yyyy-MM-dd HH:mm"/></td>
 					</tr>
