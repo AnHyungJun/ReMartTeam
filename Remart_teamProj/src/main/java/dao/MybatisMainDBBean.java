@@ -7,6 +7,7 @@ import model.FeedDataBean;
 import model.ImgDataBean;
 import model.R_memberDataBean;
 import model.Restaurant_recommandDataBean;
+import model.Star_contentDataBean;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -373,7 +374,7 @@ public class MybatisMainDBBean extends MybatisConnector {
 	}
 
 	public void insertRestaurant_recommand(
-			Restaurant_recommandDataBean restaurant_recommand) {
+			Restaurant_recommandDataBean restaurant_recommand, Star_contentDataBean starcontent) {
 		System.out.println("insertRestaurant_recommand:");
 		sqlSession = sqlSession();
 		HashMap map = new HashMap();
@@ -384,6 +385,15 @@ public class MybatisMainDBBean extends MybatisConnector {
 			map.put("restaurant_recommand_id", restaurant_recommand_id);
 			int result = sqlSession.insert(namespace + ".restaurant_recommand",map);
 			System.out.println("insert Ok:"+result);
+			
+			int starcontent_id = sqlSession.selectOne(namespace+".getStarcontent_id");
+			starcontent_id++;
+			starcontent.setRestaurant_recommand_id(restaurant_recommand_id);
+			map.put("star_content_id", starcontent_id);
+			map.put("starcontent", starcontent);
+			result = sqlSession.insert(namespace + ".starcontent",map);
+			System.out.println("insert Ok:"+result);
+			
 		}finally{
 			sqlSession.commit();
 			sqlSession.close();

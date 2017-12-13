@@ -23,6 +23,7 @@
 		<typeAlias type="model.Food_numDataBean" alias="food_num" />
 		<typeAlias type="model.Food_paymentDataBean" alias="food_payment" />
 		<typeAlias type="model.Restaurant_recommandDataBean" alias="restaurant_recommand" />
+		<typeAlias type="model.Star_contentDataBean" alias="star_content" />
 	</typeAliases>
 
 

@@ -239,5 +239,17 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		from
 		r_member where grade = 'editor'
 	</select>
+	
+	<select id="getStarcontent_id"  resultType="int">
+		select count(*) from star_content 	
+	</select>
+	
+	<insert id="starcontent"  parameterType="hashmap">
+		insert into star_content
+		(star_content_id, star, starcontent,id,reg_date, restaurant_recommand_id)
+		values
+		(#{star_content_id}, #{starcontent.star},
+		#{starcontent.starcontent},#{starcontent.id}, sysdate, #{starcontent.restaurant_recommand_id})
+	</insert>
 
 </mapper>
