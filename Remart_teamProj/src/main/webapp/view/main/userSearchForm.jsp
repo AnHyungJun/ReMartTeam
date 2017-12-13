@@ -115,7 +115,8 @@ table {
 							</c:if>
 							<c:if test="${search.follow_status == 1}">
 								<c:if test="${memberInfo.id ne search.id  }">
-									<input type="button" onclick="followPush(this.form)"
+									<input type="button" class="w3-button w3-white w3-hover-black w3-border"
+										style="font-size: 13px;" onclick="followPush(this.form)"
 										value="unfollow" name="follow">
 								</c:if>
 							</c:if>
