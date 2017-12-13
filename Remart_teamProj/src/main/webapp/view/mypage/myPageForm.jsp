@@ -31,9 +31,13 @@
 .window {
 	display: none;
 	background-color: #ffffff;
-	width: 750px;
-	height: 650px;
+	width: 890px;
+	height: 610px;
 	z-index: 99999;
+}
+
+a {
+	text-decoration: none;
 }
 </style>
 
@@ -204,7 +208,7 @@
 		<div class="window w3-modal w3-modal-content w3-animate-opacity">
 			<button type="button" href="#" class="close w3-button w3-white w3-hover-white w3-right"> X </button>
 			<div style="margin-top:0px;"></div>
-			<div style="width: 47%; height: 40px;">
+			<div style="width: 49%; height: 40px;">
 				<!--글쓰는데 상단 고정바-->
 				<button id="leftpage" style="float: left;" onclick="plusDivs(-1)"
 				class="w3-button w3-white w3-hover-white"> <b>〈 </b> </button>
@@ -270,7 +274,7 @@
    		
    		title=feeddate[5].substring(12,feeddate[5].length);
    		//이미지와 제목 해쉬테그 좋아요
-   		var y="<div class=\"leftdiv\" style=\"float: left; width: 55%; height: 550px; margin-top: 10px;\">"
+   		var y="<div class=\"leftdiv\" style=\"float: left; width: 55%;\">"
    		//피드 상단 프로필사진
    		y+="<div align=\"left\" style=\"width:100%; height:70px\">"+
    		"<a href=\"myPageForm?id=${memberInfo.id}\" ><img	src=\"/Remart_teamProj/fileSave/${member.profileImg}\"class=\"w3-circle\" style=\"width:30px; height:30px\"></a></div>";
@@ -309,14 +313,14 @@
 		}
 		
 		
-		y+="<div class=\"mySlide\" style=\"width:100%; height:50px;\">"
+		y+="<div class=\"mySlide\" style=\"width:100%; height:50px; font-size:13px;\">"
 		+"<label> 음식 이름 : "+title+"</label><br>"
 		+"<label>재료 : "+contentname[0]+"</label><br>"+"</div>";
 		for(var i=1;i<imagenum;i++){ 
-			y+="<div class=\"mySlide\" style=\"width:100%; height:50px;\">"
+			y+="<div class=\"mySlide\" style=\"width:100%; height:50px; font-size:13px;\">"
 			+"<br><label>"+contentname[0]+"</label>"+"</div>";
 		}
-  		y+="<div align=\"left\"  class=\"hash\"style=\" width: 100%; height: 50px;\">"
+  		y+="<div align=\"left\"  class=\"hash\"style=\" width: 100%; height: 50px; font-size:12px;\">"
   	  		+resulthashtag+"</div>";
   	  	y+="</div>";
   	 
@@ -335,13 +339,13 @@
    	   		for(var i=0;i<replenum;i++){
    	   			makereplelist+="<lable  class=\"commentreple\">"+myArray[i][2]+"&nbsp;"+myArray[i][3]+"</lable><br>";
    	   		}
-   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"reple\""
+   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 46%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist+"</div>"
    	   		
    	   		$('.window').append(z); 
    		}else{
-   			var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"reple\""
+   			var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 46%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+"</div>"
    	   		
@@ -356,7 +360,6 @@
    		var title ;
    		var id;
    		var myid='${memberInfo.id}';
-   		$('.window').css('width', 920);
    		imagename=imagename.substring(1,imagename.length-1);
    		foodname=foodname.substring(1,foodname.length-1);
    		repledata=repledata.substring(1,repledata.length-1);
@@ -369,16 +372,16 @@
    		id=feeddate[1].substring(3,feeddate[1].length);
    		title=feeddate[5].substring(12,feeddate[5].length);
    		//이미지와 제목 해쉬테그 좋아요
-   		var y="<div class=\"leftdiv\" style=\"float: left; width: 45%; height: 550px; margin-top: 10px;\">"
+   		var y="<div class=\"leftdiv\" style=\"float: left; width: 45%; margin-top: 10px;\">" 
    	   		//피드 상단 프로필사진
-   	   		y+="<div align=\"left\" style=\"width:100%; height:55px; margin-left:10px;\">"+
+   	   		y+="<div align=\"left\" style=\"width:100%; height:55px; margin-left:20px;\">"+
    	    		"<a href=\"myPageForm?id=${memberInfo.id}\" ><img	src=\"/Remart_teamProj/fileSave/${member.profileImg}\"class=\"w3-circle\" style=\"width:50px; height:50px\"></a></div>";//이미지
    	   		for(var i=0;i<imagenum;i++){   			
-   	   			y+="<div align=\"center\" class=\"mySlides\" style=\"margin-left:10px; width: 100%; height: 350px; border: solid 0px;\">"+
+   	   			y+="<div align=\"center\" class=\"mySlides\" style=\"margin-left:20px; width: 100%; height: 350px;\">"+
    	    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=350></div>";
    	    		//+"<label>"+contentname[i]+"</label>"+"</div>";
    	   		}
-   	   		y+="<div align=\"left\" style=\"margin-top:10px; margin-left:10px; width:100%; height:40px;\">";
+   	   		y+="<div align=\"left\" style=\"margin-top:10px; margin-left:20px; width:100%; height:40px;\">";
    			if(like==0){
    				y+="<img src=\"/Remart_teamProj/images/icon/like_before.png\" class=\"like\" onclick=\"like('"+feedid+"','like','"+myid+"');\" style=\"width:17px;\">";
    			}else{
@@ -402,14 +405,14 @@
    					size+=hashtag[i].length;
    				}
    			}
-   			y+="<div align=\"left\" class=\"mySlide\" style=\"width:100%; height:50px; margin-left:10px; font-size:13px;\">"
+   			y+="<div align=\"left\" class=\"mySlide\" style=\"width:100%; height:50px; margin-left:20px; font-size:13px;\">"
    			+"<label> 음식 이름 : "+"<b>"+title+"</b>"+"</label><br>"
    			+"<label> 재료 : "+contentname[0]+"</label><br>"+"</div>";
    			for(var i=1;i<imagenum;i++){ 
-   				y+="<div class=\"mySlide\" style=\"width:100%; height:50px; font-size:12px;\">"
+   				y+="<div align=\"left\" class=\"mySlide\" style=\"width:100%; height:50px; margin-left:20px; font-size:13px;\">"
    				+"<br><label style=\"font-size:13px;\">"+contentname[0]+"</label>"+"</div>";
    			}
-   	  		y+="<div align=\"left\"  class=\"hash\"style=\"margin-left:10px; width: 100%; height: 50px;\">"
+   	  		y+="<div align=\"left\"  class=\"hash\"style=\"margin-left:20px; width: 100%; height: 50px; font-size:13px;\">"
    	  	  		+resulthashtag+"</div>";
    	  	  	y+="</div>";
    	  	 
@@ -427,13 +430,13 @@
    	   		for(var i=0;i<replenum;i++){
    	   			makereplelist+="<lable class=\"commentreple\">"+myArray[i][2]+"&nbsp;"+myArray[i][3]+"</lable><br>";
    	   		}
-   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 36%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"reple\""
+   	   		var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 29%; margin-top: 65px; margin-left:40px; font-size:12px;\"><input type=\"text\" style=\"width:200px;\" name=\""+feedid+"\"/><input class=\"w3-button w3-center w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist+"</div>"
    	   		
-   	   		$('.window').append(z); 
+   	   		$('.window').append(z);  
    		}else{
-   			var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 36%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"reple\""
+   			var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 29%; margin-top: 65px; font-size:12px;\"><input type=\"text\"style=\"width:200px;\"name=\""+feedid+"\"/><input class=\"w3-button w3-center w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+"</div>"
    	   		
@@ -448,7 +451,7 @@
   			
   			editorfood+="<input type=\"checkbox\" name=\"chk_info\" value=\""+foodname[i]+"\">"+"<img src=\"/Remart_teamProj/images/food/"+foodname[i]+".jpg\" width=100 height=100/><br>";
   		}
-  		var z="<div align=\"left\"  class=\"food\"style=\"float: left; width: 13%; margin-top: 10px;\">"
+  		var z="<div align=\"left\"  class=\"food \"style=\"float: left; width: 13%; margin-top: 65px; margin-left:30px;\">"
   		+"<form action=\"\" method=\"post\">"
   		+editorfood+"<div style=\"margin-top:50px;\"></div>"+"<input class=\"w3-button w3-border w3-white w3-hover-white w3-padding-small\" style=\"font-size:11px; margin-left:30px;\" type=\"submit\" value=\"장바구니\"></form></div>"
   		
@@ -531,7 +534,7 @@
 		
 		var txtval=$('input:text[name="'+feed_id+'"]');
 		
-		if(txtval.val()=='') alert("입력하신 댓글이 없습니다.");
+		if(txtval.val()=='') alert("입력하신 댓글이 없습니다");
 		else{
 			var params =  "feed_id="+feed_id+"&id="+encodeURIComponent(m_id)+"&content="+encodeURIComponent(txtval.val());
 			
@@ -559,10 +562,10 @@
 	   			
 	   	   		var makereplelist="";
 	   	   		for(var i=0;i<count;i++){
-	   	   			makereplelist+="<lable  class=\"commentreple\">"+myArray[i][2]+"&nbsp;"+myArray[i][3]+"</lable><br>";
+	   	   			makereplelist+="<lable  class=\"commentreple\" style=\"font-size:12px;\">"+myArray[i][2]+"&nbsp;"+myArray[i][3]+"</lable><br>";
 	   	   		}
 	   	   
-	   	   	var z="<input type=\"text\" name=\""+myArray[0][1]+"\"/><input type=\"button\" value=\"reple\""
+	   	   	var z="<input type=\"text\"  style=\"width:200px; font-size:12px;\" name=\""+myArray[0][1]+"\"/><input class=\"w3-button w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+myArray[0][1]+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist;
    	  
