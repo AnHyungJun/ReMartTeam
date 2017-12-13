@@ -164,7 +164,7 @@ body, h1, h2, h3, h4, h5, h6 {
 									class="con_link"
 									onmouseover="this.style.textDecoration='none';"
 									onmouseout="this.style.textDecoration='none';">장바구니</a>
-								| <a href="<%=request.getContextPath()%>/chatting/chat"
+								| <a onclick="openChat()"
 								style="font-size: 12px; text-decoration: none;"
 								class="con_link"
 								onmouseover="this.style.textDecoration='none';"
@@ -252,6 +252,14 @@ body, h1, h2, h3, h4, h5, h6 {
 			</div>
 		</div>
 	</form>
+<script>
+function openChat() {
+	url = "<%=request.getContextPath()%>/chatting/chat"
 
+	open(url, "confirm",
+			"toolbar = no,location=no, status= no, menubar = no,"
+					+ "resizable=no, width = 500, height = 250");
+}
+</script>
 </body>
 </html>
