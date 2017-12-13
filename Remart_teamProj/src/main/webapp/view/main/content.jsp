@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <title>REMART</title>
@@ -191,7 +192,18 @@
 				</form>
 				
 				</tr>
-
+				<tr>
+					<td>
+						
+						<c:forEach items="${starcontentList }" var="starcontent">
+						
+							<b>${starcontent.star }</b>점
+				${starcontent.id }님
+				${starcontent.starcontent } <br><br>
+				
+			</c:forEach>
+					</td>
+				</tr>
 
 				<tr height="30">
 					<td colspan="4" class="w3-center"><input type="button"
@@ -200,6 +212,7 @@
 						onclick="document.location.href='list?pageNum=${pageNum}&editorid=${article.id }'"></td>
 				</tr>
 			</table>
+			
 		</div>
 	</center>
 </body>

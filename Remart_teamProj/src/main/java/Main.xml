@@ -252,5 +252,7 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		#{starcontent.starcontent},#{starcontent.id}, sysdate, #{starcontent.restaurant_recommand_id})
 	</insert>
 	
-
+	<select id="getStarcontentList" parameterType="hashmap" resultType="star_content">
+		select * from star_content where restaurant_recommand_id=#{num} order by reg_date desc
+	</select>
 </mapper>

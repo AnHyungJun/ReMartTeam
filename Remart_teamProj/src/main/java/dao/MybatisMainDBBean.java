@@ -459,4 +459,15 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+
+	public List getStarcontentList(int num) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("num", num);
+		try {
+			return sqlSession.selectList(namespace + ".getStarcontentList", map);
+		} finally {
+			sqlSession.close();
+		}
+	}
 }
