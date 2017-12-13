@@ -31,8 +31,8 @@
 .window {
 	display: none;
 	background-color: #ffffff;
-	width: 750px;
-	height: 500px;
+	width: 680px; 
+	height: 450px;
 	z-index: 99999;
 }
 </style>
@@ -47,15 +47,16 @@
 			<div class="w3-container">
 				<div style="margin-top: 50px;"></div>
 				<div class="w3-center">
-					<h2>게시물 ${hashcnt }개</h2>
+					<h3><b> 게시물  ${hashcnt }개 </b></h3>
+					<div style="margin-top:50px"></div>
 					<c:if test="${fn:length(searchList) != 0}">
 						<!-- 디비에서 데이터 받아와서 함수에 뿌려주는 부분  -->
 						<c:forEach var="list" items="${searchList}" varStatus="status">
 							<%-- <c:if test="${status.count % 3 == 1}">
 					<div class="w3-container" style="margin-bottom: 10px;border: solid 4px;"/>
 				</c:if> --%>
-							<div class="w3-container"
-								style="float: left; width: 33%; height: 350px; margin-top: 10px;">
+							<div class="w3-cell"
+						style="display: inline; width: 302px; height: 302px; float: left; border: 0px solid #ddd; margin-left: 20px; margin-bottom: 30px;">
 
 								<div class="w3-center">
 									<!-- 함수 실행해서 이미지 이름 ,사이즈 등등 넘겨주는 부ㅜ분 -->
@@ -63,7 +64,7 @@
 										src="<%=request.getContextPath()%>/fileSave/${list.img_name[0]}"
 										style="width: 300px; height: 300px"
 										onclick="popup('${fn:length(list.img_name)}','${list}','${list.img_name}','${list.content}','${list.replelist}','${fn:length(list.replelist)}');"><br>
-									${list.recipe_name }
+									<div style="margin-top:10px; font-size:12px;"><b>${list.recipe_name }</b></div>
 								</div>
 							</div>
 						</c:forEach>
@@ -71,7 +72,7 @@
 				</div>
 				<c:if test="${fn:length(searchList) == 0}">
 					<div style="margin-top: 100px; font-size: 13px;">
-						<b> 아직 쓴 글이 없습니다. </b>
+						<b> 검색한 해시태그에 해당하는 게시글이 없습니다. </b>
 					</div>
 				</c:if>
 
@@ -85,8 +86,8 @@
 		<div class="mask"></div>
 		<div class="window w3-modal w3-modal-content w3-animate-opacity">
 			<button type="button" href="#" class="close w3-button w3-white w3-hover-white w3-right"> X </button>
-			<div style="margin-top:40px;"></div>
-			<div style="width: 100%; height: 50px;">
+			<div style="margin-top:0px;"></div>
+			<div style="width: 50%; height: 40px;">
 				<!--글쓰는데 상단 고정바-->
 				<button id="leftpage" style="float: left;" onclick="plusDivs(-1)"
 				class="w3-button w3-white w3-hover-white"> <b>〈 </b> </button>
@@ -146,9 +147,9 @@
    			document.getElementById("leftpage").style.display = 'block';
    		}
    		for(var i=0;i<imagenum;i++){   			
-   			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 55%; height: 350px; margin-top: 10px;\">"+
-    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=100%><br>"+
-    		"<label>"+contentname[i]+"</label>"+"</div>";
+   			var y="<div align=\"left\" class=\"mySlides\" style=\"float: left; : 350px; height: 350px; margin-left:35px; margin-right:30px;\">"+
+    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=100%>"+"<div style=\"margin-top:20px;\"></div>"+
+    		"<label style=\"font-size:13px;\">"+contentname[i]+"</label>"+"</div>";
     		$('.window').append(y); 
     		
    		}
@@ -162,9 +163,9 @@
    			}
    	   		var makereplelist="";
    	   		for(var i=0;i<replenum;i++){
-   	   			makereplelist+="<lable>"+myArray[i][2]+"님의 댓글 /"+myArray[i][3]+"</lable><br>";
+   	   			makereplelist+="<lable style=\"font-size:12px;\">"+myArray[i][2]+"&nbsp;"+myArray[i][3]+"</lable><br>";
    	   		}
-   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 45%; height: 350px; margin-top: 10px;\"><input type=\"text\" name=\""+feeddate+"\"/><input type=\"button\" value=\"replecontent\""
+   	   		var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 37%; height: 350px; margin-left:0px;\"><input type=\"text\" style=\"font-size:12px; width:200px;\" name=\""+feeddate+"\"/><input type=\"button\" class=\"w3-button w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+feeddate+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist+"</div>"
    	   		
@@ -179,12 +180,12 @@
 		
 		var txtval=$('input:text[name="'+feed_id+'"]');
 		
-		if(txtval.val()=='') alert("입력하신 댓글이 없습니다");
+		if(txtval.val()=='') alert("입력하신 댓글이 없습니다.");
 		else{
 			var params =  "feed_id="+feed_id+"&id="+m_id+"&content="+encodeURIComponent(txtval.val());
 			sendRequest("<%=request.getContextPath()%>/common/repleInsert.jsp",
 			params, displayResult, 'GET');
-		}
+		} 
 		txtval.val("");
    	}
    	
