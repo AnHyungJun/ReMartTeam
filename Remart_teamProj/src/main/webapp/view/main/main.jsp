@@ -290,44 +290,7 @@ a {
 					class="w3-button w3-xlarge w3-transparent w3-display-topright"
 					title="Close Modal">×</span> <br>
 			</div>
-			<div style="width: 100%; height: 50px;">
-				<!--글쓰는데 상단 고정바-->
-				<button id="leftpage" style="float: left;" onclick="plusDivs(-1)"
-					class="w3-button w3-white w3-hover-white">
-					<b>〈 </b>
-				</button>
-				<button id="rightpage" style="float: right" type="button"
-					class="w3-button w3-white w3-hover-white" onclick="plusDivs(1)">
-					<b> 〉 </b>
-				</button>
-			</div>
-			<div id="popupcontent"></div>
-			<div id="popupcontent2"></div>
-			<div id="popupcontent3"></div>
 			<div id="popup2"></div>
-		</div>
-	</div>
-	<!-- 레이어창 -->
-	<div class="setDiv">
-		<!--이부분 이해안되면 찾아오고 -->
-		<div class="mask" onclick="clickClose();"></div>
-		<div class="window w3-modal w3-modal-content w3-animate-opacity"
-			onclick="clickWindow()">
-			<button type="button" href="#" onclick="clickClose();"
-				class="close w3-button w3-white w3-hover-white w3-right">X
-			</button>
-			<div style="margin-top: 40px;"></div>
-			<div style="width: 100%; height: 50px;">
-				<!--글쓰는데 상단 고정바-->
-				<button id="leftpage" style="float: left;" onclick="plusDivs(-1)"
-					class="w3-button w3-white w3-hover-white">
-					<b>〈 </b>
-				</button>
-				<button id="rightpage" style="float: right" type="button"
-					class="w3-button w3-white w3-hover-white" onclick="plusDivs(1)">
-					<b> 〉 </b>
-				</button>
-			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
