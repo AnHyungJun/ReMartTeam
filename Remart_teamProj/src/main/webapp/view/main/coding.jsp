@@ -142,9 +142,11 @@
 <body>
 <div style="margin-top:200px;"></div>
 <center>
+<div align="center" style="width: 40%">
 	<form class="w3-center" action="<%=request.getContextPath() %>/main/insertBoard" method="post" id="insertBoardFrm" enctype="multipart/form-data">
 		제목: <input type="text" name="subject">
-		<textarea name="content" id="editor" style="width: 700px; height: 400px;"></textarea>
+		<div style="margin-top:20px;">
+		<textarea name="content" id="editor" style="width: 750px; height: 400px;"></textarea>
 		<div style="margin-top:20px;">
 		한줄평: <input type="text" name="starcontent">
 		<span class="star">
@@ -163,7 +165,9 @@
   <output for="star"><b>0</b>점</output>
 </span></div>
 		<input type="button" class="w3-button w3-light-grey w3-hover-light-grey" style="font-size:12px;" id="insertBoard" value="등록" />
-	</form> </center>
+	</form> 
+</div>
+</center>
 
 </body>
 <script>
