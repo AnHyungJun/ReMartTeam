@@ -37,7 +37,15 @@ a {
 						<td class="w3-center"><a
 							href="content?num=${article.restaurant_recommand_id}&pageNum=${currentPage}">
 								${article.subject}</a></td>
-						<td class="w3-center">${article.avgstar }</td>
+						<td class="w3-center">
+						<c:forEach begin="0" end="${article.avgstar }" step="2">
+							<img style="height: 10px; width: 10px" alt="star" src="<%=request.getContextPath()%>/images/icon/star.JPG">
+						</c:forEach>
+						<c:if test="${article.avgstar%2 eq 1 }">
+							<img style="height: 10px; width: 5px" alt="star" src="<%=request.getContextPath()%>/images/icon/halfstar.JPG">
+						</c:if>
+						
+						</td>
 						<td class="w3-center">${article.id }</td>
 						<td class="w3-center"><fmt:formatDate value="${article.reg_date }" pattern="yyyy-MM-dd HH:mm"/></td>
 					</tr>
