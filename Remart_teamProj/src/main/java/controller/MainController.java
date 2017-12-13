@@ -161,6 +161,7 @@ public class MainController {
 	}
 	@RequestMapping(value = "searchForm")
 	public ModelAndView searchForm(String please,String please2, String autocompleteText, String autocompleteText2, HttpSession session) {
+		System.out.println(please);
 		mv.clear();
 		List searchList = null;
 		if(please2==null) please2="";
