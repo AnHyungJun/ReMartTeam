@@ -310,4 +310,19 @@ public class MainController {
 		mv.setViewName("main/restaurant_recommandForm");
 		return mv;
 	}
+	
+	@RequestMapping(value="contentPro")
+	public ModelAndView contentPro(Star_contentDataBean starcontent, int pageNum, int num) throws Exception{	
+		Restaurant_recommandDataBean article = dbPro.getRestaurant_recommand(num);
+		
+		starcontent.setRestaurant_recommand_id(num);
+		starcontent.setId(id);
+		dbPro.insertStar_content(starcontent);
+		
+		mv.addObject("starcontent", starcontent);
+		mv.addObject("pageNum", pageNum);
+		mv.addObject("article", article);
+		mv.setViewName("main/content");
+		return mv;
+	}
 }

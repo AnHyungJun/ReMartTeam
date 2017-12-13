@@ -442,4 +442,21 @@ public class MybatisMainDBBean extends MybatisConnector {
 			sqlSession.close();
 		}
 	}
+
+	public void insertStar_content(Star_contentDataBean starcontent) {
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		try{
+			int starcontent_id = sqlSession.selectOne(namespace+".getStarcontent_id");
+			starcontent_id++;
+			map.put("star_content_id", starcontent_id);
+			map.put("starcontent", starcontent);
+			int result = sqlSession.insert(namespace + ".starcontent",map);
+			System.out.println("insert Ok:"+result);
+			
+		}finally{
+			sqlSession.commit();
+			sqlSession.close();
+		}
+	}
 }

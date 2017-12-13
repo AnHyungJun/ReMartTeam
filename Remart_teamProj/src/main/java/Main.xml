@@ -251,5 +251,6 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		(#{star_content_id}, #{starcontent.star},
 		#{starcontent.starcontent},#{starcontent.id}, sysdate, #{starcontent.restaurant_recommand_id})
 	</insert>
+	
 
 </mapper>
