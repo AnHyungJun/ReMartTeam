@@ -209,7 +209,7 @@
 		
 		var txtval=$('input:text[name="'+feed_id+'"]');
 		
-		if(txtval.val()=='') alert("입력하신 댓글이 없습니다");
+		if(txtval.val()=='') alert("입력하신 댓글이 없습니다.");
 		else{
 			var params =  "feed_id="+feed_id+"&id="+m_id+"&content="+encodeURIComponent(txtval.val());
 			
