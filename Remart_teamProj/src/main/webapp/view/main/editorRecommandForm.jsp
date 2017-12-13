@@ -240,7 +240,7 @@
 	   	   			makereplelist+="<lable  class=\"commentreple\" style=\"font-size:12px; marign-left:2px;\">"+myArray[i][2]+"&nbsp;"+myArray[i][3]+"</lable><br>";
 	   	   		}
 	   	   
-	   	   	var z="<input type=\"text\" name=\""+myArray[0][1]+"\"/><input class=\"w3-button w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
+	   	   	var z="<input type=\"text\" style=\"width:200px; font-size:12px;\" name=\""+myArray[0][1]+"\"/><input class=\"w3-button w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+myArray[0][1]+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist;
    	  
