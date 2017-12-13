@@ -208,7 +208,7 @@ a {
 		<div class="window w3-modal w3-modal-content w3-animate-opacity">
 			<button type="button" href="#" class="close w3-button w3-white w3-hover-white w3-right"> X </button>
 			<div style="margin-top:0px;"></div>
-			<div style="width: 48%; height: 40px; margin-left:40px;">
+			<div style="width: 48%; height: 40px; margin-left:9px;">
 				<!--글쓰는데 상단 고정바-->
 				<button id="leftpage" style="float: left;" onclick="plusDivs(-1)"
 				class="w3-button w3-white w3-hover-white"> <b>〈 </b> </button>
@@ -368,7 +368,7 @@ a {
    		//이미지와 제목 해쉬테그 좋아요
    		var y="<div class=\"leftdiv\" style=\"float: left; width: 45%; margin-top: 10px;\">" 
    	   		//피드 상단 프로필사진
-   	   		y+="<div align=\"left\" style=\"width:100%; height:55px; margin-left:20px;\">"+
+   	   		y+="<div align=\"left\" style=\"width:100%; height:55px; margin-left:30px;\">"+
    	    		"<a href=\"myPageForm?id=${memberInfo.id}\" ><img	src=\"/Remart_teamProj/fileSave/${member.profileImg}\"class=\"w3-circle\" style=\"width:50px; height:50px\"></a></div>";//이미지
    	   		for(var i=0;i<imagenum;i++){   			
    	   			y+="<div align=\"center\" class=\"mySlides\" style=\"margin-left:20px; width: 100%; height: 350px;\">"+
@@ -424,13 +424,13 @@ a {
    	   		for(var i=0;i<replenum;i++){
    	   			makereplelist+="<lable class=\"commentreple\">"+myArray[i][2]+"&nbsp;"+myArray[i][3]+"</lable><br>";
    	   		}
-   	   		var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 29%; margin-top: 65px; margin-left:40px; font-size:12px;\"><input type=\"text\" style=\"width:200px;\" name=\""+feedid+"\"/><input class=\"w3-button w3-center w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
+   	   		var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 32%; margin-top: 65px; margin-left:40px; font-size:12px;\"><input type=\"text\" style=\"width:200px;\" name=\""+feedid+"\"/><input class=\"w3-button w3-center w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist+"</div>"
    	   		
    	   		$('.window').append(z);  
    		}else{
-   			var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 29%; margin-top: 65px; font-size:12px;\"><input type=\"text\"style=\"width:200px;\"name=\""+feedid+"\"/><input class=\"w3-button w3-center w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
+   			var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 32%; margin-top: 65px; margin-left:40px; font-size:12px;\"><input type=\"text\"style=\"width:200px;\"name=\""+feedid+"\"/><input class=\"w3-button w3-center w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+"</div>"
    	   		
