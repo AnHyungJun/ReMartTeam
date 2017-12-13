@@ -21,7 +21,9 @@ public class FeedDataBean implements Serializable{
 	String feed_grade;
 	String makecontent;
 	String profileImg;
-	
+	public int getImgSize(){
+		return img_name.size();
+	}
 	public String getProfileImg() {
 		return profileImg;
 	}
