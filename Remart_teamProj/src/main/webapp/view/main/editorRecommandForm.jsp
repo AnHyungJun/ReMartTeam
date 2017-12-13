@@ -146,7 +146,7 @@
    		imagename=imagename.split(', ');
    		feeddate=feeddate.split(', ');
    		foodname=foodname.split(', ');
-   		feedid=feeddate[0].substring(22);
+   		feedid=feeddate[0].substring(22); 
    		contentname=contentname.split(',');
    		title = feeddate[5].substring(12, feeddate[5].length);
    		for(var i=0;i<imagenum;i++){   			
