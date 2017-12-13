@@ -31,7 +31,7 @@
 .window {
 	display: none;
 	background-color: #ffffff;
-	width: 890px;
+	width: 820px;
 	height: 610px;
 	z-index: 99999;
 }
@@ -208,7 +208,7 @@ a {
 		<div class="window w3-modal w3-modal-content w3-animate-opacity">
 			<button type="button" href="#" class="close w3-button w3-white w3-hover-white w3-right"> X </button>
 			<div style="margin-top:0px;"></div>
-			<div style="width: 49%; height: 40px;">
+			<div style="width: 48%; height: 40px; margin-left:40px;">
 				<!--글쓰는데 상단 고정바-->
 				<button id="leftpage" style="float: left;" onclick="plusDivs(-1)"
 				class="w3-button w3-white w3-hover-white"> <b>〈 </b> </button>
@@ -273,62 +273,56 @@ a {
    		id=feeddate[1].substring(3,feeddate[1].length);
    		
    		title=feeddate[5].substring(12,feeddate[5].length);
-   		//이미지와 제목 해쉬테그 좋아요
-   		var y="<div class=\"leftdiv\" style=\"float: left; width: 55%;\">"
-   		//피드 상단 프로필사진
-   		y+="<div align=\"left\" style=\"width:100%; height:70px\">"+
-   		"<a href=\"myPageForm?id=${memberInfo.id}\" ><img	src=\"/Remart_teamProj/fileSave/${member.profileImg}\"class=\"w3-circle\" style=\"width:30px; height:30px\"></a></div>";
-   		
-   		//이미지
-   		for(var i=0;i<imagenum;i++){   			
-   			y+="<div align=\"center\" class=\"mySlides\" style=\"width: 100%; height: 350px; border: solid 1px;\">"+
-    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=350></div>";
-    		//+"<label>"+contentname[i]+"</label>"+"</div>";
-   		}
-   		y+="<div align=\"left\" style=\"width:100%; height:40px;\">";
-		if(like==0){
-			y+="<img src=\"/Remart_teamProj/images/icon/like_before.png\" class=\"like\" onclick=\"like('"+feedid+"','like','"+myid+"');\" style=\"width:40px; height:40px;\">";
-		}else{
-			y+="<img src=\"/Remart_teamProj/images/icon/like_after.png\"  class=\"like\" style=\"width:40px; height:40px;\">";
-		}
-		if(book==0){
-			y+="<img src=\"/Remart_teamProj/images/icon/bookmark.png\" class=\"book\" onclick=\"like('"+feedid+"','bookmark','"+myid+"');\" style=\"width:40px; height:40px;\">";
-		}else{
-			y+="<img src=\"/Remart_teamProj/images/icon/bookmark.png\" class=\"book\" onclick=\"like('"+feedid+"','unbookmark','"+myid+"');\" style=\"width:40px; height:40px;\">";
-		}
-		y+="</div>";
-   		
-		
-		var resulthashtag="";
-   		var size=0;
-		for(var i=0;i<hashtag.length;i++){
-			if(size<30){
-				resulthashtag+="<a href=\"/Remart_teamProj/main/searchForm?please=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
-				size+=hashtag[i].length;
-			}else{
-				size=0;
-				resulthashtag+="<br><a href=\"/Remart_teamProj/main/searchForm?please=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
-				size+=hashtag[i].length;
-			}
-		}
-		
-		
-		y+="<div class=\"mySlide\" style=\"width:100%; height:50px; font-size:13px;\">"
-		+"<label> 음식 이름 : "+title+"</label><br>"
-		+"<label>재료 : "+contentname[0]+"</label><br>"+"</div>";
-		for(var i=1;i<imagenum;i++){ 
-			y+="<div class=\"mySlide\" style=\"width:100%; height:50px; font-size:13px;\">"
-			+"<br><label>"+contentname[0]+"</label>"+"</div>";
-		}
-  		y+="<div align=\"left\"  class=\"hash\"style=\" width: 100%; height: 50px; font-size:12px;\">"
-  	  		+resulthashtag+"</div>";
-  	  	y+="</div>";
-  	 
-  	  	$('.window').append(y); 
+   	//이미지와 제목 해쉬테그 좋아요
+   		var y="<div class=\"leftdiv\" style=\"float: left; width: 45%; margin-top: 10px;\">" 
+   	   		//피드 상단 프로필사진
+   	   		y+="<div align=\"left\" style=\"width:100%; height:55px; margin-left:50px;\">"+
+   	    		"<a href=\"myPageForm?id=${memberInfo.id}\" ><img	src=\"/Remart_teamProj/fileSave/${member.profileImg}\"class=\"w3-circle\" style=\"width:50px; height:50px\"></a></div>";//이미지
+   	   		for(var i=0;i<imagenum;i++){   			
+   	   			y+="<div align=\"center\" class=\"mySlides\" style=\"margin-left:50px; width: 100%; height: 350px;\">"+
+   	    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=350></div>";
+   	    		//+"<label>"+contentname[i]+"</label>"+"</div>";
+   	   		}
+   	   		y+="<div align=\"left\" style=\"margin-top:10px; margin-left:50px; width:100%; height:40px;\">";
+   			if(like==0){
+   				y+="<img src=\"/Remart_teamProj/images/icon/like_before.png\" class=\"like\" onclick=\"like('"+feedid+"','like','"+myid+"');\" style=\"width:17px;\">";
+   			}else{
+   				y+="<img src=\"/Remart_teamProj/images/icon/like_after.png\"  class=\"like\" style=\"width:17px;\">";
+   			}
+   			if(book==0){
+   				y+="<img src=\"/Remart_teamProj/images/icon/bookmark.png\" class=\"book\" onclick=\"like('"+feedid+"','bookmark','"+myid+"');\" style=\"width:30px;\">";
+   			}else{
+   				y+="<img src=\"/Remart_teamProj/images/icon/bookmark.png\" class=\"book\" onclick=\"like('"+feedid+"','unbookmark','"+myid+"');\" style=\"width:30px;\">";
+   			}
+   			y+="</div>";
+   	   		var resulthashtag="";
+   	   		var size=0;
+   			for(var i=0;i<hashtag.length;i++){
+   				if(size<30){
+   					resulthashtag+="<a href=\"/Remart_teamProj/main/searchForm?please=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
+   					size+=hashtag[i].length;
+   				}else{
+   					size=0;
+   					resulthashtag+="<br><a href=\"/Remart_teamProj/main/searchForm?please=#"+hashtag[i]+"\"> #"+hashtag[i]+"</a>";
+   					size+=hashtag[i].length;
+   				}
+   			}
+   			y+="<div align=\"left\" class=\"mySlide\" style=\"width:100%; height:50px; margin-left:50px; font-size:13px;\">"
+   			+"<label> 음식 이름 : "+"<b>"+title+"</b>"+"</label><br>"
+   			+"<label> 재료 : "+contentname[0]+"</label><br>"+"</div>";
+   			for(var i=1;i<imagenum;i++){ 
+   				y+="<div align=\"left\" class=\"mySlide\" style=\"width:100%; height:50px; margin-left:50px; font-size:13px;\">"
+   				+"<br><label style=\"font-size:13px;\">"+contentname[0]+"</label>"+"</div>";
+   			}
+   	  		y+="<div align=\"left\"  class=\"hash\"style=\"margin-left:50px; width: 100%; height: 50px; font-size:13px;\">"
+   	  	  		+resulthashtag+"</div>";
+   	  	  	y+="</div>";
+   	  	 
+   	  	  	$('.window').append(y); 
    		
   	  
    		/*리플 */
-   		if(replenum!=0){
+   	  	if(replenum!=0){
    			myArray = new Array( new Array(replenum), new Array(5) );
    			repledata=repledata.split(', ');
    			for(var i=0;i<replenum;i++){
@@ -337,15 +331,15 @@ a {
    			}
    	   		var makereplelist="";
    	   		for(var i=0;i<replenum;i++){
-   	   			makereplelist+="<lable  class=\"commentreple\">"+myArray[i][2]+"&nbsp;"+myArray[i][3]+"</lable><br>";
+   	   			makereplelist+="<lable class=\"commentreple\">"+myArray[i][2]+"&nbsp;"+myArray[i][3]+"</lable><br>";
    	   		}
-   	   		var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 46%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"reple\""
+   	   		var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 31%; margin-top: 65px; margin-left:100px; font-size:12px;\"><input type=\"text\" style=\"width:200px;\" name=\""+feedid+"\"/><input class=\"w3-button w3-center w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist+"</div>"
    	   		
-   	   		$('.window').append(z); 
+   	   		$('.window').append(z);  
    		}else{
-   			var z="<div align=\"center\"  class=\"reples\"style=\"float: left; width: 46%; height: 550px; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input type=\"button\" value=\"reple\""
+   			var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 31%; margin-top: 65px; margin-left:100px; font-size:12px;\"><input type=\"text\"style=\"width:200px;\"name=\""+feedid+"\"/><input class=\"w3-button w3-center w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+"</div>"
    	   		

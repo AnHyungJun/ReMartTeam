@@ -87,7 +87,7 @@
 		<div class="window w3-modal w3-modal-content w3-animate-opacity">
 			<button type="button" href="#" class="close w3-button w3-white w3-hover-white w3-right"> X </button>
 			<div style="margin-top:0px;"></div>
-			<div style="width: 50%; height: 40px;">
+			<div style="width: 54%; height: 40px; margin-left:30px;">
 				<!--글쓰는데 상단 고정바-->
 				<button id="leftpage" style="float: left;" onclick="plusDivs(-1)"
 				class="w3-button w3-white w3-hover-white"> <b>〈 </b> </button>
@@ -115,7 +115,10 @@
 		for (i = 0; i < x.length; i++) {
 			x[i].style.display = "none";
 		}
-		if (slideIndex == 1) {
+		if (x.length == 1) {
+			document.getElementById("leftpage").style.display = 'none';
+			document.getElementById("rightpage").style.display = 'none';
+		} else if (slideIndex == 1) {
 			document.getElementById("leftpage").style.display = 'none';
 			document.getElementById("rightpage").style.display = 'block';
 		} else if (slideIndex == x.length) {
@@ -127,6 +130,7 @@
 		}
 		x[slideIndex - 1].style.display = "block";
 	}
+	
    	function popup(imagenum,feeddate,imagename,contentname,repledata,replenum){
    		var myArray ;
 		//리스트 받은거 문자 쪼개는거
