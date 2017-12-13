@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-매출현황
+<div align="center">
+	<img src="<%=request.getContextPath()%>/viewImg/cloud1.png" >
+</div>
 </body>
 </html>
