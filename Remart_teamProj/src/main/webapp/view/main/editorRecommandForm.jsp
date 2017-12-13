@@ -31,8 +31,8 @@
 .window {
 	display: none;
 	background-color: #ffffff;
-	width: 750px;
-	height: 600px;
+	width: 550px;
+	height: 580px;
 	z-index: 99999;
 }
 </style>
@@ -150,9 +150,9 @@
    		contentname=contentname.split(',');
    		title = feeddate[5].substring(12, feeddate[5].length);
    		for(var i=0;i<imagenum;i++){   			
-   			var y="<div align=\"center\" class=\"mySlides\" style=\"float: left; width: 45%; height: 450px;\">"+
-    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=94% height=350>"+"<div style=\"margin-top:10px;\"></div>"+
-    		"<label style=\"font-size:13px;\">"+"<b>"+title+"</b>"+"<br>"+contentname[i]+"</label>"+"</div>";
+   			var y="<div align=\"left\" class=\"mySlides\" style=\"float: left; width: 45%; height: 450px; margin-left:35px;\">"+
+    		"<img src='"+"/Remart_teamProj/fileSave/"+imagename[i]+"' width=100% height=450>"+"<div style=\"margin-top:20px;\"></div>"+
+    		"<label style=\"font-size:14px;\">"+"<b>"+title+"</b>"+"<br>"+contentname[i]+"</label>"+"</div>";
     		$('.window').append(y); 
     		
    		}
@@ -169,13 +169,13 @@
    	   		for(var i=0;i<replenum;i++){
    	   			makereplelist+="<lable class=\"commentreple\" style=\"font-size:12px;\">"+myArray[i][2]+"&nbsp;"+myArray[i][3]+"</lable><br>";
    	   		}
-   	   		var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 26%; margin-top: 10px; marign-left:2px;\"><input type=\"text\" name=\""+feedid+"\"/><input class=\"w3-button w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
+   	   		var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 28%; margin-top: 10px; marign-left:20px;\"><input type=\"text\" style=\"font-size:12px; width:200px;\" name=\""+feedid+"\"/><input class=\"w3-button w3-center w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+makereplelist+"</div>"
    	   		
    	   		$('.window').append(z); 
    		}else{
-   			var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 26%; margin-top: 10px;\"><input type=\"text\" name=\""+feedid+"\"/><input class=\"w3-button w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
+   			var z="<div align=\"left\"  class=\"reples\"style=\"float: left; width: 28%; margin-top: 10px; marign-left:20px;\"><input type=\"text\" style=\"font-size:12px; width:200px;\" name=\""+feedid+"\"/><input class=\"w3-button w3-center w3-white w3-hover-white w3-padding-small\" style=\"font-size:12px;\" type=\"button\" value=\"reple\""
    	   		+"  onclick=\"replecommit('"+feedid+"','${memberInfo.id}')\"/><br>"
    	   		+"</div>"
    	   		
@@ -190,7 +190,7 @@
   			
   			editorfood+="<input type=\"checkbox\" name=\"chk_info\" value=\""+foodname[i]+"\">"+"<img src=\"/Remart_teamProj/images/food/"+foodname[i]+".jpg\" width=100 height=100/><br>";
   		}
-  		var z="<div align=\"left\"  class=\"food\"style=\"float: left; width: 13%; margin-top: 10px;\">"
+  		var z="<div align=\"left\"  class=\"food\"style=\"float: left; width: 13%; margin-top: 10px; margin-left:40px;\">"
   		+"<form action=\"\" method=\"post\">"
   		+editorfood+"<div style=\"margin-top:50px;\"></div>"+"<input class=\"w3-button w3-border w3-white w3-hover-white w3-padding-small\" style=\"font-size:11px; margin-left:30px;\" type=\"submit\" value=\"장바구니\"></form></div>"
   		
