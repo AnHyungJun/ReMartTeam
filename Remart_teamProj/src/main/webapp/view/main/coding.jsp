@@ -146,7 +146,7 @@
 		제목: <input type="text" name="subject">
 		<textarea name="content" id="editor" style="width: 700px; height: 400px;"></textarea>
 		<div style="margin-top:20px;">
-		한줄평: <input type="text" name="content">
+		한줄평: <input type="text" name="starcontent">
 		<span class="star">
   <span class="input">
     <input type="radio" name="star" id="p1" value="1"><label for="p1">1</label>
