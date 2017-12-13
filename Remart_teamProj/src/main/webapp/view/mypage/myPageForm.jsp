@@ -310,10 +310,10 @@ a {
    			}
    			y+="<div align=\"left\" class=\"mySlide\" style=\"width:100%; height:50px; margin-left:50px; font-size:13px;\">"
    			+"<label> 음식 이름 : "+"<b>"+title+"</b>"+"</label><br>"
-   			+"<label> 재료 : "+contentname[i]+"</label><br>"+"</div>";
+   			+"<label> 재료 : "+contentname[0]+"</label><br>"+"</div>";
    			for(var i=1;i<imagenum;i++){ 
    				y+="<div align=\"left\" class=\"mySlide\" style=\"width:100%; height:50px; margin-left:50px; font-size:13px;\">"
-   				+"<br><label style=\"font-size:13px;\">"+contentname[0]+"</label>"+"</div>";
+   				+"<br><label style=\"font-size:13px;\">"+contentname[i]+"</label>"+"</div>";
    			}
    	  		y+="<div align=\"left\"  class=\"hash\"style=\"margin-left:50px; width: 100%; height: 50px; font-size:13px;\">"
    	  	  		+resulthashtag+"</div>";
