@@ -53,7 +53,7 @@ a {
 
 			</table>
 		</c:if>
-
+		<div style="margin-top:50px;"></div>
 		<div class="w3-center">
 
 			<c:if test="${count > 0 }">

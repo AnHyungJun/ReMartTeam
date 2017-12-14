@@ -90,8 +90,7 @@ a {
 <title>REMART</title>
 </head>
 <body>
-<center>
-	<div style="position: relative;">
+	<center>
 		<div style="margin-top: 150px"></div>
 		<div class="w3-container">
 			<div style="margin-top: 50px;"></div>
@@ -251,7 +250,7 @@ a {
 												varStatus="status">
 												<c:if test="${not doneLoop}">
 													<a href="#" onclick="search000('${hash}')">#${hash}</a>
-													<c:if test="${status.count == 4}">
+													<c:if test="${status.count == 3}">
 														<c:set var="doneLoop" value="true" />
 														&nbsp;
 													</c:if>
@@ -277,16 +276,14 @@ a {
 		</c:if>
 
 		<!-- 로딩 -->
-		<div id="loading" class="loading display-none w3-center" style="position: absolute; bottom: 0px; padding-top: 150px; ">
+		<div id="loading" class="loading display-none w3-center">
 			<img src="<%=request.getContextPath()%>/images/icon/loading.gif"
 				style="width: 100px;">
 		</div>
-		<div style="margin-top:5px;">   </div>
-	</div>
-</center>
+	</center>
 	<!-- 모달팝업 -->
 	<div id="popup" class="w3-modal">
-		<div class="w3-modal-content" style="width: 900px; height: 600px; ">
+		<div class="w3-modal-content" style="width: 900px; height: 600px;">
 			<div class="w3-center">
 				<br> <span
 					onclick="document.getElementById('popup').style.display='none'"

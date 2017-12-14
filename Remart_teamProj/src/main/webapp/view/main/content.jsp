@@ -131,11 +131,11 @@
 	<center>
 	
 		<div class="w3-container">
-			<table class="w3-table w3-bordered"
+			<table class="w3-table-all w3-bordered w3-white"
 				style="width: 900px; font-size: 12px;">
 				<tr height="30">
-					<td width="125" align="center">글번호</td>
-					<td width="125" align="center" >${article.restaurant_recommand_id}</td>
+					<td align="center">글번호</td>
+					<td align="center" >${article.restaurant_recommand_id}</td>
 
 				</tr>
 				<tr height="30">
@@ -200,8 +200,7 @@
 						
 							<b>${starcontent.star }</b>점
 				${starcontent.id }님
-				${starcontent.starcontent } <br><br>
-				
+				${starcontent.starcontent }<br>
 			</c:forEach>
 					</td>
 				</tr>
