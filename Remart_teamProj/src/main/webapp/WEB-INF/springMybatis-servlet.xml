@@ -31,6 +31,7 @@
 	<bean id="mybatisShoppingDBBean" class="dao.MybatisShoppingDBBean"/>
 	<bean id="mybatisOfflineDBBean" class="dao.MybatisOfflineDBBean"/>
 	<bean id="mybatisAdminDBBean" class="dao.MybatisAdminDBBean"/>
+	<bean id="mybatisChatDBBean" class="dao.MybatisChatDBBean"/>
 	
 	<bean id="boardsocket" class="websocket.Broadsocket"/>
 

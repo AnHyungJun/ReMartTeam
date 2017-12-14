@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC    "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="chat.mybatis">
+	<cache />
+	
+	<select id="getChatId" parameterType="hashmap" resultType="String">
+		select max(chat_id) from chat where id = #{id}
+	</select>
+	
+	<select id="getChatContent" parameterType="hashmap" resultType="String">
+		select content from chat where id = #{id} and chat_id = #{chat_id}
+	</select>
+	
+</mapper>

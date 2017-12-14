@@ -279,4 +279,28 @@ public class MybatisAjaxDBBean extends MybatisConnector{
 			sqlSession.close();
 		}
 	}
+	
+	public void insertChat(String id, String content) {
+		System.out.println("insertChat : ");
+		sqlSession = sqlSession();
+		HashMap map = new HashMap();
+		map.put("id", id);
+		map.put("content", content);
+		
+		try {
+			   int number = sqlSession.selectOne(namespace + ".insertChat_new");
+			   if(number != 0)
+				   number++;
+			   else 
+				   number = 1;
+			  
+			   map.put("number", number);
+			   System.out.println("number : " + number);
+			   int result = sqlSession.insert(namespace + ".insertChat", map);
+			   System.out.println("insert ok:" + result);
+		   }finally {
+			   sqlSession.commit();
+			   sqlSession.close();
+		   }   
+	}
 }

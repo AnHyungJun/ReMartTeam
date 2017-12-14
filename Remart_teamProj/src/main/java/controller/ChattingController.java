@@ -13,12 +13,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import dao.MybatisChatDBBean;
+
 @Controller
 public class ChattingController {
 
 	ModelAndView mv = new ModelAndView();
 	
 	R_memberDataBean member;
+	
+	@Autowired
+	MybatisChatDBBean dbPro;
 	
 	@ModelAttribute
 	public void addAttributes(HttpServletRequest request, HttpSession session) {
@@ -45,8 +50,11 @@ public class ChattingController {
 	   }
 	   else{
 		   String id = member.getId();
-		  
+		   
+		   String content = dbPro.getChatMessage(id);
+		   
 		   mv.addObject("id",id);
+		   mv.addObject("content",content);
 		   mv.setViewName("chatting/chat");
 	   }
 		return mv;
