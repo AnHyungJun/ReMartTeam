@@ -237,6 +237,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 	</form> 
 </div>
 </center>
+<center>
 <form name="form" id="form" method="post">
 	<table >
 			<colgroup>
@@ -244,11 +245,10 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 			</colgroup>
 			<tbody>
 				<tr>
-					
 					<td>
 					    <input type="hidden" id="confmKey" name="confmKey" value=""  >
 						<input type="hidden" id="zipNo" name="zipNo" readonly style="width:100px">
-						<input type="button"  value="주소검색" onclick="goPopup();">
+						<input type="button" class="w3-button w3-light-grey w3-hover-light-grey" style="font-size:12px;" value="주소검색" onclick="goPopup();">
 					</td>
 				</tr>
 				<tr>
@@ -265,9 +265,11 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 			</tbody>
 		</table>
 </form>
-    <button onclick="aaa()" >검색</button>
-    <center>
+	
+    <button onclick="aaa()" class="w3-button w3-light-grey w3-hover-light-grey" style="font-size:12px;" >지도검색</button>
+    <br><br>
     <div id="map" style="width:60%;height:400px;"></div>
+    <br><br>
 	</center>
 </body>
 <script>
