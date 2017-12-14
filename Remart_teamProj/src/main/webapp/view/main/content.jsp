@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 <title>REMART</title>
@@ -141,7 +142,7 @@
 					<td width="125">작성자</td>
 					<td width="125" align="center">${article.id}</td>
 					<td width="125" align="center">작성일</td>
-					<td align="center" width="125">${article.reg_date}</td>
+					<td align="center" width="125"><fmt:formatDate value="${article.reg_date}" pattern="yyyy-MM-dd"/></td>
 				</tr>
 				<tr height="30">
 					<td align="center" width="125">글제목</td>
@@ -157,7 +158,7 @@
 				
 				<form action="contentPro" method="post">
 				<div style="margin-top: 20px;">
-				<td>
+				<td style="vertical-align: middle;">
 					 <span
 						class="star"> <span class="input"> <input
 							type="radio" name="star" id="p1" value="1"><label
@@ -175,17 +176,17 @@
 							type="radio" name="star" id="p10" value="10"><label
 							for="p10">10</label>
 					</span> <output for="star">
-							<b>0</b>점
+							<b>0</b> 점
 						</output>
 					</span>
 					</td>
-					<td>
-					<br>한줄평: <input type="text" name="starcontent" size="50">
+					<td style="vertical-align: middle;">
+					한줄평 <input type="text" name="starcontent" size="50">
 					<input type="hidden" name="num" value="${article.restaurant_recommand_id}">
 					<input type="hidden" name="pageNum" value="${pageNum}">
 					<td>
-					<td>
-					<input type="submit" value="등록" >
+					<td style="font-size:11px;">
+					<input type="submit" class="w3-button w3-light-grey w3-hover-light-grey w3-padding-small"  value="등록" >
 					</td>
 				</div>
 				
