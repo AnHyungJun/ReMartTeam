@@ -24,6 +24,7 @@
 		<typeAlias type="model.Food_paymentDataBean" alias="food_payment" />
 		<typeAlias type="model.Restaurant_recommandDataBean" alias="restaurant_recommand" />
 		<typeAlias type="model.Star_contentDataBean" alias="star_content" />
+		<typeAlias type="model.ChatDataBean" alias="chat" />
 	</typeAliases>
 
 
@@ -47,6 +48,7 @@
 		<mapper resource="Offline.xml" />
 		<mapper resource="Ajax.xml" />
 		<mapper resource="Admin.xml" />
+		<mapper resource="Chat.xml" />
 	</mappers>
 
 </configuration>

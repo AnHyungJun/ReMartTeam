@@ -109,7 +109,30 @@
 }
 
 </style>
+ <meta charset="UTF-8">
+      <script language="javascript">
+// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
+//document.domain = "abc.go.kr";
 
+function goPopup(){
+	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+    var pop = window.open("jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+    
+	// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+}
+/** API 서비스 제공항목 확대 (2017.02) **/
+function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn
+						, detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo){
+	// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+	document.form.roadAddrPart1.value = roadAddrPart1;
+	document.form.roadAddrPart2.value = roadAddrPart2;
+	document.form.addrDetail.value = addrDetail;
+	document.form.zipNo.value = zipNo;
+}
+</script>
+      <title>네이버 지도 API - 주소로 지도 표시하기</title>
+      <script src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=v6uq3Nmidx6gdSOddr1A&submodules=geocoder"></script>
 </head>
 
 <script type="text/javascript">
@@ -139,6 +162,45 @@
 	    });
 	});
 </script>
+<script>
+    function aaa(){
+       var map = new naver.maps.Map('map');
+       var myaddress = document.getElementById('roadAddrPart1').value;
+
+          naver.maps.Service.geocode({address: myaddress}, function(status, response) {
+              if (status !== naver.maps.Service.Status.OK) {
+                  return alert(myaddress + '의 검색 결과가 없거나 기타 네트워크 에러');
+              }
+              var result = response.result;
+              
+              // 검색 결과 갯수: result.total
+              // 첫번째 결과 결과 주소: result.items[0].address
+              // 첫번째 검색 결과 좌표: result.items[0].point.y, result.items[0].point.x
+              var myaddr = new naver.maps.Point(result.items[0].point.x, result.items[0].point.y);
+              map.setCenter(myaddr); // 검색된 좌표로 지도 이동
+              // 마커 표시
+              var marker = new naver.maps.Marker({
+                position: myaddr,
+                map: map
+              });
+              // 마커 클릭 이벤트 처리
+              naver.maps.Event.addListener(marker, "click", function(e) {
+                if (infowindow.getMap()) {
+                    infowindow.close();
+                } else {
+                    infowindow.open(map, marker);
+                }
+              });
+              // 마크 클릭시 인포윈도우 오픈
+              var infowindow = new naver.maps.InfoWindow({
+                  content: '<h4> [네이버 개발자센터]</h4><a href="https://developers.naver.com" target="_blank"><img src="https://developers.naver.com/inc/devcenter/images/nd_img.png"></a>'
+              });
+          });
+    }
+    
+    
+      
+      </script>
 <body>
 <div style="margin-top:200px;"></div>
 <center>
@@ -173,7 +235,38 @@
 	</form> 
 </div>
 </center>
-
+<form name="form" id="form" method="post">
+	<table >
+			<colgroup>
+				<col style="width:20%"><col>
+			</colgroup>
+			<tbody>
+				<tr>
+					
+					<td>
+					    <input type="hidden" id="confmKey" name="confmKey" value=""  >
+						<input type="hidden" id="zipNo" name="zipNo" readonly style="width:100px">
+						<input type="button"  value="주소검색" onclick="goPopup();">
+					</td>
+				</tr>
+				<tr>
+					<th><label>도로명주소</label></th>
+					<td><input name="roadAddr" type="text" id="roadAddrPart1" style="width:85%"></td>
+				</tr>
+				<tr>
+					
+						<td>
+							<input type="hidden" id="addrDetail" style="width:40%" value="">
+							<input type="hidden" id="roadAddrPart2"  style="width:40%" value="">
+						</td>
+				</tr>
+			</tbody>
+		</table>
+</form>
+    <button onclick="aaa()" >검색</button>
+    <center>
+    <div id="map" style="width:60%;height:400px;"></div>
+	</center>
 </body>
 <script>
 //star rating
