@@ -29,29 +29,31 @@ function checkPw() {
 <title>REMART</title>
 </head>
 <body>
-<div style="margin-top: 350px"></div>
+<div style="margin-top: 250px"></div>
 <center>
-<div class="w3-container ">
+<div class="w3-container">
+<img src="<%=request.getContextPath()%>/images/icon/password.png" style="width:30px;" class="w3-center">
+<div style="margin-top:20px;"></div>
 <form action="updateForm?id=${memberInfo.id}" method="POST" name="pwdcheck">
 <table class="talble-bordered" width="360">
 	<tr height="30">
 		<td align=center>
 			<b>PASSWORD CHECK</b>
-			<p style="font-size:12px;"> 비밀번호를 입력하세요. </p>
+			<p style="font-size:12px;">비밀번호를 입력하세요.</p>
 		</td>
 	</tr>
 
 	<tr height="30">
 		<td align=center>
-		<p style="font-size:13px;"> PASSWORD :
-			<input type="password" size="10" maxlength="16" name="passwd" style="height:20px;"> </p>
+		<p style="font-size:13px;">
+			<input type="password" size="20" maxlength="16" name="passwd" style="height:20px;"> </p>
 		</td>
 	</tr>
 	
 	<tr height="30">
 		<td align=center>
 		<br>
-			<input type="submit" class="w3-button w3-black w3-hover-black" style="font-size:12px;" value="확인">
+			<input type="submit" class="w3-button w3-black w3-hover-black" style="font-size:11px;" value="확인">
 		</td>
 	</tr>
 </table>
