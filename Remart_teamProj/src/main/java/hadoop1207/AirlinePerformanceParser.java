@@ -16,8 +16,7 @@ public class AirlinePerformanceParser {
 
  
       all_price = Integer.parseInt(colums[1]);
-    System.out.println(year);
-
+   
     
     } catch (Exception e) {
       System.out.println("Error parsing a record :" + e.getMessage());

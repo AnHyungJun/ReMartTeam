@@ -1,3 +1,4 @@
+
 package hadoop1207;
 
 import java.io.BufferedReader;
@@ -20,15 +21,15 @@ public class WebViewer {
       try {
          BufferedReader br = readHDFS(inhadoop);
          Map<String, Long> map = br.lines()
-                 .flatMap(s -> {
-                    String m[] = s.split(" ");
-                    return Arrays.stream(m);
-                 })
-                 .filter(name -> !name.equals(""))
-                 .collect(Collectors.groupingBy(
-                       String::toString,
-                       Collectors.mapping(String::toString,Collectors.counting())));
-           
+               .flatMap(s -> {
+                  String m[] = s.split(" ");
+                  return Arrays.stream(m);
+               })
+               .filter(name -> !name.equals(""))
+               .collect(Collectors.groupingBy(
+                     String::toString,
+                     Collectors.mapping(String::toString,Collectors.counting())));
+         
          br.close();
          return map;
       }catch(Exception e) {

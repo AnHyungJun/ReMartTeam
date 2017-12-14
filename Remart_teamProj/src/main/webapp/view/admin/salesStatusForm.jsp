@@ -6,9 +6,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body><br><br><br>
 <div align="center">
-	<img src="<%=request.getContextPath()%>/viewImg/cloud1.png" >
+	<input type="button" value="월별 매출" onclick="gragh('t');">
+	<input type="button" value="회원 성비" onclick="gragh('sex');">
+	<input type="button" value="최고,최저 상품" onclick="gragh('highlow');">
+	<!-- <a href="makefile">aaaaaaaaaaaa</a> -->
+	<br><br><br>
+	<img src="<%=request.getContextPath()%>/viewImg/p.png" >
+	<br><br><br>
+	<c:if test="${tt==1}">
+		<img src="<%=request.getContextPath()%>/viewImg/k.png" >
+	</c:if>
 </div>
+<script type="text/javascript">
+function gragh(h){
+	location.replace("salesStatusForm?type="+h);
+}
+
+</script>
 </body>
 </html>

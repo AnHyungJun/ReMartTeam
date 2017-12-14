@@ -4,8 +4,10 @@ import hadoop1207.WebViewer;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.FoodDataBean;
+import model.R_memberDataBean;
 
 import org.rosuda.REngine.REngineException;
 import org.rosuda.REngine.Rserve.RConnection;
@@ -190,24 +193,104 @@ ModelAndView mv = new ModelAndView();
 	@RequestMapping(value="salesStatusForm")
 	public ModelAndView salesStatusForm(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable{	
-	/*	RConnection c = new RConnection();
-		String head = "건수";
-		head = new String(head.getBytes("8859_1"), "utf-8");
-		String img = "cloud1.png";
-		String path = request.getRealPath("/")+ "viewImg\\";
-		System.out.println(path);
-		List<String> li = wv.toList("/ch01/Arr01/part-r-00000");
+	
+	
+		mv.clear();
+		String type=request.getParameter("type");
+		System.out.println(type);
+		if(type==null) type="t";
+		
+		
+		if(type.equals("t")){
+			
+			RConnection c = new RConnection();
+			
+			String path = request.getRealPath("/")+ "viewImg\\";
+		List<String> li = wv.toList("/ch01/Arr/part-r-00000");
 		PrintStream ps = null;
 		FileOutputStream fos = null;
-		fos = new FileOutputStream("C:/r_temp/airlog.csv");
+		fos = new FileOutputStream("C:/r_temp/tmp.csv");
 		ps = new PrintStream(fos);
-		li.sort(new Comparator<String>() {
-
+		Iterator it = li.iterator();
+	      while(it.hasNext()) {
+	         String line = (String) it.next();
+	         line = line.replace(",", "-");
+	         line = line.replace("\t", ",");
+	         ps.print(line + "\r\n");
+	      }
+	      ps.flush();
+	      ps.close();
+	      path = path.replace("\\", "/");
+	      c.parseAndEval("setwd('c:/r_temp')");
+	      c.parseAndEval("library(KoNLP)");
+	      c.parseAndEval("library(ggplot2)");
+	      c.parseAndEval("data2 = read.csv('tmp.csv', header=F)");
+	      c.parseAndEval(" month=data2[,1]");
+	      c.parseAndEval("price=data2[,2]");
+	      c.parseAndEval(" pp=ggplot(data2, aes(x=month, y=price,group =1))+geom_line(lwd=1,aes(color=5))+geom_point(size=3,shape=19,aes(color=1))+ggtitle(\"월별 매출현황\")");
+	      c.parseAndEval("png(\"" + path + "p.png\", width=1300,    height=550,     pointsize=13 )");
+	      c.parseAndEval("plot(pp)"); 
+	      c.parseAndEval("dev.off()");
+	      c.close();
+		}else if(type.equals("sex")){
+			RConnection c = new RConnection();
 			
+			String path = request.getRealPath("/")+ "viewImg\\";
+			List<String> li = wv.toList("/ch01/Member/part-r-00000");
+			PrintStream ps = null;
+			PrintStream ps2 = null;
+			FileOutputStream fos = null;
+			FileOutputStream fos2 = null;
+			fos = new FileOutputStream("C:/r_temp/membersex.csv");
+			
+			ps = new PrintStream(fos);
+		
+		
+			Iterator it = li.iterator();
+			while(it.hasNext()) {
+				String line = (String) it.next();
+				line = line.replace("\t", ",");	
+				ps.print(line + "\r\n");
+				
+			}
+		
+			ps.flush();
+			ps.close();
+			path = path.replace("\\", "/");
+			c.parseAndEval("setwd('c:/r_temp')");
+			c.parseAndEval("library(KoNLP)");
+			c.parseAndEval("library(ggplot2)");
+			c.parseAndEval("data2 = read.csv('membersex.csv', header=F,fileEncoding=\"UTF-8\")");
+			c.parseAndEval("sex=data2[,1]");
+			c.parseAndEval("num=data2[,2]");
+			c.parseAndEval("group = c(\"M\", \"F\")");
+			c.parseAndEval("bp<-ggplot(data2, aes(x=\"\", y=num, fill=group))+ geom_bar(width = 1, stat = \"identity\") + coord_polar(\"y\", start=0)+ggtitle(\"남녀성비\")");
+			c.parseAndEval("png(\"" + path + "p.png\", width=1300,    height=550,     pointsize=13 )");
+			c.parseAndEval("plot(bp)"); 
+			c.parseAndEval("dev.off()");
+			c.close();
+			}else{
+				mv.addObject("tt", 1);
+				RConnection c = new RConnection();
+			
+			String path = request.getRealPath("/")+ "viewImg\\";
+			List<String> li = wv.toList("/ch01/Foodlowhigh1/part-r-00000");
+			PrintStream ps = null;
+			PrintStream ps2 = null;
+			FileOutputStream fos = null;
+			FileOutputStream fos2 = null;
+			fos = new FileOutputStream("C:/r_temp/foodhigh.csv");
+			fos2 = new FileOutputStream("C:/r_temp/foodlow.csv");
+			ps = new PrintStream(fos);
+			ps2 = new PrintStream(fos2);
+			li.sort(new Comparator<String>() {
+
+			@Override
 			public int compare(String o1, String o2) {
 				// TODO Auto-generated method stub
-				String t1 = o1.substring(o1.indexOf(",") + 1, o1.indexOf("\t"));
-				String t2 = o2.substring(o2.indexOf(",") + 1, o2.indexOf("\t"));
+				
+				String t1 = o1.substring(o1.lastIndexOf("\t") + 1, o1.length());
+				String t2 = o2.substring(o2.lastIndexOf("\t") + 1, o2.length());
 				if (t1.length() == 1)
 					t1 = "0" + t1;
 				if (t2.length() == 1)
@@ -215,74 +298,74 @@ ModelAndView mv = new ModelAndView();
 				return t1.compareTo(t2);
 			}
 		});
+		for(int i=li.size()-6;i>4;i--){
+			li.remove(i);
+		}
+		int cnt=0;
 		Iterator it = li.iterator();
 	      while(it.hasNext()) {
-	         String line = (String) it.next();
-	         line = line.replace(",", "-");
-	         line = line.replace("\t", "aa,");
-	         System.out.println(line);
 	         
-	         ps.print(line + "\r\n");
-	      }
-	      ps.flush();
-	      ps.close();
-	      
-	      System.out.println(path);
-	      path = path.replace("\\", "/");
-	      System.out.println("setwd('c:/r_temp')");
-	      c.parseAndEval("setwd('c:/r_temp')");
-	      c.parseAndEval("library(KoNLP)");
-	      c.parseAndEval("data2 = read.csv('airlog.csv', header=F)");
-	      c.parseAndEval("barplot(data2[,2], names=data2[,1], col=rainbow(8), las=2, main='한글')");
-	      c.parseAndEval("savePlot('" + path + "cloud1.png', type='png')");
-	      c.parseAndEval("dev.off()");
-	      c.close();*/
-		RConnection c = new RConnection();
-		String head = "건수";
-		head = new String(head.getBytes("8859_1"), "utf-8");
-		String img = "cloud1.png";
-		String path = request.getRealPath("/")+ "viewImg\\";
-		System.out.println(path);
-		List<String> li = wv.toList("/ch01/Arr/part-r-00000");
-		PrintStream ps = null;
-		FileOutputStream fos = null;
-		fos = new FileOutputStream("C:/r_temp/tmp.csv");
-		ps = new PrintStream(fos);
-		
-		Iterator it = li.iterator();
-	      while(it.hasNext()) {
-	         String line = (String) it.next();
-	         line = line.replace(",", "-");
+	    	  String line = (String) it.next();
+	        
+	         line = line.replace(",", " ");
 	         line = line.replace("\t", ",");
-	         System.out.println(line);
-	         
-	         ps.print(line + "\r\n");
+	         if(cnt<5)
+	        	 ps.print(line + "\r\n");
+	         else
+	        	 ps2.print(line + "\r\n");
+	         cnt++;
 	      }
+	      ps2.flush();
+	      ps2.close();
 	      ps.flush();
 	      ps.close();
-	      
-	      System.out.println(path);
 	      path = path.replace("\\", "/");
-	      System.out.println("setwd('c:/r_temp')");
 	      c.parseAndEval("setwd('c:/r_temp')");
 	      c.parseAndEval("library(KoNLP)");
-	      c.parseAndEval("library(Rserve)");
-	      c.parseAndEval("data2 = read.csv('tmp.csv', header=F)");
-	      //ggplot(data2, aes(x=data2[,1], y=data2[,2],group =1, color=c("red")))+geom_line(lwd=1)+geom_point()
-
-	     // c.parseAndEval("ggplot(data2, aes(x=data2[,1], y=data2[,2],group =1))+geom_line(lwd=1)");
-	      c.parseAndEval("barplot(data2[,2], names=data2[,1], col=c(5), las=2, main='매출현황')");
-	    	
-	      c.parseAndEval("savePlot('" + path + "cloud1.png', type='png')");
-	    	 
+	      c.parseAndEval("library(ggplot2)");
+	      c.parseAndEval("data2 = read.csv('foodhigh.csv', header=F,fileEncoding=\"UTF-8\")");
+	      c.parseAndEval(" food=data2[,1]");
+	      c.parseAndEval("qty=data2[,2]");
+	      c.parseAndEval("pp=ggplot(data=data2, aes(x=food, y=qty)) + geom_bar(stat='identity') +ggtitle(\"최저 판매 품목\")");
+	      c.parseAndEval("png(\"" + path + "p.png\", width=1300,    height=550,     pointsize=13 )");
+	      c.parseAndEval("plot(pp)"); 
 	      c.parseAndEval("dev.off()");
 	      
-	   
-	     
+	      c.parseAndEval("data2 = read.csv('foodlow.csv', header=F,fileEncoding=\"UTF-8\")");
+	      c.parseAndEval(" food=data2[,1]");
+	      c.parseAndEval("qty=data2[,2]");
+	      c.parseAndEval("pp=ggplot(data=data2, aes(x=food, y=qty)) + geom_bar(stat='identity') +ggtitle(\"최고 판매 품목\")");
+	      c.parseAndEval("png(\"" + path + "k.png\", width=1300,    height=550,     pointsize=13 )");
+	      c.parseAndEval("plot(pp)"); 
+	      c.parseAndEval("dev.off()");
 	      
 	      c.close();
-		mv.clear();
+		}
+		
+		
 		mv.setViewName("admin/salesStatusForm");
 		return mv;
 	}
+	
+	/*@RequestMapping(value="makefile")
+	public ModelAndView makefile(HttpServletRequest request,
+			HttpServletResponse response) throws Throwable{	
+		request.setCharacterEncoding("utf-8");
+		
+		String createfile="c:\\r_temp\\member.csv";
+		FileWriter fw = new FileWriter(createfile);
+		List<R_memberDataBean> list=dbPro.month();
+		for(int i=0;i<list.size();i++){
+			
+			fw.append(""+list.get(i).getSex());
+			fw.append('\n');
+		}
+		
+		fw.flush();
+		fw.close();
+		
+		mv.clear();
+		mv.setViewName("admin/salesStatusForm");
+		return mv;
+	}*/
 }
