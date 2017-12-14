@@ -86,7 +86,10 @@ $(function() {
 			sumsum();
 		}
 	}
+	function go_r() {
+		location.replace("martStatusForm");
 
+	}
 	function sumsum() {
 		var ps = 0;
 		var qs = 0;
@@ -139,6 +142,9 @@ $(function() {
 							<input type="button"
 							class="w3-bar-item w3-button w3-white w3-hover-light-grey" style="font-size: 12px;"
 							name="order_status" value="발주현황" OnClick="order_status()">
+							<input type="button"
+							class="w3-bar-item w3-button w3-white w3-hover-light-grey" style="font-size: 12px;"
+							name="mart_month" value="매장매출" OnClick="go_r()">
 							<a href="<%=request.getContextPath()%>/offline/loginOut"
 								style="font-size: 12px;"
 								class="w3-bar-item w3-right w3-button w3-white w3-hover-light-grey"><i

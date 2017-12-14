@@ -1,8 +1,13 @@
 package controller;
 
+import hadoop1207.WebViewer;
+
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +21,7 @@ import model.R_memberDataBean;
 import model.SaleDataBean;
 import model.StaffDataBean;
 
+import org.rosuda.REngine.Rserve.RConnection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -172,6 +178,64 @@ public class OfflineController {
 		}
 		
 		return order_status(null,null);
+	}
+	@RequestMapping(value="martStatusForm")
+	public ModelAndView martStatusForm(HttpServletRequest request, HttpSession session) throws Throwable{
+		
+		/*List<SaleDataBean> list = dbPro.getMart();
+		String createfile="c:\\r_temp\\mart.csv";
+		FileWriter fw = new FileWriter(createfile);
+		for(int i=0;i<list.size();i++){
+			fw.append(""+list.get(i).getOffline_mart_id());
+			fw.append(","+list.get(i).getQty());
+			String S = new SimpleDateFormat("MM").format(list.get(i).getS_date());
+			fw.append(","+S);
+			fw.append('\n');
+		}
+		
+		fw.flush();
+		fw.close();*/
+		System.out.println("qweqweqweqweqwe");
+		WebViewer wv=new WebViewer();
+		
+		RConnection c = new RConnection();
+		
+		String path = request.getRealPath("/")+ "viewImg\\";
+		List<String> li = wv.toList("/ch01/Mart1/part-r-00000");
+		PrintStream ps = null;
+		FileOutputStream fos = null;
+		fos = new FileOutputStream("C:/r_temp/martmonth.csv");
+		ps = new PrintStream(fos);
+	
+	
+		Iterator it = li.iterator();
+		while(it.hasNext()) {
+			String line = (String) it.next();
+			line = line.replace("/", ",");	
+			line = line.replace("\t", ",");	
+			ps.print(line + "\r\n");
+			
+		}
+	
+		ps.flush();
+		ps.close();
+		path = path.replace("\\", "/");
+		c.parseAndEval("setwd('c:/r_temp')");
+		c.parseAndEval("library(KoNLP)");
+		c.parseAndEval("library(ggplot2)");
+		c.parseAndEval("data2 = read.csv('martmonth.csv', header=F)");
+		c.parseAndEval("month=data2[,2]");
+		c.parseAndEval("price=data2[,3]");
+		c.parseAndEval("mart=data2[,1]");
+		c.parseAndEval("bar<-ggplot(data2, aes(x=month, y=price, fill=mart))+geom_bar(stat=\"identity\", position=\"dodge\")+ggtitle(\"매장 월별 매출\")");
+		c.parseAndEval("png(\"" + path + "j.png\", width=1300,    height=550,     pointsize=13 )");
+		c.parseAndEval("plot(bar)"); 
+		c.parseAndEval("dev.off()");
+		c.close();
+		
+		mv.clear();
+		mv.setViewName("offline/martStatusForm");
+		return mv;
 	}
 	@RequestMapping(value="detail")
 	public ModelAndView detail(String mart_order_id){
