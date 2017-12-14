@@ -130,7 +130,7 @@ a {
 									src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[2].img_name[0]}"
 									style="width: 150px; height: 150px;"
 									onclick="popup('${fn:length(todayRecomendFeed[2].img_name)}','${todayRecomendFeed[2]}','${todayRecomendFeed[2].img_name}','${todayRecomendFeed[2].content}','${todayRecomendFeed[2].replelist}','${fn:length(todayRecomendFeed[2].replelist)}');"><br>
-								<br> <br>
+								
 								<p class="w3-text-white">
 									<b>${todayRecomendFeed[2].recipe_name }</b>
 								</p>
