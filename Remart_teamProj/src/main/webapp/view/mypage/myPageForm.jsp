@@ -315,7 +315,7 @@ a {
    				y+="<div align=\"left\" class=\"mySlide\" style=\"width:100%; height:50px; margin-left:50px; font-size:13px;\">"
    				+"<br><label style=\"font-size:13px;\">"+contentname[i]+"</label>"+"</div>";
    			}
-   	  		y+="<div align=\"left\"  class=\"hash\"style=\"margin-left:50px; width: 100%; height: 50px; font-size:13px;\">"
+   	  		y+="<div align=\"left\"  class=\"hash w3-text-indigo\"style=\"margin-left:50px; width: 100%; height: 50px; font-size:13px;\">"
    	  	  		+resulthashtag+"</div>";
    	  	  	y+="</div>";
    	  	 
@@ -408,7 +408,7 @@ a {
    				y+="<div align=\"left\" class=\"mySlide\" style=\"width:100%; height:50px; margin-left:20px; font-size:13px;\">"
    				+"<br><label style=\"font-size:13px;\">"+contentname[i]+"</label>"+"</div>";
    			}
-   	  		y+="<div align=\"left\"  class=\"hash\"style=\"margin-left:20px; width: 100%; height: 50px; font-size:13px;\">"
+   	  		y+="<div align=\"left\"  class=\"hash w3-text-indigo\"style=\"margin-left:20px; width: 100%; height: 50px; font-size:13px;\">"
    	  	  		+resulthashtag+"</div>";
    	  	  	y+="</div>";
    	  	 

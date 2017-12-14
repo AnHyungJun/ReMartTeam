@@ -236,7 +236,7 @@ a {
 											${list.recipe_name }
 										</div>
 
-										<div id="hashtag"
+										<div id="hashtag" class="w3-text-indigo"
 											style="text-align: left; position: absolute; width: 100%; height: 75px; margin-left: 5px;">
 
 											<c:set var="doneLoop" value="false" />

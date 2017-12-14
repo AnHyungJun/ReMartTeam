@@ -136,7 +136,7 @@ ${food }
 </c:forEach>
 	</div>
 	<!-- 해시태그 -->
-	<div id="hashtag" style="margin-top: 10px;">
+	<div id="hashtag" class="w3-text-indigo" style="margin-top: 10px;">
 		<c:forEach var="hash" items="${feed.hashtaglist }">
 			<a href="#" onclick="search000('${hash}')">#${hash}</a>
 		</c:forEach>
