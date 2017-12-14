@@ -101,7 +101,7 @@ ${food }
 	</div>
 </div>
 <!-- 댓글 -->
-<div id="reple" class="" style="float: left; margin-left: 30px;">
+<div id="reple" class="" style="float: left; margin-left: 30px; margin-top:40px;">
 	<c:if test="${id!='id_not_exist' }">
 		<form name="repleform">
 			<input type="text" name="reple"
@@ -123,11 +123,7 @@ ${reple.id } ${reple.content }<br>
 
 <!-- 장바구니 -->
 <c:if test="${feed.feed_grade eq 'editor'}">
-	<div id="basket" class="" style="float: left; margin-left: 20px;">
-		<button
-					onclick="document.getElementById('popup').style.display='none'"
-					class="w3-button w3-white w3-hover-white w3-right"
-					title="Close Modal">X</button>
+	<div id="basket" class="" style="float: left; margin-left: 20px; margin-top:30px;">
 		<form method="post">
 			<c:forEach var="food" items="${feed.food_id }">
 				<input type="checkbox" name="chk_info" value="${food }">
