@@ -204,8 +204,35 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
       </script>
 <body>
 <div style="margin-top:200px;"></div>
-<center>
-<div align="center" style="width: 40%; font-size:12px;">
+<div class="" style="float:left; margin-left:340px; margin-right:50px; width:500px;">
+<form name="form" id="form" method="post">
+	<table style="margin-top:40px;">
+			<colgroup>
+				<col style="width:20%"><col>
+			</colgroup>
+			<tbody>
+				<tr>
+					<th><label style="font-size:13px;">도로명주소 </label></th>
+					<td><input type="text" id="roadAddrPart1" style="width:280px; font-size:11px;"></td>
+				</tr>
+				<tr>
+					
+						<td>
+							<input type="hidden" id="addrDetail" style="width:40%" value="">
+							<input type="hidden" id="roadAddrPart2"  style="width:40%" value="">
+						</td>
+				</tr>
+			</tbody>
+		</table>
+</form>
+	<input type="hidden" id="confmKey" name="confmKey" value=""  >
+						<input type="hidden" id="zipNo" name="zipNo" readonly style="width:100px">
+						<input type="button" class="w3-button w3-light-grey w3-hover-light-grey" style="font-size:11px;" value="주소검색" onclick="goPopup();">
+    <button onclick="aaa()" class="w3-button w3-light-grey w3-hover-light-grey" style="font-size:11px;" >지도검색</button>
+    <div id="map" style="width:100%;height:378px; margin-top:10px;"></div>
+    </div>
+
+<div class="" style="width: 40%; font-size:12px; float:left;">
 	<form class="w3-center" action="<%=request.getContextPath() %>/main/insertBoard" method="post" id="insertBoardFrm" enctype="multipart/form-data">
 		제목
 		<input type="text" name="subject" style="width:200px;">
@@ -225,52 +252,19 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
     <input type="radio" name="star" id="p9" value="9"><label for="p9">9</label>
     <input type="radio" name="star" id="p10" value="10"><label for="p10">10</label>
   </span>
-  <output for="star"><b>0</b> 점</output>
+  <output for="star"><b>0</b> 점</output> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  한줄평 <input type="text" name="starcontent" style="width:200px;">
 </span>
-<div style="margin-top:5px;"></div>
-		한줄평
-		<input type="text" name="starcontent" style="width:200px;">
+		
 		<div style="margin-top:30px;"></div>
 		</div>
-		<input type="button" class="w3-button w3-light-grey w3-hover-light-grey" style="font-size:12px;" id="insertBoard" value="등록" />
-		<input type="hidden" name="roadAddr" id="roadAddr">
 	</form> 
 </div>
-</center>
-<center>
-<form name="form" id="form" method="post">
-	<table >
-			<colgroup>
-				<col style="width:20%"><col>
-			</colgroup>
-			<tbody>
-				<tr>
-					<td>
-					    <input type="hidden" id="confmKey" name="confmKey" value=""  >
-						<input type="hidden" id="zipNo" name="zipNo" readonly style="width:100px">
-						<input type="button" class="w3-button w3-light-grey w3-hover-light-grey" style="font-size:12px;" value="주소검색" onclick="goPopup();">
-					</td>
-				</tr>
-				<tr>
-					<th><label>도로명주소</label></th>
-					<td><input type="text" id="roadAddrPart1" style="width:85%"></td>
-				</tr>
-				<tr>
-					
-						<td>
-							<input type="hidden" id="addrDetail" style="width:40%" value="">
-							<input type="hidden" id="roadAddrPart2"  style="width:40%" value="">
-						</td>
-				</tr>
-			</tbody>
-		</table>
-</form>
-	
-    <button onclick="aaa()" class="w3-button w3-light-grey w3-hover-light-grey" style="font-size:12px;" >지도검색</button>
-    <br><br>
-    <div id="map" style="width:60%;height:400px;"></div>
-    <br><br>
-	</center>
+<div>
+<input type="button" class="w3-button w3-black w3-hover-black" style="font-size:12px; margin-left:90px;" id="insertBoard" value="등록" />
+		<input type="hidden" name="roadAddr" id="roadAddr">
+</div>
+
 </body>
 <script>
 //star rating
