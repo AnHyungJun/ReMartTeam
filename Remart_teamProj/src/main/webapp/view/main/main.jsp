@@ -130,7 +130,7 @@ a {
 									src="<%=request.getContextPath()%>/fileSave/${todayRecomendFeed[2].img_name[0]}"
 									style="width: 150px; height: 150px;"
 									onclick="popup('${fn:length(todayRecomendFeed[2].img_name)}','${todayRecomendFeed[2]}','${todayRecomendFeed[2].img_name}','${todayRecomendFeed[2].content}','${todayRecomendFeed[2].replelist}','${fn:length(todayRecomendFeed[2].replelist)}');"><br>
-								
+
 								<p class="w3-text-white">
 									<b>${todayRecomendFeed[2].recipe_name }</b>
 								</p>
@@ -275,7 +275,7 @@ a {
 				style="width: 100px;">
 		</div>
 	</center>
-	
+
 	<!-- 모달팝업 -->
 	<div id="popup" class="w3-modal">
 		<div class="w3-modal-content" style="width: 900px; height: 600px;">
@@ -283,9 +283,11 @@ a {
 				<button
 					onclick="document.getElementById('popup').style.display='none'"
 					class="w3-button w3-white w3-hover-white w3-right"
-					title="Close Modal">X</button> <br>
+					title="Close Modal">X</button>
+				<br>
 			</div>
-			<div id="popup2" style="overflow-x: hidden; overflow: auto; width: 100%; max-height: 550px;"></div>
+			<div id="popup2"
+				style="overflow-x: hidden; overflow: auto; width: 100%; max-height: 550px;"></div>
 		</div>
 	</div>
 	<script type="text/javascript">
@@ -293,8 +295,10 @@ a {
 		location.href="<%=request.getContextPath()%>/main/searchForm?please="+encodeURIComponent("#"+hash);
 	}
 	var num;
+	var likeaction;
 	function like(feed_id,action) {
 		num=feed_id;
+		likeaction=action;
 		if(action=="bookmark"){
 			alert("북마크 되었습니다.");
 		}else if(action=="unbookmark"){
@@ -306,9 +310,10 @@ a {
 	function return_like() {
 		if (httpRequest.readyState == 4) {
 			if (httpRequest.status == 200) {
+				if(likeaction=='like'){
 				document.getElementById("like"+num).innerHTML = httpRequest.responseText;
 				document.getElementById("poplike"+num).innerHTML = '<img src="/Remart_teamProj/images/icon/like_after.png" style="width: 17px;">';
-			}
+				}}
 		}
 	}
 	function popup2(feed_id,id){
