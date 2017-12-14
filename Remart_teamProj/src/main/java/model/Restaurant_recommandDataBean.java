@@ -11,8 +11,16 @@ public class Restaurant_recommandDataBean implements Serializable{
 	String id;
 	int rnum;
 	int avgstar;
+	String roadAddr;
 	
 	
+	
+	public String getRoadAddr() {
+		return roadAddr;
+	}
+	public void setRoadAddr(String roadAddr) {
+		this.roadAddr = roadAddr;
+	}
 	public int getAvgstar() {
 		return avgstar;
 	}

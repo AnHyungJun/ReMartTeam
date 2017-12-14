@@ -116,7 +116,7 @@
 
 function goPopup(){
 	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-    var pop = window.open("jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+    var pop = window.open("<%=request.getContextPath()%>/view/main/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
     
 	// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
     //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
@@ -166,6 +166,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
     function aaa(){
        var map = new naver.maps.Map('map');
        var myaddress = document.getElementById('roadAddrPart1').value;
+       document.getElementById('roadAddr').value =  document.getElementById('roadAddrPart1').value
 
           naver.maps.Service.geocode({address: myaddress}, function(status, response) {
               if (status !== naver.maps.Service.Status.OK) {
@@ -232,6 +233,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 		<div style="margin-top:30px;"></div>
 		</div>
 		<input type="button" class="w3-button w3-light-grey w3-hover-light-grey" style="font-size:12px;" id="insertBoard" value="등록" />
+		<input type="hidden" name="roadAddr" id="roadAddr">
 	</form> 
 </div>
 </center>
@@ -251,7 +253,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 				</tr>
 				<tr>
 					<th><label>도로명주소</label></th>
-					<td><input name="roadAddr" type="text" id="roadAddrPart1" style="width:85%"></td>
+					<td><input type="text" id="roadAddrPart1" style="width:85%"></td>
 				</tr>
 				<tr>
 					

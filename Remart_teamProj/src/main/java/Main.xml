@@ -211,10 +211,10 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="restaurant_recommand"  parameterType="hashmap">
 		insert into restaurant_recommand
-		(restaurant_recommand_id, subject, content,reg_date, id)
+		(restaurant_recommand_id, subject, content,reg_date, id, roadAddr)
 		values
 		(#{restaurant_recommand_id}, #{restaurant_recommand.subject},
-		#{restaurant_recommand.content}, sysdate, #{restaurant_recommand.id})
+		#{restaurant_recommand.content}, sysdate, #{restaurant_recommand.id},#{restaurant_recommand.roadAddr})
 	</insert>
 	
 	<select id="getArticleCount"  resultType="int">
