@@ -430,7 +430,6 @@ function editorbasket(checkform){
 			checklist+=checkform.chk_info[i].value+"!!";
 		}
 	}
-	alert(checklist);
 	var params="";
 	var a='${memberInfo.id}';
 	 $("input[name=chk_info]:checked").each(function() {
