@@ -330,17 +330,17 @@ a {
 	//무한스크롤
 	var index = 1;
 	var rindex = 1;
+	var isLoading=false;
 	$(document).ready(function() {
 		$(document).scroll(function() {
 			var maxHeight = $(document).height();
 			var currentScroll = $(window).scrollTop() + $(window).height();
+			if(!isLoading){
 			if (maxHeight <= currentScroll + 100) {
 				$('.loading').removeClass('display-none');
 				feedLoading(rindex);
-				setTimeout(function() {
-					index++;
-				}, 2000);
-			}
+				isLoading=true;
+			}}
 		});
 	});
 	function feedLoading(index){
@@ -355,6 +355,7 @@ a {
 				$('.loading').addClass('display-none');
 				document.getElementById("aditionalfeed").innerHTML += httpRequest.responseText;
 				rindex++;
+				isLoading=false;
 			}
 		}
 	}
