@@ -5,42 +5,40 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>REMART</title>
+<style>
+a {
+	text-decoration: none;
+}
+</style>
 </head>
 <body>
 	<div style="height: 200px"></div>
-	<div class="w3-bar w3-border-bottom w3-center-align w3-large">
-		<div class="w3-row">
-			<div class="w3-col" style="width: 20%">
-				<p>&nbsp;</p>
-			</div>
-
-
+	<center>
+	<div class="w3-bar w3-center-align w3-large" style="width: 700px;">
 			<c:if test="${memberInfo.grade eq 'editor' }">
-				<p class="w3-right w3-padding-right-large" style="font-size: 12px">
-					<a href="coding">글쓰기</a>
+				<p class="w3-right w3-padding-right-large" style="font-size: 12px; margin-right:50px; margin-bottom:20px;">
+					<a href="coding"><b>글쓰기</b></a>
 				</p>
 			</c:if>
 
-			<div class="w3-col w3-container" style="width: 60%">
+			<div class="w3-container" style="width: 700px; font-size:13px;">
 				<c:forEach var="editor" items="${editorList }">
+				<div class="w3-cell"
+						style="display: inline; width: 200px; height: 200px; float: left; border: 0px solid #ddd; margin-left: 20px; margin-bottom: 20px;">
 					<form action="list" method="post">
 						<a href="list?editorid=${editor.id }" ><img
-							style="height: 100px; width: 100px" alt="프사"
+							style="height: 150px; width: 150px" alt="프사"
 							src="<%=request.getContextPath()%>/fileSave/${editor.profileImg}"></a>
-						<br>
-						<br> <img style="height: 30px; width: 30px" alt="장소아이콘"
-							src="<%=request.getContextPath()%>/images/icon/location.png">
-						${editor.address1 } <br>
-						<br>
-
+						<div style="margin-top:20px;"></div>
+						 <img alt="장소아이콘" src="<%=request.getContextPath()%>/images/icon/location.png">
+						<b>${editor.address1 }</b>
 					</form>
+					</div>
 				</c:forEach>
-
-				<div class="w3-col" style="width: 20%">
-					<p>&nbsp;</p>
 				</div>
-			</div>
-		</div>
+				<div style="height: 100px"></div>
+				</div>
+				</center>
 </body>
 </html>
