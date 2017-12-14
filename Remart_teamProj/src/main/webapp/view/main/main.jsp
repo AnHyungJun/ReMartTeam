@@ -201,9 +201,6 @@ a {
 												<img onclick="needlogin()"
 													src="<%=request.getContextPath()%>/images/icon/like_before.png"
 													style="height: 20px; cursor: pointer;">
-												<img
-													src="<%=request.getContextPath()%>/images/icon/comment.png"
-													style="height: 20px;">
 												<img onclick="needlogin()"
 													src="<%=request.getContextPath()%>/images/icon/bookmark.png"
 													style="height: 20px; cursor: pointer;">
@@ -223,9 +220,6 @@ a {
 														src="<%=request.getContextPath()%>/images/icon/like_after.png"
 														style="height: 20px;"></label>
 												</c:if>
-												<img
-													src="<%=request.getContextPath()%>/images/icon/comment.png"
-													style="height: 20px;">
 												<c:if test="${list.bookmarkstate==0 }">
 													<img onclick="like(${list.feed_id},'bookmark')"
 														src="<%=request.getContextPath()%>/images/icon/bookmark.png"
@@ -281,14 +275,15 @@ a {
 				style="width: 100px;">
 		</div>
 	</center>
+	
 	<!-- 모달팝업 -->
 	<div id="popup" class="w3-modal">
 		<div class="w3-modal-content" style="width: 900px; height: 600px;">
 			<div class="w3-center">
-				<br> <span
+				<button
 					onclick="document.getElementById('popup').style.display='none'"
-					class="w3-button w3-xlarge w3-transparent w3-display-topright"
-					title="Close Modal">×</span> <br>
+					class="w3-button w3-white w3-hover-white w3-right"
+					title="Close Modal">X</button> <br>
 			</div>
 			<div id="popup2"></div>
 		</div>
@@ -330,7 +325,7 @@ a {
 		}
 	}
 	function needlogin(){
-		alert("로그인하세요");
+		alert("로그인 하세요.");
 	} 
 	//무한스크롤
 	var index = 1;
@@ -403,7 +398,7 @@ function displayResult() {
 			var makereplelist = "";
 			for (var i = 0; i < count; i++) {
 				makereplelist += "<lable  class=\"commentreple\">"
-						+ myArray[i][2] + "님의 댓글 /" + myArray[i][3]
+						+ myArray[i][2] + "&nbsp;" + myArray[i][3]
 						+ "</lable><br>";
 			}
 			document.getElementById("showreple").innerHTML = makereplelist;

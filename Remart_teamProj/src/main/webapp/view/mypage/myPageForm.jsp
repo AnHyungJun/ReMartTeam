@@ -447,8 +447,8 @@ a {
   			
   			editorfood+="<input type=\"checkbox\" name=\"chk_info\" value=\""+foodname[i]+"\">"+"<img src=\"/Remart_teamProj/images/food/"+foodname[i]+".jpg\" width=100 height=100/><br>";
   		}
-  		var z="<div align=\"left\"  class=\"food \"style=\"float: left; width: 13%; margin-top: 65px; margin-left:30px;\">"
-  		+editorfood+"<div style=\"margin-top:50px;\"></div>"+"<input class=\"w3-button w3-border w3-white w3-hover-white w3-padding-small\" style=\"font-size:11px; margin-left:30px;\" type=\"button\" value=\"장바구니\" onclick=\"editorbasket();\" ></div>"
+  		var z="<div align=\"left\"  class=\"food \"style=\"float: left; width: 13%; margin-top: 10px; margin-left:30px;\">"
+  		+editorfood+"<div style=\"margin-top:50px;\"></div>"+"<input class=\"w3-button w3-border w3-white w3-hover-white w3-padding-small\" style=\"font-size:11px; margin-left:30px; margin-bottom:30px;\" type=\"button\" value=\"장바구니\" onclick=\"editorbasket();\" ></div>"
   		
   		$('.window').append(z); 
   		
