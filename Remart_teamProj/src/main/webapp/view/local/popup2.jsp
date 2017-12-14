@@ -118,7 +118,8 @@ ${reple.id } ${reple.content }<br>
 			<div style="margin-top: 20px;"></div>
 			<input
 				class="w3-button w3-border w3-white w3-hover-white w3-padding-small"
-				style="font-size: 11px; margin-left: 30px;" type="submit"
+				style="font-size: 11px; margin-left: 30px;" type="button" 
+				onclick="editorbasket(this.form);"
 				value="장바구니">
 				<div style="margin-top: 20px;"></div>
 		</form>

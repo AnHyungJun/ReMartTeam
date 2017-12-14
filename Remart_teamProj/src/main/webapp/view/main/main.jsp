@@ -365,8 +365,8 @@ function changediv(mydiv, nextdiv){
 	setnone.style.display='none';
 	setblock.style.display='block';	
 }
-function replecommit(feed_id, m_id) {
-	 var id=<c:out value="${id_popup}"/>;
+function replecommit(form,feed_id) {
+	 var id='<c:out value="${id_popup}"/>';
 		var content=form.reple.value;
 		
 		if(content=='')
@@ -409,6 +409,42 @@ function displayResult() {
 			alert("에러: " + httpRequest.status);
 		}
 	}
+}
+function addbasket(){
+	if (httpRequest.readyState == 4) {
+		if (httpRequest.status == 200) {
+			var q = confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?");
+	     	if (q == true) {
+	            location.replace("../shopping/basket");
+
+	         } else {
+	            
+	         }
+		}
+	}
+}
+function editorbasket(checkform){
+	var checklist="";
+	for(var i=0;i<checkform.chk_info.length;i++){
+		if(checkform.chk_info[i].checked){
+			checklist+=checkform.chk_info[i].value+"!!";
+		}
+	}
+	alert(checklist);
+	var params="";
+	var a='${memberInfo.id}';
+	 $("input[name=chk_info]:checked").each(function() {
+		checklist += $(this).val()+"!!";
+			
+	});
+	
+	checklist=checklist.substring(0,checklist.length-2);
+	
+	params="food_name="+encodeURIComponent(checklist)+"&"+"id="+encodeURIComponent(a);
+	
+	sendRequest("<%=request.getContextPath()%>/common/addBasketlist.jsp",
+			params, addbasket, 'GET');		
+	
 }
 </script>
 </body>
