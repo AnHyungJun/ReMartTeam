@@ -52,8 +52,6 @@
 						<img onclick="needlogin()"
 							src="<%=request.getContextPath()%>/images/icon/like_before.png"
 							style="height: 20px; cursor: pointer;">
-						<img src="<%=request.getContextPath()%>/images/icon/comment.png"
-							style="height: 20px;">
 						<img onclick="needlogin()"
 							src="<%=request.getContextPath()%>/images/icon/bookmark.png"
 							style="height: 20px; cursor: pointer;">
@@ -73,8 +71,6 @@
 								src="<%=request.getContextPath()%>/images/icon/like_after.png"
 								style="height: 20px;"></label>
 						</c:if>
-						<img src="<%=request.getContextPath()%>/images/icon/comment.png"
-							style="height: 20px;">
 						<c:if test="${list.bookmarkstate==0 }">
 							<img onclick="like(${list.feed_id},'bookmark')"
 								src="<%=request.getContextPath()%>/images/icon/bookmark.png"
