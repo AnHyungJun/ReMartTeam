@@ -258,11 +258,12 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 		
 		<div style="margin-top:30px;"></div>
 		</div>
+		<input type="hidden" name="roadAddr" id="roadAddr">
 	</form> 
 </div>
 <div>
 <input type="button" class="w3-button w3-black w3-hover-black" style="font-size:12px; margin-left:90px;" id="insertBoard" value="등록" />
-		<input type="hidden" name="roadAddr" id="roadAddr">
+		
 </div>
 
 </body>
