@@ -108,7 +108,7 @@ public class MainController {
 			dbPro.unlike(id, feed_id,"B");
 
 		mv.clear();
-		//mv.addObject("action",action);
+		mv.addObject("action",action);
 		//mv.addObject("feed_id", feed_id);
 		// mv.addObject(attributeValue)
 		mv.setViewName("local/like");
