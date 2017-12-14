@@ -285,7 +285,7 @@ a {
 					class="w3-button w3-white w3-hover-white w3-right"
 					title="Close Modal">X</button> <br>
 			</div>
-			<div id="popup2"></div>
+			<div id="popup2" style="overflow-x: hidden; overflow: auto; width: 100%; max-height: 550px;"></div>
 		</div>
 	</div>
 	<script type="text/javascript">
