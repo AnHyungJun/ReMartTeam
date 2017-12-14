@@ -12,7 +12,7 @@
 				<b> กต </b>
 			</button>
 		</c:if>
-		<div class="w3-border" style="width:350px; margin-left:30px; font-size:13px; float:left">
+		<div class="" style="width:350px; margin-left:30px; font-size:13px; float:left">
 		<img src="<%=request.getContextPath()%>/fileSave/${feed.img_name[0]}"
 			style="width: 350px; height: 350px; display: block;"> 
 		<div style="margin-top: 20px;"></div>
@@ -87,7 +87,7 @@ ${food }
 	</div>
 	</div>
 </div>
-<div id="reple" class="w3-border" style="float:left; margin-left:30px;">
+<div id="reple" class="" style="float:left; margin-left:30px;">
 	<c:if test="${id!='id_not_exist' }">
 		<form name="repleform">
 			<input type="text" name="reple" style="font-size:12px; width:200px;"> <input value="reple" style="font-size:12px;"
@@ -107,7 +107,7 @@ ${reple.id } ${reple.content }<br>
 </div>
 
 <c:if test="${feed.feed_grade eq 'editor'}">
-	<div id="basket" class="w3-border" style="float:left; margin-left:20px;">
+	<div id="basket" class="" style="float:left; margin-left:20px;">
 		<form action="" method="post">
 			<c:forEach var="food" items="${feed.food_id }">
 				<input type="checkbox" name="chk_info" value="${food }">
