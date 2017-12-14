@@ -225,7 +225,7 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		select rr.*, (select avg(star) from star_content where restaurant_recommand_id=rr.restaurant_recommand_id )avgstar from 
      (select rownum rnum ,a.* 
       from (select restaurant_recommand_id,subject,content,reg_date,id  from restaurant_recommand 
-      where id='syeonni' 
+      where id=#{editorid} 
       order by reg_date desc) a ) rr 
       where rnum  between #{start} and #{end}
 </select>
