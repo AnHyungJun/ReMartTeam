@@ -90,7 +90,8 @@ a {
 <title>REMART</title>
 </head>
 <body>
-	<center>
+<center>
+	<div style="position: relative;">
 		<div style="margin-top: 150px"></div>
 		<div class="w3-container">
 			<div style="margin-top: 50px;"></div>
@@ -276,14 +277,16 @@ a {
 		</c:if>
 
 		<!-- 로딩 -->
-		<div id="loading" class="loading display-none w3-center">
+		<div id="loading" class="loading display-none w3-center" style="position: absolute; bottom: 0px; padding-top: 150px; ">
 			<img src="<%=request.getContextPath()%>/images/icon/loading.gif"
 				style="width: 100px;">
 		</div>
-	</center>
+		<div style="margin-top:5px;">   </div>
+	</div>
+</center>
 	<!-- 모달팝업 -->
 	<div id="popup" class="w3-modal">
-		<div class="w3-modal-content" style="width: 900px; height: 600px;">
+		<div class="w3-modal-content" style="width: 900px; height: 600px; ">
 			<div class="w3-center">
 				<br> <span
 					onclick="document.getElementById('popup').style.display='none'"
