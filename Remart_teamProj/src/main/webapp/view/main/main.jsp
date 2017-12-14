@@ -307,8 +307,7 @@ a {
 		if (httpRequest.readyState == 4) {
 			if (httpRequest.status == 200) {
 				document.getElementById("like"+num).innerHTML = httpRequest.responseText;
-				document.getElementById("poplike"+num).innerHTML = httpRequest.responseText;
-
+				document.getElementById("poplike"+num).innerHTML = '<img src="/Remart_teamProj/images/icon/like_after.png" style="width: 17px;">';
 			}
 		}
 	}
@@ -369,7 +368,10 @@ function changediv(mydiv, nextdiv){
 function replecommit(form,feed_id) {
 	 var id='<c:out value="${id_popup}"/>';
 		var content=form.reple.value;
-		
+		if(id=='id_not_exist'){
+			needlogin();
+			return;
+		}
 		if(content=='')
 			alert("입력하신 댓글이 없습니다.");
 		else {

@@ -42,7 +42,8 @@
 			<br> <br> <img
 				src="<%=request.getContextPath()%>/fileSave/${img}"
 				style="width: 350px; height: 350px;">
-				${feed.content[cindex]}
+				<p>
+				${feed.content[cindex]}</p>
 		</div>
 	</c:forEach>
 	<!-- ÁÁ¾Æ¿ä ºÏ¸¶Å© -->
@@ -102,7 +103,6 @@ ${food }
 </div>
 <!-- ´ñ±Û -->
 <div id="reple" class="" style="float: left; margin-left: 30px; margin-top:40px;">
-	<c:if test="${id!='id_not_exist' }">
 		<form name="repleform">
 			<input type="text" name="reple"
 				style="font-size: 12px; width: 200px;"> <input value="reple"
@@ -110,7 +110,6 @@ ${food }
 				class="w3-button w3-white w3-hover-white w3-padding-small"
 				onclick="replecommit(this.form,'${feed.feed_id}');this.form.reple.value='';">
 		</form>
-	</c:if>
 	<div id="showreple">
 		<c:forEach var="reple" items="${feed.replelist }">
 ${reple.id } ${reple.content }<br>
