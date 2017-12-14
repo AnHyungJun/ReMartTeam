@@ -18,35 +18,8 @@
 			</div>
 			<img src="<%=request.getContextPath()%>/fileSave/${feed.img_name[0]}"
 				style="width: 350px; height: 350px; display: block;">
-			<div style="margin-top: 20px;"></div>
-		</div>
-	</c:if>
-	<!-- 다음컨텐츠 -->
-	<c:forEach var="img" items="${feed.img_name }" begin="1" varStatus="st">
-		<c:set var="cindex" value="${st.count }" />
-		<div id="changecontent${st.count}" style="display: none;">
-			<div class="w3-center">
-				<button id="leftpage" style="float: left;"
-					onclick="changediv('changecontent${st.count}','changecontent${st.count-1}')"
-					class="w3-button w3-white w3-hover-white">
-					<b>〈 </b>
-				</button>
-				<c:if test="${!st.last }">
-					<button id="rightpage" style="float: right" type="button"
-						class="w3-button w3-white w3-hover-white"
-						onclick="changediv('changecontent${st.count}','changecontent${st.count+1}')">
-						<b> 〉 </b>
-					</button>
-				</c:if>
-			</div>
-			<br> <br> <img
-				src="<%=request.getContextPath()%>/fileSave/${img}"
-				style="width: 350px; height: 350px;">
-				<p>
-				${feed.content[cindex]}</p>
-		</div>
-	</c:forEach>
-	<!-- 좋아요 북마크 -->
+				<div style="margin-top:15px;"></div>
+				<!-- 좋아요 북마크 -->
 	<div id="like_bookmark">
 		<!-- 로그인 안했을 때 -->
 		<c:if test="${id=='id_not_exist' }">
@@ -83,6 +56,74 @@
 			</c:if>
 		</c:if>
 	</div>
+			<div style="margin-top: 20px;"></div>
+		</div>
+	</c:if>
+	<!-- 다음컨텐츠 -->
+	<c:forEach var="img" items="${feed.img_name }" begin="1" varStatus="st">
+		<c:set var="cindex" value="${st.count }" />
+		<div id="changecontent${st.count}" style="display: none;">
+			<div class="w3-center">
+				<button id="leftpage" style="float: left;"
+					onclick="changediv('changecontent${st.count}','changecontent${st.count-1}')"
+					class="w3-button w3-white w3-hover-white">
+					<b>〈 </b>
+				</button>
+				<c:if test="${!st.last }">
+					<button id="rightpage" style="float: right" type="button"
+						class="w3-button w3-white w3-hover-white"
+						onclick="changediv('changecontent${st.count}','changecontent${st.count+1}')">
+						<b> 〉 </b>
+					</button>
+				</c:if>
+			</div>
+			
+			<br> <br> <img
+				src="<%=request.getContextPath()%>/fileSave/${img}"
+				style="width: 350px; height: 350px;">
+				<div style="margin-top:15px;"></div>
+				<!-- 좋아요 북마크 -->
+	<div id="like_bookmark">
+		<!-- 로그인 안했을 때 -->
+		<c:if test="${id=='id_not_exist' }">
+			<img onclick="needlogin()"
+				src="<%=request.getContextPath()%>/images/icon/like_before.png"
+				style="width: 17px; cursor: pointer;">
+			<img onclick="needlogin()"
+				src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+				style="width: 30px; cursor: pointer;">
+			<div style="margin-top: 8px"></div>
+		</c:if>
+		<!-- 로그인 했을 때 -->
+		<c:if test="${id!='id_not_exist' }">
+			<c:if test="${feed.likestate==0 }">
+				<label id="poplike${feed.feed_id }"> <img
+					onclick="like(${feed.feed_id},'like');"
+					src="<%=request.getContextPath()%>/images/icon/like_before.png"
+					style="width: 17px; cursor: pointer;">
+				</label>
+			</c:if>
+			<c:if test="${feed.likestate>=1 }">
+				<label id="poplike${feed.feed_id }"> <img
+					src="<%=request.getContextPath()%>/images/icon/like_after.png"
+					style="width: 17px;"></label>
+			</c:if>
+			<c:if test="${feed.bookmarkstate==0 }">
+				<img onclick="like(${feed.feed_id},'bookmark')"
+					src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+					style="width: 30px; cursor: pointer;">
+			</c:if>
+			<c:if test="${feed.bookmarkstate>=1 }">
+				<img src="<%=request.getContextPath()%>/images/icon/bookmark.png"
+					style="width: 30px;">
+			</c:if>
+		</c:if>
+	</div>
+				<p>
+				${feed.content[cindex]}</p>
+		</div>
+	</c:forEach>
+	
 	<div style="margin-top: 10px;"></div>
 	<!-- 음식이름 -->
 	<div id="recipe_name">
