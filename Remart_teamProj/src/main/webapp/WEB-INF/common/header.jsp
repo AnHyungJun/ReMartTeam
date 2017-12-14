@@ -165,7 +165,7 @@ body, h1, h2, h3, h4, h5, h6 {
 									onmouseover="this.style.textDecoration='none';"
 									onmouseout="this.style.textDecoration='none';">장바구니</a>
 								| <a onclick="openChat()"
-								style="font-size: 12px; text-decoration: none;"
+								style="font-size: 12px; text-decoration: none; cursor: pointer;"
 								class="con_link"
 								onmouseover="this.style.textDecoration='none';"
 								onmouseout="this.style.textDecoration='none';">채팅</a>

@@ -20,17 +20,21 @@ public class MybatisChatDBBean extends MybatisConnector{
 		HashMap map = new HashMap();
 		map.put("id", id);
 		
+		String x = "";
 		try {
 			String chat_id = sqlSession.selectOne(namespace + ".getChatId",map);
 			System.out.println("chat_id : " + chat_id);
 			map.put("chat_id", chat_id);
-			
-			String x = "";
-			x = sqlSession.selectOne(namespace + ".getChatContent", map);
-			return x;
+			if(chat_id != null) {
+				x = sqlSession.selectOne(namespace + ".getChatContent", map);
+				
+			}else {
+				x = null;
+			}
 			
 		} finally {
 			sqlSession.close();
+			return x;
 		}
 	}
 	
