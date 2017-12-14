@@ -59,7 +59,7 @@
 	background-position: 0 bottom;
 }
 
-.star>.input>label:hover ~label{
+.star>.input>label:hover ~label {
 	background-image: none;
 }
 
@@ -125,41 +125,52 @@
 }
 </style>
 <meta charset="UTF-8">
-      <script src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=v6uq3Nmidx6gdSOddr1A&submodules=geocoder"></script>
+<script
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=v6uq3Nmidx6gdSOddr1A&submodules=geocoder"></script>
 
 
 <script>
-	function roadMapLoad(){
+	function roadMapLoad() {
 		var map = new naver.maps.Map('map');
-	      var myaddress = '${article.roadAddr}';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
-	      naver.maps.Service.geocode({address: myaddress}, function(status, response) {
-	          if (status !== naver.maps.Service.Status.OK) {
-	              return alert(myaddress + '의 검색 결과가 없거나 기타 네트워크 에러');
-	          }
-	          var result = response.result;
-	          // 검색 결과 갯수: result.total
-	          // 첫번째 결과 결과 주소: result.items[0].address
-	          // 첫번째 검색 결과 좌표: result.items[0].point.y, result.items[0].point.x
-	          var myaddr = new naver.maps.Point(result.items[0].point.x, result.items[0].point.y);
-	          map.setCenter(myaddr); // 검색된 좌표로 지도 이동
-	          // 마커 표시
-	          var marker = new naver.maps.Marker({
-	            position: myaddr,
-	            map: map
-	          });
-	          // 마커 클릭 이벤트 처리
-	          naver.maps.Event.addListener(marker, "click", function(e) {
-	            if (infowindow.getMap()) {
-	                infowindow.close();
-	            } else {
-	                infowindow.open(map, marker);
-	            }
-	          });
-	          // 마크 클릭시 인포윈도우 오픈
-	          var infowindow = new naver.maps.InfoWindow({
-	              content: '<h4> [네이버 개발자센터]</h4><a href="https://developers.naver.com" target="_blank"><img src="https://developers.naver.com/inc/devcenter/images/nd_img.png"></a>'
-	          });
-	      });
+		var myaddress = '${article.roadAddr}';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
+		naver.maps.Service
+				.geocode(
+						{
+							address : myaddress
+						},
+						function(status, response) {
+							if (status !== naver.maps.Service.Status.OK) {
+								return alert(myaddress
+										+ '의 검색 결과가 없거나 기타 네트워크 에러');
+							}
+							var result = response.result;
+							// 검색 결과 갯수: result.total
+							// 첫번째 결과 결과 주소: result.items[0].address
+							// 첫번째 검색 결과 좌표: result.items[0].point.y, result.items[0].point.x
+							var myaddr = new naver.maps.Point(
+									result.items[0].point.x,
+									result.items[0].point.y);
+							map.setCenter(myaddr); // 검색된 좌표로 지도 이동
+							// 마커 표시
+							var marker = new naver.maps.Marker({
+								position : myaddr,
+								map : map
+							});
+							// 마커 클릭 이벤트 처리
+							naver.maps.Event.addListener(marker, "click",
+									function(e) {
+										if (infowindow.getMap()) {
+											infowindow.close();
+										} else {
+											infowindow.open(map, marker);
+										}
+									});
+							// 마크 클릭시 인포윈도우 오픈
+							var infowindow = new naver.maps.InfoWindow(
+									{
+										content : '<h4> [네이버 개발자센터]</h4><a href="https://developers.naver.com" target="_blank"><img src="https://developers.naver.com/inc/devcenter/images/nd_img.png"></a>'
+									});
+						});
 
 	}
 </script>
@@ -167,93 +178,88 @@
 </head>
 <body onload="roadMapLoad()">
 
-	<div style="margin-top: 200px;"></div>
+	<div style="margin-top: 160px;"></div>
 	<center>
-	
+
 		<div class="w3-container">
-			<table class="w3-table-all w3-bordered w3-white"
+			<table class="w3-table w3-bordered w3-white"
 				style="width: 900px; font-size: 12px;">
 				<tr height="30">
 					<td align="center">글번호</td>
-					<td align="center" >${article.restaurant_recommand_id}</td>
+					<td align="center">${article.restaurant_recommand_id}</td>
 
 				</tr>
 				<tr height="30">
 					<td width="125">작성자</td>
 					<td width="125" align="center">${article.id}</td>
 					<td width="125" align="center">작성일</td>
-					<td align="center" width="125"><fmt:formatDate value="${article.reg_date}" pattern="yyyy-MM-dd"/></td>
+					<td align="center" width="125"><fmt:formatDate
+							value="${article.reg_date}" pattern="yyyy-MM-dd" /></td>
 				</tr>
 				<tr height="30">
 					<td align="center" width="125">글제목</td>
 					<td align="center" width="375" colspan="3">${article.subject}</td>
 				</tr>
 				<tr height="30">
+				<td></td> 
+					<td align="left" width="375"
+						colspan="3"><pre>${article.content}</pre></td>
 
-					<td align="left" width="375" style="vertical-align: middle;"
-						colspan="3"><pre>
-         ${article.content}</pre></td>
-         			
 				</tr>
 				<tr>
-					<td>
-						　
+					<td></td> 
+					<td>${article.roadAddr}
+						<div id="map" style="width: 100%; height: 400px; margin-top:10px; margin-bottom:10px;"></div>
 					</td>
-					<td>
-						${article.roadAddr}
-						<div id="map" style="width:100%;height:400px;"></div>
-					</td>
-					
+
 				</tr>
 				<tr>
-				
-				<form action="contentPro" method="post">
-				<div style="margin-top: 20px;">
-				<td style="vertical-align: middle;">
-					 <span
-						class="star"> <span class="input"> <input
-							type="radio" name="star" id="p1" value="1"><label
-							for="p1">1</label> <input type="radio" name="star" id="p2"
-							value="2"><label for="p2">2</label> <input type="radio"
-							name="star" id="p3" value="3"><label for="p3">3</label> <input
-							type="radio" name="star" id="p4" value="4"><label
-							for="p4">4</label> <input type="radio" name="star" id="p5"
-							value="5"><label for="p5">5</label> <input type="radio"
-							name="star" id="p6" value="6"><label for="p6">6</label> <input
-							type="radio" name="star" id="p7" value="7"><label
-							for="p7">7</label> <input type="radio" name="star" id="p8"
-							value="8"><label for="p8">8</label> <input type="radio"
-							name="star" id="p9" value="9"><label for="p9">9</label> <input
-							type="radio" name="star" id="p10" value="10"><label
-							for="p10">10</label>
-					</span> <output for="star">
-							<b>0</b> 점
-						</output>
-					</span>
-					</td>
-					<td style="vertical-align: middle;">
-					한줄평 <input type="text" name="starcontent" size="50">
-					<input type="hidden" name="num" value="${article.restaurant_recommand_id}">
-					<input type="hidden" name="pageNum" value="${pageNum}">
-					<td>
-					<td style="font-size:11px;">
-					<input type="submit" class="w3-button w3-light-grey w3-hover-light-grey w3-padding-small"  value="등록" >
-					</td>
-				</div>
-				
-				</form>
-				
+
+					<form action="contentPro" method="post">
+						<div style="margin-top: 20px;">
+							<td style="vertical-align: middle;"><span class="star">
+									<span class="input"> <input type="radio" name="star"
+										id="p1" value="1"><label for="p1">1</label> <input
+										type="radio" name="star" id="p2" value="2"><label
+										for="p2">2</label> <input type="radio" name="star" id="p3"
+										value="3"><label for="p3">3</label> <input
+										type="radio" name="star" id="p4" value="4"><label
+										for="p4">4</label> <input type="radio" name="star" id="p5"
+										value="5"><label for="p5">5</label> <input
+										type="radio" name="star" id="p6" value="6"><label
+										for="p6">6</label> <input type="radio" name="star" id="p7"
+										value="7"><label for="p7">7</label> <input
+										type="radio" name="star" id="p8" value="8"><label
+										for="p8">8</label> <input type="radio" name="star" id="p9"
+										value="9"><label for="p9">9</label> <input
+										type="radio" name="star" id="p10" value="10"><label
+										for="p10">10</label>
+								</span> <output for="star">
+										<b>0</b> 점
+									</output>
+							</span></td>
+							<td style="vertical-align: middle;">한줄평 <input type="text"
+								name="starcontent" size="50"> <input type="hidden"
+								name="num" value="${article.restaurant_recommand_id}"> <input
+								type="hidden" name="pageNum" value="${pageNum}">
+							<td>
+							<td style="font-size: 11px;"><input type="submit"
+								class="w3-button w3-light-grey w3-hover-light-grey w3-padding-small"
+								value="등록"></td>
+						</div>
+
+					</form>
+
 				</tr>
 				<tr>
-					<td>
-						
-						<c:forEach items="${starcontentList }" var="starcontent">
-						
+				<td></td> <td><c:forEach items="${starcontentList }" var="starcontent">
+
 							<b>${starcontent.star }</b>점
 				${starcontent.id }님
 				${starcontent.starcontent }<br>
-			</c:forEach>
-					</td>
+						</c:forEach></td> <td></td> 
+					<td></td>
+						
 				</tr>
 
 				<tr height="30">
@@ -263,43 +269,37 @@
 						onclick="document.location.href='list?pageNum=${pageNum}&editorid=${article.id }'"></td>
 				</tr>
 			</table>
-			
+
 		</div>
 	</center>
 </body>
 <script>
-//star rating
-var starRating = function(){
-  var $star = $(".star"),
-      $result = $star.find("output>b");
-  $(document)
-    .on("focusin", ".star>.input", function(){
-    $(this).addClass("focus");
-  })
-    .on("focusout", ".star>.input", function(){
-    var $this = $(this);
-    setTimeout(function(){
-      if($this.find(":focus").length === 0){
-        $this.removeClass("focus");
-      }
-    }, 100);
-  })
-    .on("change", ".star :radio", function(){
-    $result.text($(this).next().text());
-  })
-    .on("mouseover", ".star label", function(){
-    $result.text($(this).text());
-  })
-    .on("mouseleave", ".star>.input", function(){
-    var $checked = $star.find(":checked");
-    if($checked.length === 0){
-      $result.text("0");
-    } else {
-      $result.text($checked.next().text());
-    }
-  });
-};
-starRating();
+	//star rating
+	var starRating = function() {
+		var $star = $(".star"), $result = $star.find("output>b");
+		$(document).on("focusin", ".star>.input", function() {
+			$(this).addClass("focus");
+		}).on("focusout", ".star>.input", function() {
+			var $this = $(this);
+			setTimeout(function() {
+				if ($this.find(":focus").length === 0) {
+					$this.removeClass("focus");
+				}
+			}, 100);
+		}).on("change", ".star :radio", function() {
+			$result.text($(this).next().text());
+		}).on("mouseover", ".star label", function() {
+			$result.text($(this).text());
+		}).on("mouseleave", ".star>.input", function() {
+			var $checked = $star.find(":checked");
+			if ($checked.length === 0) {
+				$result.text("0");
+			} else {
+				$result.text($checked.next().text());
+			}
+		});
+	};
+	starRating();
 </script>
 </html>
 
