@@ -149,15 +149,15 @@ a {
 						style="display: inline; width: 24.85%; height: 310px; float: left; border: 1px solid #ddd; margin-left: 1px; margin-bottom: 1px;">
 						
 						<c:if test="${articleFood.type eq '0' }">
-						<img alt="사진"
+						<img alt="사진" 
 							src="<%=request.getContextPath() %>/images/food/${articleFood.name }.jpg"
-							width="80%" style="margin-top: 8px;">
+							width="80%" style="margin-top: 8px;" height="60%">
 							
 						</c:if>	
 						<c:if test="${articleFood.type ne '0' }">
 						<img alt="사진"
 							src="<%=request.getContextPath() %>/fileSave/${articleFood.type }"
-							width="80%" style="margin-top: 8px;">
+							width="80%" style="margin-top: 8px;" height="60%">
 						</c:if>	
 						<p style="font-size: 13px;">${articleFood.name }</p>
 						<p style="font-size: 13px;">${articleFood.price }원</p>
@@ -183,8 +183,7 @@ a {
 					</div>
 				</c:forEach>
 			</div>
-
-
+		<div style="margin-bottom: 50px"></div>
 
 		</div>
 		<!-- shopping_wrap end -->
