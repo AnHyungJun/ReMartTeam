@@ -51,11 +51,12 @@ PUBLIC 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		desc
 	</select>
 	<select id="getfeednol" parameterType="int" resultType="feed">
-		select *
-		from
-		feed where feed_id=#{feed_id} order
-		by
-		reg_date desc
+			select
+		feed_id,id,like_num,reg_date,recipe_name,
+		(select grade from r_member where id=f.id) feed_grade
+		from feed f where f.feed_id=#{feed_id}
+		order by reg_date
+		desc
 	</select>
 	<!-- <select id="getfeeds" resultType="feed"> select * from feed order by 
 		reg_date desc </select> -->
