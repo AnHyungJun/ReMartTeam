@@ -39,7 +39,7 @@ public class WebViewer {
    }
    
    public BufferedReader readHDFS(String inhadoop) throws IOException {
-      String hdfsname = "hdfs://localhost:50071/user/HuyngJun" + inhadoop;
+      String hdfsname = "hdfs://localhost:50071/user/sist48" + inhadoop;
       System.out.println(hdfsname);
       
       Configuration conf = new Configuration();
@@ -51,7 +51,7 @@ public class WebViewer {
    }
    
    public void writeHDFS(String line, String outhadoop) {
-      String hdfsname = "hdfs://localhost:50071/user/HuyngJun" + outhadoop;
+      String hdfsname = "hdfs://localhost:50071/user/sist48" + outhadoop;
       System.out.println(hdfsname);
       
       try {

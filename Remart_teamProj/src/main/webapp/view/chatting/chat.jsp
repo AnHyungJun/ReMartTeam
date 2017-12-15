@@ -27,7 +27,7 @@
 </body>
     <script type="text/javascript">
         var textarea = document.getElementById("messageWindow");
-        var webSocket = new WebSocket('ws://localhost:8080/Remart_teamProj/broadcasting');
+        var webSocket = new WebSocket('ws://211.238.142.48:8080/Remart_teamProj/broadcasting');
         var inputMessage = document.getElementById('inputMessage');
         var id = document.getElementById('id');
     webSocket.onerror = function(event) {

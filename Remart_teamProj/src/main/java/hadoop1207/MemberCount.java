@@ -13,20 +13,20 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 public class MemberCount {
 	public static void main(String[] args) throws Exception {
 	    Configuration conf = new Configuration();
-	    // ����� ������ ��� Ȯ��  hdfs://211.238.142.247:9000/user/hadoop/dir5/
-		  String inhadoop="hdfs://localhost:50071/user/HuyngJun/ch01/member.csv";
+	   
+		  String inhadoop="hdfs://localhost:50071/user/sist48/ch01/member.csv";
 	      String outhadoop 
-	      = "hdfs://localhost:50071/user/HuyngJun/ch01/Member";
+	      = "hdfs://localhost:50071/user/sist48/ch01/Member";
 	   
 	      Job job = new Job(conf, "FoodCount");
-	      // 입출력 데이터 경로 설정
+	      
 	      FileInputFormat.addInputPath(job, new Path(inhadoop));
-	      FileOutputFormat.setOutputPath(job, new Path(outhadoop));    // Job 클래스 설정
-	      job.setJarByClass(MemberCount.class);    // Mapper 클래스 설정
-	      job.setMapperClass(MemberCountMapper.class);    // Reducer 클래스 설정
-	      job.setReducerClass(DelayCountReducer.class);    // 입출력 데이터 포맷 설정
+	      FileOutputFormat.setOutputPath(job, new Path(outhadoop));    
+	      job.setJarByClass(MemberCount.class);    // Mapper 
+	      job.setMapperClass(MemberCountMapper.class);    // Reducer 
+	      job.setReducerClass(DelayCountReducer.class);    //
 	      job.setInputFormatClass(TextInputFormat.class);
-	      job.setOutputFormatClass(TextOutputFormat.class);    // 출력키 및 출력값 유형 설정
+	      job.setOutputFormatClass(TextOutputFormat.class);    // 
 
 	    job.setOutputKeyClass(Text.class);
 	    job.setOutputValueClass(IntWritable.class);

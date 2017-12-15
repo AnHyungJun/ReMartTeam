@@ -19,7 +19,7 @@ public class ReadHadoopFile {
 	 
 	  public  void toDisplay() {
 		    try {
-		String inhadoop="hdfs://localhost:50071/user/HuyngJun/ch01/dasdsa.txt";
+		String inhadoop="hdfs://localhost:50071/user/sist48/ch01/dasdsa.txt";
 		Configuration conf = new Configuration();
 		conf.set("fs.defaultFS", inhadoop); 
 		FileSystem fileSystem = FileSystem.get(conf);

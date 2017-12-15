@@ -194,157 +194,157 @@ ModelAndView mv = new ModelAndView();
 	public ModelAndView salesStatusForm(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable{	
 	
-	
-		mv.clear();
-		String type=request.getParameter("type");
-		System.out.println(type);
-		if(type==null) type="t";
-		
-		
-		if(type.equals("t")){
-			
-			RConnection c = new RConnection();
-			
-			String path = request.getRealPath("/")+ "viewImg\\";
-		List<String> li = wv.toList("/ch01/Arr/part-r-00000");
-		PrintStream ps = null;
-		FileOutputStream fos = null;
-		fos = new FileOutputStream("C:/r_temp/tmp.csv");
-		ps = new PrintStream(fos);
-		Iterator it = li.iterator();
-	      while(it.hasNext()) {
-	         String line = (String) it.next();
-	         line = line.replace(",", "-");
-	         line = line.replace("\t", ",");
-	         ps.print(line + "\r\n");
-	      }
-	      ps.flush();
-	      ps.close();
-	      path = path.replace("\\", "/");
-	      c.parseAndEval("setwd('c:/r_temp')");
-	      c.parseAndEval("library(KoNLP)");
-	      c.parseAndEval("library(ggplot2)");
-	      c.parseAndEval("data2 = read.csv('tmp.csv', header=F)");
-	      c.parseAndEval(" month=data2[,1]");
-	      c.parseAndEval("price=data2[,2]");
-	      c.parseAndEval(" pp=ggplot(data2, aes(x=month, y=price,group =1))+geom_line(lwd=1,aes(color=5))+geom_point(size=3,shape=19,aes(color=1))+ggtitle(\"ÏõîÎ≥Ñ Îß§Ï∂úÌòÑÌô©\")");
-	      c.parseAndEval("png(\"" + path + "p.png\", width=1300,    height=550,     pointsize=13 )");
-	      c.parseAndEval("plot(pp)"); 
-	      c.parseAndEval("dev.off()");
-	      c.close();
-		}else if(type.equals("sex")){
-			RConnection c = new RConnection();
-			
-			String path = request.getRealPath("/")+ "viewImg\\";
-			List<String> li = wv.toList("/ch01/Member/part-r-00000");
-			PrintStream ps = null;
-			PrintStream ps2 = null;
-			FileOutputStream fos = null;
-			FileOutputStream fos2 = null;
-			fos = new FileOutputStream("C:/r_temp/membersex.csv");
-			
-			ps = new PrintStream(fos);
-		
-		
-			Iterator it = li.iterator();
-			while(it.hasNext()) {
-				String line = (String) it.next();
-				line = line.replace("\t", ",");	
-				ps.print(line + "\r\n");
-				
-			}
-		
-			ps.flush();
-			ps.close();
-			path = path.replace("\\", "/");
-			c.parseAndEval("setwd('c:/r_temp')");
-			c.parseAndEval("library(KoNLP)");
-			c.parseAndEval("library(ggplot2)");
-			c.parseAndEval("data2 = read.csv('membersex.csv', header=F,fileEncoding=\"UTF-8\")");
-			c.parseAndEval("sex=data2[,1]");
-			c.parseAndEval("num=data2[,2]");
-			c.parseAndEval("group = c(\"M\", \"F\")");
-			c.parseAndEval("bp<-ggplot(data2, aes(x=\"\", y=num, fill=group))+ geom_bar(width = 1, stat = \"identity\") + coord_polar(\"y\", start=0)+ggtitle(\"ÎÇ®ÎÖÄÏÑ±ÎπÑ\")");
-			c.parseAndEval("png(\"" + path + "p.png\", width=1300,    height=550,     pointsize=13 )");
-			c.parseAndEval("plot(bp)"); 
-			c.parseAndEval("dev.off()");
-			c.close();
-			}else{
-				mv.addObject("tt", 1);
-				RConnection c = new RConnection();
-			
-			String path = request.getRealPath("/")+ "viewImg\\";
-			List<String> li = wv.toList("/ch01/Foodlowhigh1/part-r-00000");
-			PrintStream ps = null;
-			PrintStream ps2 = null;
-			FileOutputStream fos = null;
-			FileOutputStream fos2 = null;
-			fos = new FileOutputStream("C:/r_temp/foodhigh.csv");
-			fos2 = new FileOutputStream("C:/r_temp/foodlow.csv");
-			ps = new PrintStream(fos);
-			ps2 = new PrintStream(fos2);
-			li.sort(new Comparator<String>() {
 
-			@Override
-			public int compare(String o1, String o2) {
-				// TODO Auto-generated method stub
-				
-				String t1 = o1.substring(o1.lastIndexOf("\t") + 1, o1.length());
-				String t2 = o2.substring(o2.lastIndexOf("\t") + 1, o2.length());
-				if (t1.length() == 1)
-					t1 = "0" + t1;
-				if (t2.length() == 1)
-					t2 = "0" + t2;
-				return t1.compareTo(t2);
-			}
-		});
-		for(int i=li.size()-6;i>4;i--){
-			li.remove(i);
-		}
-		int cnt=0;
-		Iterator it = li.iterator();
-	      while(it.hasNext()) {
+	      mv.clear();
+	      String type=request.getParameter("type");
+	      System.out.println(type);
+	      if(type==null) type="t";
+	      
+	      
+	      if(type.equals("t")){
 	         
-	    	  String line = (String) it.next();
-	        
-	         line = line.replace(",", " ");
-	         line = line.replace("\t", ",");
-	         if(cnt<5)
-	        	 ps.print(line + "\r\n");
-	         else
-	        	 ps2.print(line + "\r\n");
-	         cnt++;
+	         RConnection c = new RConnection();
+	         
+	         String path = request.getRealPath("/")+ "viewImg\\";
+	      List<String> li = wv.toList("/ch01/Arr/part-r-00000");
+	      PrintStream ps = null;
+	      FileOutputStream fos = null;
+	      fos = new FileOutputStream("C:/r_temp/tmp.csv");
+	      ps = new PrintStream(fos);
+	      Iterator it = li.iterator();
+	         while(it.hasNext()) {
+	            String line = (String) it.next();
+	            line = line.replace(",", "-");
+	            line = line.replace("\t", ",");
+	            ps.print(line + "\r\n");
+	         }
+	         ps.flush();
+	         ps.close();
+	         path = path.replace("\\", "/");
+	         c.parseAndEval("setwd('c:/r_temp')");
+	         c.parseAndEval("library(KoNLP)");
+	         c.parseAndEval("library(ggplot2)");
+	         c.parseAndEval("data2 = read.csv('tmp.csv', header=F)");
+	         c.parseAndEval(" month=data2[,1]");
+	         c.parseAndEval("price=data2[,2]");
+	         c.parseAndEval(" pp=ggplot(data2, aes(x=month, y=price,group =1))+geom_line(lwd=1,aes(color=5))+geom_point(size=3,shape=19,aes(color=1))+ggtitle(\"ø˘∫∞ ∏≈√‚«ˆ»≤\")");
+	         c.parseAndEval("png(\"" + path + "p.png\", width=1300,    height=550,     pointsize=13 )");
+	         c.parseAndEval("plot(pp)"); 
+	         c.parseAndEval("dev.off()");
+	         c.close();
+	      }else if(type.equals("sex")){
+	         RConnection c = new RConnection();
+	         
+	         String path = request.getRealPath("/")+ "viewImg\\";
+	         List<String> li = wv.toList("/ch01/Member/part-r-00000");
+	         PrintStream ps = null;
+	         PrintStream ps2 = null;
+	         FileOutputStream fos = null;
+	         FileOutputStream fos2 = null;
+	         fos = new FileOutputStream("C:/r_temp/membersex.csv");
+	         
+	         ps = new PrintStream(fos);
+	      
+	      
+	         Iterator it = li.iterator();
+	         while(it.hasNext()) {
+	            String line = (String) it.next();
+	            line = line.replace("\t", ",");   
+	            ps.print(line + "\r\n");
+	            
+	         }
+	      
+	         ps.flush();
+	         ps.close();
+	         path = path.replace("\\", "/");
+	         c.parseAndEval("setwd('c:/r_temp')");
+	         c.parseAndEval("library(KoNLP)");
+	         c.parseAndEval("library(ggplot2)");
+	         c.parseAndEval("data2 = read.csv('membersex.csv', header=F,fileEncoding=\"UTF-8\")");
+	         c.parseAndEval("sex=data2[,1]");
+	         c.parseAndEval("num=data2[,2]");
+	         c.parseAndEval("group = c(\"M\", \"F\")");
+	         c.parseAndEval("bp<-ggplot(data2, aes(x=\"\", y=num, fill=group))+ geom_bar(width = 1, stat = \"identity\") + coord_polar(\"y\", start=0)+ggtitle(\"≥≤≥‡º∫∫Ò\")");
+	         c.parseAndEval("png(\"" + path + "p.png\", width=1300,    height=550,     pointsize=13 )");
+	         c.parseAndEval("plot(bp)"); 
+	         c.parseAndEval("dev.off()");
+	         c.close();
+	         }else{
+	            mv.addObject("tt", 1);
+	            RConnection c = new RConnection();
+	         
+	         String path = request.getRealPath("/")+ "viewImg\\";
+	   /*      List<String> li = wv.toList("/ch01/Foodlowhigh1/part-r-00000");
+	         PrintStream ps = null;
+	         PrintStream ps2 = null;
+	         FileOutputStream fos = null;
+	         FileOutputStream fos2 = null;
+	         fos = new FileOutputStream("C:/r_temp/foodhigh.csv");
+	         fos2 = new FileOutputStream("C:/r_temp/foodlow.csv");
+	         ps = new PrintStream(fos);
+	         ps2 = new PrintStream(fos2);
+	         li.sort(new Comparator<String>() {
+
+	         @Override
+	         public int compare(String o1, String o2) {
+	            // TODO Auto-generated method stub
+	            
+	            String t1 = o1.substring(o1.lastIndexOf("\t") + 1, o1.length());
+	            String t2 = o2.substring(o2.lastIndexOf("\t") + 1, o2.length());
+	            if (t1.length() == 1)
+	               t1 = "0" + t1;
+	            if (t2.length() == 1)
+	               t2 = "0" + t2;
+	            return t1.compareTo(t2);
+	         }
+	      });
+	      for(int i=li.size()-6;i>4;i--){
+	         li.remove(i);
 	      }
-	      ps2.flush();
-	      ps2.close();
-	      ps.flush();
-	      ps.close();
-	      path = path.replace("\\", "/");
-	      c.parseAndEval("setwd('c:/r_temp')");
-	      c.parseAndEval("library(KoNLP)");
-	      c.parseAndEval("library(ggplot2)");
-	      c.parseAndEval("data2 = read.csv('foodhigh.csv', header=F,fileEncoding=\"UTF-8\")");
-	      c.parseAndEval(" food=data2[,1]");
-	      c.parseAndEval("qty=data2[,2]");
-	      c.parseAndEval("pp=ggplot(data=data2, aes(x=food, y=qty)) + geom_bar(stat='identity') +ggtitle(\"ÏµúÏ†Ä ÌåêÎß§ ÌíàÎ™©\")");
-	      c.parseAndEval("png(\"" + path + "p.png\", width=1300,    height=550,     pointsize=13 )");
-	      c.parseAndEval("plot(pp)"); 
-	      c.parseAndEval("dev.off()");
+	      int cnt=0;
+	      Iterator it = li.iterator();
+	         while(it.hasNext()) {
+	            
+	            String line = (String) it.next();
+	           
+	            line = line.replace(",", " ");
+	            line = line.replace("\t", ",");
+	            if(cnt<5)
+	               ps.print(line + "\r\n");
+	            else
+	               ps2.print(line + "\r\n");
+	            cnt++;
+	         }
+	         ps2.flush();
+	         ps2.close();
+	         ps.flush();
+	         ps.close();*/
+	         path = path.replace("\\", "/");
+	         c.parseAndEval("setwd('c:/r_temp')");
+	         c.parseAndEval("library(KoNLP)");
+	         c.parseAndEval("library(ggplot2)");
+	         c.parseAndEval("data2 = read.csv('foodhigh.csv', header=F,fileEncoding=\"UTF-8\")");
+	         c.parseAndEval(" food=data2[,1]");
+	         c.parseAndEval("qty=data2[,2]");
+	         c.parseAndEval("pp=ggplot(data=data2, aes(x=food, y=qty)) + geom_bar(stat='identity') +ggtitle(\"√÷¿˙ ∆«∏≈ «∞∏Ò\")");
+	         c.parseAndEval("png(\"" + path + "p.png\", width=1300,    height=550,     pointsize=13 )");
+	         c.parseAndEval("plot(pp)"); 
+	         c.parseAndEval("dev.off()");
+	         
+	         c.parseAndEval("data2 = read.csv('foodlow.csv', header=F,fileEncoding=\"UTF-8\")");
+	         c.parseAndEval(" food=data2[,1]");
+	         c.parseAndEval("qty=data2[,2]");
+	         c.parseAndEval("pp=ggplot(data=data2, aes(x=food, y=qty)) + geom_bar(stat='identity') +ggtitle(\"√÷∞Ì ∆«∏≈ «∞∏Ò\")");
+	         c.parseAndEval("png(\"" + path + "k.png\", width=1300,    height=550,     pointsize=13 )");
+	         c.parseAndEval("plot(pp)"); 
+	         c.parseAndEval("dev.off()");
+	         
+	         c.close();
+	      }
 	      
-	      c.parseAndEval("data2 = read.csv('foodlow.csv', header=F,fileEncoding=\"UTF-8\")");
-	      c.parseAndEval(" food=data2[,1]");
-	      c.parseAndEval("qty=data2[,2]");
-	      c.parseAndEval("pp=ggplot(data=data2, aes(x=food, y=qty)) + geom_bar(stat='identity') +ggtitle(\"ÏµúÍ≥† ÌåêÎß§ ÌíàÎ™©\")");
-	      c.parseAndEval("png(\"" + path + "k.png\", width=1300,    height=550,     pointsize=13 )");
-	      c.parseAndEval("plot(pp)"); 
-	      c.parseAndEval("dev.off()");
 	      
-	      c.close();
-		}
-		
-		
-		mv.setViewName("admin/salesStatusForm");
-		return mv;
+	      mv.setViewName("admin/salesStatusForm");
+	      return mv;
 	}
 	
 	/*@RequestMapping(value="makefile")

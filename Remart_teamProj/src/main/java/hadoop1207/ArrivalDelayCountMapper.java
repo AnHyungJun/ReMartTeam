@@ -10,9 +10,9 @@ import java.io.IOException;
 public class ArrivalDelayCountMapper extends
   Mapper<LongWritable, Text, Text, IntWritable> {
 
-  // map 출력�?
+
   private final static IntWritable outputValue = new IntWritable(1);
-  // map 출력?��
+
   private Text outputKey = new Text();
 
   public void map(LongWritable key, Text value, Context context)
@@ -20,7 +20,7 @@ public class ArrivalDelayCountMapper extends
 
     AirlinePerformanceParser parser = new AirlinePerformanceParser(value);
 
-    // 출력?�� ?��?��
+   
     outputKey.set(parser.getYear() );
     context.write(outputKey, new IntWritable(parser.getAll_price()));
   }
